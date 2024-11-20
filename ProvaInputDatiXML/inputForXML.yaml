@@ -1,0 +1,17 @@
+prefixes:
+    l0: "https://w3id.org/italia/onto/l0/"
+    cov: "https://w3id.org/italia/onto/COV/"
+    clv: "https://w3id.org/italia/onto/CLV/"
+    prj: "https://w3id.org/italia/onto/Project/"
+    rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+    xsd: "http://www.w3.org/2000/01/XMLSchema#"
+    
+mappings:
+    episodes:
+        sources:
+        - ['inputProva.xml~xpath', '/episodes/episode']
+        s: episode/$(number)
+        po:
+        - [a, cov:episode]
+        - [cov:title, $(title)]
+        - [cov:airdate, $(airdate)]

@@ -1,0 +1,17 @@
+RECORD ICAR-IMPORT
+
+HEADER - Contiene id e data dell'operazione
+BODY
+	INFO - Contiene dati a proposito degli accessi ai dati
+	IDENTIFICATIVO - Contiene l'identificativo nel sistema
+	DENOMINAZIONE
+	TIPOLOGIA
+	LOCALIZZAZIONE - Contiene denominazione, provincia, telefono, mail
+	DESCRIZIONE 
+	RELAZIONI - Contiene la lista di relazioni con le altre entità
+
+RECORD EAD
+
+HEADER - Contiene id e data dell'operazione
+BODY 
+	MAINTENANCE HISTORY - Contiene dati a proposito degli accessi ai dati

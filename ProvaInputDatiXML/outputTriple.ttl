@@ -1,0 +1,33 @@
+@prefix : <http://mapping.example.com/> .
+@prefix clv: <https://w3id.org/italia/onto/CLV/> .
+@prefix cov: <https://w3id.org/italia/onto/COV/> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix prj: <https://w3id.org/italia/onto/Project/> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2000/01/XMLSchema#> .
+
+<http://example.comepisode/1> a cov:episode;
+  cov:airdate "12/10/2009";
+  cov:title "Fairy Tail" .
+
+<http://example.comepisode/2> a cov:episode;
+  cov:airdate "19/10/2009";
+  cov:title "The Fire Dragon, the Monkey, and the Ox" .
+
+<http://example.comepisode/3> a cov:episode;
+  cov:airdate "26/10/2009";
+  cov:title "Infiltrate! The Everlue Mansion!" .
+
+<http://example.comepisode/4> a cov:episode;
+  cov:airdate "02/11/2009";
+  cov:title "DEAR KABY" .

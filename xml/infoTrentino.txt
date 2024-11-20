@@ -1,0 +1,234 @@
+Struttura dati xml forniti
+Il pattern, fino a che non entra in gioco ead, risulta essere :
+<icar-import:listaRecords>
+    <icar-import:record>
+        <icar-import:recordHeader action="insert"  type="scons">
+            <icar-import:id>sc-1418</icar-import:id>
+            <icar-import:lastUpdate>2022-05-22T11:44:03Z</icar-import:lastUpdate>
+	    </icar-import:recordHeader>
+        <icar-import:recordBody>
+		    <scons:scons><scons:info>
+            Il seguente blocco si ripete tutte le volte necessarie, tiene traccia degli eventi accaduti su quel record e chi li ha innescati
+                        <scons:evento tipoEvento="modifica" dataEvento="2022-05-18T12:00:00Z">
+                            <scons:agente tipo="persona">
+                                <scons:nome>Stefano</scons:nome>
+                                <scons:cognome>Malfatti</scons:cognome>
+                            </scons:agente>
+                         </scons:evento>
+            </scons:info>
+            <scons:identificativi>
+				<scons:identificativosistema>SIUSA</scons:identificativosistema>
+				<scons:identificativo tipo="SIUSA">sc-1418</scons:identificativo>
+			</scons:identificativi>
+		<scons:denominazione qualifica="principale">Comune di Trento. Archivio storico</scons:denominazione>
+		<scons:tipologia>ente pubblico territoriale</scons:tipologia>
+		<scons:localizzazioni>
+			<scons:localizzazione principale="S" consultazione="S" privato="N" identificativo="1">
+				<scons:denominazione></scons:denominazione>
+				<scons:indirizzo paese="ita" provincia="TN" comune="Trento" cap="38122">via Roma, 55</scons:indirizzo>
+				<scons:contatto tipo="telefono">0461889548</scons:contatto>
+				<scons:contatto tipo="mail">archivio.storico@comune.trento.it</scons:contatto>
+			</scons:localizzazione>
+		</scons:localizzazioni>
+		<scons:descrizione><![Descrizione]></scons:descrizione>
+		<scons:relazioni>
+            Anche qui si aggiunge una relazione per tutte quelle necessarie
+			<scons:relazione tipo="URL" href="https://bibcom.trento.it/Archivio-storico">Comune di Trento. Archivio storico</scons:relazione>
+		</scons:relazioni>
+		</scons:scons>
+	</icar-import:recordBody>
+</icar-import:record>
+
+Questo è vero fino alla riga 1600, in cui arriva lo standard ead.
+In realtà di fatto il pattern è lo stesso ma cambiano gli standard di mappatura e il pattern risulta il seguente
+
+<icar-import:record>
+	<icar-import:recordHeader action="insert"  groupEad="multiple" type="ead3">
+		<icar-import:id>ca-326749</icar-import:id>
+		<icar-import:lastUpdate>2020-04-29T12:56:24Z</icar-import:lastUpdate>
+	</icar-import:recordHeader>
+	<icar-import:recordBody>
+		<ead:ead>
+		<ead:control repositoryencoding="iso15511" countryencoding="iso3166-1" dateencoding="iso8601" scriptencoding="iso15924" langencoding="iso639-2b">
+		<ead:recordid>ca-326749</ead:recordid>
+		<ead:filedesc>
+		<ead:titlestmt>
+			<ead:titleproper>Istituto nazionale della previdenza sociale. Agenzia di produzione di Riva del Garda</ead:titleproper>
+		</ead:titlestmt>
+		</ead:filedesc>
+		<ead:maintenancestatus value="new"/>
+			<ead:maintenanceagency>
+			<ead:agencyname>ICAR</ead:agencyname>
+		</ead:maintenanceagency>
+		<ead:languagedeclaration>
+			<ead:language langcode="ita"/>
+			<ead:script scriptcode="Italian"/>
+		</ead:languagedeclaration>
+		<ead:conventiondeclaration>
+			<ead:citation>SIUSA</ead:citation>
+		</ead:conventiondeclaration>
+		<ead:maintenancehistory>
+			<ead:maintenanceevent>
+				<ead:eventtype value="created"></ead:eventtype>
+				<ead:eventdatetime>23/10/2024 10:17:54</ead:eventdatetime>
+				<ead:agenttype value="machine"></ead:agenttype>
+				<ead:agent>SIUSA</ead:agent>
+			</ead:maintenanceevent>
+		</ead:maintenancehistory>
+		</ead:control>
+		<ead:archdesc level="fonds">
+			<ead:did>
+					<ead:unitid localtype="SIUSA" identifier="ca-326749">https://siusa-archivi.cultura.gov.it/cgi-bin/pagina.pl?TipoPag=comparc&amp;Chiave=326749</ead:unitid>
+				<ead:unittitle localtype="denominazione" lang="ita">Istituto nazionale della previdenza sociale. Agenzia di produzione di Riva del Garda</ead:unittitle>
+					<ead:unittitle localtype="altreDenominazioni">INPS. Centro operativo di Riva del Garda
+					<ead:date>settembre 1994 - 7 luglio 1998</ead:date>
+					</ead:unittitle>
+					<ead:unittitle localtype="altreDenominazioni">INPS. Agenzia di produzione di Riva del Garda
+					<ead:date>dal luglio 1998</ead:date>
+				</ead:unittitle>
+				<ead:unitdatestructured>
+					<ead:dateset>
+						<ead:daterange>
+							<ead:fromdate standarddate="1994-01-01">1994</ead:fromdate>
+							<ead:todate standarddate="2010-02-16">2010 feb 16</ead:todate>
+						</ead:daterange>
+						<ead:datesingle localtype="noteAllaData">La data è relativa all&apos;ultimo censimento.</ead:datesingle>
+					</ead:dateset>
+				</ead:unitdatestructured>
+				<ead:physdesc>
+				Unità 2304: contenitori 1596; pacchi 25; faldoni 264; fascicoli 170; scatole 249; m.l. 271</ead:physdesc>
+				<ead:origination>
+					<ead:corpname identifier="sp-49996">
+						<ead:part>Istituto nazionale della previdenza sociale. Agenzia di produzione di Riva del Garda</ead:part>
+					</ead:corpname>
+				</ead:origination>
+				<ead:repository>
+					<ead:corpname identifier="sc-13717"><ead:part>Istituto nazionale della previdenza sociale - INPS. Agenzia di produzione di Riva del Garda</ead:part>
+					</ead:corpname>
+				</ead:repository>
+			</ead:did>
+			<ead:scopecontent>
+				<ead:p>La documentazione è relativa alla corresponsione, liquidazione e gestione dei trattamenti pensionistici nonché alle altre prestazioni statali in materia di previdenza sociale pertinenti il comprensorio Alto Garda e Valle di Ledro.</ead:p>
+				<ead:p>L&apos;archivio si articola nelle seguenti serie:</ead:p>
+				<ead:p>&apos;disoccupazione&apos;, aa.2003-2009, contenitori 441 e pacchi 25; &apos;mandati di pagamento&apos;, aa.1998-2008, fascicoli 100; &apos;pensioni&apos;, aa.1994-2009</ead:p>
+				<ead:p>contenitori 799 e faldoni 171; &apos;Ecocert&apos;, a.2009, faldoni 34; &apos;certificati di malattia&apos;, aa.2004-2010, scatole 76; &apos;certificati malattia esteri (mod.E 115)&apos;, aa. 2000-2010, scatole 7; &apos;referti visite fiscali&apos;, aa.1994-2009, faldoni 14; giustificazioni assenze visite fiscali, a.2009, faldoni  2; &apos;sanzioni per mancata presentazione certificato&apos;, a.2009, faldoni 3; &apos;referti medico-legali&apos;, aa.2009-2010, scatole 3; &apos;cartelle individuali&apos;, aa.1994-2008, scatole 163; &apos;lavori domestici&apos;, aa.2001-2009, contenitori 36; &apos;distacchi lavoratori (modello E 101)&apos;, aa.1994-2009, faldoni 6; &apos;artigiani&apos;, aa.2001-2009, contenitori 66; &apos;liquidazioni dirette malattia, maternità, legge 104&apos;, aa.1994-2009, faldoni 18; &apos;autorizzazione assegni nucleo familiare&apos;, aa.1999-2009, contenitori 61; &apos;maternità, congedi parentali&apos;, aa.2005-2010, contenitori 36; &apos;segnalazioni INAIL&apos;, aa.2007-2009, faldoni 3; &apos;pagamenti visite mediche di controllo&apos;, aa.2007-2009, faldoni 6; &apos;visite mediche ASL&apos;, aa.2001-2010, faldoni 2; &apos;statistica mensile lavorazioni&apos;, aa.2002-2010, faldoni 1; &apos;azioni di surroga&apos;, aa.2001-2010, contenitori 24; &apos;commercianti:, aa.2009-2010</ead:p>
+				<ead:p>contenitori 125; &apos;pagamenti diversi&apos;, a.2009, faldoni 4; &apos;domande legge 104/1992, a.2009, contenitori 8; &apos;autorizzazione assegni nucleo familiare&apos;, aa.2009-2010, fascicoli 70.</ead:p>
+				<ead:p>Nel gennaio 2004 è stato istituito il sistema di protocollo informatizzato correlato all&apos;impiego di etichette adesive con codice a barre.</ead:p>
+			</ead:scopecontent>
+			<ead:processinfo><ead:p>pubblicata</ead:p></ead:processinfo>
+			<ead:processinfo localtype="compilatori">
+				<ead:processinfo localtype="compilatore">
+				<ead:p>
+				<ead:persname>
+				<ead:part localtype="compilatore">Chiomento Carmen</ead:part>
+				<ead:part localtype="tipoIntervento">prima redazione</ead:part>
+				</ead:persname>
+				<ead:date localtype="dataIntervento">febbraio 2010</ead:date>
+				</ead:p>
+				</ead:processinfo>
+			</ead:processinfo>
+		</ead:archdesc>
+		</ead:ead>
+	</icar-import:recordBody>
+
+    Fino a 30440 in cui cambia di nuovo standard e diventa eac 
+
+    <icar-import:record>
+	<icar-import:recordHeader action="insert"  type="eac-cpf">
+		<icar-import:id>sp-101083</icar-import:id>
+		<icar-import:lastUpdate>2022-05-22T11:46:18Z</icar-import:lastUpdate>
+	</icar-import:recordHeader>
+	<icar-import:recordBody>
+		<eac-cpf:eac-cpf><eac-cpf:control>
+			<eac-cpf:recordId>sp-101083</eac-cpf:recordId>
+			<eac-cpf:maintenanceStatus>new</eac-cpf:maintenanceStatus>
+			<eac-cpf:publicationStatus>approved</eac-cpf:publicationStatus>
+			<eac-cpf:maintenanceAgency>
+				<eac-cpf:agencyName>Istituto Centrale per gli Archivi</eac-cpf:agencyName>
+			</eac-cpf:maintenanceAgency>
+			<eac-cpf:maintenanceHistory>
+				<eac-cpf:maintenanceEvent>
+					<eac-cpf:eventType>created</eac-cpf:eventType>
+					<eac-cpf:eventDateTime>2022/05/18</eac-cpf:eventDateTime>
+					<eac-cpf:agentType>human</eac-cpf:agentType>
+					<eac-cpf:agent>Malfatti Stefano</eac-cpf:agent>
+					</eac-cpf:maintenanceEvent>
+					<eac-cpf:maintenanceEvent>
+					<eac-cpf:eventType>created</eac-cpf:eventType>
+					<eac-cpf:eventDateTime>2022/05/18</eac-cpf:eventDateTime>
+					<eac-cpf:agentType>human</eac-cpf:agentType>
+					<eac-cpf:agent>Perotto Vera</eac-cpf:agent>
+					</eac-cpf:maintenanceEvent>
+					<eac-cpf:maintenanceEvent>
+					<eac-cpf:eventType>revised</eac-cpf:eventType>
+					<eac-cpf:eventDateTime>2022/05/18</eac-cpf:eventDateTime>
+					<eac-cpf:agentType>human</eac-cpf:agentType>
+					<eac-cpf:agent>Santolamazza Rossella, SIUSA nazionale</eac-cpf:agent>
+				</eac-cpf:maintenanceEvent>
+			</eac-cpf:maintenanceHistory>
+			<eac-cpf:sources>
+			<eac-cpf:source xlink:href="https://siusa-archivi.cultura.gov.it/cgi-bin/pagina.pl?TipoPag=prodente&amp;Chiave=101083"></eac-cpf:source>
+			</eac-cpf:sources>
+		</eac-cpf:control>
+		<eac-cpf:cpfDescription>
+			<eac-cpf:identity localType="soggettoProduttore">
+				<eac-cpf:entityType>corporateBody</eac-cpf:entityType>
+				<eac-cpf:nameEntry>
+					<eac-cpf:part>Magistrato politico economico di Trento</eac-cpf:part>
+				</eac-cpf:nameEntry>
+				<eac-cpf:nameEntry localType="intestazione">
+					<eac-cpf:part>Magistrato politico economico di Trento, Trento, 1825 - 1949</eac-cpf:part>
+					<eac-cpf:authorizedForm>SIUSA</eac-cpf:authorizedForm>
+				</eac-cpf:nameEntry>
+				<eac-cpf:nameEntry localType="intestazione">
+					<eac-cpf:part>Magistrato civico di Trento, Trento, 1814 - 1825</eac-cpf:part>
+					<eac-cpf:authorizedForm>SIUSA</eac-cpf:authorizedForm>
+				</eac-cpf:nameEntry>
+				<eac-cpf:nameEntry localType="altraDenominazione">
+					<eac-cpf:part>Magistrato civico di Trento</eac-cpf:part>
+					<eac-cpf:useDates>
+						<eac-cpf:date>1814 - 1825</eac-cpf:date>
+					</eac-cpf:useDates>
+				</eac-cpf:nameEntry>
+			</eac-cpf:identity>
+		<eac-cpf:description>
+			<eac-cpf:existDates>
+				<eac-cpf:dateRange localType="date di esistenza">
+				<eac-cpf:fromDate standardDate="1814-01-01">1814</eac-cpf:fromDate>
+				<eac-cpf:toDate standardDate="1849-12-31">1849</eac-cpf:toDate>
+				</eac-cpf:dateRange>
+			</eac-cpf:existDates>
+			<eac-cpf:place>
+				<eac-cpf:placeRole>Sede</eac-cpf:placeRole>
+				<eac-cpf:placeEntry>Trento</eac-cpf:placeEntry>
+			</eac-cpf:place>
+			<eac-cpf:legalStatuses>
+				<eac-cpf:legalStatus>
+					<eac-cpf:term>pubblico</eac-cpf:term>
+				</eac-cpf:legalStatus>
+			</eac-cpf:legalStatuses>
+			<eac-cpf:localDescription localType="tipologiaEnte">
+				<eac-cpf:term>ente pubblico territoriale</eac-cpf:term>
+			</eac-cpf:localDescription>
+			<eac-cpf:biogHist>
+				<eac-cpf:p>Il Trentino fu rioccupato dalle truppe austriache nel 1814 e il Dipartimento dell’Alto Adige fu incorporato nella primavera del 1815.</eac-cpf:p>
+				<eac-cpf:p>Il Comune di Trento fu amministrato dal Magistrato civico di Trento, ufficio periferico dello Stato di pari livello rispetto ai Giudizi costituenti il Circolo amministrativo di Trento con competenze equivalenti a quelle dei giudizi patrimoniali e principeschi. A partire dal 1° maggio 1817 al Magistrato competeva il controllo amministrativo oltre che sul territorio del comune di Trento anche sui circostanti comuni rurali esterni di Gardolo, Montevaccino, Valcalda, Cognola, Villamontagna, Pozza, Martignano, il Columello di Mezzo e i masi, Mattarello, Valsorda, Romagnano, Ravina, Pissavacca, Sardagna e Mezzolombardo (fino all’istituzione del Giudizio distrettuale di Mezzolombardo nel 1824).</eac-cpf:p>
+				<eac-cpf:p>In via provvisoria fu affidata all’ente cittadino anche l’amministrazione politica sui sospesi Giudizi di Spor, Belfort e Mezzocorona, mentre le competenze giurisdizionali furono rimesse al Giudizio civico provinciale di Trento.</eac-cpf:p>
+				<eac-cpf:p>Il 22 novembre 1825 fu emessa e approvata una sovrana risoluzione con decreto governativo del 25 novembre dello stesso anno, immediatamente rimesso al Capitanato circolare di Trento, il quale il 31 dicembre del 1825 trasmise al Magistrato civico di Trento le disposizioni per l’organizzazione del futuro Magistrato politico economico, nonché le norme per eleggere la rappresentanza comunale e il Consiglio magistratale.</eac-cpf:p>
+				<eac-cpf:p>Il Magistrato politico economico doveva essere composto da: un Podestà, il quale assumeva un incarico a vita su nomina del Governo ed era responsabile diretto del Magistrato politico economico, otto consiglieri e ventiquattro rappresentanti eletti direttamente dai concittadini capi di famiglia.</eac-cpf:p>
+			</eac-cpf:biogHist>
+		</eac-cpf:description>
+		<eac-cpf:relations>
+			<eac-cpf:cpfRelation cpfRelationType="associative">
+				<eac-cpf:relationEntry localType="soggettoProduttore">sp-16449</eac-cpf:relationEntry>
+			</eac-cpf:cpfRelation>
+			<eac-cpf:resourceRelation resourceRelationType="creatorOf">
+				<eac-cpf:relationEntry localType="complesso">ca-83463</eac-cpf:relationEntry>
+			</eac-cpf:resourceRelation>
+			<eac-cpf:resourceRelation resourceRelationType="other">
+				<eac-cpf:relationEntry localType="TEMA">Enti pubblici locali e territoriali</eac-cpf:relationEntry>
+			</eac-cpf:resourceRelation>
+		</eac-cpf:relations>
+	</eac-cpf:cpfDescription>
+	</eac-cpf:eac-cpf>
+	</icar-import:recordBody>
