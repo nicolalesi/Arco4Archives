@@ -1,0 +1,14 @@
+prefixes:
+  eac-cpf: "urn:isbn:1-931666-33-4/"
+  icar-import: "http://www.san.beniculturali.it/icar-import/"
+
+mappings:
+  episodes:
+    sources:
+      - ['sab_trentino_secondo_caricamento_EAC.xml~xpath', '/icar-import:listRecords/icar-import:record']
+    s: "http://www.san.beniculturali.it/icar-import/record/$(icar-import:recordBody/eac-cpf:recordId)"
+    po:
+      - [a, icar-import:Record]
+      - [icar-import:hasRecordId, "$(icar-import:recordBody/eac-cpf:recordId)"]
+      - [eac-cpf:maintenanceStatus, "$(icar-import:recordBody/eac-cpf:maintenanceStatus)"]
+      - [eac-cpf:publicationStatus, "$(icar-import:recordBody/eac-cpf:publicationStatus)"]
