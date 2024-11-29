@@ -10,7 +10,17 @@ mappings:
     s: http://example/record/$(eac-cpf:control/eac-cpf:recordId)
     po:
       - [a,ex:CorporateBody]
-      - [ex:legalName, $(eac-cpf\:cpfDescription/eac-cpf\:nameEntry/eac-cpf\:part)]
+      - [ex:legalName, $(eac-cpf\:cpfDescription/eac-cpf\:identity/eac-cpf\:nameEntry/eac-cpf\:part)]
+      - [ex:authorizedFrom, $(eac-cpf\:cpfDescription/eac-cpf\:identity/eac-cpf\:nameEntry/eac-cpf\:authorizedForm)]
+      - [ex:existenceRangeFromDate, $(eac-cpf\:cpfDescription/eac-cpf\:description/eac-cpf\:existDates/eac-cpf\:dateRange/eac-cpf\:fromDate)]
+      - [ex:existenceRangeToDate, $(eac-cpf\:cpfDescription/eac-cpf\:description/eac-cpf\:existDates/eac-cpf\:dateRange/eac-cpf\:toDate)]
+      - [ex:placeRole, $(eac-cpf\:cpfDescription/eac-cpf\:description/eac-cpf\:place/eac-cpf\:placeRole)]
+      - [ex:placeEntry, $(eac-cpf\:cpfDescription/eac-cpf\:description/eac-cpf\:place/eac-cpf\:placeEntry)]
+      - [ex:legalStatus, $(eac-cpf\:cpfDescription/eac-cpf\:description/eac-cpf\:legalStatuses/eac-cpf\:legalStatus/eac-cpf\:term)]
+      - [ex:tipologiaEnte, $(eac-cpf\:cpfDescription/eac-cpf\:description/eac-cpf\:localDescription/eac-cpf\:term)]
+      - [ex:history, $(eac-cpf\:cpfDescription/eac-cpf\:description/eac-cpf\:biogHist)]
+      - [ex:hasComplex,"$(eac-cpf\:cpfDescription/eac-cpf\:relations/eac-cpf\:resourceRelation/eac-cpf\:relationEntry[@localType='complesso'])"]
+      - [ex:hasTheme,"$(eac-cpf\:cpfDescription/eac-cpf\:relations/eac-cpf\:resourceRelation/eac-cpf\:relationEntry[@localType='TEMA'])"]
     
 
   

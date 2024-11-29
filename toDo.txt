@@ -7,6 +7,9 @@
 
 
 ##
-- Studiare xml 
+- Studiare xml (open refine, pandas)
 - Isolare corporate Body
-- Provare a mappare info che sono nel corporateBody
+- Provare a mappare info che sono nel corporateBody su ontologia
+
+
+Per tutte le calssi mettiamo rdfs:label, un'altra proprietà del mapping, che prende lo stesso nome di legalName
