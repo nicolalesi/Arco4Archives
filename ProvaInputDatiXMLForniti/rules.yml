@@ -1,13 +1,23 @@
 prefixes:
   eac-cpf: "urn:isbn:1-931666-33-4/"
-  icar-import: "http://www.san.beniculturali.it/icar-import/"
+  icar-import: "http://www.san.beniculturali.it/icar-import"
+  ex: "http://www.examples.com/"
 
 mappings:
   record:
     sources:
-      - [sab_trentino_secondo_caricamento_EAC.xml~xpath, //icar-import:record]
-    s: "icar-import:$(icar-import:record/icar-import:recordHeader/icar-import:id)"
+      - [sab_trentino_secondo_caricamento.xml~xpath, //icar-import:record]
+    s: http://example/record/$(icar-import:recordHeader/icar-import:id)
     po:
       - [a,icar-import:record]
-      - [icar-import:id, icar-import:record/icar-import:recordHeader/$(icar-import:id)]
+      - [ex:id,$(icar-import\:recordHeader/icar-import\:id),xsd:string]
+
+  recordBody:
+    sources: 
+    - [sab_trentino_secondo_caricamento_EAC.xml~xpath, //icar-import:recordBody]
+    s: http://example/recordBody/$(eac-cpf:eac-cpf/eac-cpf:control/eac-cpf:recordId)
+    po:
+      - [a,ex:recordBody]
+      
+
 

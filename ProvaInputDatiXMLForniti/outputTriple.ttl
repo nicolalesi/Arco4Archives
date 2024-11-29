@@ -2,10 +2,11 @@
 @prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix eac-cpf: <urn:isbn:1-931666-33-4/> .
+@prefix ex: <http://www.examples.com/> .
 @prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix icar-import: <http://www.san.beniculturali.it/icar-import/> .
+@prefix icar-import: <http://www.san.beniculturali.it/icar-import> .
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -13,5 +14,232 @@
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 @prefix void: <http://rdfs.org/ns/void#> .
 
-icar-import:icar-import a icar-import:record;
-  icar-import:id "http://www.san.beniculturali.it/icar-import/record/icar-import" .
+<http://example/record/sp-101083> a ex:CorporateBody .
+
+<http://example/record/sp-103577> a ex:CorporateBody .
+
+<http://example/record/sp-103578> a ex:CorporateBody .
+
+<http://example/record/sp-103579> a ex:CorporateBody .
+
+<http://example/record/sp-103580> a ex:CorporateBody .
+
+<http://example/record/sp-103581> a ex:CorporateBody .
+
+<http://example/record/sp-103582> a ex:CorporateBody .
+
+<http://example/record/sp-103586> a ex:CorporateBody .
+
+<http://example/record/sp-103588> a ex:CorporateBody .
+
+<http://example/record/sp-103589> a ex:CorporateBody .
+
+<http://example/record/sp-103590> a ex:CorporateBody .
+
+<http://example/record/sp-103591> a ex:CorporateBody .
+
+<http://example/record/sp-103592> a ex:CorporateBody .
+
+<http://example/record/sp-103594> a ex:CorporateBody .
+
+<http://example/record/sp-103595> a ex:CorporateBody .
+
+<http://example/record/sp-12851> a ex:CorporateBody .
+
+<http://example/record/sp-16449> a ex:CorporateBody .
+
+<http://example/record/sp-421> a ex:CorporateBody .
+
+<http://example/record/sp-44711> a ex:CorporateBody .
+
+<http://example/record/sp-48221> a ex:CorporateBody .
+
+<http://example/record/sp-49996> a ex:CorporateBody .
+
+<http://example/record/sp-54113> a ex:CorporateBody .
+
+<http://example/record/sp-55521> a ex:CorporateBody .
+
+<http://example/record/sp-55523> a ex:CorporateBody .
+
+<http://example/record/sp-55524> a ex:CorporateBody .
+
+<http://example/record/sp-55528> a ex:CorporateBody .
+
+<http://example/record/sp-55530> a ex:CorporateBody .
+
+<http://example/record/sp-55531> a ex:CorporateBody .
+
+<http://example/record/sp-55532> a ex:CorporateBody .
+
+<http://example/record/sp-55534> a ex:CorporateBody .
+
+<http://example/record/sp-55535> a ex:CorporateBody .
+
+<http://example/record/sp-55536> a ex:CorporateBody .
+
+<http://example/record/sp-61147> a ex:CorporateBody .
+
+<http://example/record/sp-61183> a ex:CorporateBody .
+
+<http://example/record/sp-61185> a ex:CorporateBody .
+
+<http://example/record/sp-61187> a ex:CorporateBody .
+
+<http://example/record/sp-61222> a ex:CorporateBody .
+
+<http://example/record/sp-61224> a ex:CorporateBody .
+
+<http://example/record/sp-61225> a ex:CorporateBody .
+
+<http://example/record/sp-61242> a ex:CorporateBody .
+
+<http://example/record/sp-61258> a ex:CorporateBody .
+
+<http://example/record/sp-61261> a ex:CorporateBody .
+
+<http://example/record/sp-61270> a ex:CorporateBody .
+
+<http://example/record/sp-61273> a ex:CorporateBody .
+
+<http://example/record/sp-61274> a ex:CorporateBody .
+
+<http://example/record/sp-61289> a ex:CorporateBody .
+
+<http://example/record/sp-61290> a ex:CorporateBody .
+
+<http://example/record/sp-61291> a ex:CorporateBody .
+
+<http://example/record/sp-61316> a ex:CorporateBody .
+
+<http://example/record/sp-61317> a ex:CorporateBody .
+
+<http://example/record/sp-61356> a ex:CorporateBody .
+
+<http://example/record/sp-61357> a ex:CorporateBody .
+
+<http://example/record/sp-61391> a ex:CorporateBody .
+
+<http://example/record/sp-61393> a ex:CorporateBody .
+
+<http://example/record/sp-61400> a ex:CorporateBody .
+
+<http://example/record/sp-61429> a ex:CorporateBody .
+
+<http://example/record/sp-61430> a ex:CorporateBody .
+
+<http://example/record/sp-61457> a ex:CorporateBody .
+
+<http://example/record/sp-61458> a ex:CorporateBody .
+
+<http://example/record/sp-61462> a ex:CorporateBody .
+
+<http://example/record/sp-61470> a ex:CorporateBody .
+
+<http://example/record/sp-61472> a ex:CorporateBody .
+
+<http://example/record/sp-61478> a ex:CorporateBody .
+
+<http://example/record/sp-61482> a ex:CorporateBody .
+
+<http://example/record/sp-61485> a ex:CorporateBody .
+
+<http://example/record/sp-61487> a ex:CorporateBody .
+
+<http://example/record/sp-61582> a ex:CorporateBody .
+
+<http://example/record/sp-61584> a ex:CorporateBody .
+
+<http://example/record/sp-61652> a ex:CorporateBody .
+
+<http://example/record/sp-62045> a ex:CorporateBody .
+
+<http://example/record/sp-62080> a ex:CorporateBody .
+
+<http://example/record/sp-62085> a ex:CorporateBody .
+
+<http://example/record/sp-79342> a ex:CorporateBody .
+
+<http://example/record/sp-79456> a ex:CorporateBody .
+
+<http://example/record/sp-79488> a ex:CorporateBody .
+
+<http://example/record/sp-79636> a ex:CorporateBody .
+
+<http://example/record/sp-80540> a ex:CorporateBody .
+
+<http://example/record/sp-91077> a ex:CorporateBody .
+
+<http://example/record/sp-93944> a ex:CorporateBody .
+
+<http://example/record/sp-94308> a ex:CorporateBody .
+
+<http://example/record/sp-94325> a ex:CorporateBody .
+
+<http://example/record/sp-94337> a ex:CorporateBody .
+
+<http://example/record/sp-94348> a ex:CorporateBody .
+
+<http://example/record/sp-94350> a ex:CorporateBody .
+
+<http://example/record/sp-94358> a ex:CorporateBody .
+
+<http://example/record/sp-94363> a ex:CorporateBody .
+
+<http://example/record/sp-94427> a ex:CorporateBody .
+
+<http://example/record/sp-94429> a ex:CorporateBody .
+
+<http://example/record/sp-94430> a ex:CorporateBody .
+
+<http://example/record/sp-94431> a ex:CorporateBody .
+
+<http://example/record/sp-94432> a ex:CorporateBody .
+
+<http://example/record/sp-94433> a ex:CorporateBody .
+
+<http://example/record/sp-94470> a ex:CorporateBody .
+
+<http://example/record/sp-94476> a ex:CorporateBody .
+
+<http://example/record/sp-94477> a ex:CorporateBody .
+
+<http://example/record/sp-94506> a ex:CorporateBody .
+
+<http://example/record/sp-94507> a ex:CorporateBody .
+
+<http://example/record/sp-94523> a ex:CorporateBody .
+
+<http://example/record/sp-94533> a ex:CorporateBody .
+
+<http://example/record/sp-94534> a ex:CorporateBody .
+
+<http://example/record/sp-94539> a ex:CorporateBody .
+
+<http://example/record/sp-94554> a ex:CorporateBody .
+
+<http://example/record/sp-94555> a ex:CorporateBody .
+
+<http://example/record/sp-94556> a ex:CorporateBody .
+
+<http://example/record/sp-94557> a ex:CorporateBody .
+
+<http://example/record/sp-94558> a ex:CorporateBody .
+
+<http://example/record/sp-94559> a ex:CorporateBody .
+
+<http://example/record/sp-94560> a ex:CorporateBody .
+
+<http://example/record/sp-94576> a ex:CorporateBody .
+
+<http://example/record/sp-94580> a ex:CorporateBody .
+
+<http://example/record/sp-94581> a ex:CorporateBody .
+
+<http://example/record/sp-94596> a ex:CorporateBody .
+
+<http://example/record/sp-94599> a ex:CorporateBody .
+
+<http://example/record/sp-94626> a ex:CorporateBody .
+
+<http://example/record/sp-94635> a ex:CorporateBody .
