@@ -4,3 +4,9 @@
 - https://codebeautify.org/Xpath-Tester
 - Provare trasformazione da xml a csv, analizzare csv se ha senso rispetto al file input
 - Preparare domande per il ministero a proposito della comprensione di xml
+
+
+##
+- Studiare xml 
+- Isolare corporate Body
+- Provare a mappare info che sono nel corporateBody
