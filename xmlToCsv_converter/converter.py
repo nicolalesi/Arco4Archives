@@ -1,8 +1,15 @@
 import xml.etree.ElementTree as Xet
 import pandas as pd
 
+def check_n_entries(nameColumn,vectorOfColumns):
+    if len(nameColumn)>1:
+        vectorOfColumns.append(nameColumn)
+        return vectorOfColumns
+    return False
+        
+
 # Colonne definite per il CSV
-cols = ["legalName","localType","nome","cognome","intestazione","authorizedFrom", "existenceRangeFromDate", "existenceRangeToDate","dataNascita","dataMorte", "placeRole", "placeEntry","otherPlaceRole","otherPlaceEntry","professione","legalStatus", "tipologiaEnte", "history","genere", "relazione_complesso"]
+cols = ["legalName","altraDenominazione","dataAltraDenominazione","localType","nome","cognome","intestazione","authorizedFrom", "existenceRangeFromDate", "existenceRangeToDate","dataNascita","dataMorte", "placeRole", "placeEntry","otherPlaceRole","otherPlaceEntry","professione","legalStatus", "tipologiaEnte", "history","genere", "relazione_complesso"]
 rows = []
 
 # Parsing del file XML
@@ -17,8 +24,15 @@ namespaces = {
 
 # Estrai i dati dal file XML
 for i in root.findall('.//eac-cpf:cpfDescription', namespaces):
+
     legalName = i.find('.//eac-cpf:nameEntry/eac-cpf:part', namespaces)
     legalName_text = legalName.text if legalName is not None else None
+
+    altraDenominazione=i.find('.//eac-cpf:nameEntry[@localType="altraDenominazione"]/eac-cpf:part', namespaces)
+    altraDenominazione_text = altraDenominazione.text if altraDenominazione is not None else None
+
+    dateAltraDenominazione=i.find('.//eac-cpf:nameEntry[@localType="altraDenominazione"]/eac-cpf:useDates/eac-cpf:date', namespaces)
+    dateAltraDenominazione_text = dateAltraDenominazione.text if dateAltraDenominazione is not None else None
 
     localType = i.find('.//eac-cpf:identity/eac-cpf:entityType', namespaces)
     localType_text = localType.text if localType is not None else None
@@ -68,7 +82,7 @@ for i in root.findall('.//eac-cpf:cpfDescription', namespaces):
     professione = i.find('.//eac-cpf:localDescription[@localType="professione"]/eac-cpf:term', namespaces)
     professione_text = professione.text if professione is not None else None
 
-    legalStatus = i.find('.//eac-cpf:legalStatuses/eac-cpf:legalStatus/eac-cpf:term', namespaces)
+    legalStatus = i.find('.//eac-cpf:description/eac-cpf:legalStatuses/eac-cpf:legalStatus/eac-cpf:term', namespaces)
     legalStatus_text = legalStatus.text if legalStatus is not None else None
 
     #Con lo stesso percorso c'è anche genere 
@@ -102,12 +116,15 @@ for i in root.findall('.//eac-cpf:cpfDescription', namespaces):
                 chiave="relazione_"+localTypeValue
                 relations= {chiave:otherRelations_text}
             else :
-                relations[chiave]=otherRelations_text
-                
+                    relations[chiave]=otherRelations_text
 
+                
+    #Forse è meglio caricare i valori row uno alla volta
     # Aggiungi i dati estratti alla lista rows
     row ={"legalName": legalName_text,
                  "localType":localType_text,
+                 "altraDenominazione":altraDenominazione_text,
+                 "dataAltraDenominazione":dateAltraDenominazione_text,
                  "nome":nome_text,
                  "cognome":cognome_text,
                  "intestazione":intestazione_text,
@@ -121,7 +138,7 @@ for i in root.findall('.//eac-cpf:cpfDescription', namespaces):
                  "otherPlaceRole": otherPlaceRole_text,
                  "otherPlaceEntry":otherPlaceEntry_text,
                  "professione": professione_text,
-                 "legalStatus":legalName_text,
+                 "legalStatus":legalStatus_text,
                  "tipologiaEnte":tipologia_text,
                  "genere":genere_text,
                  "relazione_complesso":relationCA_text,
@@ -130,6 +147,33 @@ for i in root.findall('.//eac-cpf:cpfDescription', namespaces):
     row.update(relations)
 
     rows.append(row)
+
+    vectorOfValues={"legalName":legalName,
+                    "localType":localType,
+                    "altraDenominazione":altraDenominazione,
+                    "dataAltraDenominazione":dateAltraDenominazione,
+                    "nome":nome,
+                    "cognome":cognome,
+                    "intestazione":intestazione,
+                    "authorizedFrom":authorizedFrom,
+                    "existenceRangeFromDate":existenceRangeFromDate,
+                    "existenceRangeToDate":existenceRangeToDate,
+                    "dataNascita":dataNascita,
+                    "dataMorte":dataMorte,
+                    "placeRole":placeRole,
+                    "placeEntry":placeEntry,
+                    "otherPlaceRole":otherPlaceRole,
+                    "otherPlaceEntry":otherPlaceEntry,
+                    "professione":professione,
+                    "legalStatus":legalStatus,
+                    "tipologiaEnte":tipologiaEnte,
+                    "genere":genere,
+                    "relazione_complesso":relationCA
+                    }
+
+
+
+
     
 
 

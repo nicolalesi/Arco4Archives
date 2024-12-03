@@ -13,3 +13,19 @@
 
 
 Per tutte le calssi mettiamo rdfs:label, un'altra proprietà del mapping, che prende lo stesso nome di legalName
+
+####info####
+
+Intestazione va messo nella proprietà rdfs:label, che permette che siano  visibili anche dal web. Proprietà di rdf schema, per dare un'etichetta e renderlo leggibile da umani. occupazione anche è questo
+
+Ignoriamo tutto ciò che è tra parentesi e trasformiamo il risultante tutto in maiuscolo
+Tutto ciò che potrebbe essere estero dobbiamo creare uri
+Non fare nessun pre processing
+
+Capire se quei comuni esistono, quando la validità temporale ha la fine di validità aperta 999 vuol dire che è il nome attuale
+
+Le date devono essere trasformate da sett a 09, aspettare di sapere come sono nel sia prima di trasformarle
+
+Nella trasformazione csv facciamo in modo che quando c'è un array si ripetono le info tranne quella colonna
+
+Tira fuori se è soggettoProduttore o conservatore
