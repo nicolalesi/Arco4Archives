@@ -78,6 +78,6 @@ for i in root.findall('.//eac-cpf:cpfDescription', namespaces):
 df = pd.DataFrame(rows, columns=cols)
 
 # Scrivi il DataFrame nel CSV
-df.to_csv('output.csv', index=False)
+df.to_csv('outputDoubleRows.csv', index=False)
 
 print("File CSV creato con successo.")
