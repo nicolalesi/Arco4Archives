@@ -23,6 +23,8 @@
 <https://lod.it/data/CorporateBody/sp-101083> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1849";
   Arco4Archive:closingDateInString "1849"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Magistrato civico di Trento"^^xsd:string, "Magistrato civico di Trento, Trento, 1814 - 1825"^^xsd:string,
+    "Magistrato politico economico di Trento"^^xsd:string, "Magistrato politico economico di Trento, Trento, 1825 - 1949"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1814";
   Arco4Archive:institutionDateInString "1814"^^xsd:string;
@@ -37,6 +39,8 @@
 <https://lod.it/data/CorporateBody/sp-103577> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1945";
   Arco4Archive:closingDateInString "1945"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Commissione provinciale di censura di guerra di Mantova"^^xsd:string,
+    "Commissione provinciale di censura di guerra di Mantova, Mantova, 1940 - 1945"^^xsd:string;
   Arco4Archive:hasSite "Mantova"^^xsd:string;
   Arco4Archive:institutionDate "1940";
   Arco4Archive:institutionDateInString "1940"^^xsd:string;
@@ -49,6 +53,9 @@
 <https://lod.it/data/CorporateBody/sp-103578> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1946";
   Arco4Archive:closingDateInString "1946"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Commissione provinciale patrioti di Trento"^^xsd:string,
+    "Commissione provinciale patrioti di Trento, Trento, 1946"^^xsd:string, "Ufficio provinciale patrioti di Trento"^^xsd:string,
+    "Ufficio provinciale patrioti di Trento, Trento, 1945"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1945";
   Arco4Archive:institutionDateInString "1945"^^xsd:string;
@@ -64,6 +71,8 @@
 <https://lod.it/data/CorporateBody/sp-103579> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1946 lug";
   Arco4Archive:closingDateInString "1946 lug"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Comitato di liberazione nazionale - CLN provinciale di Trento"^^xsd:string,
+    "Comitato di liberazione nazionale - CLN provinciale di Trento, Trento, 1945 - 1946"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1945 apr 30";
   Arco4Archive:institutionDateInString "1945 apr 30"^^xsd:string;
@@ -79,6 +88,8 @@
 <https://lod.it/data/CorporateBody/sp-103580> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1946";
   Arco4Archive:closingDateInString "1946"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Comitato di liberazione nazionale - CLN di Levico"^^xsd:string,
+    "Comitato di liberazione nazionale - CLN provinciale di Levico, Levico (Trento), 1945 - 1946"^^xsd:string;
   Arco4Archive:hasSite "Levico (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1945 mag";
   Arco4Archive:institutionDateInString "1945 mag"^^xsd:string;
@@ -91,6 +102,8 @@
 <https://lod.it/data/CorporateBody/sp-103581> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1945 lug 10";
   Arco4Archive:closingDateInString "1945 lug 10"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Comitato di liberazione nazionale - CLN di Sanzeno"^^xsd:string,
+    "Comitato di liberazione nazionale - CLN provinciale di Sanzeno, Sanzeno (Trento), 1945"^^xsd:string;
   Arco4Archive:hasSite "Sanzeno (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1945 mar 10";
   Arco4Archive:institutionDateInString "1945 mar 10"^^xsd:string;
@@ -102,6 +115,8 @@
 <https://lod.it/data/CorporateBody/sp-103582> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1946 feb 19";
   Arco4Archive:closingDateInString "1946 feb 19"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Centro studi per l'autonomia regionale - CSAR"^^xsd:string,
+    "Centro studi per l'autonomia regionale - CSAR, Trento, 1945 - 1946"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1945 lug 22";
   Arco4Archive:institutionDateInString "1945 lug 22"^^xsd:string;
@@ -114,6 +129,9 @@
 <https://lod.it/data/CorporateBody/sp-103589> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1988";
   Arco4Archive:closingDateInString "1988"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Legione trentina"^^xsd:string, "Legione trentina, Trento, 1917 - 1988"^^xsd:string,
+    "Legione trentina. Associazione fra i trentini combattenti nel Regio Esercito"^^xsd:string,
+    "Legione trentina. Associazione volontari trentini della guerra 1915-1918"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1917";
   Arco4Archive:institutionDateInString "1917"^^xsd:string;
@@ -128,6 +146,8 @@
 <https://lod.it/data/CorporateBody/sp-103590> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "sec. XX seconda metà";
   Arco4Archive:closingDateInString "sec. XX seconda metà"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Legione trentina. Associazione fra i trentini combattenti nel Regio Esercito"^^xsd:string,
+    "Legione trentina. Gruppo di Riva del Garda"^^xsd:string, "Legione trentina. Gruppo di Riva del Garda, Riva del Garda (Trento), 1919 - sec. XX seconda metà"^^xsd:string;
   Arco4Archive:hasSite "Riva del Garda (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1919";
   Arco4Archive:institutionDateInString "1919"^^xsd:string;
@@ -138,6 +158,8 @@
   rdfs:subClassOf "https://w3id.org/italia/onto/COV/Organization" .
 
 <https://lod.it/data/CorporateBody/sp-12851> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Comune di Albiano"^^xsd:string, "Comune di Albiano, Albiano (Trento), sec. XIV -"^^xsd:string,
+    "Comunità di Albiano"^^xsd:string;
   Arco4Archive:hasSite "Albiano (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "sec. XIV";
   Arco4Archive:institutionDateInString "sec. XIV"^^xsd:string;
@@ -153,6 +175,7 @@
   rdfs:subClassOf "https://w3id.org/italia/onto/COV/Organization" .
 
 <https://lod.it/data/CorporateBody/sp-16449> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Comune di Trento"^^xsd:string, "Comune di Trento, Trento, sec. XIII -"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "sec. XIII";
   Arco4Archive:institutionDateInString "sec. XIII"^^xsd:string;
@@ -185,6 +208,10 @@
 <https://lod.it/data/CorporateBody/sp-421> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "2002 ott 29";
   Arco4Archive:closingDateInString "2002 ott 29"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Manicomio provinciale tirolese di Pergine Valsugana"^^xsd:string,
+    "Ospedale provinciale della Venezia Tridentina"^^xsd:string, "Ospedale psichiatrico della Provincia di Trento"^^xsd:string,
+    "Ospedale psichiatrico di Pergine Valsugana"^^xsd:string, "Ospedale psichiatrico di Pergine Valsugana, Pergine Valsugana (Trento), 1882 - 2002"^^xsd:string,
+    "Tiroler Landes-Irrenanstalt Pergine"^^xsd:string;
   Arco4Archive:hasSite "Pergine Valsugana (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1882 set 19";
   Arco4Archive:institutionDateInString "1882 set 19"^^xsd:string;
@@ -218,6 +245,11 @@
     "Un secolo di legislazione assistenziale nel Trentino (1814-1918), a cura di C. Grandi - B. Bortoli, Trento, Scuola superiore di servizio sociale, 1983"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-49996> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "INPS. Agenzia di produzione di Riva del Garda"^^xsd:string,
+    "INPS. Agenzia di produzione di Riva del Garda, Riva del Garda (Trento), 1998 -"^^xsd:string,
+    "INPS. Centro operativo di Riva del Garda"^^xsd:string, "Istituto nazionale della previdenza sociale. Agenzia di produzione di Riva del Garda"^^xsd:string,
+    "Istituto nazionale della previdenza sociale. Agenzia di produzione di Riva del Garda, Riva del Garda (Trento), 1998 -"^^xsd:string,
+    "Istituto nazionale della previdenza sociale. Centro operativo di Riva del Garda, Riva del Garda (Trento), 1994 - 1998"^^xsd:string;
   Arco4Archive:hasSite "Riva del Garda (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1994 set";
   Arco4Archive:institutionDateInString "1994 set"^^xsd:string;
@@ -231,6 +263,8 @@
   rdfs:subClassOf "https://w3id.org/italia/onto/COV/Organization" .
 
 <https://lod.it/data/CorporateBody/sp-55528> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Impresa costruzioni edilizie Amitrano"^^xsd:string,
+    "Impresa costruzioni edilizie Amitrano, Capri (Napoli), [1938 ante] - 1991"^^xsd:string;
   Arco4Archive:hasSite "Capri (Napoli)"^^xsd:string;
   Arco4Archive:institutionDate "sec. XX inizio";
   Arco4Archive:institutionDateInString "sec. XX inizio"^^xsd:string;
@@ -246,6 +280,9 @@
 <https://lod.it/data/CorporateBody/sp-61222> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1977";
   Arco4Archive:closingDateInString "1977"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Opera nazionale di assistenza all'Italia redenta - ONAIR"^^xsd:string,
+    "Opera nazionale di assistenza all'infanzia delle regioni di confine - ONAIRC di Trento"^^xsd:string,
+    "Opera nazionale di assistenza all'infanzia delle regioni di confine - ONAIRC di Trento, Trento, 1919 - 1977"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1919";
   Arco4Archive:institutionDateInString "1919"^^xsd:string;
@@ -269,6 +306,9 @@
 <https://lod.it/data/CorporateBody/sp-61242> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1977";
   Arco4Archive:closingDateInString "1977"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Opera nazionale di assistenza all'Italia redenta - ONAIR di Bolzano"^^xsd:string,
+    "Opera nazionale di assistenza all'infanzia delle regioni di confine - ONAIRC di Bolzano"^^xsd:string,
+    "Opera nazionale di assistenza all'infanzia delle regioni di confine - ONAIRC di Bolzano,  Bolzano, 1928 - 1977"^^xsd:string;
   Arco4Archive:hasSite "Bolzano"^^xsd:string;
   Arco4Archive:institutionDate "1928";
   Arco4Archive:institutionDateInString "1928"^^xsd:string;
@@ -282,6 +322,7 @@
 <https://lod.it/data/CorporateBody/sp-61270> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1990 giu 30";
   Arco4Archive:closingDateInString "1990 giu 30"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Galleria Delfino"^^xsd:string, "Galleria Delfino, Rovereto, 1943 - 1990"^^xsd:string;
   Arco4Archive:hasSite "Rovereto (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1943 dic 18";
   Arco4Archive:institutionDateInString "1943 dic 18"^^xsd:string;
@@ -299,6 +340,8 @@
 <https://lod.it/data/CorporateBody/sp-61274> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1994";
   Arco4Archive:closingDateInString "1994"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Bottega d'Arte"^^xsd:string, "Bottega d'Arte, Rovereto, 1960 - 1971 (?)"^^xsd:string,
+    "Galleria Pancheri"^^xsd:string, "Galleria Pancheri, Rovereto, 1960 - 1994"^^xsd:string;
   Arco4Archive:hasSite "Rovereto (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1960";
   Arco4Archive:institutionDateInString "1960"^^xsd:string;
@@ -309,6 +352,9 @@
     "Artiste trentine dall'Archivio della Galleria Pancheri di Rovereto, introduzione di Mario Cossali, a cura di M. KUTINCEFF PANCHERI, Trento, Provincia autonoma di Trento. Assessorato alla cultura, 2010"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-61393> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Federazione Italiana Donne Arti Professioni Affari - FIDAPA di Trento"^^xsd:string,
+    "Federazione Italiana Donne Arti Professioni Affari - FIDAPA di Trento, Trento, 1965 -"^^xsd:string,
+    "International Federation of Business and Professional Women - BPW Italy"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1965 mag 21";
   Arco4Archive:institutionDateInString "1965 mag 21"^^xsd:string;
@@ -321,6 +367,9 @@
 <https://lod.it/data/CorporateBody/sp-61478> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "2008";
   Arco4Archive:closingDateInString "2008"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "British American Tobacco Italia s.p.a. di Rovereto"^^xsd:string,
+    "Ente Tabacchi Italiano - ETI di Rovereto"^^xsd:string, "Fabbrica Tabacchi di Rovereto"^^xsd:string,
+    "Manifattura Tabacchi di Borgo Sacco/Rovereto"^^xsd:string, "Manifattura Tabacchi, Borgo Sacco/Rovereto, 1854 - 1999"^^xsd:string;
   Arco4Archive:hasSite "Borgo Sacco (Rovereto)"^^xsd:string;
   Arco4Archive:institutionDate "1854";
   Arco4Archive:institutionDateInString "1854"^^xsd:string;
@@ -340,6 +389,10 @@
     "N. M. FARINI, L'introduzione del monopolio statale dei tabacchi nella provincia di Trento, dattiloscritto sine data conservato in Biblioteca Civica di Rovereto"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-61485> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Associazione Italiana per l'Educazione Demografica - AIED di Bolzano"^^xsd:string,
+    "Associazione Italiana per l'Educazione Demografica - AIED di Bolzano, Bolzano, 1973 -"^^xsd:string,
+    "Associazione Italiana per l'Educazione Demografica - AIED di Bolzano. Sezione Andreina Emeri"^^xsd:string,
+    "Associazione Italiana per l'Educazione Demografica - AIED di Bolzano. Sezione Andreina Emeri, Bolzano, 1973 -"^^xsd:string;
   Arco4Archive:hasSite "Bolzano"^^xsd:string;
   Arco4Archive:institutionDate "1973";
   Arco4Archive:institutionDateInString "1973"^^xsd:string;
@@ -354,6 +407,7 @@
 <https://lod.it/data/CorporateBody/sp-61487> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1984";
   Arco4Archive:closingDateInString "1984"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Gruppo Aleksandra Kollontaj"^^xsd:string, "Gruppo Alessandra Kollontaj, Bolzano, 1970 - 1984"^^xsd:string;
   Arco4Archive:hasSite "Bolzano"^^xsd:string;
   Arco4Archive:institutionDate "1970";
   Arco4Archive:institutionDateInString "1970"^^xsd:string;
@@ -364,6 +418,9 @@
   rdfs:subClassOf "https://w3id.org/italia/onto/COV/Organization" .
 
 <https://lod.it/data/CorporateBody/sp-61582> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Centro Interculturale delle Donne - CID di Bolzano"^^xsd:string,
+    "Centro interculturale delle Donne - CID di Bolzano, Bolzano, 2004 -"^^xsd:string,
+    "Interkulturelles Frauenzentrum - IFZ  Bozen, Bozen, 2004 -"^^xsd:string;
   Arco4Archive:hasSite "Bolzano"^^xsd:string;
   Arco4Archive:institutionDate "2004";
   Arco4Archive:institutionDateInString "2004"^^xsd:string;
@@ -376,6 +433,8 @@
   rdfs:subClassOf "https://w3id.org/italia/onto/COV/Organization" .
 
 <https://lod.it/data/CorporateBody/sp-61584> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Centro di Documentazione e Informazione della Donna di Bolzano"^^xsd:string,
+    "Centro di Documentazione e Informazione della Donna, Bolzano, 1984 -"^^xsd:string;
   Arco4Archive:hasSite "Bolzano"^^xsd:string;
   Arco4Archive:institutionDate "1984";
   Arco4Archive:institutionDateInString "1984"^^xsd:string;
@@ -391,6 +450,8 @@
   rdfs:subClassOf "https://w3id.org/italia/onto/COV/Organization" .
 
 <https://lod.it/data/CorporateBody/sp-62045> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Centro italiano femminile - CIF provinciale di Trento"^^xsd:string,
+    "Centro italiano femminile - CIF provinciale di Trento, Trento, 1955 -"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1955";
   Arco4Archive:institutionDateInString "1955"^^xsd:string;
@@ -402,6 +463,8 @@
   arco-lite:bibliographicReference "A sessant'anni dal voto alle donne in Trentino: incontri e riflessioni, a cura di A. VADAGNINI, Trento 2008"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-62080> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Coordinamento Donne di Trento"^^xsd:string,
+    "Coordinamento Donne di Trento, Trento, 1983 -"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1983";
   Arco4Archive:institutionDateInString "1983"^^xsd:string;
@@ -411,6 +474,8 @@
   rdfs:subClassOf "https://w3id.org/italia/onto/COV/Organization" .
 
 <https://lod.it/data/CorporateBody/sp-62085> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Soroptimist International Club di Trento"^^xsd:string,
+    "Soroptimist International Club di Trento, Trento, 1987 -,"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1987 set 19";
   Arco4Archive:institutionDateInString "1987 set 19"^^xsd:string;
@@ -423,6 +488,7 @@
 <https://lod.it/data/CorporateBody/sp-79342> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "2006";
   Arco4Archive:closingDateInString "2006"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Forum delle donne"^^xsd:string, "Forum delle donne, Bolzano, 1998 - 2006"^^xsd:string;
   Arco4Archive:hasSite "Bolzano"^^xsd:string;
   Arco4Archive:institutionDate "1998 nov 24";
   Arco4Archive:institutionDateInString "1998 nov 24"^^xsd:string;
@@ -437,6 +503,8 @@
   rdfs:subClassOf "https://w3id.org/italia/onto/COV/Organization" .
 
 <https://lod.it/data/CorporateBody/sp-80540> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Società alpina del Trentino"^^xsd:string, "Società alpina del Trentino, Trento, 1872 - 1877"^^xsd:string,
+    "Società degli alpinisti tridentini - SAT"^^xsd:string, "Società degli alpinisti tridentini - SAT, Trento, 1877 -"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1872 set 02";
   Arco4Archive:institutionDateInString "1872 set 02"^^xsd:string;
@@ -466,6 +534,8 @@
 Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-91077> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Archivio storico delle donne - Bolzano"^^xsd:string,
+    "Archivio storico delle donne - Bolzano, Bolzano, 2003 -"^^xsd:string;
   Arco4Archive:hasSite "Bolzano"^^xsd:string;
   Arco4Archive:institutionDate "2003";
   Arco4Archive:institutionDateInString "2003"^^xsd:string;
@@ -486,6 +556,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
 <https://lod.it/data/CorporateBody/sp-94325> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1964";
   Arco4Archive:closingDateInString "1964"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Centro di studi alpini del Consiglio Nazionale delle Ricerche"^^xsd:string,
+    "Centro di studi alpini di Trento"^^xsd:string, "Centro di studi alpini di Trento, Trento, 1946 - [1964]"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1946";
   Arco4Archive:institutionDateInString "1946"^^xsd:string;
@@ -501,6 +573,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
   rdfs:subClassOf "https://w3id.org/italia/onto/COV/Organization" .
 
 <https://lod.it/data/CorporateBody/sp-94337> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Parrocchia dei Santi Filippo e Giacomo di Predazzo"^^xsd:string,
+    "Parrocchia dei Santi Filippo e Giacomo di Predazzo, Predazzo (Trento), 1876 -"^^xsd:string;
   Arco4Archive:hasSite "Predazzo (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1876 set 21";
   Arco4Archive:institutionDateInString "1876 set 21"^^xsd:string;
@@ -514,6 +588,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
 <https://lod.it/data/CorporateBody/sp-94348> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1876 set 20";
   Arco4Archive:closingDateInString "1876 set 20"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Curazia dei Santi Filippo e Giacomo di Predazzo"^^xsd:string,
+    "Curazia dei Santi Filippo e Giacomo di Predazzo, Predazzo (Trento), 1382 - 1876"^^xsd:string;
   Arco4Archive:hasSite "Predazzo (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1382 lug 28";
   Arco4Archive:institutionDateInString "1382 lug 28"^^xsd:string;
@@ -524,6 +600,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
   arco-lite:bibliographicReference "Chiesa arcipretale dei santi Filippo e Giacomo. Predazzo, testi di A. BONINSEGNA, G. FUSI, Predazzo (Tn), Parrocchia SS. Filippo e Giacomo, 2009"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-94358> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Parrocchia Natività di Maria di Borgo Valsugana"^^xsd:string,
+    "Parrocchia Natività di Maria di Borgo Valsugana, Borgo Valsugana (Trento), 1726 -"^^xsd:string;
   Arco4Archive:hasSite "Borgo Valsugana (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "sec. XI";
   Arco4Archive:institutionDateInString "sec. XI"^^xsd:string;
@@ -539,6 +617,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
   rdfs:subClassOf "https://w3id.org/italia/onto/COV/Organization" .
 
 <https://lod.it/data/CorporateBody/sp-94427> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Accademia roveretana degli Agiati"^^xsd:string,
+    "Accademia roveretana degli Agiati, Rovereto (Trento), 1750 -"^^xsd:string;
   Arco4Archive:hasSite "Rovereto (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1750";
   Arco4Archive:institutionDateInString "1750"^^xsd:string;
@@ -558,6 +638,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
 <https://lod.it/data/CorporateBody/sp-94476> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1924 mag 15";
   Arco4Archive:closingDateInString "1924 mag 15"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Comitato diocesano per l’azione cattolica di Trento"^^xsd:string,
+    "Comitato diocesano per l’azione cattolica di Trento, Trento, 1898 - 1924"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1898";
   Arco4Archive:institutionDateInString "1898"^^xsd:string;
@@ -574,6 +656,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
   arco-lite:bibliographicReference "I fondi Comitato diocesano per l’azione cattolica (1898 - 1924) e Azione Cattolica Italiana - sezione diocesana di Trento (1924-1969) dell’Archivio Diocesano di Trento. Inventario, a cura di G. CHIRONI, Trento, Provincia autonoma di Trento Soprintendenza per i beni librari, archivistici e archeologici, 2010, 21-48"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-94477> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Azione cattolica italiana - ACI. Giunta diocesana della sezione di Trento"^^xsd:string,
+    "Azione cattolica italiana - ACI. Giunta diocesana della sezione di Trento, Trento, 1924 -"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1924 mag 15";
   Arco4Archive:institutionDateInString "1924 mag 15"^^xsd:string;
@@ -587,6 +671,7 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
   arco-lite:bibliographicReference "I fondi Comitato diocesano per l’azione cattolica (1898 - 1924) e Azione Cattolica Italiana - sezione diocesana di Trento (1924-1969) dell’Archivio Diocesano di Trento. Inventario, a cura di G. CHIRONI, Trento, Provincia autonoma di Trento Soprintendenza per i beni librari, archivistici e archeologici, 2010, 97-106"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-94506> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Magnifica Comunità di Fiemme"^^xsd:string, "Magnifica Comunità di Fiemme, Cavalese (Trento), 1111 -"^^xsd:string;
   Arco4Archive:hasSite "Cavalese (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1111";
   Arco4Archive:institutionDateInString "1111"^^xsd:string;
@@ -602,6 +687,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
   arco-lite:bibliographicReference "Magnifica Comunità di Fiemme. Inventario dell’archivio (1234 - 1945), a cura di M. BONAZZA - R. TAIANI, Trento, Provincia autonoma di Trento. Servizio beni librari e archivistici - Magnifica Comunità di Fiemme, 1999"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-94507> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Seminario degli alunni"^^xsd:string, "Seminario maggiore arcivescovile di Trento"^^xsd:string,
+    "Seminario maggiore arcivescovile di Trento, Trento, 1593 -"^^xsd:string, "Seminario teologico"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1593";
   Arco4Archive:institutionDateInString "1593"^^xsd:string;
@@ -621,6 +708,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
 <https://lod.it/data/CorporateBody/sp-94533> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1994";
   Arco4Archive:closingDateInString "1994"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Democrazia cristiana - DC. Comitato regionale del Trentino-Alto Adige"^^xsd:string,
+    "Democrazia cristiana - DC. Comitato regionale del Trentino-Alto Adige, Trento, 1946 - 1994"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1946";
   Arco4Archive:institutionDateInString "1946"^^xsd:string;
@@ -640,6 +729,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
 <https://lod.it/data/CorporateBody/sp-94534> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1994";
   Arco4Archive:closingDateInString "1994"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Democrazia cristiana - DC. Comitato provinciale di Trento"^^xsd:string,
+    "Democrazia cristiana - DC. Comitato provinciale di Trento, Trento, 1945 - 1994"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1945";
   Arco4Archive:institutionDateInString "1945"^^xsd:string;
@@ -657,6 +748,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
 <https://lod.it/data/CorporateBody/sp-94539> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1997";
   Arco4Archive:closingDateInString "1997"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Curazia di San Giacomo di Comano Terme"^^xsd:string,
+    "Curazia di San Giacomo di Comano Terme, Comano Terme (Trento), 1788 - [1997]"^^xsd:string;
   Arco4Archive:hasSite "Comano Terme (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1788";
   Arco4Archive:institutionDateInString "1788"^^xsd:string;
@@ -668,6 +761,9 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
   rdfs:subClassOf "https://w3id.org/italia/onto/COV/Organization" .
 
 <https://lod.it/data/CorporateBody/sp-94556> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Museo del Risorgimento e della lotta per la libertà"^^xsd:string,
+    "Museo storico in Trento"^^xsd:string, "Museo storico in Trento, Trento, 1923 -"^^xsd:string,
+    "Museo trentino del Risorgimento"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1923";
   Arco4Archive:institutionDateInString "1923"^^xsd:string;
@@ -687,6 +783,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
     "V. CALÌ, Tra pubblico e privato: un caso atipico di realtà museale, in Musei trentini: nuove strutture per gli anni ’90. Atti del convegno S. Michele all’Adige (1-8 ottobre 1998), Trento, Associazione Musei del Trentino, 1990, 125-130"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-94557> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Museo storico italiano della guerra di Rovereto"^^xsd:string,
+    "Museo storico italiano della guerra di Rovereto, Rovereto (Trento) 1921 -"^^xsd:string;
   Arco4Archive:hasSite "Rovereto (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1921";
   Arco4Archive:institutionDateInString "1921"^^xsd:string;
@@ -706,6 +804,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
 <https://lod.it/data/CorporateBody/sp-94558> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "1948 mag 13";
   Arco4Archive:closingDateInString "1948 mag 13"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "La Nostra Autonomia. Comitato redazionale"^^xsd:string,
+    "La Nostra Autonomia. Comitato redazionale, Rovereto (Trento), 1946 - 1948"^^xsd:string;
   Arco4Archive:hasSite "Rovereto (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1946 ago 10";
   Arco4Archive:institutionDateInString "1946 ago 10"^^xsd:string;
@@ -718,6 +818,9 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
   rdfs:subClassOf "https://w3id.org/italia/onto/COV/Organization" .
 
 <https://lod.it/data/CorporateBody/sp-94559> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Fondazione Campana dei caduti di Rovereto"^^xsd:string,
+    "Fondazione Campana dei caduti di Rovereto, Rovereto (Trento), 1968 -"^^xsd:string,
+    "Opera Campana dei caduti di Rovereto"^^xsd:string, "Opera Campana dei caduti di Rovereto, Rovereto (Trento), 1921 - 1968"^^xsd:string;
   Arco4Archive:hasSite "Rovereto (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1921";
   Arco4Archive:institutionDateInString "1921"^^xsd:string;
@@ -737,6 +840,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
   arco-lite:bibliographicReference "Guida agli archivi, a cura di N. FONTANA, Rovereto, Museo Storico Italiano della Guerra, 2014, 280-281"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-94560> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Capitolo della cattedrale di San Vigilio di Trento"^^xsd:string,
+    "Capitolo della cattedrale di San Vigilio di Trento, Trento, [927] -"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "927";
   Arco4Archive:institutionDateInString "927"^^xsd:string;
@@ -765,6 +870,7 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
     "V. CARRARA, Antichi ordinamenti ecclesiastici in diocesi di Trento agli inizi del secolo XX. Il capitolo cattedrale, il decano Inama e il vescovo Endrici (1904-1913), in «Geschichte und Region/Storia e Regione», 14 (2005), 1, 143-155"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-94576> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Curia vescovile di Trento"^^xsd:string, "Curia vescovile di Trento, Trento, sec. IV metà -"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "sec. IV metà";
   Arco4Archive:institutionDateInString "sec. IV metà"^^xsd:string;
@@ -791,6 +897,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
     "La chiesa di Dio che vive in Trento. Compendio di notizie e dati, Trento, Edizioni diocesane, 1986, 27-41"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-94581> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Biblioteca civica G. Tartarotti di Rovereto"^^xsd:string,
+    "Biblioteca civica G. Tartarotti di Rovereto, Rovereto (Trento), 1764 -"^^xsd:string;
   Arco4Archive:hasSite "Rovereto (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1764";
   Arco4Archive:institutionDateInString "1764"^^xsd:string;
@@ -812,6 +920,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
 <https://lod.it/data/CorporateBody/sp-94596> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "2015";
   Arco4Archive:closingDateInString "2015"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Convento di San Francesco di Borgo Valsugana"^^xsd:string,
+    "Convento di San Francesco di Borgo Valsugana, Borgo Valsugana (Trento), 1603 - 2015"^^xsd:string;
   Arco4Archive:hasSite "Borgo Valsugana (Trento)"^^xsd:string;
   Arco4Archive:institutionDate "1603";
   Arco4Archive:institutionDateInString "1603"^^xsd:string;
@@ -827,6 +937,9 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
 <https://lod.it/data/CorporateBody/sp-94599> a Arco4Archive:CorporateBody;
   Arco4Archive:closingDate "2016";
   Arco4Archive:closingDateInString "2016"^^xsd:string;
+  Arco4Archive:hasInstitutionalProfile "Provincia tridentina San Vigilio dei frati minori"^^xsd:string,
+    "Provincia tridentina San Vigilio dei frati minori, Trento, 1643 - 2016"^^xsd:string,
+    "Provincia tridentina di San Vigilio"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1643";
   Arco4Archive:institutionDateInString "1643"^^xsd:string;
@@ -841,6 +954,8 @@ Trento, Società degli alpinisti tridentini. Biblioteca della montagna, 2006"""^
     "R. STENICO, I frati minori a Trento (1221) e la storia del convento di S. Bernardino (1452-1999), Trento, Artigianelli, 1999"^^xsd:string .
 
 <https://lod.it/data/CorporateBody/sp-94635> a Arco4Archive:CorporateBody;
+  Arco4Archive:hasInstitutionalProfile "Biblioteca convento San Bernardino di Trento"^^xsd:string,
+    "Biblioteca convento San Bernardino di Trento, Trento, 1494 -"^^xsd:string;
   Arco4Archive:hasSite "Trento"^^xsd:string;
   Arco4Archive:institutionDate "1494";
   Arco4Archive:institutionDateInString "1494"^^xsd:string;

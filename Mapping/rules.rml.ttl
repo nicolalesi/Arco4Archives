@@ -178,3 +178,13 @@
     rml:reference "placeEntry";
     rr:termType rr:Literal;
     rr:datatype xsd:string.
+:pom_014 a rr:PredicateObjectMap.
+:map_CorporateBody_000 rr:predicateObjectMap :pom_014.
+:pm_014 a rr:PredicateMap.
+:pom_014 rr:predicateMap :pm_014.
+:pm_014 rr:constant Arco4Archive:hasInstitutionalProfile.
+:pom_014 rr:objectMap :om_014.
+:om_014 a rr:ObjectMap;
+    rml:reference "legalName";
+    rr:termType rr:Literal;
+    rr:datatype xsd:string.

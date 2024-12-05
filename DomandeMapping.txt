@@ -1,3 +1,9 @@
-Come collego CorporateBody a TimeInterval? Quale dato devo mettere nel mapping? Stessa cosa per feature
+Come collego CorporateBody a TimeInterval? Devo passare i due valori divisi o concatenarli? Quale dato devo mettere nel mapping? 
+
+In feature ho messo il luogo come stringa, non un codice
 
 Il fatto che xsd:date OR xsd:gYear OR xsd:gYearMonth può essere espresso nel mapping?
+
+La history sarebbe meglio concatenarla? Anche bibliografia?
+
+Anche per hasInstitutionalProfileInTime, con cosa collego?

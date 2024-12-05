@@ -31,3 +31,4 @@ mappings:
         - [Arco4Archive:institutionalHistory, $(history),xsd:string]
         - [arco-lite:bibliographicReference,$(relazione_bib),xsd:string]
         - [Arco4Archive:hasSite,$(placeEntry),xsd:string]
+        - [Arco4Archive:hasInstitutionalProfile, $(legalName),xsd:string]
