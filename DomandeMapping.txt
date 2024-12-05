@@ -1,0 +1,3 @@
+Come collego CorporateBody a TimeInterval? Quale dato devo mettere nel mapping? Stessa cosa per feature
+
+Il fatto che xsd:date OR xsd:gYear OR xsd:gYearMonth può essere espresso nel mapping?

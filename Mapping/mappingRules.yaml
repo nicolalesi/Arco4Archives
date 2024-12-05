@@ -1,0 +1,33 @@
+prefixes:
+    l0: "https://w3id.org/italia/onto/l0/"
+    cov: "https://w3id.org/italia/onto/COV/"
+    clv: "https://w3id.org/italia/onto/CLV/"
+    prj: "https://w3id.org/italia/onto/Project/"
+    rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+    xsd: "http://www.w3.org/2000/01/XMLSchema#"
+    Arco4Archive: "http://example/ontology/"
+    ti: "https://schema.gov.it/lodview/onto/TI"
+    grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+    arco-lite: "https://w3id.org/arco/ontology/arco-lite/"
+
+mappings:
+    CorporateBody:
+        sources:
+        - [outputDoubleRows.csv~csv]
+        s: https://lod.it/data/CorporateBody/$(id_sistema)
+        condition:
+            function: equal
+            parameters:
+            - [str1,$(localType),s]
+            - [str2,"corporateBody",o]
+        po:
+        - [a, Arco4Archive:CorporateBody]
+        - [rdfs:label,$(intestazione),xsd:string]
+        - [rdfs:subClassOf,"cov:Organization"]
+        - [Arco4Archive:institutionDate, $(existenceRangeFromDate)]
+        - [Arco4Archive:closingDate, $(existenceRangeToDate)]
+        - [Arco4Archive:institutionDateInString, $(existenceRangeFromDate),xsd:string]
+        - [Arco4Archive:closingDateInString, $(existenceRangeToDate),xsd:string]
+        - [Arco4Archive:institutionalHistory, $(history),xsd:string]
+        - [arco-lite:bibliographicReference,$(relazione_bib),xsd:string]
+        - [Arco4Archive:hasSite,$(placeEntry),xsd:string]
