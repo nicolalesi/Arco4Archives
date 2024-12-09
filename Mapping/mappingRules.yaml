@@ -37,6 +37,6 @@ mappings:
           o: 
                 function: fno:concat
                 parameters: 
-                - [fno:str, $(existenceRangeFromDate)~iri]
+                - [fno:str,http://TimeInterval/$(existenceRangeFromDate)~iri]
                 - [fno:delimiter, "-"]
                 - [fno:otherStr, $(existenceRangeToDate)]

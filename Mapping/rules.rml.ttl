@@ -211,7 +211,7 @@
     rr:constant fno:str.
 :pom_016 rr:objectMap :om_016.
 :om_016 a rr:ObjectMap;
-    rml:reference "existenceRangeFromDate";
+    rr:template "http://TimeInterval/{existenceRangeFromDate}";
     rr:termType rr:IRI.
 :fn_002 rr:predicateObjectMap :pom_017.
 :pom_017 a rr:PredicateObjectMap;
