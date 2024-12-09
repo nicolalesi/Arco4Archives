@@ -2,7 +2,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix fnml: <http://semweb.mmlab.be/ns/fnml#>.
-@prefix fno: <https://w3id.org/function/ontology#>.
+@prefix fno: <https://w3id.org/imec/idlab/function#>.
 @prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#>.
 @prefix void: <http://rdfs.org/ns/void#>.
 @prefix dc: <http://purl.org/dc/terms/>.
@@ -36,7 +36,7 @@
 :fn_000 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_000.
 :pomexec_000 rr:predicateMap :pmexec_000.
-:pmexec_000 rr:constant fno:executes.
+:pmexec_000 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_000 rr:objectMap :omexec_000.
 :omexec_000 rr:constant "https://w3id.org/imec/idlab/function#trueCondition";
     rr:termType rr:IRI.
@@ -44,14 +44,14 @@
 :pom_000 a rr:PredicateObjectMap;
     rr:predicateMap :pm_000.
 :pm_000 a rr:PredicateMap;
-    rr:constant <https://w3id.org/imec/idlab/function#strBoolean>.
+    rr:constant fno:strBoolean.
 :pom_000 rr:objectMap :om_000.
 :om_000 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_001.
 :fn_001 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_001.
 :pomexec_001 rr:predicateMap :pmexec_001.
-:pmexec_001 rr:constant fno:executes.
+:pmexec_001 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_001 rr:objectMap :omexec_001.
 :omexec_001 rr:constant "https://w3id.org/imec/idlab/function#equal";
     rr:termType rr:IRI.
@@ -77,7 +77,7 @@
 :pom_003 a rr:PredicateObjectMap;
     rr:predicateMap :pm_003.
 :pm_003 a rr:PredicateMap;
-    rr:constant <https://w3id.org/imec/idlab/function#str>.
+    rr:constant fno:str.
 :pom_003 rr:objectMap :om_003.
 :om_003 a rr:ObjectMap;
     rr:template "https://lod.it/data/CorporateBody/{id_sistema}";
@@ -188,3 +188,46 @@
     rml:reference "legalName";
     rr:termType rr:Literal;
     rr:datatype xsd:string.
+:pom_015 a rr:PredicateObjectMap.
+:map_CorporateBody_000 rr:predicateObjectMap :pom_015.
+:pm_015 a rr:PredicateMap.
+:pom_015 rr:predicateMap :pm_015.
+:pm_015 rr:constant Arco4Archive:hasExistancePeriod.
+:pom_015 rr:objectMap :om_015.
+:om_015 a fnml:FunctionTermMap;
+    rr:termType rr:Literal;
+    fnml:functionValue :fn_002.
+:fn_002 rml:logicalSource :source_000;
+    rr:predicateObjectMap :pomexec_002.
+:pomexec_002 rr:predicateMap :pmexec_002.
+:pmexec_002 rr:constant <https://w3id.org/function/ontology#executes>.
+:pomexec_002 rr:objectMap :omexec_002.
+:omexec_002 rr:constant "https://w3id.org/imec/idlab/function#concat";
+    rr:termType rr:IRI.
+:fn_002 rr:predicateObjectMap :pom_016.
+:pom_016 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_016.
+:pm_016 a rr:PredicateMap;
+    rr:constant fno:str.
+:pom_016 rr:objectMap :om_016.
+:om_016 a rr:ObjectMap;
+    rml:reference "existenceRangeFromDate";
+    rr:termType rr:IRI.
+:fn_002 rr:predicateObjectMap :pom_017.
+:pom_017 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_017.
+:pm_017 a rr:PredicateMap;
+    rr:constant fno:delimiter.
+:pom_017 rr:objectMap :om_017.
+:om_017 a rr:ObjectMap;
+    rr:constant "-";
+    rr:termType rr:Literal.
+:fn_002 rr:predicateObjectMap :pom_018.
+:pom_018 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_018.
+:pm_018 a rr:PredicateMap;
+    rr:constant fno:otherStr.
+:pom_018 rr:objectMap :om_018.
+:om_018 a rr:ObjectMap;
+    rml:reference "existenceRangeToDate";
+    rr:termType rr:Literal.
