@@ -29,3 +29,18 @@ Le date devono essere trasformate da sett a 09, aspettare di sapere come sono ne
 Nella trasformazione csv facciamo in modo che quando c'è un array si ripetono le info tranne quella colonna
 
 Tira fuori se è soggettoProduttore o conservatore
+
+
+###############Domande di competenza###########
+Quali domande vogliamo fare sul dato
+
+tipologiaEnte
+quando privato usiamo uri priv quando pubblico usiamo pubblico
+
+#######todo0912#############
+- Assets/ontologies/ folder agent e role e folder Archives (modulo Archives di arco, esteso)
+-Quindi diagramma da dividere
+- Caricarli repo icar
+- Mappatura delle persone in yarrrml
+- Capire modellazione Tempo
+- Vedere ArchivialResource

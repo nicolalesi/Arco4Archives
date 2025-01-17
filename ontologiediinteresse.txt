@@ -1,1 +1,4 @@
 https://github.com/ICCD-MiBACT/ArCo/tree/master/ArCo-release/ontologie/cultural-event
+
+https://schema.gov.it/lode/extract?url=https://w3id.org/italia/onto/CPV
+https://schema.gov.it/lode/extract?url=https://w3id.org/italia/onto/CLV

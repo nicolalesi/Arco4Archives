@@ -35,6 +35,10 @@ mappings:
         - [Arco4Archive:hasInstitutionalProfile, $(legalName),xsd:string]
         - p: Arco4Archive:hasExistancePeriod
           o: 
+            condition:
+                function: fno:isNull
+                parameters:
+                - [fno:input string,$()]
                 function: fno:concat
                 parameters: 
                 - [fno:str,http://TimeInterval/$(existenceRangeFromDate)~iri]
