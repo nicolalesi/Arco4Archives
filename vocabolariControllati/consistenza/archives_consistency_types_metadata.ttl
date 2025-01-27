@@ -1,0 +1,26 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/>.
+
+ <http://dati.gov.it/resource/Dataset/archives-consistency-type>
+     a                       dcatapit:Dataset , dcat:Dataset ;
+     dct:identifier          "archivesConsistencyType" ;
+     dct:title               "Vocabolario controllato consistenze archivi"@it ;
+     dct:description         "Vocabolario controllato relativo ai tipi di consistenze nel dominio archivistico"@it ;
+     dcat:theme              <http://publications.europa.eu/resource/authority/data-theme/TECH> ;
+     dct:modified            "2025-01-27"^^xsd:date ;
+     dcat:keyword            "Archivi" , "Consistenze";
+     dct:rightsHolder        <http://spcdata.digitpa.gov.it/Amministrazione/m_bac> ;
+     dcat:distribution       <https://w3id.org/italia/data/distribution/archives-consistency-type.csv> ;
+     dct:accrualPeriodicity  <http://publications.europa.eu/resource/authority/frequency/NEVER> .
+
+ <https://example.lod.it/data/distribution/archives-consistency-type.csv> 
+    a                         dcatapit:Distribution , dcat:Distribution ;
+    dct:title                 "Distribuzione csv del vocabolario controllato per le consistenze nel dominio archivistico";
+    dct:description           "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle consistenze dei documenti nel dominio archivistico"
+    dct:format                <https://publications.europa.eu/resource/authority/file-type/csv> ;
+    dct:license               <http://creativecommons.org/licenses/by/4.0/> ;
+    dcat:downloadURL          <http://spcdata.digitpa.gov.it/data/contrattiLotto1.nt> ;
+    dcat:accessURL            <https://www.dati.gruppo.it/api/composition/uni_bo/rows.csv?accessType=DOWNLOAD> .

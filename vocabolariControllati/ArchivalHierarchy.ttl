@@ -1,0 +1,137 @@
+@prefix a-arc: <https://w3id.org/arco/ontology/archive/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://w3id.org/italia/republic-history/data/arc-resource-type/category> a a-arc:ArchivalResourceLevel , skos:Concept ;
+  rdfs:label "Categoria"@it , "Class"@en ;
+  skos:altLabel "Classe"@it ;
+  skos:closeMatch <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection> ;
+  skos:exactMatch <http://lod.xdams.org/reload/oad/levelOfDescription/class> ;
+  owl:sameAs <http://lod.xdams.org/reload/oad/levelOfDescription/class> ;
+  skos:prefLabel "Categoria"@it , "Class"@en ;
+  skos:notation "category" ;
+  skos:note "Definition coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html"@en,
+            "Definizione proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html"@it ;
+  skos:definition "1. A group of things sharing common characteristics; members of a set; 2. The highest or root element in a hierarchy; 3. A division within a file plan."@en ,
+                  "1. Un gruppo di cose che condividono caratteristiche comuni; membri di un insieme; 2. L'elemento più alto o radice di una gerarchia"@it .
+
+
+<https://w3id.org/italia/republic-history/data/arc-resource-type/collection> a a-arc:ArchivalResourceLevel , skos:Concept ;
+  rdfs:label "Generica collezione di elementi"@it , "General collection of elements"@en ;
+  skos:prefLabel "Collection"@en , "Collezione/Raccolta"@it ;
+  skos:notation "collection" ;
+  skos:definition "Raccolta di documenti che, estrapolati dalle diverse serie di provenienza, sono stati riuniti per affinità di materia o in base a qualche altro elemento unificante. Spesso le collezioni (o raccolte) vengono indicate con il nome di chi le ha costituite."@it ,
+                  "1. a set of archival or (more commonly) manuscript materials;2. materials assembled by a person, organization, or repository from a variety of sources; an artificial collection; 3. (sometimes pl., collections) a thematic aggregation of sets of otherwise unrelated archival materials; 4. (also pl., collections) the holdings of a repository, taken as a whole; 5. the process and practice of collecting archival materials"@en ;
+  skos:note "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it ,
+            "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en ;
+  owl:sameAs <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection> , <http://lod.xdams.org/reload/oad/levelOfDescription/collection> ;
+  skos:exactMatch <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection> , <http://lod.xdams.org/reload/oad/levelOfDescription/collection> ;
+  skos:closeMatch <http://lod.xdams.org/reload/oad/levelOfDescription/otherLevel> , <http://lod.xdams.org/reload/oad/levelOfDescription/seriesgrp> .
+
+<https://w3id.org/italia/republic-history/data/arc-resource-type/fonds> a a-arc:ArchivalResourceLevel , skos:Concept ;
+  rdfs:label "Fondo"@it , "Fonds"@en ;
+  skos:prefLabel "Fond"@en , "Fonds"@it ;
+  skos:notation "fonds" ;
+  skos:definition "L’insieme organico dei documenti archivistici, senza distinzione di tipologia o di supporto, formati e/o accumulati e usati da una determinata persona, famiglia o ente nello svolgimento della propria attività personale o istituzionale"@it ,
+                  "The whole of the records, regardless of form or medium, organically created and/or accumulated and used by a particular person, family, or corporate body in the course of that creator’s activities and functions."@en ;
+  skos:note "La definizione in italiano e in inglese è tratta da https://icar.cultura.gov.it/fileadmin/risorse/docu_standard/RAS_2003_1.pdf. Esistono altre definizioni tratte da http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario che definiscono un fondo come un 'complesso dei documenti prodotti o comunque acquisiti da un ente (magistrature, organi e uffici centrali e periferici dello Stato; enti pubblici territoriali e non territoriali; istituzioni private, famiglie e persone) durante lo svolgimento della propria attività. I documenti che compongono l'archivio sono pertanto collegati tra loro da un nesso logico e necessario detto vincolo archivistico. In questa accezione si usa spesso la parola fondo come sinonimo di archivio.'"@it ,
+            "The definition in Italian and English is taken from https://icar.cultura.gov.it/fileadmin/risorse/docu_standard/RAS_2003_1.pdf. There are other definitions taken from http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario that define a fond as a 'complex of documents produced or in any case acquired by an institution (judiciary, central and peripheral state bodies and offices; territorial and non-territorial public bodies; private institutions, families and individuals) in the course of its activities. The documents that make up the archive are therefore connected by a logical and necessary link known as the archival bond. In this sense, the word fonds is often used as a synonym for archives.'"@en ;
+  owl:sameAs <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Fonds> , <http://lod.xdams.org/reload/oad/levelOfDescription/fonds> ;
+  skos:exactMatch <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Fonds> , <http://lod.xdams.org/reload/oad/levelOfDescription/fonds> .
+
+<https://w3id.org/italia/republic-history/data/arc-resource-type/subfonds> a a-arc:ArchivalResourceLevel , skos:Concept ;
+  rdfs:label "Subfondo"@it , "Subfonds"@en ;
+  skos:prefLabel "Subfondo"@it , "Subfonds"@en ;
+  skos:notation "subfonds" ;
+  skos:definition "La suddivisione di un fondo contenente un insieme di documentazione correlata, corrispondente a suddivisioni amministrative dell’istituzione o dell’organismo produttore, o altrimenti, a raggruppamenti geografici, cronologici, funzionali, o di simile natura del materiale documentario. Quando l’ente produttore ha una struttura gerarchica complessa, ciascuna suddivisione si articola nelle suddivisioni necessarie a dar conto dei livelli della struttura gerarchica stessa."@it ,
+                  "A subdivision of a fonds containing a body of related records corresponding to administrative subdivisions in the originating agency or organization or, when that is not possible, to geographical, chronological, functional, or similar groupings of the material itself. When the creating body has a complex hierarchical structure, each sub-fonds has as many subordinate sub-fonds as are necessary to reflect the levels of the hierarchical structure of the primary subordinate administrative unit."@en ;
+  skos:note "Definizioni fornite da https://icar.cultura.gov.it/fileadmin/risorse/docu_standard/RAS_2003_1.pdf"@it ,
+            "Definitions coming from https://icar.cultura.gov.it/fileadmin/risorse/docu_standard/RAS_2003_1.pdf"@en ;
+  owl:sameAs <http://lod.xdams.org/reload/oad/levelOfDescription/subfonds> ;
+  skos:exactMatch <http://lod.xdams.org/reload/oad/levelOfDescription/subfonds> ;
+  skos:closeMatch <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection> .
+
+<https://w3id.org/italia/republic-history/data/arc-resource-type/recordgrp> a a-arc:ArchivalResourceLevel , skos:Concept ;
+  rdfs:label "Complesso archivistico"@it , "Record group"@en ;
+  skos:prefLabel "Complesso archivistico"@it , "Record group"@en ;
+  skos:notation "recordgrp" ;
+  skos:definition "Espressione generica usata per indicare: 1. uno o più archivi di specifici soggetti produttori; 2. un fondo archivistico o parte di esso; 3. una o più serie di archivi o fondi diversi, interi o parziali; .4 un versmento."@it ,
+                  "A collection of records that share the same provenance or were created in the same administrative unit."@en ;
+  skos:note "Definizione in italiano proveniente da Carucci, P. , Guercio, M., Manuale di archivistica, 2021, Roma, Carocci, p. 100. Definizione in inglese derivante da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html"@it ,
+            "Italian definition coming from Carucci, P. , Guercio, M., Manuale di archivistica, 2021, Roma, Carocci, p. 100. English definition coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html"@en ;
+  owl:sameAs <http://lod.xdams.org/reload/oad/levelOfDescription/recordgrp> ;
+  skos:exactMatch <http://lod.xdams.org/reload/oad/levelOfDescription/recordgrp> ;
+  skos:closeMatch <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection> .
+
+
+<https://w3id.org/italia/republic-history/data/arc-resource-type/subgrp> a a-arc:ArchivalResourceLevel , skos:Concept ;
+  rdfs:label "Sottogruppo"@it , "Subgroup"@en ;
+  skos:prefLabel "Sottogruppo"@it , "Subgroup"@en ;
+  skos:notation "subgrp" ;
+  skos:definition "A body of related records within a record group or collection, each corresponding to an administrative subdivision in the originating organization."@en ;
+  skos:note "Definizione in inglese derivante da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html"@it ,
+            "English definition coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html"@en ;
+  owl:sameAs <http://lod.xdams.org/reload/oad/levelOfDescription/subgrp> ;
+  skos:exactMatch <http://lod.xdams.org/reload/oad/levelOfDescription/subgrp> ;
+  skos:closeMatch <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection> .
+
+
+<https://w3id.org/italia/republic-history/data/arc-resource-type/series> a a-arc:ArchivalResourceLevel , skos:Concept ;
+  rdfs:label "Series"@en, "Serie"@it ;
+  skos:prefLabel "Serie"@it , "Series"@en ;
+  skos:notation "series" ;
+  skos:definition "Documenti ordinati secondo un sistema di archiviazione o conservati insieme perché sono il risultato di un medesimo processo di sedimentazione o archiviazione o di una medesima attività; appartengono ad una specifica tipologia; o a ragione di qualche altra relazione derivante dalle modalità della loro produzione, acquisizione o uso."@it ,
+                  "Documents arranged in accordance with a filing system or maintained as a unit because they result from the same accumulation or filing process, or the same activity; have a particular form; or because of some other relationship arising out of their creation, receipt, or use. A series is also known as a records series."@en ;
+  skos:note "Definizioni in italiano e in inglese fornite da https://icar.cultura.gov.it/fileadmin/risorse/docu_standard/RAS_2003_1.pdf. Ulteriori definizioni: 'Ciascun raggruppamento di documenti con caratteristiche omogenee, all'interno di un fondo archivistico. Può essere articolata in sottoserie.' - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it ,
+            "Definitions in Italian and English coming from https://icar.cultura.gov.it/fileadmin/risorse/docu_standard/RAS_2003_1.pdf. Additional definitions 'Each grouping of documents with homogeneous characteristics within an archival fond. It may be divided into subseries.'"@en ;
+  owl:sameAs <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Series> , <http://lod.xdams.org/reload/oad/levelOfDescription/serie> ;
+  skos:exactMatch <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Series> , <http://lod.xdams.org/reload/oad/levelOfDescription/serie> .
+
+<https://w3id.org/italia/republic-history/data/arc-resource-type/subseries> a a-arc:ArchivalResourceLevel , skos:Concept ;
+    rdfs:label "Subseries"@en, "Sottoserie"@it ;
+    skos:prefLabel "Subseries"@en, "Sottoserie"@it ;
+    skos:notation "subseries" ;
+    skos:definition "Partizione interna alla serie"@it , "A body of documents within a series readily distinguished from the whole by filing arrangement, type, form, or content."@en ;
+    skos:note "Italian definition coming from - Carucci, P. , Guercio, M., Manuale di archivistica, 2021, Roma, Carocci, p. 126. English definition provided by Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html"@en ,
+              "La definizione italiana è ricavata dalla seguente pubblicazione: Carucci, P. , Guercio, M., Manuale di archivistica, 2021, Roma, Carocci, p. 126. La definizione in inglese è tratta da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html"@en ;
+    owl:sameAs <http://lod.xdams.org/reload/oad/levelOfDescription/subseries> ;
+    skos:exactMatch <http://lod.xdams.org/reload/oad/levelOfDescription/subseries> ;
+    skos:closeMatch <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection> .
+
+<https://w3id.org/italia/republic-history/data/arc-resource-type/archival-unit> a a-arc:ArchivalResourceLevel , skos:Concept ;
+  rdfs:label "Unità archivistica"@it , "Archival Unit"@en ;
+  skos:prefLabel "Archival Unit"@en , "Unità archivista"@it ;
+  skos:altLabel "File"@en , "Fascicolo"@it ;
+  skos:notation "archivial-unit" ;
+  skos:definition "Un insieme organizzato di documenti raggruppati o dal soggetto produttore, per le esigenze della sua attività corrente, oppure nel corso dell’ordinamento dell’archivio, in base al comune riferimento allo stesso oggetto, attività o fatto giuridico. Costituisce di solito l’unità elementare di una serie."@it ,
+                  "An organized unit of documents grouped together either for current use by the creator or in the process of archival arrangement, because they relate to the same subject, activity, or transaction. A file is usually the basic unit within a record series."@en ;
+  skos:note "Definizioni in italiano e in inglese fornite da https://icar.cultura.gov.it/fileadmin/risorse/docu_standard/RAS_2003_1.pdf. Ulteriori definizioni: 'Unità archivistica costituita dai documenti relativi a un determinato affare, collocati - all'interno di una camicia o copertina - in ordine cronologico. Il fascicolo costituisce l'unità di base, indivisibile, di un archivio, mentre la busta, che contiene diversi fascicoli, si considera unità soltanto ai fini della conservazione materiale. Talora il fascicolo comprende documenti relativi ad affari diversi, o a questioni di carattere generale. Può essere articolato in sottofascicoli e inserti. Se l'archivio non è organizzato secondo criteri sistematici, è frequente trovare una pluralità di fascicoli miscellanei.' - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it ,
+            "Definitions in Italian and English coming from https://icar.cultura.gov.it/fileadmin/risorse/docu_standard/RAS_2003_1.pdf. Additional definitions 'Archival unit consisting of the documents relating to a specific matter, placed - within a jacket or cover - in chronological order. The file constitutes the basic, indivisible unit of an archive, whereas the envelope, which contains several files, is considered a unit only for the purposes of physical preservation. Sometimes the file comprises documents relating to different affairs, or matters of a general nature. It may be divided into subfiles and inserts. If the archive is not organised according to systematic criteria, it is common to find a plurality of miscellaneous files.'"@en ;
+  owl:sameAs <http://lod.xdams.org/reload/oad/levelOfDescription/file> , <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#File> ;
+  skos:exactMatch <http://lod.xdams.org/reload/oad/levelOfDescription/file> , <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#File> .
+
+<https://w3id.org/italia/republic-history/data/arc-resource-type/subfile> a a-arc:ArchivalResourceLevel , skos:Concept ;
+  rdfs:label "Sottofascicolo"@it , "Subfile"@en ;
+  skos:prefLabel "Sottofascicolo"@it , "Subfile"@en ;
+  skos:altLabel "Inserto"@it ;
+  skos:notation "subfile" ;
+  skos:definition "Articolazione interna al fascicolo"@it ;
+  skos:note "Definizione tratta da http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it ;
+  skos:relatedMatch <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#File> ;
+  skos:exactMatch <http://lod.xdams.org/reload/oad/levelOfDescription/subfile> ;
+  owl:sameAs <http://lod.xdams.org/reload/oad/levelOfDescription/subfile> .
+
+
+<https://w3id.org/italia/republic-history/data/arc-resource-type/item> a a-arc:ArchivalResourceLevel , skos:Concept ;
+  rdfs:label "Item"@en , "Unità documentaria"@it ;
+  skos:prefLabel "Item"@en , "Unità documentaria"@it ;
+  skos:notation "item" ;
+  skos:definition "L’unità minima, concettualmente non divisibile, di cui è composto un archivio, per esempio, una lettera, un memorandum, un rapporto, una fotografia, una registrazione sonora."@it ,
+                  "The smallest intellectually indivisible archival unit, e.g., a letter, memorandum, report, photograph, sound recording."@en ;
+  skos:note "Definizioni italiane e inglesi provenienti da https://icar.cultura.gov.it/fileadmin/risorse/docu_standard/RAS_2003_1.pdf"@it ,
+            "Definitions in Italian and English are coming from https://icar.cultura.gov.it/fileadmin/risorse/docu_standard/RAS_2003_1.pdf"@en ;
+  owl:sameAs <http://lod.xdams.org/reload/oad/levelOfDescription/item> ;
+  skos:exactMatch <http://lod.xdams.org/reload/oad/levelOfDescription/item> ;
+  skos:relatedMatch <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#File> .
