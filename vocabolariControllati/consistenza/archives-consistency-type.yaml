@@ -1,0 +1,64 @@
+prefixes:
+    rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+    dcat: "http://www.w3.org/ns/dcat#"
+    dcatapit: "http://dati.gov.it/onto/dcatapit#"
+    dct: "http://purl.org/dc/terms/"
+    xsd: "http://www.w3.org/2001/XMLSchema#"
+    foaf: "http://xmlns.com/foaf/spec/"
+    skos: "http://www.w3.org/2004/02/skos/core#"
+    a-arc: "https://w3id.org/arco/ontology/archive/"
+
+mappings:
+    Metadata:
+        sources: 
+        - [archives-consistency-type.csv~csv]
+        s: http://dati.gov.it/resource/Dataset/archives-consistency-type
+        po: 
+        - [a, dcatapit:Dataset]
+        - [a, dcat:Dataset]
+        - [a, skos:ConceptScheme]
+        - [dct:identifier,archivesConsistencyType]
+        - [dct:title,"Vocabolario controllato consistenze archivi",it~lang]
+        - [rdfs:label,"Vocabolario controllato consistenze archivi",it~lang]
+        - [dct:description,"Vocabolario controllato relativo ai tipi di consistenze nel dominio archivistico",it~lang]
+        - [rdfs:comment,"Vocabolario controllato relativo ai tipi di consistenze nel dominio archivistico",it~lang]
+        - [dcat:theme,http://publications.europa.eu/resource/authority/data-theme/EDUC~iri]
+        - [dct:modified,"2025-01-28",xsd:date]
+        - [dcat:keyword,"Archivi"]
+        - [dcat:keyword,"Consistenze"]
+        - [dct:rightsHolder,http://spcdata.digitpa.gov.it/Amministrazione/m_bac~iri]
+        - [dcat:distribution,https://w3id.org/italia/data/distribution/archives-consistency-type.csv~iri]
+        - [dct:accrualPeriodicity,http://publications.europa.eu/resource/authority/frequency/NEVER~iri]
+    Distribution:
+      sources: 
+      - [archives-consistency-type.csv~csv]
+      s: https://example.lod.it/data/distribution/archives-consistency-type.csv
+      po: 
+      - [a, dcatapit:Distribution]
+      - [a, dcat:Distribution]
+      - [dct:title,"Distribuzione csv del vocabolario controllato per le consistenze nel dominio archivistico",it~lang]
+      - [rdfs:label,"Distribuzione csv del vocabolario controllato per le consistenze nel dominio archivistico",it~lang]
+      - [dct:description,"Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle consistenze dei documenti nel dominio archivistico",it~lang]
+      - [rdfs:comment,"Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle consistenze dei documenti nel dominio archivistico",it~lang]
+      - [dct:format,https://publications.europa.eu/resource/authority/file-type/csv~iri]
+      - [dct:format,http://creativecommons.org/licenses/by/4.0/~iri]
+      - [dcat:downloadURL,http://spcdata.digitpa.gov.it/data/contrattiLotto1.nt~iri]
+      - [dcat:accessURL,https://www.dati.gruppo.it/api/composition/uni_bo/rows.csv?accessType=DOWNLOAD~iri]
+    Consistenza:
+      sources: 
+      - [archives-consistency-type.csv~csv]
+      s: http://dati.gov.it/resource/Dataset/archives-consistency-type/$(notation)
+      po:
+      - [a, skos:Concept]
+      - [a, a-arc:ArchivalResourceConsistency]
+      - [rdfs:label,$(label_IT),it~lang]
+      - [rdfs:label,$(label_EN),en~lang]
+      - [skos:prefLabel,$(label_IT),it~lang]
+      - [skos:prefLabel,$(label_EN),en~lang]
+      - [skos:notation,$(notation)]
+      - [skos:note,$(note)]
+      - [skos:altLabel,$(altLabel_IT),it~lang]
+      - [skos:altLabel,$(altLabel_EN),en~lang]
+      - [skos:definition,$(definition_IT),it~lang]
+      - [skos:definition,$(definition_EN),en~lang]
+      

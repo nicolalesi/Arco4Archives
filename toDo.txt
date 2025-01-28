@@ -44,3 +44,6 @@ quando privato usiamo uri priv quando pubblico usiamo pubblico
 - Mappatura delle persone in yarrrml
 - Capire modellazione Tempo
 - Vedere ArchivialResource
+
+##########################
+- File yarml con metadati e info del vocabolario controllato
