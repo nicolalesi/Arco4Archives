@@ -368,19 +368,21 @@
 :pm_032 rr:constant skos:note.
 :pom_032 rr:objectMap :om_032.
 :om_032 a rr:ObjectMap;
-    rml:reference "note";
-    rr:termType rr:Literal.
+    rml:reference "note_IT";
+    rr:termType rr:Literal;
+    rml:languageMap :language_012.
+:language_012 rr:constant "it".
 :pom_033 a rr:PredicateObjectMap.
 :map_Consistenza_000 rr:predicateObjectMap :pom_033.
 :pm_033 a rr:PredicateMap.
 :pom_033 rr:predicateMap :pm_033.
-:pm_033 rr:constant skos:altLabel.
+:pm_033 rr:constant skos:note.
 :pom_033 rr:objectMap :om_033.
 :om_033 a rr:ObjectMap;
-    rml:reference "altLabel_IT";
+    rml:reference "note_EN";
     rr:termType rr:Literal;
-    rml:languageMap :language_012.
-:language_012 rr:constant "it".
+    rml:languageMap :language_013.
+:language_013 rr:constant "en".
 :pom_034 a rr:PredicateObjectMap.
 :map_Consistenza_000 rr:predicateObjectMap :pom_034.
 :pm_034 a rr:PredicateMap.
@@ -388,21 +390,21 @@
 :pm_034 rr:constant skos:altLabel.
 :pom_034 rr:objectMap :om_034.
 :om_034 a rr:ObjectMap;
-    rml:reference "altLabel_EN";
+    rml:reference "altLabel_IT";
     rr:termType rr:Literal;
-    rml:languageMap :language_013.
-:language_013 rr:constant "en".
+    rml:languageMap :language_014.
+:language_014 rr:constant "it".
 :pom_035 a rr:PredicateObjectMap.
 :map_Consistenza_000 rr:predicateObjectMap :pom_035.
 :pm_035 a rr:PredicateMap.
 :pom_035 rr:predicateMap :pm_035.
-:pm_035 rr:constant skos:definition.
+:pm_035 rr:constant skos:altLabel.
 :pom_035 rr:objectMap :om_035.
 :om_035 a rr:ObjectMap;
-    rml:reference "definition_IT";
+    rml:reference "altLabel_EN";
     rr:termType rr:Literal;
-    rml:languageMap :language_014.
-:language_014 rr:constant "it".
+    rml:languageMap :language_015.
+:language_015 rr:constant "en".
 :pom_036 a rr:PredicateObjectMap.
 :map_Consistenza_000 rr:predicateObjectMap :pom_036.
 :pm_036 a rr:PredicateMap.
@@ -410,7 +412,18 @@
 :pm_036 rr:constant skos:definition.
 :pom_036 rr:objectMap :om_036.
 :om_036 a rr:ObjectMap;
+    rml:reference "definition_IT";
+    rr:termType rr:Literal;
+    rml:languageMap :language_016.
+:language_016 rr:constant "it".
+:pom_037 a rr:PredicateObjectMap.
+:map_Consistenza_000 rr:predicateObjectMap :pom_037.
+:pm_037 a rr:PredicateMap.
+:pom_037 rr:predicateMap :pm_037.
+:pm_037 rr:constant skos:definition.
+:pom_037 rr:objectMap :om_037.
+:om_037 a rr:ObjectMap;
     rml:reference "definition_EN";
     rr:termType rr:Literal;
-    rml:languageMap :language_015.
-:language_015 rr:constant "en".
+    rml:languageMap :language_017.
+:language_017 rr:constant "en".

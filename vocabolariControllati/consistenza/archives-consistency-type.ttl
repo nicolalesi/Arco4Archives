@@ -1,7 +1,285 @@
-prefixes:
-    rdfs: "http://www.w3.org/2000/01/rdf-schema#"
-    dcat: "http://www.w3.org/ns/dcat#"
-    dcatapit: "http://dati.gov.it/onto/dcatapit#"
-    dct: "http://purl.org/dc/terms/"
-    xsd: "http://www.w3.org/2001/XMLSchema#"
-    foaf: "http://xmlns.com/foaf/spec/"
+@prefix : <http://mapping.example.com/> .
+@prefix a-arc: <https://w3id.org/arco/ontology/archive/> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type> a dcatapit:Dataset,
+    skos:ConceptScheme, dcat:Dataset;
+  dc:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/NEVER>;
+  dc:description "Vocabolario controllato relativo ai tipi di consistenze nel dominio archivistico"@it;
+  dc:identifier "archivesConsistencyType";
+  dc:modified "2025-01-28"^^xsd:date;
+  dc:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/m_bac>;
+  dc:title "Vocabolario controllato consistenze archivi"@it;
+  rdfs:comment "Vocabolario controllato relativo ai tipi di consistenze nel dominio archivistico"@it;
+  rdfs:label "Vocabolario controllato consistenze archivi"@it;
+  dcat:distribution <https://w3id.org/italia/data/distribution/archives-consistency-type.csv>;
+  dcat:keyword "Archivi", "Consistenze";
+  dcat:theme <http://publications.europa.eu/resource/authority/data-theme/EDUC> .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/album> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Album"@en, "Album"@it;
+  skos:definition "A volume of blank pages, bound or loose leaf, used to collect photographs, documents, clippings, and the like."@en,
+    "Quaderno o libro rilegato per raccogliere versi, firme, ritratti, cartoline, ricordi, o per altri usi particolari"@it;
+  skos:notation "album";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Treccani - https://www.treccani.it/vocabolario/album/"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dal dizionario Treccani - https://www.treccani.it/vocabolario/album/"@it;
+  skos:prefLabel "Album"@en, "Album"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/archivesbox> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Archives box"@en, "Pacco"@it;
+  skos:definition "A container made from materials appropriate for the long-term storage of archival materials."@en,
+    "Unità di consistenza. È il contenitore nel quale vengono raccolti e conservati i fascicoli o - nel caso di atti singoli non raggruppati in fascicoli - i documenti sciolti. Si usano come sinonimo di busta le parole faldone e cartella. Si possono trovare usate nello stesso senso anche le parole mazzo, fascio, pacco, filza"@it;
+  skos:notation "archivesbox";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "Archives box"@en, "Pacco"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/brochure> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Brochure"@en, "Opuscolo"@it;
+  skos:definition "A short printed work, sometimes a leaflet, providing general information about an organization or service."@en,
+    "Breve opera, libretto di poche pagine: un o. di critica storica; gli o. morali di Plutarco; oggi si dice spec. di pubblicazioni a carattere propagandistico o divulgativo: un o. informativo, turistico, pubblicitario."@it;
+  skos:notation "brochure";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Treccani - https://www.treccani.it/vocabolario/opuscolo/"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dal dizionario Treccani - https://www.treccani.it/vocabolario/opuscolo/"@it;
+  skos:prefLabel "Brochure"@en, "Opuscolo"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/bundle> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Bundle"@en, "Filza"@it;
+  skos:definition "A group of individual documents, normally tied together by string, linen tape, or the like."@en,
+    "Unità di consistenza. È il contenitore nel quale vengono raccolti e conservati i fascicoli o - nel caso di atti singoli non raggruppati in fascicoli - i documenti sciolti. Si usano come sinonimo di busta le parole faldone e cartella. Si possono trovare usate nello stesso senso anche le parole mazzo, fascio, pacco, filza"@it;
+  skos:notation "bundle";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "Bundle"@en, "Filza"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/cardcatalog> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Card Catalog"@en, "Scheda"@it;
+  skos:definition "Descriptions of materials, with each entry on a separate card (or cards), systematically arranged to facilitate access."@en,
+    "S. analitica, quella che contiene particolari indicazioni sul contenuto del libro, o anche descrizioni molto estese e minuziose."@it;
+  skos:notation "cardcatalog";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Treccani - https://www.treccani.it/vocabolario/scheda/"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dal dizionario Treccani - https://www.treccani.it/vocabolario/scheda/"@it;
+  skos:prefLabel "Card Catalog"@en, "Scheda"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/casefile> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Case file"@en, "Scatola"@it;
+  skos:definition "A collection of documents relating to a particular investigation or in support of some administrative action"@en,
+    "Contenitore di cartone, o di tela e cartone nel quale i documenti sono conservati disposti in senso orizzontale."@it;
+  skos:notation "casefile";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "Case file"@en, "Scatola"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/collector> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Collector"@en, "Raccoglitore"@it;
+  skos:definition "An individual, or group of individuals, responsible for acquiring materials."@en,
+    "Oggetto, dispositivo, impianto che serve a raccogliere."@it;
+  skos:notation "collector";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Treccani - https://www.treccani.it/vocabolario/raccoglitore/"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dal dizionario Treccani - https://www.treccani.it/vocabolario/raccoglitore/"@it;
+  skos:prefLabel "Collector"@en, "Raccoglitore"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/container> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Container"@en, "Plico"@it;
+  skos:definition "A package or housing used to hold materials; a receptacle."@en, "Insieme di carte di varia natura (lettere, documenti e sim.), disposte, piegate o no, in una busta o in un pacco"@it;
+  skos:notation "container";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Treccani - https://www.treccani.it/vocabolario/plico/"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dal dizionario Treccani - https://www.treccani.it/vocabolario/plico/"@it;
+  skos:prefLabel "Container"@en, "Plico"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/dossier> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Dossier"@en, "Fascicolo"@it;
+  skos:definition "A group of documents assembled to provide information about a specific topic."@en,
+    "Unità archivistica costituita dai documenti relativi a un determinato affare, collocati - all'interno di una camicia o copertina - in ordine cronologico. Il fascicolo costituisce l'unità di base, indivisibile, di un archivio, mentre la busta, che contiene diversi fascicoli, si considera unità soltanto ai fini della conservazione materiale. Talora il fascicolo comprende documenti relativi ad affari diversi, o a questioni di carattere generale. Può essere articolato in sottofascicoli e inserti. Se l'archivio non è organizzato secondo criteri sistematici, è frequente trovare una pluralità di fascicoli miscellanei."@it;
+  skos:notation "dossier";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "Dossier"@en, "Fascicolo"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/envelope> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Envelope"@en, "Busta"@it;
+  skos:definition "An envelope1 is typically made of paper, folded and glued so that one side remains open to allow a flat document to be inserted, possibly after being folded, and with a flap that allows the envelope to be sealed."@en,
+    "Una busta è tipicamente costituita da carta, piegata e incollata in modo che un lato rimanga aperto per consentire l'inserimento di un documento piatto, eventualmente dopo essere stato piegato, e con un lembo che consente la chiusura della busta. Le buste di formato standard includono la lettera"@it;
+  skos:notation "envelope";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "Envelope"@en, "Busta"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/fieldbook> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Field Book"@en, "Taccuino"@it;
+  skos:definition "Volumes containing notes made while working at a site (in the field) to make a record of observations and discoveries."@en,
+    "Libriccino con fogli bianchi per appunti: segnare una data, un appuntamento sul t.; un t. rilegato in pelle."@it;
+  skos:notation "fieldbook";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Treccani - https://www.treccani.it/vocabolario/taccuino/"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dal dizionario Treccani - https://www.treccani.it/vocabolario/taccuino/"@it;
+  skos:prefLabel "Field Book"@en, "Taccuino"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/file> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "File"@en, "Faldone"@it;
+  skos:definition "A group of documents related by use or topic, typically housed in a folder (or a group of folders for a large file)"@en,
+    "Unità di consistenza. È il contenitore nel quale vengono raccolti e conservati i fascicoli o - nel caso di atti singoli non raggruppati in fascicoli - i documenti sciolti. Si usano come sinonimo di busta le parole faldone e cartella."@it;
+  skos:notation "file";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "File"@en, "Faldone"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/folder> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Folder"@en, "Cartella"@it;
+  skos:definition " sheet of heavy paper stock or cardboard, scored near the middle, its halves bent so they rest side by side, and used as a loose cover to keep documents and other flat materials together, especially for purposes of filing."@en,
+    "Unità di consistenza. È il contenitore nel quale vengono raccolti e conservati i fascicoli o - nel caso di atti singoli non raggruppati in fascicoli - i documenti sciolti."@it;
+  skos:notation "folder";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "Folder"@en, "Cartella"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/folio> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Folio"@en, "Carta"@it;
+  skos:definition "A single leaf in a book or a manuscript."@en, "Foglio di carta o di cartoncino, contenente documenti archivistici."@it;
+  skos:notation "folio";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "Folio"@en, "Carta"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/journal> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Journal"@en, "Quaderno"@it;
+  skos:definition "An impartial record of an organization's events, proceedings, and actions."@en,
+    "Insieme di fogli di carta da scrivere, raccolti e legati in una copertina di cartoncino, destinato a usi scolastici, per conti, appunti e annotazioni."@it;
+  skos:notation "journal";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Treccani - https://www.treccani.it/vocabolario/quaderno/"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dal dizionario Treccani - https://www.treccani.it/vocabolario/quaderno/"@it;
+  skos:prefLabel "Journal"@en, "Quaderno"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/leaf> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Leaf"@en, "Foglio"@it;
+  skos:definition "A sheet of paper or parchment."@en, "Foglio di carta o di cartoncino, contenente documenti archivistici."@it;
+  skos:notation "leaf";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "Leaf"@en, "Foglio"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/ledger> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Ledger"@en, "Vacchetta"@it;
+  skos:definition "A document containing a record of debits, credits, and other financial transactions, typically organized into separate accounts."@en,
+    "Nome usato anticam., e oggi conservato in alcune regioni, per indicare libretti o registri, per lo più di forma oblunga, e in origine coperti con pelle di vacchetta."@it;
+  skos:notation "ledger";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Treccani - https://www.treccani.it/vocabolario/vacchetta/"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dal dizionario Treccani - https://www.treccani.it/vocabolario/vacchetta/"@it;
+  skos:prefLabel "Ledger"@en, "Vacchetta"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/magazine> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Magazine"@en, "Rivista"@it;
+  skos:definition "A publication, often illustrated, containing essays, articles, short stories, poems, or other short works, issued periodically and directed to a popular audience."@en,
+    "Pubblicazione periodica che ha generalm. per oggetto un particolare settore di studî o di attività, con interessi prevalentemente critici e di aggiornamento"@it;
+  skos:notation "magazine";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Treccani - https://www.treccani.it/vocabolario/rivista/"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dal dizionario Treccani - https://www.treccani.it/vocabolario/rivista/"@it;
+  skos:prefLabel "Magazine"@en, "Rivista"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/map> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Map"@en, "Mappa"@it;
+  skos:definition "A graphic representation of features of the Earth or another celestial body."@en,
+    "Ogni rappresentazione grafica piana di una porzione della superficie terrestre (lo stesso che carta geografica o topografica) e, estensiv., della superficie di un corpo in genere."@it;
+  skos:notation "map";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Treccani - https://www.treccani.it/enciclopedia/mappa_(Dizionario-delle-Scienze-Fisiche)/"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dal dizionario Treccani - https://www.treccani.it/enciclopedia/mappa_(Dizionario-delle-Scienze-Fisiche)/"@it;
+  skos:prefLabel "Map"@en, "Mappa"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/page> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Page"@en, "Pagina"@it;
+  skos:definition "A sheet of paper, especially one bound in a publication; a leaf."@en,
+    "Si chiama PAGINA ciascuna delle due facce di un foglio di carta, isolato o unito ad altri in un quaderno, un libro o un giornale."@it;
+  skos:notation "page";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Treccani - https://www.treccani.it/vocabolario/pagina_res-b05f43af-e3ae-11eb-94e0-00271042e8d9/"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dal dizionario Treccani - https://www.treccani.it/vocabolario/pagina_res-b05f43af-e3ae-11eb-94e0-00271042e8d9/"@it;
+  skos:prefLabel "Page"@en, "Pagina"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/poster> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Poster"@en, "Manifesto"@it;
+  skos:definition "A printed illustration on a large sheet. A large, flexible sheet bearing text, usually illustrated, that is publicly displayed to advertise or promote something."@en,
+    "Foglio di carta, più o meno ampio, che si affigge sui muri delle strade, o su sostegni fissi appositamente collocati, per rendere noto a tutti ciò che vi è stampato."@it;
+  skos:notation "poster";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Treccani - https://www.treccani.it/vocabolario/manifesto2/"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dal dizionario Treccani - https://www.treccani.it/vocabolario/manifesto2/"@it;
+  skos:prefLabel "Poster"@en, "Manifesto"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/register> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Register"@en, "Registro"@it;
+  skos:definition "A book or record listing information in a consistent format"@en,
+    "Unità archivistica costituita da un insieme di fogli rilegati. Nel registro vengono trascritti o registrati per esteso o per sunto documenti e minute di documenti, ovvero vengono effettuate trascrizioni, registrazioni e annotazioni costitutive dell'atto giuridico."@it;
+  skos:notation "register";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "Register"@en, "Registro"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/roll> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Roll"@en, "Rotolo"@it;
+  skos:definition "A document wound into a cylinder; a scroll."@en, "Unità archivistica formata da un foglio cartaceo o pergamenaceo, o da più fogli cuciti l’uno all’altro, conservati arrotolati. Si trovano frequentemente conservati in rotolo pergamene e mappe."@it;
+  skos:notation "roll";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "Roll"@en, "Rotolo"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/set> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Set"@en, "Mazzo"@it;
+  skos:definition "A set of archival or (more commonly) manuscript materials."@en, "Unità di consistenza. È il contenitore nel quale vengono raccolti e conservati i fascicoli o - nel caso di atti singoli non raggruppati in fascicoli - i documenti sciolti. Si usano come sinonimo di busta le parole faldone e cartella. Si possono trovare usate nello stesso senso anche le parole mazzo, fascio, pacco, filza"@it;
+  skos:notation "set";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "Set"@en, "Mazzo"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/volume> a skos:Concept,
+    a-arc:ArchivalResourceConsistency;
+  rdfs:label "Volume"@en, "Volume"@it;
+  skos:definition "A collection of pages bound together."@en, "Unità archivistica costituita di più fogli rilegati insieme. La parola attiene all'aspetto esterno dei documenti e distingue quelli che si presentano come unità rilegate rispetto a quelli sciolti conservati in buste. Di fatto la parola viene usata spesso come sinonimo di registro."@it;
+  skos:notation "volume";
+  skos:note "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@en,
+    "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
+  skos:prefLabel "Volume"@en, "Volume"@it .
+
+<https://example.lod.it/data/distribution/archives-consistency-type.csv> a dcatapit:Distribution,
+    dcat:Distribution;
+  dc:description "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle consistenze dei documenti nel dominio archivistico"@it;
+  dc:format <http://creativecommons.org/licenses/by/4.0/>, <https://publications.europa.eu/resource/authority/file-type/csv>;
+  dc:title "Distribuzione csv del vocabolario controllato per le consistenze nel dominio archivistico"@it;
+  rdfs:comment "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle consistenze dei documenti nel dominio archivistico"@it;
+  rdfs:label "Distribuzione csv del vocabolario controllato per le consistenze nel dominio archivistico"@it;
+  dcat:accessURL <https://www.dati.gruppo.it/api/composition/uni_bo/rows.csv?accessType=DOWNLOAD>;
+  dcat:downloadURL <http://spcdata.digitpa.gov.it/data/contrattiLotto1.nt> .
