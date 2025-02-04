@@ -1,0 +1,5 @@
+1. cambiare URI:
+1.1 ConceptScheme <http://w3id.org/italia/cultural-heritage/archives/controlled-vocabulary/consistency-type>
+1.2 Concept <http://w3id.org/italia/cultural-heritage/archives/controlled-vocabulary/consistency-type/$(notation)>
+2. inserire proprietà da concetti skos:inScheme con URI ConceptScheme
+3. cambiare ArchivelConcistencyType in ar-arc:ExtentType
