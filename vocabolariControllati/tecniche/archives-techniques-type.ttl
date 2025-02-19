@@ -1,0 +1,356 @@
+@prefix : <http://mapping.example.com/> .
+@prefix a-arc: <https://w3id.org/arco/ontology/archive/> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcatapit: <http://dati.gov.it/onto/dcatapit#> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type> a dcatapit:Dataset,
+    skos:ConceptScheme, dcat:Dataset;
+  dc:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/NEVER>;
+  dc:description "Vocabolario controllato relativo alle tecniche di produzione artistica, cartografica, fotografica, [...], nel dominio archivistico"@it;
+  dc:identifier "archivesTechinque";
+  dc:modified "2025-02-19"^^xsd:date;
+  dc:rightsHolder <http://spcdata.digitpa.gov.it/Amministrazione/m_bac>;
+  dc:title "Vocabolario controllato delle tecniche di produzione artistica"@it;
+  rdfs:comment "Vocabolario controllato relativo alle tecniche di produzione artistica, cartografica, fotografica, [...], nel dominio archivistico"@it;
+  rdfs:label "Vocabolario controllato delle tecniche di produzione artistica"@it;
+  dcat:distribution <https://w3id.org/italia/data/distribution/archives-techniques-type.csv>;
+  dcat:keyword "Archivi", "Tecniche";
+  dcat:theme <http://publications.europa.eu/resource/authority/data-theme/EDUC> .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Acquaforte> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Etching"@en, "Acquaforte"@it;
+  skos:prefLabel "Etching"@en, "Acquaforte"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Acquatina> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Aquarelle"@en, "Acquatina"@it;
+  skos:prefLabel "Aquarelle"@en, "Acquatina"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Acquerello> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Watercolor"@en, "Acquerello"@it;
+  skos:prefLabel "Watercolor"@en, "Acquerello"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Albumina> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Albumen"@en, "Albumina"@it;
+  skos:prefLabel "Albumen"@en, "Albumina"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Algrafia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Autography"@en, "Algrafia"@it;
+  skos:prefLabel "Autography"@en, "Algrafia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Altro> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Other"@en, "Altro"@it;
+  skos:prefLabel "Other"@en, "Altro"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Ambrotipo> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Ambrotype"@en, "Ambrotipo"@it;
+  skos:prefLabel "Ambrotype"@en, "Ambrotipo"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Aristotipo> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Aristotype"@en, "Aristotipo"@it;
+  skos:prefLabel "Aristotype"@en, "Aristotipo"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Autocromia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Autochrome"@en, "Autocromia"@it;
+  skos:prefLabel "Autochrome"@en, "Autocromia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Blu%20print> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Blue print"@en, "Blu print"@it;
+  skos:prefLabel "Blue print"@en, "Blu print"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Bulino> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Engraving"@en, "Bulino"@it;
+  skos:prefLabel "Engraving"@en, "Bulino"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Calcografia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Calcography"@en, "Calcografia"@it;
+  skos:prefLabel "Calcography"@en, "Calcografia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Calotipo> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Calotype"@en, "Calotipo"@it;
+  skos:prefLabel "Calotype"@en, "Calotipo"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Cama%C3%AFeu> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Chiaroscuro"@en, "Camaïeu"@it;
+  skos:prefLabel "Chiaroscuro"@en, "Camaïeu"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Carbone> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Carbon print"@en, "Carbone"@it;
+  skos:prefLabel "Carbon print"@en, "Carbone"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Carborundum> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Carborundum"@en, "Carborundum"@it;
+  skos:prefLabel "Carborundum"@en, "Carborundum"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Carta%20salata> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Salted paper"@en, "Carta salata"@it;
+  skos:prefLabel "Salted paper"@en, "Carta salata"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Chiaroscuro> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Chiaroscuro"@en, "Chiaroscuro"@it;
+  skos:prefLabel "Chiaroscuro"@en, "Chiaroscuro"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Cianografia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Cyanotype"@en, "Cianografia"@it;
+  skos:prefLabel "Cyanotype"@en, "Cianografia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Clich%C3%A9-verre>
+  a skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Cliché-verre"@en, "Cliché-verre"@it;
+  skos:prefLabel "Cliché-verre"@en, "Cliché-verre"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Collage> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Collage"@en, "Collage"@it;
+  skos:prefLabel "Collage"@en, "Collage"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Collodio> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Collodion"@en, "Collodio"@it;
+  skos:prefLabel "Collodion"@en, "Collodio"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Collografia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Collography"@en, "Collografia"@it;
+  skos:prefLabel "Collography"@en, "Collografia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Collotipia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Collotype"@en, "Collotipia"@it;
+  skos:prefLabel "Collotype"@en, "Collotipia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Coloritura> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Coloring"@en, "Coloritura"@it;
+  skos:prefLabel "Coloring"@en, "Coloritura"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Computergrafica> a
+    skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Computer graphics"@en, "Computergrafica"@it;
+  skos:prefLabel "Computer graphics"@en, "Computergrafica"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Cromolitografia> a
+    skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Chromolithography"@en, "Cromolitografia"@it;
+  skos:prefLabel "Chromolithography"@en, "Cromolitografia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Cromozincografia> a
+    skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Chromozincography"@en, "Cromozincografia"@it;
+  skos:prefLabel "Chromozincography"@en, "Cromozincografia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Dagherrotipo> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Daguerreotype"@en, "Dagherrotipo"@it;
+  skos:prefLabel "Daguerreotype"@en, "Dagherrotipo"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Disegno> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Drawing"@en, "Disegno"@it;
+  skos:prefLabel "Drawing"@en, "Disegno"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Doratura> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Gilding"@en, "Doratura"@it;
+  skos:prefLabel "Gilding"@en, "Doratura"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Eliografia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Eliography"@en, "Eliografia"@it;
+  skos:prefLabel "Eliography"@en, "Eliografia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Eliotipia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Eliotypy"@en, "Eliotipia"@it;
+  skos:prefLabel "Eliotypy"@en, "Eliotipia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Fotografia%20digitale%20%28chiave%20USB%29>
+  a skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Digital photography (USB key)"@en, "Fotografia digitale (chiave USB)"@it;
+  skos:prefLabel "Digital photography (USB key)"@en, "Fotografia digitale (chiave USB)"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Fotografia%20digitale%20%28disco%20magnetico-ottico%29>
+  a skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Digital photography (magnetic-optical disk)"@en, "Fotografia digitale (disco magnetico-ottico)"@it;
+  skos:prefLabel "Digital photography (magnetic-optical disk)"@en, "Fotografia digitale (disco magnetico-ottico)"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Fotoincisione> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Photogravure"@en, "Fotoincisione"@it;
+  skos:prefLabel "Photogravure"@en, "Fotoincisione"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Fotolitografia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Photolithography"@en, "Fotolitografia"@it;
+  skos:prefLabel "Photolithography"@en, "Fotolitografia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Gelatina%20ai%20sali%20d%E2%80%99argento>
+  a skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Silver salts gelatin"@en, "Gelatina ai sali d’argento"@it;
+  skos:prefLabel "Silver salts gelatin"@en, "Gelatina ai sali d’argento"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Gelatina%20bromuro%20d%E2%80%99argento>
+  a skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Silver bromide gelatin"@en, "Gelatina bromuro d’argento"@it;
+  skos:prefLabel "Silver bromide gelatin"@en, "Gelatina bromuro d’argento"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Gelatina%20cloruro%20d%E2%80%99argento>
+  a skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Silver chloride gelatin"@en, "Gelatina cloruro d’argento"@it;
+  skos:prefLabel "Silver chloride gelatin"@en, "Gelatina cloruro d’argento"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Gipsografia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Gypsography"@en, "Gipsografia"@it;
+  skos:prefLabel "Gypsography"@en, "Gipsografia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Gomma%20bicromatata>
+  a skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Bichromate gum"@en, "Gomma bicromatata"@it;
+  skos:prefLabel "Bichromate gum"@en, "Gomma bicromatata"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Ignoto> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Unknown"@en, "Ignoto"@it;
+  skos:prefLabel "Unknown"@en, "Ignoto"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Incisione> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Engraving"@en, "Incisione"@it;
+  skos:prefLabel "Engraving"@en, "Incisione"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Lavis> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Lavis"@en, "Lavis"@it;
+  skos:prefLabel "Lavis"@en, "Lavis"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Linoleografia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Linocut"@en, "Linoleografia"@it;
+  skos:prefLabel "Linocut"@en, "Linoleografia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Litografia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Lithography"@en, "Litografia"@it;
+  skos:prefLabel "Lithography"@en, "Litografia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Manoscritto> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Manuscript"@en, "Manoscritto"@it;
+  skos:prefLabel "Manuscript"@en, "Manoscritto"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Offset> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Offset"@en, "Offset"@it;
+  skos:prefLabel "Offset"@en, "Offset"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Oleografia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Oil painting"@en, "Oleografia"@it;
+  skos:prefLabel "Oil painting"@en, "Oleografia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Platinotipia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Platinotype"@en, "Platinotipia"@it;
+  skos:prefLabel "Platinotype"@en, "Platinotipia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Pochoir> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Pochoir"@en, "Pochoir"@it;
+  skos:prefLabel "Pochoir"@en, "Pochoir"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Puntasecca> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Drypoint"@en, "Puntasecca"@it;
+  skos:prefLabel "Drypoint"@en, "Puntasecca"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Serigrafia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Silkscreen"@en, "Serigrafia"@it;
+  skos:prefLabel "Silkscreen"@en, "Serigrafia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Stampa%20a%20sublimazione>
+  a skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Sublimation printing"@en, "Stampa a sublimazione"@it;
+  skos:prefLabel "Sublimation printing"@en, "Stampa a sublimazione"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Stampa%20ai%20pigmenti>
+  a skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Pigment printing"@en, "Stampa ai pigmenti"@it;
+  skos:prefLabel "Pigment printing"@en, "Stampa ai pigmenti"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Stampa%20fotomeccanica%20a%20retino>
+  a skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Photomechanical screen printing"@en, "Stampa fotomeccanica a retino"@it;
+  skos:prefLabel "Photomechanical screen printing"@en, "Stampa fotomeccanica a retino"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Stampa%20inkjet%20inchiostri%20a%E2%80%A6>
+  a skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Inkjet printing inks"@en, "Stampa inkjet inchiostri a…"@it;
+  skos:prefLabel "Inkjet printing inks"@en, "Stampa inkjet inchiostri a…"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Stampa%20tipografica>
+  a skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Letterpress printing"@en, "Stampa tipografica"@it;
+  skos:prefLabel "Letterpress printing"@en, "Stampa tipografica"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Tecniche%20varie> a
+    skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Various techniques"@en, "Tecniche varie"@it;
+  skos:prefLabel "Various techniques"@en, "Tecniche varie"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Vernice%20molle> a
+    skos:Concept, a-arc:TechniquesType;
+  rdfs:label "Soft varnish"@en, "Vernice molle"@it;
+  skos:prefLabel "Soft varnish"@en, "Vernice molle"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Vitrografia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Vitrography"@en, "Vitrografia"@it;
+  skos:prefLabel "Vitrography"@en, "Vitrografia"@it .
+
+<http://dati.gov.it/resource/Dataset/archives-consistency-type/Xilografia> a skos:Concept,
+    a-arc:TechniquesType;
+  rdfs:label "Woodcut"@en, "Xilografia"@it;
+  skos:prefLabel "Woodcut"@en, "Xilografia"@it .
+
+<https://example.lod.it/data/distribution/archives-techniques-type.csv> a dcatapit:Distribution,
+    dcat:Distribution;
+  dc:description "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle tecniche di produzione artistica relative ai documenti presenti nel dominio archivistico"@it;
+  dc:format <http://creativecommons.org/licenses/by/4.0/>, <https://publications.europa.eu/resource/authority/file-type/csv>;
+  dc:title "Distribuzione csv del vocabolario controllato delle tecniche di produzione artistica"@it;
+  rdfs:comment "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle tecniche di produzione artistica relative ai documenti presenti nel dominio archivistico"@it;
+  rdfs:label "Distribuzione csv del vocabolario controllato delle tecniche di produzione artistica"@it;
+  dcat:accessURL <https://www.dati.gruppo.it/api/composition/uni_bo/rows.csv?accessType=DOWNLOAD>;
+  dcat:downloadURL <http://spcdata.digitpa.gov.it/data/contrattiLotto1.nt> .

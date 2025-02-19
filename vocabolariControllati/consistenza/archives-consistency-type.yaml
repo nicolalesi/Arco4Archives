@@ -50,7 +50,7 @@ mappings:
       s: http://dati.gov.it/resource/Dataset/archives-consistency-type/$(notation)
       po:
       - [a, skos:Concept]
-      - [a, a-arc:ArchivalResourceConsistency]
+      - [a, a-arc:ExtentType]
       - [rdfs:label,$(label_IT),it~lang]
       - [rdfs:label,$(label_EN),en~lang]
       - [skos:prefLabel,$(label_IT),it~lang]
