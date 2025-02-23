@@ -47,7 +47,7 @@ mappings:
     Tecnica:
       sources: 
       - [archives-techniques-type.csv~csv]
-      s: http://dati.gov.it/resource/Dataset/archives-consistency-type/$(prefLabel)
+      s: http://dati.gov.it/resource/Dataset/archives-consistency-type/$(notation)
       po:
       - [a, skos:Concept]
       - [a, a-arc:TechniquesType]

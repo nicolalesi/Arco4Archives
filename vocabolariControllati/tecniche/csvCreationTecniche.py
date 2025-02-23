@@ -81,8 +81,22 @@ data = {
     "altLabel_EN": ["" for _ in range(64)],
     #Le definizioni sono diverse, e non una la traduzione dell'altra, per fare in modo di poterle comparare e appurare la correttezza della traduzione
     "definition_IT": ["" for _ in range(64)],
-     "definition_EN": ["" for _ in range(64)],
-    "notation": ["" for _ in range(64)],
+    "definition_EN": ["" for _ in range(64)],
+    "notation": [
+        "acquaforte", "acquerello", "acquatina", "algrafia", "altro", "bluprint", "bulino", 
+        "calcografia", "camaieu", "carborundum", "chiaroscuro", "clicheverre", "collage", 
+        "collografia", "coloritura", "computergrafica", "cromolitografia", "cromozincografia", 
+        "doratura", "eliografia", "eliotipia", "fotoincisione", "fotolitografia", "gipsografia", 
+        "lavis", "linoleografia", "litografia", "offset", "oleografia", "pochoir", "puntasecca", 
+        "serigrafia", "stampatipografica", "vernicemolle", "vitrografia", "xilografia", 
+        "albumina", "ambrotipo", "aristotipo", "autocromia", "calotipo", "carbone", "cartasalata", 
+        "collodio", "collotipia", "dagherrotipo", "fotografiadigitalechiaveusb", 
+        "fotografiadigitaleddiscomagneticoottico", "fotoincisione", "gelatinaisalidargento", 
+        "gelatinabromurodargento", "gelatinaclorurodargento", "gommabicromatata", "platinotipia", 
+        "stampaaipigmenti", "stampaasublimazione", "stampafotomeccanicaaretino", 
+        "stampainkjetinchiostria", "tecnichevarie", "cianografia", "disegno", "ignoto", "incisione", 
+        "manoscritto"
+    ],
     "note_EN": ["" for _ in range(64)],
 }
 

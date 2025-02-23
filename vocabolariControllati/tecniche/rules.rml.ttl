@@ -289,7 +289,7 @@
     rdfs:label "Tecnica".
 :s_002 a rr:SubjectMap.
 :map_Tecnica_000 rr:subjectMap :s_002.
-:s_002 rr:template "http://dati.gov.it/resource/Dataset/archives-consistency-type/{prefLabel}".
+:s_002 rr:template "http://dati.gov.it/resource/Dataset/archives-consistency-type/{notation}".
 :pom_025 a rr:PredicateObjectMap.
 :map_Tecnica_000 rr:predicateObjectMap :pom_025.
 :pm_025 a rr:PredicateMap.
