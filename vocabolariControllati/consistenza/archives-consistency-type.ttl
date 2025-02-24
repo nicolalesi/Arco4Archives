@@ -16,6 +16,8 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+####################METADATI####################################################
+
 <http://dati.gov.it/resource/Dataset/archives-consistency-type> a dcatapit:Dataset,
     skos:ConceptScheme, dcat:Dataset;
   dc:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/NEVER>;
@@ -29,6 +31,18 @@
   dcat:distribution <https://w3id.org/italia/data/distribution/archives-consistency-type.csv>;
   dcat:keyword "Archivi", "Consistenze";
   dcat:theme <http://publications.europa.eu/resource/authority/data-theme/EDUC> .
+
+<https://example.lod.it/data/distribution/archives-consistency-type.csv> a dcatapit:Distribution,
+    dcat:Distribution;
+  dc:description "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle consistenze dei documenti nel dominio archivistico"@it;
+  dc:format <http://creativecommons.org/licenses/by/4.0/>, <https://publications.europa.eu/resource/authority/file-type/csv>;
+  dc:title "Distribuzione csv del vocabolario controllato per le consistenze nel dominio archivistico"@it;
+  rdfs:comment "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle consistenze dei documenti nel dominio archivistico"@it;
+  rdfs:label "Distribuzione csv del vocabolario controllato per le consistenze nel dominio archivistico"@it;
+  dcat:accessURL <https://www.dati.gruppo.it/api/composition/uni_bo/rows.csv?accessType=DOWNLOAD>;
+  dcat:downloadURL <http://spcdata.digitpa.gov.it/data/contrattiLotto1.nt> .
+
+########################### CONSISTENZE #####################################################
 
 <http://dati.gov.it/resource/Dataset/archives-consistency-type/album> a skos:Concept,
     a-arc:ExtentType;
@@ -274,12 +288,3 @@
     "Definizione in inglese proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definizione in italiano derivante dalla Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario"@it;
   skos:prefLabel "Volume"@en, "Volume"@it .
 
-<https://example.lod.it/data/distribution/archives-consistency-type.csv> a dcatapit:Distribution,
-    dcat:Distribution;
-  dc:description "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle consistenze dei documenti nel dominio archivistico"@it;
-  dc:format <http://creativecommons.org/licenses/by/4.0/>, <https://publications.europa.eu/resource/authority/file-type/csv>;
-  dc:title "Distribuzione csv del vocabolario controllato per le consistenze nel dominio archivistico"@it;
-  rdfs:comment "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle consistenze dei documenti nel dominio archivistico"@it;
-  rdfs:label "Distribuzione csv del vocabolario controllato per le consistenze nel dominio archivistico"@it;
-  dcat:accessURL <https://www.dati.gruppo.it/api/composition/uni_bo/rows.csv?accessType=DOWNLOAD>;
-  dcat:downloadURL <http://spcdata.digitpa.gov.it/data/contrattiLotto1.nt> .

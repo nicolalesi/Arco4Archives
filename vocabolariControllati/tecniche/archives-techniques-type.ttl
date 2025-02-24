@@ -16,6 +16,8 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+################################# METADATI #########################################
+
 <http://dati.gov.it/resource/Dataset/archives-consistency-type> a dcatapit:Dataset,
     skos:ConceptScheme, dcat:Dataset;
   dc:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/NEVER>;
@@ -29,6 +31,18 @@
   dcat:distribution <https://w3id.org/italia/data/distribution/archives-techniques-type.csv>;
   dcat:keyword "Archivi", "Tecniche";
   dcat:theme <http://publications.europa.eu/resource/authority/data-theme/EDUC> .
+
+<https://example.lod.it/data/distribution/archives-techniques-type.csv> a dcatapit:Distribution,
+    dcat:Distribution;
+  dc:description "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle tecniche di produzione artistica relative ai documenti presenti nel dominio archivistico"@it;
+  dc:format <http://creativecommons.org/licenses/by/4.0/>, <https://publications.europa.eu/resource/authority/file-type/csv>;
+  dc:title "Distribuzione csv del vocabolario controllato delle tecniche di produzione artistica"@it;
+  rdfs:comment "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle tecniche di produzione artistica relative ai documenti presenti nel dominio archivistico"@it;
+  rdfs:label "Distribuzione csv del vocabolario controllato delle tecniche di produzione artistica"@it;
+  dcat:accessURL <https://www.dati.gruppo.it/api/composition/uni_bo/rows.csv?accessType=DOWNLOAD>;
+  dcat:downloadURL <http://spcdata.digitpa.gov.it/data/contrattiLotto1.nt> .
+
+####################### TECNICHE ##########################################################
 
 <http://dati.gov.it/resource/Dataset/archives-consistency-type/acquaforte> a skos:Concept,
     a-arc:TechniquesType;
@@ -345,12 +359,4 @@
   rdfs:label "Woodcut"@en, "Xilografia"@it;
   skos:prefLabel "Woodcut"@en, "Xilografia"@it .
 
-<https://example.lod.it/data/distribution/archives-techniques-type.csv> a dcatapit:Distribution,
-    dcat:Distribution;
-  dc:description "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle tecniche di produzione artistica relative ai documenti presenti nel dominio archivistico"@it;
-  dc:format <http://creativecommons.org/licenses/by/4.0/>, <https://publications.europa.eu/resource/authority/file-type/csv>;
-  dc:title "Distribuzione csv del vocabolario controllato delle tecniche di produzione artistica"@it;
-  rdfs:comment "Distribuzione N1 del dataset Linked Open Data relativo ai valori controllati delle tecniche di produzione artistica relative ai documenti presenti nel dominio archivistico"@it;
-  rdfs:label "Distribuzione csv del vocabolario controllato delle tecniche di produzione artistica"@it;
-  dcat:accessURL <https://www.dati.gruppo.it/api/composition/uni_bo/rows.csv?accessType=DOWNLOAD>;
-  dcat:downloadURL <http://spcdata.digitpa.gov.it/data/contrattiLotto1.nt> .
+
