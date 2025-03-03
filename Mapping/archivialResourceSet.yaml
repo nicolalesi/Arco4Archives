@@ -1,0 +1,142 @@
+prefixes:
+    l0: "https://w3id.org/italia/onto/l0/"
+    cov: "https://w3id.org/italia/onto/COV/"
+    clv: "https://w3id.org/italia/onto/CLV/"
+    prj: "https://w3id.org/italia/onto/Project/"
+    rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+    xsd: "http://www.w3.org/2000/01/XMLSchema#"
+    Arco4Archive: "https://w3id.org/italia/cultural-heritage/archives/data/"
+    ti: "https://schema.gov.it/lodview/onto/TI/"
+    grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+    arco-lite: "https://w3id.org/arco/ontology/arco-lite/"
+    fno: "https://w3id.org/imec/idlab/function#"
+    core: "https://w3id.org/arco/ontology/core/"
+    a-dd: "https://w3id.org/arco/ontology/denotative-description/"
+
+sources:
+  data1:
+    access: ComplArch.xml
+    referenceFormulation: xpath
+    iterator: "/ead/archdesc"
+  data2:
+    access: ComplArch.xml
+    referenceFormulation: xpath
+    iterator: "//physdescstructured"
+
+mappings:
+    ArchivialResourceSet:
+        sources: 
+        - data1
+        - data2
+        s: https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(did/unitid[1])
+        po:
+        - [a, Arco4Archive:ArchivialResourceSet]
+        - [Arco4Archive:hasArchivialReferenceCode, "https://w3id.org/italia/cultural-heritage/archives/data/archivial-reference-code/$(did/unitid[1])~iri"]
+        - [core:hasType, "https://w3id.org/arco/ontology/core/SystemIdentifier~iri"]
+        - [Arco4Archive:systemOtherId, "$(did/unitid[@localType='altroId'])"]
+        - [Arco4Archive:systemPreviousId, "$(did/unitid[@localType='idPrecedente'])"] 
+        - [Arco4Archive:unitName, "$(did/unittitle[1])"]
+        - [Arco4Archive:unitOtherName, "$(did/unittitle[@label='altraDenominazione'])"]
+        - [Arco4Archive:unitOtherNameDateRange, "$(did/unittitle/date)"]
+        - [Arco4Archive:dateRangeInString, "$(did/unitdate)"]
+        - [Arco4Archive:totalExtentInLinearMeters, "$(did/physdesc)",xsd:string]
+        - [a-dd:hasConservationStatus, "https://w3id.org/arco/ontology/denotative-description/ConservationStatus/$(did/unitid[1])~iri"]
+        - p: ti:hasTemporalEntity
+          o:
+                function: fno:concat
+                parameters: 
+                - [fno:str,https://w3id.org/italia/cultural-heritage/archives/data/temporal-entity/$(did/unitdatestructured/daterange/fromdate)]
+                - [fno:delimiter, "-"]
+                - [fno:otherStr, $(did/unitdatestructured/daterange/todate)]
+                type: iri
+        - p: Arco4Archive:hasExtent
+          o:
+                function: grel:array_join
+                parameters: 
+                - [grel:p_array_a,"https://w3id.org/italia/cultural-heritage/archives/data/extent/"]
+                - parameter: grel:p_array_a
+                  value:
+                    function: grel:string_md5
+                    parameters: 
+                    - [grel:valueParameter,"$(did/physdescset/physdescstructured[2])"]  #si sovrascivono
+                type: iri
+
+    TimeInterval:
+        sources:
+        - [ComplArch.xml~xpath, /ead/archdesc]
+        s: https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(did/unitdatestructured/daterange/fromdate)-$(did/unitdatestructured/daterange/todate)
+        po:
+        - [a, ti:TimeInterval]
+        - [ti:hasTimeInstantInside,$(did/unitdatestructured/daterange/fromdate)]
+        - [ti:hasTimeInstantInside,$(did/unitdatestructured/daterange/todate)]
+
+    TimeInstantS:
+        sources:
+        - [ComplArch.xml~xpath, /ead/archdesc]
+        s: https://w3id.org/italia/cultural-heritage/archives/data/time-instant/$(did/unitdatestructured/daterange/fromdate)
+        po:
+        - [a, ti:TimeInstant]
+        - [core:note,"$(did/didnote[@label='Note_a_Estremo_recente_Complesso'])"]
+        - [Arco4Archive:inIntervalPosition,"start"]
+
+    TimeInstantE:
+        sources:
+        - [ComplArch.xml~xpath, /ead/archdesc]
+        s: https://w3id.org/italia/cultural-heritage/archives/data/time-instant/$(did/unitdatestructured/daterange/todate)
+        po:
+        - [a, ti:TimeInstant]
+        - [core:note,"$(did/didnote[@label='Note_a_Estremo_remoto_Complesso'])"] #immaginario
+        - [Arco4Archive:inIntervalPosition,"end"]
+
+    Extent:
+        sources:
+        - data2
+        s: 
+                function: grel:array_join
+                parameters: 
+                - [grel:p_array_a,"https://w3id.org/italia/cultural-heritage/archives/data/extent/"]
+                - parameter: grel:p_array_a
+                  value:
+                    function: grel:string_md5
+                    parameters: 
+                    - [grel:valueParameter,"$(.)"]       
+        po: 
+        - [a, Arco4Archive:Extent]
+        - [Arco4Archive:quantity, $(quantity),xsd:integer]                                                          #ci sarà da controllare se sono scritti correttamente
+        - [core:note, $(descriptivenote/p),xsd:string]
+        - p: core:specification
+          o:
+            function: fno:concat
+            parameters:
+            - [fno:str,$(dimensions/@unit)]
+            - [fno:delimiter, " "]
+            - [fno:otherStr,$(dimensions)]
+        - p: core:hasType
+          o: 
+            function: fno:concat
+            parameters:
+            - [fno:str,https://w3id.org/italia/cultural-heritage/archives/data/extent/extent-type/]
+            - parameter : fno:otherStr
+              value:
+                function: grel:toLowerCase
+                parameters:
+                - [grel:valueParameter,$(unittype)]
+            type: iri
+    
+    ConservationStatus:
+      sources:
+      - data1
+      s: "https://w3id.org/arco/ontology/denotative-description/ConservationStatus/$(did/unitid[1])"
+      po:
+      - [a, a-dd:ConservationStatus]
+      - [core:specification,"$(did/didnote[@localtype='Restauro_o_Altri_interventi']/p)"]
+      - [Arco4Archive:materialCondition,"$(did/didnote[@localtype='Condizioni_del_materiale']/p)"]
+      - [core:hasType,"https://dati.beniculturali.it/lodview-arco-onto/ontology/core/hasType/$(did/didnote[@localtype='Stato_di_conservazione']/p)~iri"]
+      - p: rdfs:label
+        o:
+          function: fno:concat
+          parameters:
+          - [fno:str , "Stato di conservazione 1 del bene: "]
+          - [fno:otherStr , "$(did/unitid[1])"]
+
+      
