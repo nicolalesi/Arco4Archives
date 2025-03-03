@@ -47,3 +47,49 @@ quando privato usiamo uri priv quando pubblico usiamo pubblico
 
 ##########################
 - File yarml con metadati e info del vocabolario controllato
+
+
+##########################
+- Vedere giro agenti da xml a csv fare mapping, agenti 
+- Vedere se ci sono anche altre cose come strumenti etc …
+- A valle degli agenti, si può proseguire con unità archivistiche, come sono xml per la parte dei documenti
+- Complesso archivistico, unità documentaria, analisi campi, conversione csv
+
+
+URI PER TIMEINTERVAL COME QUELLO DI DATI DEVE ESSERE UN URI 
+Fuunzioni per normalizzare la stringa e rimuovere gli spazi, sostituire caratteri speciali.
+
+Formazione URI non camelCase ma lowercase con il trattino al posto dello spazio ex : corporate-body
+Quando reifichi dati, usa lo stesso prefisso.
+
+Organizzazione che è sempre la stessa, un'organizzazione che probabilmente è magistrato politico di treno e poi ha una doppia relazione con institutionalprofile in time e poi collego con il time interval
+tipologiaEnte classificationInTime
+Formal Organization ha tempo
+
+Insittutional profile 14-25 metti una label nell'altro l'altra
+institutional-profile-in-time poi mettiamo codice organizzazione + hash stringa
+
+Tiriamo fuori date dai profili istituzionali
+
+Magistrato di Treno ha un legalStatus è pubblico 
+
+Quando trovi ente pubblico metti la stringa uri del vocabolario controllato
+Altrimenti bisogna reificare rimettendo il codice dell'ente e uri
+
+hasSite mettiamo clv:feature mettiamo uri con feature che dice che la sede è trento
+jurisdiction può anche essere trento
+creiamo entità trento con hash o normalizzazioni spazi trento
+
+subClass of si può eliminare, nei dati non ci interessa
+
+
+####################
+SOlo complesso archivistico ArchivialResourceSet
+Date dovrebbero essere ok
+Luoghi anche
+
+0 - Analisi XML nuovo
+1 - Pomeriggio altro pezzo ontologia 
+2 - Prendiamo dati XML guardiamo, 
+3 - Controllare mapping passato con grafico
+4 - Se vedo soggetti conservatori nel nuovo XML uso quelli come dati

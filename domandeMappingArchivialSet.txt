@@ -1,0 +1,7 @@
+NOTE MAPPING
+
+- Per extent sto cercando di fare hash dell'intero tag, così da creare uri univoci per ognuno attualmente 
+si sovrascive con arrayjoin suppongo a causa di qualche errore di iterazione (non si sovrascrive nel subject ma si sovrascrive nella concatenazione nel po)
+
+- Quando creo un uri come - [core:hasType, "https://w3id.org/arco/ontology/core/SystemIdentifier~iri"]
+è corretto usare url dell'ontologia o utilizziamo il nostro?

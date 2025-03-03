@@ -9,10 +9,10 @@ def occorrenze(v):
 
 # Colonne definite per il CSV
 cols = ["legalName", "altraDenominazione", "dataAltraDenominazione", "localType", "nome", "cognome", 
-        "intestazione", "authorizedFrom", "existenceRangeFromDate", "existenceRangeToDate", "dataNascita", 
-        "dataMorte", "placeRole", "placeEntry", "otherPlaceRole", "otherPlaceEntry", "professione", 
-        "legalStatus", "tipologiaEnte", "history", "genere", "relazione_complesso", "relazione_tema", 
-        "relazione_bib","id_sistema"]
+        "intestazione", "rangeIntestazione", "authorizedFrom", "existenceRangeFromDate", "existenceRangeToDate", 
+        "dataNascita", "dataMorte", "placeRole", "placeEntry", "otherPlaceRole", "otherPlaceEntry", 
+        "professione", "legalStatus", "tipologiaEnte", "history", "genere", "relazione_complesso", 
+        "relazione_tema", "relazione_bib","id_sistema"]
 
 rows = []
 
@@ -20,7 +20,6 @@ rows = []
 xmlparse = Xet.parse('sab_trentino_secondo_caricamento_EAC.xml')
 root = xmlparse.getroot()
 
-# Definisci i namespaces
 # Definisci i namespaces
 namespaces = {
     'eac-cpf': 'urn:isbn:1-931666-33-4',
@@ -37,11 +36,13 @@ for record in root.findall('.//icar-import:record', namespaces):
         if cpf_description is not None:
             id_map.append((id_sistema, cpf_description))
 
-# Estrai i dati dal file XML
-rows = []
+# Funzione per estrarre il range temporale dall'intestazione
+def extract_range(text):
+    parts = text.split(',')
+    return parts[2].strip() if len(parts) > 2 else None  # Prende tutto dopo la seconda virgola
 
+# Estrai i dati dal file XML
 for id_sistema, cpf_description in id_map:
-    # Estraiamo tutti i valori dai tag
     field_mappings = {
         "legalName": cpf_description.findall('.//eac-cpf:nameEntry/eac-cpf:part', namespaces),
         "altraDenominazione": cpf_description.findall('.//eac-cpf:nameEntry[@localType="altraDenominazione"]/eac-cpf:part', namespaces),
@@ -69,27 +70,25 @@ for id_sistema, cpf_description in id_map:
         "relazione_bib": cpf_description.findall('.//eac-cpf:relations/eac-cpf:resourceRelation/eac-cpf:relationEntry[@localType="BIBTEXT"]', namespaces)
     }
 
-    # Crea una riga di base con id_sistema
     base_row = {"id_sistema": id_sistema}
 
-    # Aggiungi i valori unici o predefiniti alla riga di base
     for field, values in field_mappings.items():
         base_row[field] = values[0].text if values else None
 
+    # Estrazione del range temporale
+    base_row["rangeIntestazione"] = extract_range(base_row.get("intestazione", ""))
+
     rows.append(base_row)
 
-    # Aggiungi una riga per ogni occorrenza multipla
     for field, values in field_mappings.items():
-        if len(values) > 1:  # Se ci sono più occorrenze
+        if len(values) > 1:
             for value in values:
-                new_row = base_row.copy()  # Crea una nuova copia della riga di base
+                new_row = base_row.copy()
                 new_row[field] = value.text
+                new_row["rangeIntestazione"] = extract_range(new_row.get("intestazione", ""))
                 rows.append(new_row)
 
-# Creazione del DataFrame
 df = pd.DataFrame(rows)
-
-# Scrivi il DataFrame nel CSV
-df.to_csv('outputDoubleRows.csv', index=False)
+df.to_csv('outputDoubleRowsP.csv', index=False)
 
 print("File CSV creato con successo.")
