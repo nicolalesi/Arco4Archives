@@ -5,3 +5,9 @@ si sovrascive con arrayjoin suppongo a causa di qualche errore di iterazione (no
 
 - Quando creo un uri come - [core:hasType, "https://w3id.org/arco/ontology/core/SystemIdentifier~iri"]
 è corretto usare url dell'ontologia o utilizziamo il nostro?
+
+- Non sono sicura della mappatura di questi attributi
+        - [Arco4Archive:unitName, "$(did/unittitle[1])"]
+        - [Arco4Archive:unitOtherName, "$(did/unittitle[@label='altraDenominazione'])"]
+        - [Arco4Archive:unitOtherNameDateRange, "$(did/unittitle/date)"]
+        - [Arco4Archive:dateRangeInString, "$(did/unitdate)"]
