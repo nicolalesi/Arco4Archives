@@ -1,11 +1,12 @@
 @prefix : <http://mapping.example.com/> .
-@prefix Arco4Archive: <https://w3id.org/italia/cultural-heritage/archives/data/> .
-@prefix a-dd: <https://w3id.org/arco/ontology/denotative-description/> .
+@prefix Arco4Archive: <https://w3id.org/italia/cultural-heritage/archives/onto/> .
+@prefix a-cd: <https://w3id.org/arco/ontology/denotative-description/> .
 @prefix arco-lite: <https://w3id.org/arco/ontology/arco-lite/> .
 @prefix clv: <https://w3id.org/italia/onto/CLV/> .
 @prefix core: <https://w3id.org/arco/ontology/core/> .
 @prefix cov: <https://w3id.org/italia/onto/COV/> .
 @prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix data: <https://w3id.org/italia/cultural-heritage/archives/data/> .
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
 @prefix fno: <https://w3id.org/imec/idlab/function#> .
@@ -23,7 +24,7 @@
 @prefix xsd: <http://www.w3.org/2000/01/XMLSchema#> .
 
 <https://w3id.org/arco/ontology/denotative-description/ConservationStatus/IT-ASBZ-F230000094>
-  a a-dd:ConservationStatus;
+  a a-cd:ConservationStatus;
   rdfs:label "Stato di conservazione 1 del bene: IT-ASBZ-F230000094";
   core:hasType <https://dati.beniculturali.it/lodview-arco-onto/ontology/core/hasType/Discreto>;
   core:specification "Parte del fondo é stato soggetto a interventi di restauro.";
@@ -31,22 +32,37 @@
 
 <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/1941-1984>
   a ti:TimeInterval;
-  ti:hasTimeInstantInside "1941", "1984" .
+  ti:hasTimeInstantInside "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1941",
+    "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1984" .
 
 <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/IT-ASBZ-F230000094>
   a Arco4Archive:ArchivialResourceSet;
+  ti:atTime <https://w3id.org/italia/cultural-heritage/archives/data/time-interval/1941-1984>;
   ti:hasTemporalEntity <https://w3id.org/italia/cultural-heritage/archives/data/temporal-entity/1941-1984>;
+  arco-lite:alternativeDesignation "Delegazione di finanza di Bolzano ";
+  arco-lite:alternativeIdentifier "SIcod001", "cod0010000283";
+  arco-lite:currentDesignation <https://w3id.org/italia/cultural-heritage/archives/data/alternative-designation/intendenza-di-finanza-di-bolzano>;
+  core:description "Il fondo è costituito dalle due serie Danni di guerra, corredata da uno schedario alfabetico coevo organizzato per richiedente, e Campionatura, contenente le carte dell'Intendenza di finanza versate dall'Agenzia delle entrate di Bolzano.";
   core:hasType core:SystemIdentifier;
-  a-dd:hasConservationStatus <https://w3id.org/arco/ontology/denotative-description/ConservationStatus/IT-ASBZ-F230000094>;
+  a-cd:hasConservationStatus <https://w3id.org/arco/ontology/denotative-description/ConservationStatus/IT-ASBZ-F230000094>;
+  a-cd:hasDesignationInTime "Delegazione di finanza di Bolzano ";
+  a-cd:historicalInformation "La serie archivistica denominata \"Danni di Guerra\", corredata da schedario coevo, fu versata dall'Intendenza di Finanza di Bolzano all'Archivio di Stato mediante vari versamenti tra il 30 giugno 1987 e l'8 marzo 1988; una seconda serie costituita da una campionatura venne versata il 15 marzo 2002 dall'Agenzia delle entrate di Bolzano, cui era confluito l'archivio dell'Intendenza di Finanza, a seguito dell'assimilazione delle funzioni da parte della Direzione generale delle entrate di Bolzano nel 1991.";
   Arco4Archive:dateRangeInString "1941-1984 (con documentazione dal 1915)";
   Arco4Archive:hasArchivialReferenceCode <https://w3id.org/italia/cultural-heritage/archives/data/archivial-reference-code/IT-ASBZ-F230000094>;
-  Arco4Archive:hasExtent <https://w3id.org/italia/cultural-heritage/archives/data/extent/cc3b94e0037b22dacd42a5b04a6d6dcb>;
-  Arco4Archive:systemOtherId "cod0010000283";
-  Arco4Archive:systemPreviousId "SIcod001";
+  Arco4Archive:hasArrangement <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/920bc325049771ec2cd50bd824056e27ba76c7b0e9a56f082d2570c8681388044a65955fb00a85d019b89b3ebbd0d346>;
+  Arco4Archive:hasExtent <https://w3id.org/italia/cultural-heritage/archives/data/extent/920bc325049771ec2cd50bd824056e275e3ef7bac7caeb886416e9689faf0293d3d9446802a44259755d38e6d163e820>;
   Arco4Archive:totalExtentInLinearMeters "300 m.l. (10 volumi e 400 buste)"^^xsd:string;
-  Arco4Archive:unitName "Intendenza di finanza di Bolzano";
-  Arco4Archive:unitOtherName "Delegazione di finanza di Bolzano ";
   Arco4Archive:unitOtherNameDateRange "1941-1950" .
+
+<https://w3id.org/italia/cultural-heritage/archives/data/arrangement/920bc325049771ec2cd50bd824056e27ba76c7b0e9a56f082d2570c8681388044a65955fb00a85d019b89b3ebbd0d346>
+  a Arco4Archive:Arrangement;
+  core:description "Fondo organizzato in due serie.";
+  Arco4Archive:hasNumbering <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering/920bc325049771ec2cd50bd824056e27ba76c7b0e9a56f082d2570c868138804> .
+
+<https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering/920bc325049771ec2cd50bd824056e27ba76c7b0e9a56f082d2570c868138804>
+  a Arco4Archive:Numbering;
+  core:description "1-400 (numerazione delle buste)", "401-410 (numerazione dei volumi)";
+  Arco4Archive:hasNumberingType <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering/arabic-numeral> .
 
 <https://w3id.org/italia/cultural-heritage/archives/data/extent/cc3b94e0037b22dacd42a5b04a6d6dcb>
   a Arco4Archive:Extent;
