@@ -17,8 +17,6 @@ prefixes:
     idlab-fn: "https://w3id.org/imec/idlab/function#"
 
 
-external:
-
 sources:
   data1:
     access: ComplArch.xml
@@ -30,15 +28,19 @@ sources:
     iterator: "//physdescstructured"
   data3:
     access: ComplArch.xml
-    referenceFormulation: xpath
+    referenceFormulation: xpath                   #non utilizzato
     iterator: "/arrangement"
   data4:
     access: ComplArch.xml
     referenceFormulation: xpath
-    iterator: "//arrangement/list"
+    iterator: "//arrangement"
   archivalHierarchy:
     access: archival_resource_levels.csv
     referenceFormulation: csv
+  archivesConsistency:
+    access: archives-consistency-type.csv
+    referenceFormulation: csv
+
 
 mappings:
     ArchivialResourceSet:
@@ -58,14 +60,14 @@ mappings:
         po:
         - [a, Arco4Archive:ArchivialResourceSet]
         - [Arco4Archive:hasArchivialReferenceCode, "https://w3id.org/italia/cultural-heritage/archives/data/archivial-reference-code/$(did/unitid[1])~iri"]
-        - [core:hasType, $(@level)] # qui bisognerebbe fare string matching con le label un'altra source che sarebbe ArchivalHierarchy.ttl di Giorgia. Con yaml questa cosa non funziona molto bene, da capire, ma comunque l'oggetto dovrebbe essere questo per questa singola risorsa <https://w3id.org/italia/republic-history/data/arc-resource-type/fonds>
         - p: core:hasType
-          o: "prova"
-          condition:                                 #capire come fare il matching vocabolario controllato
+          o: 
+          - mapping: LevelOfDescription
+            condition:                                 #capire come fare il matching vocabolario controllato
               function: equal
               parameters:
-                - [str1, "archivalHierarchy/$(notation)"]
-                - [str2, $(@level)]
+                - [str1, $(@level),s]
+                - [str2, $(Notation),o]
         - [arco-lite:alternativeIdentifier, "$(did/unitid[@localType='altroId'])"]    #csv esterno string match valori colonna, se c'è un risultato prendo uri di rifetrimento
         - [arco-lite:alternativeIdentifier, "$(did/unitid[@localType='idPrecedente'])"] 
         - p: arco-lite:currentDesignation
@@ -103,41 +105,8 @@ mappings:
                 - [fno:delimiter, "-"]
                 - [fno:otherStr, $(did/unitdatestructured/daterange/todate)]
                 type: iri
-        - p: Arco4Archive:hasExtent #controlla md5 non combacianti
-          o:
-              function: grel:array_join
-              parameters:
-              - [grel:p_array_a,"https://w3id.org/italia/cultural-heritage/archives/data/extent/"]    #md5 non combacia
-              - parameter: grel:p_array_a
-                value:
-                  function: grel:string_md5
-                  parameters:
-                  - parameter: grel:valueParameter
-                    value:
-                      function: grel:array_join
-                      parameters: 
-                      - [grel:p_array_a,"$(did/physdescset/physdescstructured/unittype)"] 
-                      - [grel:p_array_a,"$(did/physdescset/physdescstructured/quantity)"] 
-              type: iri
         - [core:description, "$(scopecontent/p)"]
         - [a-cd:historicalInformation, "$(custodhist/p)"]
-        - p: Arco4Archive:hasArrangement                        #anche qui si sovrascrive, ho provato con concat ma è la stessa cosa 
-          o: 
-              function: grel:array_join
-              parameters:
-              - [grel:p_array_a,"https://w3id.org/italia/cultural-heritage/archives/data/arrangement/"]
-              - parameter: grel:p_array_a
-                value:
-                  function: grel:string_md5
-                  parameters:
-                  - parameter: grel:valueParameter
-                    value:
-                      function: grel:array_join
-                      parameters: 
-                      - [grel:p_array_a,"$(did/unitid[1])"] 
-                      - [grel:p_array_a,"$(arrangement/p/num)"] 
-                      - [grel:p_array_a,"$(arrangement/list/item)"] 
-              type: iri
         - [core:specification, $(appraisal/p)]
         - [core:specification, $(accruals/p)]
         - [core:note, $(acquinfo/p)]
@@ -217,7 +186,7 @@ mappings:
               value:
                 function: grel:string_md5
                 parameters:
-                - [grel:valueParameter, "$(relations/relation/relationentry[@localtype='Soggetto conservatore'])"]
+                - [grel:valueParameter, "$(relations/relation/relationentry[@localtype='Soggetto conservatore'])"]                              #Adesso c'è una entry di relazione per tutto, ma probabilmente sarà da fare come per Arrangement e Extension, altrimenti sovrascrive
             type: iri 
         - p: Arco4Archive:hasProject
           o:
@@ -254,6 +223,54 @@ mappings:
             type: iri 
 # ci sarebbe una relazione con strumenti di ricerca che non vedo nel grafo
 # ci sarebbe una relazione con bib che non vedo nel grafo
+    ArchivialResourceSetExt:
+      sources:
+      - data2
+      s: "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(ancestor::did/unitid[1])/"
+      po:
+      - [a, Arco4Archive:ArchivialResourceSet]  
+      - p: Arco4Archive:hasExtent
+        o:
+                function: grel:array_join
+                parameters:
+                - [grel:p_array_a,"https://w3id.org/italia/cultural-heritage/archives/data/extent/"]    #Risolto problema sovrascrizione
+                - parameter: grel:p_array_a
+                  value:
+                    function: grel:string_md5
+                    parameters:
+                    - parameter: grel:valueParameter
+                      value:
+                        function: grel:array_join
+                        parameters: 
+                        - [grel:p_array_a,"$(unittype)"] 
+                        - [grel:p_array_a,"$(quantity)"] 
+                type: iri
+
+    ArchivialResourceSetArrang:
+      sources:
+      - data4
+      s: "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(preceding::did/unitid[1])/"
+      po:
+      - [a, Arco4Archive:ArchivialResourceSet]
+      #- [Arco4Archive:prova,"prova"]
+      - p: Arco4Archive:hasArrangement                        #risolto problema sovrascrizione
+        o: 
+              function: grel:array_join
+              parameters:
+              - [grel:p_array_a,"https://w3id.org/italia/cultural-heritage/archives/data/arrangement/"]
+              - parameter: grel:p_array_a
+                value:
+                  function: grel:string_md5
+                  parameters:
+                  - parameter: grel:valueParameter
+                    value:
+                      function: grel:array_join
+                      parameters: 
+                      - [grel:p_array_a, "$(../did/unitid[1])"]                          #provato ad usare ancestor anche qui, nei loro esempi funziona, a me no, nella source si
+                      - [grel:p_array_a,"$(p/num)"]                                     #ho provato ad aggiornare il parser, ma nulla, l'unica variabile di differenza forse è docker, proverò, intanto risolto con path
+                      - [grel:p_array_a,"$(list/item)"] 
+              type: iri
+
 
     ConditionOfAccess:
       sources:
@@ -422,15 +439,12 @@ mappings:
             - [fno:otherStr,$(dimensions)]
         - p: core:hasType
           o: 
-            function: fno:concat
-            parameters:
-            - [fno:str,https://w3id.org/italia/cultural-heritage/archives/data/extent/extent-type/] # questo sarebbe da collegare al tuo archival-consistency-type vocabolario... magari lo guardiamo insieme
-            - parameter : fno:otherStr
-              value:
-                function: grel:toLowerCase
-                parameters:
-                - [grel:valueParameter,$(unittype)]
-            type: iri
+          - mapping: ConsistencyType                    # posso fare come sopra, ma nei dati è scritto al plurale :( per ora metterò la notation del vocabolario al plurale e in minuscolo
+            condition:                                 #capire come fare il matching vocabolario controllato
+              function: equal
+              parameters:
+                - [str1, $(unittype),s]
+                - [str2, $(notation),o]
     
     ConservationStatus:
       sources:
@@ -450,7 +464,7 @@ mappings:
 
     Arrangement:
       sources:
-      - data1
+      - data4
       s: 
               function: grel:array_join
               parameters:
@@ -463,12 +477,12 @@ mappings:
                     value:
                       function: grel:array_join
                       parameters: 
-                      - [grel:p_array_a,"$(did/unitid[1])"] 
-                      - [grel:p_array_a,"$(arrangement/p/num)"] 
-                      - [grel:p_array_a,"$(arrangement/list/item)"] 
+                      - [grel:p_array_a,"$(../did/unitid[1])"] 
+                      - [grel:p_array_a,"$(p/num)"] 
+                      - [grel:p_array_a,"$(list/item)"] 
       po: 
       - [a, Arco4Archive:Arrangement]
-      - [core:description,"$(arrangement[1]/p)"]
+      - [core:description,"$(p)"]
       - p: Arco4Archive:hasNumbering    
         o: 
           function: grel:array_join
@@ -482,8 +496,8 @@ mappings:
                 value:
                   function: grel:array_join
                   parameters:
-                  - [grel:valueParameter,"$(did/unitid[1])"]  
-                  - [grel:valueParameter,"$(arrangement/p/num)"]
+                  - [grel:valueParameter,"$(../did/unitid[1])"]  
+                  - [grel:valueParameter,"$(p/num)"]
           type: iri
 
     Numbering:
@@ -526,7 +540,20 @@ mappings:
                 function: idlab-fn:equal
                 parameters:
                 - [grel:valueParameter,$(arrangement/p/num)]
-                - [grel:valueParameter2,"numeri alfanumerici"]                              
+                - [grel:valueParameter2,"numeri alfanumerici"] 
+
+    LevelOfDescription:
+      sources:
+      - archivalHierarchy
+      s: $(URI)
+
+    ConsistencyType:
+      sources:
+      - archivesConsistency
+      s: "http://example/archives-consistency-type/$(notation)"
+
+
+
 
 
 #Problema identificativo originali

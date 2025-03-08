@@ -15,11 +15,9 @@
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix l0: <https://w3id.org/italia/onto/l0/> .
 @prefix prj: <https://w3id.org/italia/onto/Project/> .
-@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://w3id.org/rml/> .
 @prefix ti: <https://w3id.org/italia/onto/TI/> .
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2000/01/XMLSchema#> .
@@ -45,17 +43,20 @@
   a-cd:hasDesignationInTime <https://w3id.org/italia/cultural-heritage/archives/data/alternative-designation/IT-ASBZ-F230000094-delegazione-di-finanza-di-bolzano>;
   a-cd:historicalInformation "La serie archivistica denominata \"Danni di Guerra\", corredata da schedario coevo, fu versata dall'Intendenza di Finanza di Bolzano all'Archivio di Stato mediante vari versamenti tra il 30 giugno 1987 e l'8 marzo 1988; una seconda serie costituita da una campionatura venne versata il 15 marzo 2002 dall'Agenzia delle entrate di Bolzano, cui era confluito l'archivio dell'Intendenza di Finanza, a seguito dell'assimilazione delle funzioni da parte della Direzione generale delle entrate di Bolzano nel 1991.";
   core:description "Il fondo è costituito dalle due serie Danni di guerra, corredata da uno schedario alfabetico coevo organizzato per richiedente, e Campionatura, contenente le carte dell'Intendenza di finanza versate dall'Agenzia delle entrate di Bolzano.";
-  core:hasType "fonds";
+  core:hasType <https://w3id.org/italia/republic-history/data/arc-resource-type/fonds>;
   core:note "Fondo versato in parte dall'Intendenza di Finanza di Bolzano e in parte dall'Agenzia delle entrate di Bolzano.";
   core:specification "Fondo chiuso. Non sono previsti incrementi.", "Il fondo non é stato soggetto a procedure di scarto.";
   a-dd:hasConservationStatus <https://w3id.org/arco/ontology/denotative-description/ConservationStatus/IT-ASBZ-F230000094>;
   Arco4Archive:hasArchivialReferenceCode <https://w3id.org/italia/cultural-heritage/archives/data/archivial-reference-code/IT-ASBZ-F230000094>;
-  Arco4Archive:hasArrangement <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/1db48e4797bdbfaafef3263049451ac2>;
+  Arco4Archive:hasArrangement <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/17299a937437cf870dbf87e820b0e366>,
+    <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/497f8465fbf26c1fe80f0cbe7e29d588>,
+    <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/920bc325049771ec2cd50bd824056e27>;
   Arco4Archive:hasConditionOfAccess <https://w3id.org/italia/cultural-heritage/archives/data/condition-of-access/2af1268832202bcc1b82df4748c02c7f>;
   Arco4Archive:hasConditionOfUse <https://w3id.org/italia/cultural-heritage/archives/data/condition-of-use/1af0d307d7ba65a59e0a25173fe29a79>;
   Arco4Archive:hasCopy <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/IT-ASBZ-F230000094/copy-location/410eef4b11037a608a1f02fcdefa7d15>;
   Arco4Archive:hasEvent <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/event/sia-evn-c00032>;
-  Arco4Archive:hasExtent <https://w3id.org/italia/cultural-heritage/archives/data/extent/e0f80a3fc1e4369b9342417c5b8ccd12>;
+  Arco4Archive:hasExtent <https://w3id.org/italia/cultural-heritage/archives/data/extent/84e8eb01913893ddca6248fc6ae10e6e>,
+    <https://w3id.org/italia/cultural-heritage/archives/data/extent/a4b0be5c87f6ff0647a1baec2b37e91f>;
   Arco4Archive:hasExternalDocumentation <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/external-related-doc/4752de7364c82848022af18eed2b1282>;
   Arco4Archive:hasInternalDocumentation <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/internal-related-doc/icar-bz-1500021>;
   Arco4Archive:hasOriginal <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/IT-ASBZ-F230000094/original-location/37649d6c613646279b8500cab35d25ed>;
@@ -70,7 +71,17 @@
     <https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1984>;
   ti:time "1941-1984 (con documentazione dal 1915)" .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/arrangement/1db48e4797bdbfaafef3263049451ac2>
+<https://w3id.org/italia/cultural-heritage/archives/data/arrangement/17299a937437cf870dbf87e820b0e366>
+  a Arco4Archive:Arrangement;
+  core:description "numeri arabi";
+  Arco4Archive:hasNumbering <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering/d41d8cd98f00b204e9800998ecf8427e> .
+
+<https://w3id.org/italia/cultural-heritage/archives/data/arrangement/497f8465fbf26c1fe80f0cbe7e29d588>
+  a Arco4Archive:Arrangement;
+  core:description "numeri arabi";
+  Arco4Archive:hasNumbering <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering/d41d8cd98f00b204e9800998ecf8427e> .
+
+<https://w3id.org/italia/cultural-heritage/archives/data/arrangement/920bc325049771ec2cd50bd824056e27>
   a Arco4Archive:Arrangement;
   core:description "Fondo organizzato in due serie.";
   Arco4Archive:hasNumbering <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering/d41d8cd98f00b204e9800998ecf8427e> .
@@ -92,13 +103,13 @@
 
 <https://w3id.org/italia/cultural-heritage/archives/data/extent/84e8eb01913893ddca6248fc6ae10e6e>
   a Arco4Archive:Extent;
-  core:hasType <https://w3id.org/italia/cultural-heritage/archives/data/extent/extent-type/buste>;
+  core:hasType <http://example/archives-consistency-type/buste>;
   core:specification "metri_lineari 297";
   Arco4Archive:quantity "400"^^xsd:integer .
 
 <https://w3id.org/italia/cultural-heritage/archives/data/extent/a4b0be5c87f6ff0647a1baec2b37e91f>
   a Arco4Archive:Extent;
-  core:hasType <https://w3id.org/italia/cultural-heritage/archives/data/extent/extent-type/volumi>;
+  core:hasType <http://example/archives-consistency-type/volumi>;
   core:note "Volumi rilegati con posteriorità."^^xsd:string;
   core:specification "metri_lineari 3";
   Arco4Archive:quantity "10"^^xsd:integer .

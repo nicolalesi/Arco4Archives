@@ -44,11 +44,15 @@
 :source_003 a rml:LogicalSource;
     rdfs:label "data4";
     rml:source "ComplArch.xml";
-    rml:iterator "//arrangement/list";
+    rml:iterator "//arrangement";
     rml:referenceFormulation ql:XPath.
 :source_004 a rml:LogicalSource;
     rdfs:label "archivalHierarchy";
     rml:source "archival_resource_levels.csv";
+    rml:referenceFormulation ql:CSV.
+:source_005 a rml:LogicalSource;
+    rdfs:label "archivesConsistency";
+    rml:source "archives-consistency-type.csv";
     rml:referenceFormulation ql:CSV.
 :rules_000 void:exampleResource :map_ArchivialResourceSet_000.
 :map_ArchivialResourceSet_000 rml:logicalSource :source_000;
@@ -80,93 +84,89 @@
 :pm_002 a rr:PredicateMap.
 :pom_002 rr:predicateMap :pm_002.
 :pm_002 rr:constant core:hasType.
-:pom_002 rr:objectMap :om_002.
-:om_002 a rr:ObjectMap;
-    rml:reference "@level";
-    rr:termType rr:Literal.
 :pom_003 a rr:PredicateObjectMap.
 :map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_003.
 :pm_003 a rr:PredicateMap.
 :pom_003 rr:predicateMap :pm_003.
-:pm_003 rr:constant core:hasType.
-:pom_003 rr:objectMap :om_003.
-:om_003 a fnml:FunctionTermMap;
-    rr:termType rr:Literal;
+:pm_003 rr:constant arco-lite:alternativeIdentifier.
+:pom_003 rr:objectMap :om_002.
+:om_002 a rr:ObjectMap;
+    rml:reference "did/unitid[@localType='altroId']";
+    rr:termType rr:Literal.
+:pom_004 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_004.
+:pm_004 a rr:PredicateMap.
+:pom_004 rr:predicateMap :pm_004.
+:pm_004 rr:constant arco-lite:alternativeIdentifier.
+:pom_004 rr:objectMap :om_003.
+:om_003 a rr:ObjectMap;
+    rml:reference "did/unitid[@localType='idPrecedente']";
+    rr:termType rr:Literal.
+:pom_005 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_005.
+:pm_005 a rr:PredicateMap.
+:pom_005 rr:predicateMap :pm_005.
+:pm_005 rr:constant arco-lite:currentDesignation.
+:pom_005 rr:objectMap :om_004.
+:om_004 a fnml:FunctionTermMap;
+    rr:termType rr:IRI;
     fnml:functionValue :fn_000.
 :fn_000 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_000.
 :pomexec_000 rr:predicateMap :pmexec_000.
 :pmexec_000 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_000 rr:objectMap :omexec_000.
-:omexec_000 rr:constant "https://w3id.org/imec/idlab/function#trueCondition";
+:omexec_000 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_000 rr:predicateObjectMap :pom_004.
-:pom_004 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_004.
-:pm_004 a rr:PredicateMap;
-    rr:constant idlab-fn:strBoolean.
-:pom_004 rr:objectMap :om_004.
-:om_004 a rr:ObjectMap, fnml:FunctionTermMap;
+:fn_000 rr:predicateObjectMap :pom_006.
+:pom_006 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_006.
+:pm_006 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_006 rr:objectMap :om_005.
+:om_005 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/current-designation/";
+    rr:termType rr:Literal.
+:fn_000 rr:predicateObjectMap :pom_007.
+:pom_007 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_007.
+:pm_007 a rr:PredicateMap;
+    rr:constant idlab-fn:otherStr.
+:pom_007 rr:objectMap :om_006.
+:om_006 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_001.
 :fn_001 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_001.
 :pomexec_001 rr:predicateMap :pmexec_001.
 :pmexec_001 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_001 rr:objectMap :omexec_001.
-:omexec_001 rr:constant "https://w3id.org/imec/idlab/function#equal";
+:omexec_001 rr:constant "https://w3id.org/imec/idlab/function#slugify";
     rr:termType rr:IRI.
-:fn_001 rr:predicateObjectMap :pom_005.
-:pom_005 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_005.
-:pm_005 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_005 rr:objectMap :om_005.
-:om_005 a rr:ObjectMap;
-    rr:template "archivalHierarchy/{notation}";
-    rr:termType rr:Literal.
-:fn_001 rr:predicateObjectMap :pom_006.
-:pom_006 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_006.
-:pm_006 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_006 rr:objectMap :om_006.
-:om_006 a rr:ObjectMap;
-    rml:reference "@level";
-    rr:termType rr:Literal.
-:fn_000 rr:predicateObjectMap :pom_007.
-:pom_007 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_007.
-:pm_007 a rr:PredicateMap;
+:fn_001 rr:predicateObjectMap :pom_008.
+:pom_008 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_008.
+:pm_008 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_007 rr:objectMap :om_007.
+:pom_008 rr:objectMap :om_007.
 :om_007 a rr:ObjectMap;
-    rr:constant "prova";
-    rr:termType rr:Literal.
-:pom_008 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_008.
-:pm_008 a rr:PredicateMap.
-:pom_008 rr:predicateMap :pm_008.
-:pm_008 rr:constant arco-lite:alternativeIdentifier.
-:pom_008 rr:objectMap :om_008.
-:om_008 a rr:ObjectMap;
-    rml:reference "did/unitid[@localType='altroId']";
+    rml:reference "did/unittitle[1]";
     rr:termType rr:Literal.
 :pom_009 a rr:PredicateObjectMap.
 :map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_009.
 :pm_009 a rr:PredicateMap.
 :pom_009 rr:predicateMap :pm_009.
-:pm_009 rr:constant arco-lite:alternativeIdentifier.
-:pom_009 rr:objectMap :om_009.
-:om_009 a rr:ObjectMap;
-    rml:reference "did/unitid[@localType='idPrecedente']";
+:pm_009 rr:constant arco-lite:alternativeDesignation.
+:pom_009 rr:objectMap :om_008.
+:om_008 a rr:ObjectMap;
+    rml:reference "did/unittitle[@label='altraDenominazione']";
     rr:termType rr:Literal.
 :pom_010 a rr:PredicateObjectMap.
 :map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_010.
 :pm_010 a rr:PredicateMap.
 :pom_010 rr:predicateMap :pm_010.
-:pm_010 rr:constant arco-lite:currentDesignation.
-:pom_010 rr:objectMap :om_010.
-:om_010 a fnml:FunctionTermMap;
+:pm_010 rr:constant a-cd:hasDesignationInTime.
+:pom_010 rr:objectMap :om_009.
+:om_009 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_002.
 :fn_002 rml:logicalSource :source_000;
@@ -181,17 +181,17 @@
     rr:predicateMap :pm_011.
 :pm_011 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_011 rr:objectMap :om_011.
-:om_011 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/current-designation/";
+:pom_011 rr:objectMap :om_010.
+:om_010 a rr:ObjectMap;
+    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/alternative-designation/{did/unitid[1]}-";
     rr:termType rr:Literal.
 :fn_002 rr:predicateObjectMap :pom_012.
 :pom_012 a rr:PredicateObjectMap;
     rr:predicateMap :pm_012.
 :pm_012 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_012 rr:objectMap :om_012.
-:om_012 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_012 rr:objectMap :om_011.
+:om_011 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_003.
 :fn_003 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_003.
@@ -205,25 +205,35 @@
     rr:predicateMap :pm_013.
 :pm_013 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_013 rr:objectMap :om_013.
-:om_013 a rr:ObjectMap;
-    rml:reference "did/unittitle[1]";
+:pom_013 rr:objectMap :om_012.
+:om_012 a rr:ObjectMap;
+    rml:reference "did/unittitle[@label='altraDenominazione']";
     rr:termType rr:Literal.
 :pom_014 a rr:PredicateObjectMap.
 :map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_014.
 :pm_014 a rr:PredicateMap.
 :pom_014 rr:predicateMap :pm_014.
-:pm_014 rr:constant arco-lite:alternativeDesignation.
-:pom_014 rr:objectMap :om_014.
-:om_014 a rr:ObjectMap;
-    rml:reference "did/unittitle[@label='altraDenominazione']";
-    rr:termType rr:Literal.
+:pm_014 rr:constant Arco4Archive:totalExtentInLinearMeters.
+:pom_014 rr:objectMap :om_013.
+:om_013 a rr:ObjectMap;
+    rml:reference "did/physdesc";
+    rr:termType rr:Literal;
+    rr:datatype xsd:string.
 :pom_015 a rr:PredicateObjectMap.
 :map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_015.
 :pm_015 a rr:PredicateMap.
 :pom_015 rr:predicateMap :pm_015.
-:pm_015 rr:constant a-cd:hasDesignationInTime.
-:pom_015 rr:objectMap :om_015.
+:pm_015 rr:constant a-dd:hasConservationStatus.
+:pom_015 rr:objectMap :om_014.
+:om_014 a rr:ObjectMap;
+    rr:template "https://w3id.org/arco/ontology/denotative-description/ConservationStatus/{did/unitid[1]}";
+    rr:termType rr:IRI.
+:pom_016 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_016.
+:pm_016 a rr:PredicateMap.
+:pom_016 rr:predicateMap :pm_016.
+:pm_016 rr:constant ti:atTime.
+:pom_016 rr:objectMap :om_015.
 :om_015 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_004.
@@ -234,108 +244,134 @@
 :pomexec_004 rr:objectMap :omexec_004.
 :omexec_004 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_004 rr:predicateObjectMap :pom_016.
-:pom_016 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_016.
-:pm_016 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_016 rr:objectMap :om_016.
-:om_016 a rr:ObjectMap;
-    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/alternative-designation/{did/unitid[1]}-";
-    rr:termType rr:Literal.
 :fn_004 rr:predicateObjectMap :pom_017.
 :pom_017 a rr:PredicateObjectMap;
     rr:predicateMap :pm_017.
 :pm_017 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_017 rr:objectMap :om_016.
+:om_016 a rr:ObjectMap;
+    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/time-interval/{did/unitdatestructured/daterange/fromdate}";
+    rr:termType rr:Literal.
+:fn_004 rr:predicateObjectMap :pom_018.
+:pom_018 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_018.
+:pm_018 a rr:PredicateMap;
+    rr:constant idlab-fn:delimiter.
+:pom_018 rr:objectMap :om_017.
+:om_017 a rr:ObjectMap;
+    rr:constant "-";
+    rr:termType rr:Literal.
+:fn_004 rr:predicateObjectMap :pom_019.
+:pom_019 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_019.
+:pm_019 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_017 rr:objectMap :om_017.
-:om_017 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_019 rr:objectMap :om_018.
+:om_018 a rr:ObjectMap;
+    rml:reference "did/unitdatestructured/daterange/todate";
+    rr:termType rr:Literal.
+:pom_020 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_020.
+:pm_020 a rr:PredicateMap.
+:pom_020 rr:predicateMap :pm_020.
+:pm_020 rr:constant core:description.
+:pom_020 rr:objectMap :om_019.
+:om_019 a rr:ObjectMap;
+    rml:reference "scopecontent/p";
+    rr:termType rr:Literal.
+:pom_021 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_021.
+:pm_021 a rr:PredicateMap.
+:pom_021 rr:predicateMap :pm_021.
+:pm_021 rr:constant a-cd:historicalInformation.
+:pom_021 rr:objectMap :om_020.
+:om_020 a rr:ObjectMap;
+    rml:reference "custodhist/p";
+    rr:termType rr:Literal.
+:pom_022 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_022.
+:pm_022 a rr:PredicateMap.
+:pom_022 rr:predicateMap :pm_022.
+:pm_022 rr:constant core:specification.
+:pom_022 rr:objectMap :om_021.
+:om_021 a rr:ObjectMap;
+    rml:reference "appraisal/p";
+    rr:termType rr:Literal.
+:pom_023 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_023.
+:pm_023 a rr:PredicateMap.
+:pom_023 rr:predicateMap :pm_023.
+:pm_023 rr:constant core:specification.
+:pom_023 rr:objectMap :om_022.
+:om_022 a rr:ObjectMap;
+    rml:reference "accruals/p";
+    rr:termType rr:Literal.
+:pom_024 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_024.
+:pm_024 a rr:PredicateMap.
+:pom_024 rr:predicateMap :pm_024.
+:pm_024 rr:constant core:note.
+:pom_024 rr:objectMap :om_023.
+:om_023 a rr:ObjectMap;
+    rml:reference "acquinfo/p";
+    rr:termType rr:Literal.
+:pom_025 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_025.
+:pm_025 a rr:PredicateMap.
+:pom_025 rr:predicateMap :pm_025.
+:pm_025 rr:constant Arco4Archive:hasConditionOfAccess.
+:pom_025 rr:objectMap :om_024.
+:om_024 a fnml:FunctionTermMap;
+    rr:termType rr:IRI;
     fnml:functionValue :fn_005.
 :fn_005 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_005.
 :pomexec_005 rr:predicateMap :pmexec_005.
 :pmexec_005 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_005 rr:objectMap :omexec_005.
-:omexec_005 rr:constant "https://w3id.org/imec/idlab/function#slugify";
+:omexec_005 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_005 rr:predicateObjectMap :pom_018.
-:pom_018 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_018.
-:pm_018 a rr:PredicateMap;
+:fn_005 rr:predicateObjectMap :pom_026.
+:pom_026 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_026.
+:pm_026 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_018 rr:objectMap :om_018.
-:om_018 a rr:ObjectMap;
-    rml:reference "did/unittitle[@label='altraDenominazione']";
+:pom_026 rr:objectMap :om_025.
+:om_025 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/condition-of-access/";
     rr:termType rr:Literal.
-:pom_019 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_019.
-:pm_019 a rr:PredicateMap.
-:pom_019 rr:predicateMap :pm_019.
-:pm_019 rr:constant Arco4Archive:totalExtentInLinearMeters.
-:pom_019 rr:objectMap :om_019.
-:om_019 a rr:ObjectMap;
-    rml:reference "did/physdesc";
-    rr:termType rr:Literal;
-    rr:datatype xsd:string.
-:pom_020 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_020.
-:pm_020 a rr:PredicateMap.
-:pom_020 rr:predicateMap :pm_020.
-:pm_020 rr:constant a-dd:hasConservationStatus.
-:pom_020 rr:objectMap :om_020.
-:om_020 a rr:ObjectMap;
-    rr:template "https://w3id.org/arco/ontology/denotative-description/ConservationStatus/{did/unitid[1]}";
-    rr:termType rr:IRI.
-:pom_021 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_021.
-:pm_021 a rr:PredicateMap.
-:pom_021 rr:predicateMap :pm_021.
-:pm_021 rr:constant ti:atTime.
-:pom_021 rr:objectMap :om_021.
-:om_021 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
+:fn_005 rr:predicateObjectMap :pom_027.
+:pom_027 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_027.
+:pm_027 a rr:PredicateMap;
+    rr:constant idlab-fn:otherStr.
+:pom_027 rr:objectMap :om_026.
+:om_026 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_006.
 :fn_006 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_006.
 :pomexec_006 rr:predicateMap :pmexec_006.
 :pmexec_006 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_006 rr:objectMap :omexec_006.
-:omexec_006 rr:constant "https://w3id.org/imec/idlab/function#concat";
+:omexec_006 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
     rr:termType rr:IRI.
-:fn_006 rr:predicateObjectMap :pom_022.
-:pom_022 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_022.
-:pm_022 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_022 rr:objectMap :om_022.
-:om_022 a rr:ObjectMap;
-    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/time-interval/{did/unitdatestructured/daterange/fromdate}";
+:fn_006 rr:predicateObjectMap :pom_028.
+:pom_028 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_028.
+:pm_028 a rr:PredicateMap;
+    rr:constant grel:valueParameter.
+:pom_028 rr:objectMap :om_027.
+:om_027 a rr:ObjectMap;
+    rml:reference "accessrestrict/accessrestrict[@localtype='noteCondizioniAccesso']/p";
     rr:termType rr:Literal.
-:fn_006 rr:predicateObjectMap :pom_023.
-:pom_023 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_023.
-:pm_023 a rr:PredicateMap;
-    rr:constant idlab-fn:delimiter.
-:pom_023 rr:objectMap :om_023.
-:om_023 a rr:ObjectMap;
-    rr:constant "-";
-    rr:termType rr:Literal.
-:fn_006 rr:predicateObjectMap :pom_024.
-:pom_024 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_024.
-:pm_024 a rr:PredicateMap;
-    rr:constant idlab-fn:otherStr.
-:pom_024 rr:objectMap :om_024.
-:om_024 a rr:ObjectMap;
-    rml:reference "did/unitdatestructured/daterange/todate";
-    rr:termType rr:Literal.
-:pom_025 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_025.
-:pm_025 a rr:PredicateMap.
-:pom_025 rr:predicateMap :pm_025.
-:pm_025 rr:constant Arco4Archive:hasExtent.
-:pom_025 rr:objectMap :om_025.
-:om_025 a fnml:FunctionTermMap;
+:pom_029 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_029.
+:pm_029 a rr:PredicateMap.
+:pom_029 rr:predicateMap :pm_029.
+:pm_029 rr:constant Arco4Archive:hasConditionOfUse.
+:pom_029 rr:objectMap :om_028.
+:om_028 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_007.
 :fn_007 rml:logicalSource :source_000;
@@ -343,24 +379,24 @@
 :pomexec_007 rr:predicateMap :pmexec_007.
 :pmexec_007 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_007 rr:objectMap :omexec_007.
-:omexec_007 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+:omexec_007 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_007 rr:predicateObjectMap :pom_026.
-:pom_026 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_026.
-:pm_026 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_026 rr:objectMap :om_026.
-:om_026 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/extent/";
+:fn_007 rr:predicateObjectMap :pom_030.
+:pom_030 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_030.
+:pm_030 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_030 rr:objectMap :om_029.
+:om_029 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/condition-of-use/";
     rr:termType rr:Literal.
-:fn_007 rr:predicateObjectMap :pom_027.
-:pom_027 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_027.
-:pm_027 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_027 rr:objectMap :om_027.
-:om_027 a rr:ObjectMap, fnml:FunctionTermMap;
+:fn_007 rr:predicateObjectMap :pom_031.
+:pom_031 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_031.
+:pm_031 a rr:PredicateMap;
+    rr:constant idlab-fn:otherStr.
+:pom_031 rr:objectMap :om_030.
+:om_030 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_008.
 :fn_008 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_008.
@@ -369,173 +405,120 @@
 :pomexec_008 rr:objectMap :omexec_008.
 :omexec_008 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
     rr:termType rr:IRI.
-:fn_008 rr:predicateObjectMap :pom_028.
-:pom_028 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_028.
-:pm_028 a rr:PredicateMap;
+:fn_008 rr:predicateObjectMap :pom_032.
+:pom_032 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_032.
+:pm_032 a rr:PredicateMap;
     rr:constant grel:valueParameter.
-:pom_028 rr:objectMap :om_028.
-:om_028 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_032 rr:objectMap :om_031.
+:om_031 a rr:ObjectMap;
+    rml:reference "userrestrict/userrestrict[@localtype='noteCondizioniUtilizzo']/p";
+    rr:termType rr:Literal.
+:pom_033 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_033.
+:pm_033 a rr:PredicateMap.
+:pom_033 rr:predicateMap :pm_033.
+:pm_033 rr:constant Arco4Archive:hasOriginal.
+:pom_033 rr:objectMap :om_032.
+:om_032 a fnml:FunctionTermMap;
+    rr:termType rr:IRI;
     fnml:functionValue :fn_009.
 :fn_009 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_009.
 :pomexec_009 rr:predicateMap :pmexec_009.
 :pmexec_009 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_009 rr:objectMap :omexec_009.
-:omexec_009 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+:omexec_009 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_009 rr:predicateObjectMap :pom_029.
-:pom_029 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_029.
-:pm_029 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_029 rr:objectMap :om_029.
-:om_029 a rr:ObjectMap;
-    rml:reference "did/physdescset/physdescstructured/unittype";
+:fn_009 rr:predicateObjectMap :pom_034.
+:pom_034 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_034.
+:pm_034 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_034 rr:objectMap :om_033.
+:om_033 a rr:ObjectMap;
+    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/{did/unitid[1]}/original-location/";
     rr:termType rr:Literal.
-:fn_009 rr:predicateObjectMap :pom_030.
-:pom_030 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_030.
-:pm_030 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_030 rr:objectMap :om_030.
-:om_030 a rr:ObjectMap;
-    rml:reference "did/physdescset/physdescstructured/quantity";
-    rr:termType rr:Literal.
-:pom_031 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_031.
-:pm_031 a rr:PredicateMap.
-:pom_031 rr:predicateMap :pm_031.
-:pm_031 rr:constant core:description.
-:pom_031 rr:objectMap :om_031.
-:om_031 a rr:ObjectMap;
-    rml:reference "scopecontent/p";
-    rr:termType rr:Literal.
-:pom_032 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_032.
-:pm_032 a rr:PredicateMap.
-:pom_032 rr:predicateMap :pm_032.
-:pm_032 rr:constant a-cd:historicalInformation.
-:pom_032 rr:objectMap :om_032.
-:om_032 a rr:ObjectMap;
-    rml:reference "custodhist/p";
-    rr:termType rr:Literal.
-:pom_033 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_033.
-:pm_033 a rr:PredicateMap.
-:pom_033 rr:predicateMap :pm_033.
-:pm_033 rr:constant Arco4Archive:hasArrangement.
-:pom_033 rr:objectMap :om_033.
-:om_033 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
+:fn_009 rr:predicateObjectMap :pom_035.
+:pom_035 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_035.
+:pm_035 a rr:PredicateMap;
+    rr:constant idlab-fn:otherStr.
+:pom_035 rr:objectMap :om_034.
+:om_034 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_010.
 :fn_010 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_010.
 :pomexec_010 rr:predicateMap :pmexec_010.
 :pmexec_010 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_010 rr:objectMap :omexec_010.
-:omexec_010 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+:omexec_010 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
     rr:termType rr:IRI.
-:fn_010 rr:predicateObjectMap :pom_034.
-:pom_034 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_034.
-:pm_034 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_034 rr:objectMap :om_034.
-:om_034 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/";
+:fn_010 rr:predicateObjectMap :pom_036.
+:pom_036 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_036.
+:pm_036 a rr:PredicateMap;
+    rr:constant grel:valueParameter.
+:pom_036 rr:objectMap :om_035.
+:om_035 a rr:ObjectMap;
+    rml:reference "originalsloc/p/title/part";
     rr:termType rr:Literal.
-:fn_010 rr:predicateObjectMap :pom_035.
-:pom_035 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_035.
-:pm_035 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_035 rr:objectMap :om_035.
-:om_035 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_037 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_037.
+:pm_037 a rr:PredicateMap.
+:pom_037 rr:predicateMap :pm_037.
+:pm_037 rr:constant Arco4Archive:hasCopy.
+:pom_037 rr:objectMap :om_036.
+:om_036 a fnml:FunctionTermMap;
+    rr:termType rr:IRI;
     fnml:functionValue :fn_011.
 :fn_011 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_011.
 :pomexec_011 rr:predicateMap :pmexec_011.
 :pmexec_011 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_011 rr:objectMap :omexec_011.
-:omexec_011 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
+:omexec_011 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_011 rr:predicateObjectMap :pom_036.
-:pom_036 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_036.
-:pm_036 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_036 rr:objectMap :om_036.
-:om_036 a rr:ObjectMap, fnml:FunctionTermMap;
+:fn_011 rr:predicateObjectMap :pom_038.
+:pom_038 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_038.
+:pm_038 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_038 rr:objectMap :om_037.
+:om_037 a rr:ObjectMap;
+    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/{did/unitid[1]}/copy-location/";
+    rr:termType rr:Literal.
+:fn_011 rr:predicateObjectMap :pom_039.
+:pom_039 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_039.
+:pm_039 a rr:PredicateMap;
+    rr:constant idlab-fn:otherStr.
+:pom_039 rr:objectMap :om_038.
+:om_038 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_012.
 :fn_012 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_012.
 :pomexec_012 rr:predicateMap :pmexec_012.
 :pmexec_012 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_012 rr:objectMap :omexec_012.
-:omexec_012 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+:omexec_012 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
     rr:termType rr:IRI.
-:fn_012 rr:predicateObjectMap :pom_037.
-:pom_037 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_037.
-:pm_037 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_037 rr:objectMap :om_037.
-:om_037 a rr:ObjectMap;
-    rml:reference "did/unitid[1]";
-    rr:termType rr:Literal.
-:fn_012 rr:predicateObjectMap :pom_038.
-:pom_038 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_038.
-:pm_038 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_038 rr:objectMap :om_038.
-:om_038 a rr:ObjectMap;
-    rml:reference "arrangement/p/num";
-    rr:termType rr:Literal.
-:fn_012 rr:predicateObjectMap :pom_039.
-:pom_039 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_039.
-:pm_039 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_039 rr:objectMap :om_039.
+:fn_012 rr:predicateObjectMap :pom_040.
+:pom_040 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_040.
+:pm_040 a rr:PredicateMap;
+    rr:constant grel:valueParameter.
+:pom_040 rr:objectMap :om_039.
 :om_039 a rr:ObjectMap;
-    rml:reference "arrangement/list/item";
-    rr:termType rr:Literal.
-:pom_040 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_040.
-:pm_040 a rr:PredicateMap.
-:pom_040 rr:predicateMap :pm_040.
-:pm_040 rr:constant core:specification.
-:pom_040 rr:objectMap :om_040.
-:om_040 a rr:ObjectMap;
-    rml:reference "appraisal/p";
+    rml:reference "altformavail/p/title/part";
     rr:termType rr:Literal.
 :pom_041 a rr:PredicateObjectMap.
 :map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_041.
 :pm_041 a rr:PredicateMap.
 :pom_041 rr:predicateMap :pm_041.
-:pm_041 rr:constant core:specification.
-:pom_041 rr:objectMap :om_041.
-:om_041 a rr:ObjectMap;
-    rml:reference "accruals/p";
-    rr:termType rr:Literal.
-:pom_042 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_042.
-:pm_042 a rr:PredicateMap.
-:pom_042 rr:predicateMap :pm_042.
-:pm_042 rr:constant core:note.
-:pom_042 rr:objectMap :om_042.
-:om_042 a rr:ObjectMap;
-    rml:reference "acquinfo/p";
-    rr:termType rr:Literal.
-:pom_043 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_043.
-:pm_043 a rr:PredicateMap.
-:pom_043 rr:predicateMap :pm_043.
-:pm_043 rr:constant Arco4Archive:hasConditionOfAccess.
-:pom_043 rr:objectMap :om_043.
-:om_043 a fnml:FunctionTermMap;
+:pm_041 rr:constant Arco4Archive:hasExternalDocumentation.
+:pom_041 rr:objectMap :om_040.
+:om_040 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_013.
 :fn_013 rml:logicalSource :source_000;
@@ -545,22 +528,22 @@
 :pomexec_013 rr:objectMap :omexec_013.
 :omexec_013 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_013 rr:predicateObjectMap :pom_044.
-:pom_044 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_044.
-:pm_044 a rr:PredicateMap;
+:fn_013 rr:predicateObjectMap :pom_042.
+:pom_042 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_042.
+:pm_042 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_044 rr:objectMap :om_044.
-:om_044 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/condition-of-access/";
+:pom_042 rr:objectMap :om_041.
+:om_041 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/external-related-doc/";
     rr:termType rr:Literal.
-:fn_013 rr:predicateObjectMap :pom_045.
-:pom_045 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_045.
-:pm_045 a rr:PredicateMap;
+:fn_013 rr:predicateObjectMap :pom_043.
+:pom_043 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_043.
+:pm_043 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_045 rr:objectMap :om_045.
-:om_045 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_043 rr:objectMap :om_042.
+:om_042 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_014.
 :fn_014 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_014.
@@ -569,22 +552,22 @@
 :pomexec_014 rr:objectMap :omexec_014.
 :omexec_014 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
     rr:termType rr:IRI.
-:fn_014 rr:predicateObjectMap :pom_046.
-:pom_046 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_046.
-:pm_046 a rr:PredicateMap;
+:fn_014 rr:predicateObjectMap :pom_044.
+:pom_044 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_044.
+:pm_044 a rr:PredicateMap;
     rr:constant grel:valueParameter.
-:pom_046 rr:objectMap :om_046.
-:om_046 a rr:ObjectMap;
-    rml:reference "accessrestrict/accessrestrict[@localtype='noteCondizioniAccesso']/p";
+:pom_044 rr:objectMap :om_043.
+:om_043 a rr:ObjectMap;
+    rml:reference "relatedmaterial/archref/title";
     rr:termType rr:Literal.
-:pom_047 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_047.
-:pm_047 a rr:PredicateMap.
-:pom_047 rr:predicateMap :pm_047.
-:pm_047 rr:constant Arco4Archive:hasConditionOfUse.
-:pom_047 rr:objectMap :om_047.
-:om_047 a fnml:FunctionTermMap;
+:pom_045 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_045.
+:pm_045 a rr:PredicateMap.
+:pom_045 rr:predicateMap :pm_045.
+:pm_045 rr:constant Arco4Archive:hasInternalDocumentation.
+:pom_045 rr:objectMap :om_044.
+:om_044 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_015.
 :fn_015 rml:logicalSource :source_000;
@@ -594,46 +577,55 @@
 :pomexec_015 rr:objectMap :omexec_015.
 :omexec_015 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_015 rr:predicateObjectMap :pom_048.
-:pom_048 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_048.
-:pm_048 a rr:PredicateMap;
+:fn_015 rr:predicateObjectMap :pom_046.
+:pom_046 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_046.
+:pm_046 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_048 rr:objectMap :om_048.
-:om_048 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/condition-of-use/";
+:pom_046 rr:objectMap :om_045.
+:om_045 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/internal-related-doc/";
     rr:termType rr:Literal.
-:fn_015 rr:predicateObjectMap :pom_049.
-:pom_049 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_049.
-:pm_049 a rr:PredicateMap;
+:fn_015 rr:predicateObjectMap :pom_047.
+:pom_047 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_047.
+:pm_047 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_049 rr:objectMap :om_049.
-:om_049 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_047 rr:objectMap :om_046.
+:om_046 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_016.
 :fn_016 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_016.
 :pomexec_016 rr:predicateMap :pmexec_016.
 :pmexec_016 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_016 rr:objectMap :omexec_016.
-:omexec_016 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
+:omexec_016 rr:constant "https://w3id.org/imec/idlab/function#slugify";
     rr:termType rr:IRI.
-:fn_016 rr:predicateObjectMap :pom_050.
-:pom_050 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_050.
-:pm_050 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_050 rr:objectMap :om_050.
-:om_050 a rr:ObjectMap;
-    rml:reference "userrestrict/userrestrict[@localtype='noteCondizioniUtilizzo']/p";
+:fn_016 rr:predicateObjectMap :pom_048.
+:pom_048 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_048.
+:pm_048 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_048 rr:objectMap :om_047.
+:om_047 a rr:ObjectMap;
+    rml:reference "relatedmaterial/archref/ref/@target";
     rr:termType rr:Literal.
-:pom_051 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_051.
-:pm_051 a rr:PredicateMap.
-:pom_051 rr:predicateMap :pm_051.
-:pm_051 rr:constant Arco4Archive:hasOriginal.
-:pom_051 rr:objectMap :om_051.
-:om_051 a fnml:FunctionTermMap;
+:pom_049 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_049.
+:pm_049 a rr:PredicateMap.
+:pom_049 rr:predicateMap :pm_049.
+:pm_049 rr:constant arco-lite:hasArchivialCreator.
+:pom_049 rr:objectMap :om_048.
+:om_048 a rr:ObjectMap;
+    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/archivial-creator/{relations/relation/relationentry[@localtype='soggettoProduttore']/@id}";
+    rr:termType rr:IRI.
+:pom_050 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_050.
+:pm_050 a rr:PredicateMap.
+:pom_050 rr:predicateMap :pm_050.
+:pm_050 rr:constant arco-lite:hasResponsibility.
+:pom_050 rr:objectMap :om_049.
+:om_049 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_017.
 :fn_017 rml:logicalSource :source_000;
@@ -643,22 +635,22 @@
 :pomexec_017 rr:objectMap :omexec_017.
 :omexec_017 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
+:fn_017 rr:predicateObjectMap :pom_051.
+:pom_051 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_051.
+:pm_051 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_051 rr:objectMap :om_050.
+:om_050 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/archivial-holder/";
+    rr:termType rr:Literal.
 :fn_017 rr:predicateObjectMap :pom_052.
 :pom_052 a rr:PredicateObjectMap;
     rr:predicateMap :pm_052.
 :pm_052 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_052 rr:objectMap :om_052.
-:om_052 a rr:ObjectMap;
-    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/{did/unitid[1]}/original-location/";
-    rr:termType rr:Literal.
-:fn_017 rr:predicateObjectMap :pom_053.
-:pom_053 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_053.
-:pm_053 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_053 rr:objectMap :om_053.
-:om_053 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_052 rr:objectMap :om_051.
+:om_051 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_018.
 :fn_018 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_018.
@@ -667,22 +659,22 @@
 :pomexec_018 rr:objectMap :omexec_018.
 :omexec_018 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
     rr:termType rr:IRI.
-:fn_018 rr:predicateObjectMap :pom_054.
-:pom_054 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_054.
-:pm_054 a rr:PredicateMap;
+:fn_018 rr:predicateObjectMap :pom_053.
+:pom_053 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_053.
+:pm_053 a rr:PredicateMap;
     rr:constant grel:valueParameter.
-:pom_054 rr:objectMap :om_054.
-:om_054 a rr:ObjectMap;
-    rml:reference "originalsloc/p/title/part";
+:pom_053 rr:objectMap :om_052.
+:om_052 a rr:ObjectMap;
+    rml:reference "relations/relation/relationentry[@localtype='Soggetto conservatore']";
     rr:termType rr:Literal.
-:pom_055 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_055.
-:pm_055 a rr:PredicateMap.
-:pom_055 rr:predicateMap :pm_055.
-:pm_055 rr:constant Arco4Archive:hasCopy.
-:pom_055 rr:objectMap :om_055.
-:om_055 a fnml:FunctionTermMap;
+:pom_054 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_054.
+:pm_054 a rr:PredicateMap.
+:pom_054 rr:predicateMap :pm_054.
+:pm_054 rr:constant Arco4Archive:hasProject.
+:pom_054 rr:objectMap :om_053.
+:om_053 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_019.
 :fn_019 rml:logicalSource :source_000;
@@ -692,46 +684,46 @@
 :pomexec_019 rr:objectMap :omexec_019.
 :omexec_019 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
+:fn_019 rr:predicateObjectMap :pom_055.
+:pom_055 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_055.
+:pm_055 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_055 rr:objectMap :om_054.
+:om_054 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/project/";
+    rr:termType rr:Literal.
 :fn_019 rr:predicateObjectMap :pom_056.
 :pom_056 a rr:PredicateObjectMap;
     rr:predicateMap :pm_056.
 :pm_056 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_056 rr:objectMap :om_056.
-:om_056 a rr:ObjectMap;
-    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/{did/unitid[1]}/copy-location/";
-    rr:termType rr:Literal.
-:fn_019 rr:predicateObjectMap :pom_057.
-:pom_057 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_057.
-:pm_057 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_057 rr:objectMap :om_057.
-:om_057 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_056 rr:objectMap :om_055.
+:om_055 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_020.
 :fn_020 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_020.
 :pomexec_020 rr:predicateMap :pmexec_020.
 :pmexec_020 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_020 rr:objectMap :omexec_020.
-:omexec_020 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
+:omexec_020 rr:constant "https://w3id.org/imec/idlab/function#slugify";
     rr:termType rr:IRI.
-:fn_020 rr:predicateObjectMap :pom_058.
-:pom_058 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_058.
-:pm_058 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_058 rr:objectMap :om_058.
-:om_058 a rr:ObjectMap;
-    rml:reference "altformavail/p/title/part";
+:fn_020 rr:predicateObjectMap :pom_057.
+:pom_057 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_057.
+:pm_057 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_057 rr:objectMap :om_056.
+:om_056 a rr:ObjectMap;
+    rml:reference "relations/relation[@otherrelationtype='ProgettoCollegato']/relationentry";
     rr:termType rr:Literal.
-:pom_059 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_059.
-:pm_059 a rr:PredicateMap.
-:pom_059 rr:predicateMap :pm_059.
-:pm_059 rr:constant Arco4Archive:hasExternalDocumentation.
-:pom_059 rr:objectMap :om_059.
-:om_059 a fnml:FunctionTermMap;
+:pom_058 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_058.
+:pm_058 a rr:PredicateMap.
+:pom_058 rr:predicateMap :pm_058.
+:pm_058 rr:constant Arco4Archive:hasEvent.
+:pom_058 rr:objectMap :om_057.
+:om_057 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_021.
 :fn_021 rml:logicalSource :source_000;
@@ -741,46 +733,46 @@
 :pomexec_021 rr:objectMap :omexec_021.
 :omexec_021 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
+:fn_021 rr:predicateObjectMap :pom_059.
+:pom_059 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_059.
+:pm_059 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_059 rr:objectMap :om_058.
+:om_058 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/event/";
+    rr:termType rr:Literal.
 :fn_021 rr:predicateObjectMap :pom_060.
 :pom_060 a rr:PredicateObjectMap;
     rr:predicateMap :pm_060.
 :pm_060 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_060 rr:objectMap :om_060.
-:om_060 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/external-related-doc/";
-    rr:termType rr:Literal.
-:fn_021 rr:predicateObjectMap :pom_061.
-:pom_061 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_061.
-:pm_061 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_061 rr:objectMap :om_061.
-:om_061 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_060 rr:objectMap :om_059.
+:om_059 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_022.
 :fn_022 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_022.
 :pomexec_022 rr:predicateMap :pmexec_022.
 :pmexec_022 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_022 rr:objectMap :omexec_022.
-:omexec_022 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
+:omexec_022 rr:constant "https://w3id.org/imec/idlab/function#slugify";
     rr:termType rr:IRI.
-:fn_022 rr:predicateObjectMap :pom_062.
-:pom_062 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_062.
-:pm_062 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_062 rr:objectMap :om_062.
-:om_062 a rr:ObjectMap;
-    rml:reference "relatedmaterial/archref/title";
+:fn_022 rr:predicateObjectMap :pom_061.
+:pom_061 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_061.
+:pm_061 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_061 rr:objectMap :om_060.
+:om_060 a rr:ObjectMap;
+    rml:reference "relations/relation[@otherrelationtype='EventoCollegato']/relationentry";
     rr:termType rr:Literal.
-:pom_063 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_063.
-:pm_063 a rr:PredicateMap.
-:pom_063 rr:predicateMap :pm_063.
-:pm_063 rr:constant Arco4Archive:hasInternalDocumentation.
-:pom_063 rr:objectMap :om_063.
-:om_063 a fnml:FunctionTermMap;
+:pom_062 a rr:PredicateObjectMap.
+:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_062.
+:pm_062 a rr:PredicateMap.
+:pom_062 rr:predicateMap :pm_062.
+:pm_062 rr:constant l0:hasTopic.
+:pom_062 rr:objectMap :om_061.
+:om_061 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_023.
 :fn_023 rml:logicalSource :source_000;
@@ -788,24 +780,24 @@
 :pomexec_023 rr:predicateMap :pmexec_023.
 :pmexec_023 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_023 rr:objectMap :omexec_023.
-:omexec_023 rr:constant "https://w3id.org/imec/idlab/function#concat";
+:omexec_023 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
     rr:termType rr:IRI.
+:fn_023 rr:predicateObjectMap :pom_063.
+:pom_063 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_063.
+:pm_063 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_063 rr:objectMap :om_062.
+:om_062 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/topic/";
+    rr:termType rr:Literal.
 :fn_023 rr:predicateObjectMap :pom_064.
 :pom_064 a rr:PredicateObjectMap;
     rr:predicateMap :pm_064.
 :pm_064 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_064 rr:objectMap :om_064.
-:om_064 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/internal-related-doc/";
-    rr:termType rr:Literal.
-:fn_023 rr:predicateObjectMap :pom_065.
-:pom_065 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_065.
-:pm_065 a rr:PredicateMap;
-    rr:constant idlab-fn:otherStr.
-:pom_065 rr:objectMap :om_065.
-:om_065 a rr:ObjectMap, fnml:FunctionTermMap;
+    rr:constant grel:p_array_a.
+:pom_064 rr:objectMap :om_063.
+:om_063 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_024.
 :fn_024 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_024.
@@ -814,178 +806,209 @@
 :pomexec_024 rr:objectMap :omexec_024.
 :omexec_024 rr:constant "https://w3id.org/imec/idlab/function#slugify";
     rr:termType rr:IRI.
-:fn_024 rr:predicateObjectMap :pom_066.
-:pom_066 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_066.
-:pm_066 a rr:PredicateMap;
+:fn_024 rr:predicateObjectMap :pom_065.
+:pom_065 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_065.
+:pm_065 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_066 rr:objectMap :om_066.
-:om_066 a rr:ObjectMap;
-    rml:reference "relatedmaterial/archref/ref/@target";
+:pom_065 rr:objectMap :om_064.
+:om_064 a rr:ObjectMap;
+    rml:reference "controlaccess//subject/part";
     rr:termType rr:Literal.
+:rules_000 void:exampleResource :map_ArchivialResourceSetExt_000.
+:map_ArchivialResourceSetExt_000 rml:logicalSource :source_001;
+    a rr:TriplesMap;
+    rdfs:label "ArchivialResourceSetExt".
+:s_001 a rr:SubjectMap.
+:map_ArchivialResourceSetExt_000 rr:subjectMap :s_001.
+:s_001 rr:template "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/{ancestor::did/unitid[1]}/".
+:pom_066 a rr:PredicateObjectMap.
+:map_ArchivialResourceSetExt_000 rr:predicateObjectMap :pom_066.
+:pm_066 a rr:PredicateMap.
+:pom_066 rr:predicateMap :pm_066.
+:pm_066 rr:constant rdf:type.
+:pom_066 rr:objectMap :om_065.
+:om_065 a rr:ObjectMap;
+    rr:constant Arco4Archive:ArchivialResourceSet;
+    rr:termType rr:IRI.
 :pom_067 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_067.
+:map_ArchivialResourceSetExt_000 rr:predicateObjectMap :pom_067.
 :pm_067 a rr:PredicateMap.
 :pom_067 rr:predicateMap :pm_067.
-:pm_067 rr:constant arco-lite:hasArchivialCreator.
-:pom_067 rr:objectMap :om_067.
-:om_067 a rr:ObjectMap;
-    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/archivial-creator/{relations/relation/relationentry[@localtype='soggettoProduttore']/@id}";
-    rr:termType rr:IRI.
-:pom_068 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_068.
-:pm_068 a rr:PredicateMap.
-:pom_068 rr:predicateMap :pm_068.
-:pm_068 rr:constant arco-lite:hasResponsibility.
-:pom_068 rr:objectMap :om_068.
-:om_068 a fnml:FunctionTermMap;
+:pm_067 rr:constant Arco4Archive:hasExtent.
+:pom_067 rr:objectMap :om_066.
+:om_066 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_025.
-:fn_025 rml:logicalSource :source_000;
+:fn_025 rml:logicalSource :source_001;
     rr:predicateObjectMap :pomexec_025.
 :pomexec_025 rr:predicateMap :pmexec_025.
 :pmexec_025 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_025 rr:objectMap :omexec_025.
-:omexec_025 rr:constant "https://w3id.org/imec/idlab/function#concat";
+:omexec_025 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
     rr:termType rr:IRI.
+:fn_025 rr:predicateObjectMap :pom_068.
+:pom_068 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_068.
+:pm_068 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_068 rr:objectMap :om_067.
+:om_067 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/extent/";
+    rr:termType rr:Literal.
 :fn_025 rr:predicateObjectMap :pom_069.
 :pom_069 a rr:PredicateObjectMap;
     rr:predicateMap :pm_069.
 :pm_069 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_069 rr:objectMap :om_069.
-:om_069 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/archivial-holder/";
-    rr:termType rr:Literal.
-:fn_025 rr:predicateObjectMap :pom_070.
-:pom_070 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_070.
-:pm_070 a rr:PredicateMap;
-    rr:constant idlab-fn:otherStr.
-:pom_070 rr:objectMap :om_070.
-:om_070 a rr:ObjectMap, fnml:FunctionTermMap;
+    rr:constant grel:p_array_a.
+:pom_069 rr:objectMap :om_068.
+:om_068 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_026.
-:fn_026 rml:logicalSource :source_000;
+:fn_026 rml:logicalSource :source_001;
     rr:predicateObjectMap :pomexec_026.
 :pomexec_026 rr:predicateMap :pmexec_026.
 :pmexec_026 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_026 rr:objectMap :omexec_026.
 :omexec_026 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
     rr:termType rr:IRI.
-:fn_026 rr:predicateObjectMap :pom_071.
-:pom_071 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_071.
-:pm_071 a rr:PredicateMap;
+:fn_026 rr:predicateObjectMap :pom_070.
+:pom_070 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_070.
+:pm_070 a rr:PredicateMap;
     rr:constant grel:valueParameter.
-:pom_071 rr:objectMap :om_071.
-:om_071 a rr:ObjectMap;
-    rml:reference "relations/relation/relationentry[@localtype='Soggetto conservatore']";
-    rr:termType rr:Literal.
-:pom_072 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_072.
-:pm_072 a rr:PredicateMap.
-:pom_072 rr:predicateMap :pm_072.
-:pm_072 rr:constant Arco4Archive:hasProject.
-:pom_072 rr:objectMap :om_072.
-:om_072 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
+:pom_070 rr:objectMap :om_069.
+:om_069 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_027.
-:fn_027 rml:logicalSource :source_000;
+:fn_027 rml:logicalSource :source_001;
     rr:predicateObjectMap :pomexec_027.
 :pomexec_027 rr:predicateMap :pmexec_027.
 :pmexec_027 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_027 rr:objectMap :omexec_027.
-:omexec_027 rr:constant "https://w3id.org/imec/idlab/function#concat";
+:omexec_027 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
     rr:termType rr:IRI.
-:fn_027 rr:predicateObjectMap :pom_073.
-:pom_073 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_073.
-:pm_073 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_073 rr:objectMap :om_073.
-:om_073 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/project/";
+:fn_027 rr:predicateObjectMap :pom_071.
+:pom_071 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_071.
+:pm_071 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_071 rr:objectMap :om_070.
+:om_070 a rr:ObjectMap;
+    rml:reference "unittype";
     rr:termType rr:Literal.
-:fn_027 rr:predicateObjectMap :pom_074.
-:pom_074 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_074.
-:pm_074 a rr:PredicateMap;
-    rr:constant idlab-fn:otherStr.
-:pom_074 rr:objectMap :om_074.
-:om_074 a rr:ObjectMap, fnml:FunctionTermMap;
+:fn_027 rr:predicateObjectMap :pom_072.
+:pom_072 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_072.
+:pm_072 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_072 rr:objectMap :om_071.
+:om_071 a rr:ObjectMap;
+    rml:reference "quantity";
+    rr:termType rr:Literal.
+:rules_000 void:exampleResource :map_ArchivialResourceSetArrang_000.
+:map_ArchivialResourceSetArrang_000 rml:logicalSource :source_003;
+    a rr:TriplesMap;
+    rdfs:label "ArchivialResourceSetArrang".
+:s_002 a rr:SubjectMap.
+:map_ArchivialResourceSetArrang_000 rr:subjectMap :s_002.
+:s_002 rr:template "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/{preceding::did/unitid[1]}/".
+:pom_073 a rr:PredicateObjectMap.
+:map_ArchivialResourceSetArrang_000 rr:predicateObjectMap :pom_073.
+:pm_073 a rr:PredicateMap.
+:pom_073 rr:predicateMap :pm_073.
+:pm_073 rr:constant rdf:type.
+:pom_073 rr:objectMap :om_072.
+:om_072 a rr:ObjectMap;
+    rr:constant Arco4Archive:ArchivialResourceSet;
+    rr:termType rr:IRI.
+:pom_074 a rr:PredicateObjectMap.
+:map_ArchivialResourceSetArrang_000 rr:predicateObjectMap :pom_074.
+:pm_074 a rr:PredicateMap.
+:pom_074 rr:predicateMap :pm_074.
+:pm_074 rr:constant Arco4Archive:hasArrangement.
+:pom_074 rr:objectMap :om_073.
+:om_073 a fnml:FunctionTermMap;
+    rr:termType rr:IRI;
     fnml:functionValue :fn_028.
-:fn_028 rml:logicalSource :source_000;
+:fn_028 rml:logicalSource :source_003;
     rr:predicateObjectMap :pomexec_028.
 :pomexec_028 rr:predicateMap :pmexec_028.
 :pmexec_028 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_028 rr:objectMap :omexec_028.
-:omexec_028 rr:constant "https://w3id.org/imec/idlab/function#slugify";
+:omexec_028 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
     rr:termType rr:IRI.
 :fn_028 rr:predicateObjectMap :pom_075.
 :pom_075 a rr:PredicateObjectMap;
     rr:predicateMap :pm_075.
 :pm_075 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_075 rr:objectMap :om_075.
-:om_075 a rr:ObjectMap;
-    rml:reference "relations/relation[@otherrelationtype='ProgettoCollegato']/relationentry";
+    rr:constant grel:p_array_a.
+:pom_075 rr:objectMap :om_074.
+:om_074 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/";
     rr:termType rr:Literal.
-:pom_076 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_076.
-:pm_076 a rr:PredicateMap.
-:pom_076 rr:predicateMap :pm_076.
-:pm_076 rr:constant Arco4Archive:hasEvent.
-:pom_076 rr:objectMap :om_076.
-:om_076 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
+:fn_028 rr:predicateObjectMap :pom_076.
+:pom_076 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_076.
+:pm_076 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_076 rr:objectMap :om_075.
+:om_075 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_029.
-:fn_029 rml:logicalSource :source_000;
+:fn_029 rml:logicalSource :source_003;
     rr:predicateObjectMap :pomexec_029.
 :pomexec_029 rr:predicateMap :pmexec_029.
 :pmexec_029 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_029 rr:objectMap :omexec_029.
-:omexec_029 rr:constant "https://w3id.org/imec/idlab/function#concat";
+:omexec_029 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
     rr:termType rr:IRI.
 :fn_029 rr:predicateObjectMap :pom_077.
 :pom_077 a rr:PredicateObjectMap;
     rr:predicateMap :pm_077.
 :pm_077 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_077 rr:objectMap :om_077.
-:om_077 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/event/";
-    rr:termType rr:Literal.
-:fn_029 rr:predicateObjectMap :pom_078.
-:pom_078 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_078.
-:pm_078 a rr:PredicateMap;
-    rr:constant idlab-fn:otherStr.
-:pom_078 rr:objectMap :om_078.
-:om_078 a rr:ObjectMap, fnml:FunctionTermMap;
+    rr:constant grel:valueParameter.
+:pom_077 rr:objectMap :om_076.
+:om_076 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_030.
-:fn_030 rml:logicalSource :source_000;
+:fn_030 rml:logicalSource :source_003;
     rr:predicateObjectMap :pomexec_030.
 :pomexec_030 rr:predicateMap :pmexec_030.
 :pmexec_030 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_030 rr:objectMap :omexec_030.
-:omexec_030 rr:constant "https://w3id.org/imec/idlab/function#slugify";
+:omexec_030 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
     rr:termType rr:IRI.
+:fn_030 rr:predicateObjectMap :pom_078.
+:pom_078 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_078.
+:pm_078 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_078 rr:objectMap :om_077.
+:om_077 a rr:ObjectMap;
+    rml:reference "../did/unitid[1]";
+    rr:termType rr:Literal.
 :fn_030 rr:predicateObjectMap :pom_079.
 :pom_079 a rr:PredicateObjectMap;
     rr:predicateMap :pm_079.
 :pm_079 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_079 rr:objectMap :om_079.
-:om_079 a rr:ObjectMap;
-    rml:reference "relations/relation[@otherrelationtype='EventoCollegato']/relationentry";
+    rr:constant grel:p_array_a.
+:pom_079 rr:objectMap :om_078.
+:om_078 a rr:ObjectMap;
+    rml:reference "p/num";
     rr:termType rr:Literal.
-:pom_080 a rr:PredicateObjectMap.
-:map_ArchivialResourceSet_000 rr:predicateObjectMap :pom_080.
-:pm_080 a rr:PredicateMap.
-:pom_080 rr:predicateMap :pm_080.
-:pm_080 rr:constant l0:hasTopic.
-:pom_080 rr:objectMap :om_080.
-:om_080 a fnml:FunctionTermMap;
+:fn_030 rr:predicateObjectMap :pom_080.
+:pom_080 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_080.
+:pm_080 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_080 rr:objectMap :om_079.
+:om_079 a rr:ObjectMap;
+    rml:reference "list/item";
+    rr:termType rr:Literal.
+:rules_000 void:exampleResource :map_ConditionOfAccess_000.
+:map_ConditionOfAccess_000 rml:logicalSource :source_000;
+    a rr:TriplesMap;
+    rdfs:label "ConditionOfAccess".
+:s_003 a rr:SubjectMap.
+:map_ConditionOfAccess_000 rr:subjectMap :s_003.
+:s_003 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_031.
 :fn_031 rml:logicalSource :source_000;
@@ -993,48 +1016,66 @@
 :pomexec_031 rr:predicateMap :pmexec_031.
 :pmexec_031 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_031 rr:objectMap :omexec_031.
-:omexec_031 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+:omexec_031 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
 :fn_031 rr:predicateObjectMap :pom_081.
 :pom_081 a rr:PredicateObjectMap;
     rr:predicateMap :pm_081.
 :pm_081 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_081 rr:objectMap :om_081.
-:om_081 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/topic/";
+    rr:constant idlab-fn:str.
+:pom_081 rr:objectMap :om_080.
+:om_080 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/condition-of-access/";
     rr:termType rr:Literal.
 :fn_031 rr:predicateObjectMap :pom_082.
 :pom_082 a rr:PredicateObjectMap;
     rr:predicateMap :pm_082.
 :pm_082 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_082 rr:objectMap :om_082.
-:om_082 a rr:ObjectMap, fnml:FunctionTermMap;
+    rr:constant idlab-fn:otherStr.
+:pom_082 rr:objectMap :om_081.
+:om_081 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_032.
 :fn_032 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_032.
 :pomexec_032 rr:predicateMap :pmexec_032.
 :pmexec_032 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_032 rr:objectMap :omexec_032.
-:omexec_032 rr:constant "https://w3id.org/imec/idlab/function#slugify";
+:omexec_032 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
     rr:termType rr:IRI.
 :fn_032 rr:predicateObjectMap :pom_083.
 :pom_083 a rr:PredicateObjectMap;
     rr:predicateMap :pm_083.
 :pm_083 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_083 rr:objectMap :om_083.
-:om_083 a rr:ObjectMap;
-    rml:reference "controlaccess//subject/part";
+    rr:constant grel:valueParameter.
+:pom_083 rr:objectMap :om_082.
+:om_082 a rr:ObjectMap;
+    rml:reference "accessrestrict/accessrestrict[@localtype='noteCondizioniAccesso']/p";
     rr:termType rr:Literal.
-:rules_000 void:exampleResource :map_ConditionOfAccess_000.
-:map_ConditionOfAccess_000 rml:logicalSource :source_000;
-    a rr:TriplesMap;
-    rdfs:label "ConditionOfAccess".
-:s_001 a rr:SubjectMap.
-:map_ConditionOfAccess_000 rr:subjectMap :s_001.
-:s_001 a fnml:FunctionTermMap;
+:pom_084 a rr:PredicateObjectMap.
+:map_ConditionOfAccess_000 rr:predicateObjectMap :pom_084.
+:pm_084 a rr:PredicateMap.
+:pom_084 rr:predicateMap :pm_084.
+:pm_084 rr:constant rdf:type.
+:pom_084 rr:objectMap :om_083.
+:om_083 a rr:ObjectMap;
+    rr:constant Arco4Archive:ConditionOfAccess;
+    rr:termType rr:IRI.
+:pom_085 a rr:PredicateObjectMap.
+:map_ConditionOfAccess_000 rr:predicateObjectMap :pom_085.
+:pm_085 a rr:PredicateMap.
+:pom_085 rr:predicateMap :pm_085.
+:pm_085 rr:constant core:note.
+:pom_085 rr:objectMap :om_084.
+:om_084 a rr:ObjectMap;
+    rml:reference "accessrestrict/accessrestrict[@localtype='noteCondizioniAccesso']/p";
+    rr:termType rr:Literal.
+:pom_086 a rr:PredicateObjectMap.
+:map_ConditionOfAccess_000 rr:predicateObjectMap :pom_086.
+:pm_086 a rr:PredicateMap.
+:pom_086 rr:predicateMap :pm_086.
+:pm_086 rr:constant core:hasType.
+:pom_086 rr:objectMap :om_085.
+:om_085 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_033.
 :fn_033 rml:logicalSource :source_000;
@@ -1044,64 +1085,46 @@
 :pomexec_033 rr:objectMap :omexec_033.
 :omexec_033 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_033 rr:predicateObjectMap :pom_084.
-:pom_084 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_084.
-:pm_084 a rr:PredicateMap;
+:fn_033 rr:predicateObjectMap :pom_087.
+:pom_087 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_087.
+:pm_087 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_084 rr:objectMap :om_084.
-:om_084 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/condition-of-access/";
+:pom_087 rr:objectMap :om_086.
+:om_086 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/type-of-access/";
     rr:termType rr:Literal.
-:fn_033 rr:predicateObjectMap :pom_085.
-:pom_085 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_085.
-:pm_085 a rr:PredicateMap;
+:fn_033 rr:predicateObjectMap :pom_088.
+:pom_088 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_088.
+:pm_088 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_085 rr:objectMap :om_085.
-:om_085 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_088 rr:objectMap :om_087.
+:om_087 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_034.
 :fn_034 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_034.
 :pomexec_034 rr:predicateMap :pmexec_034.
 :pmexec_034 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_034 rr:objectMap :omexec_034.
-:omexec_034 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
+:omexec_034 rr:constant "https://w3id.org/imec/idlab/function#slugify";
     rr:termType rr:IRI.
-:fn_034 rr:predicateObjectMap :pom_086.
-:pom_086 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_086.
-:pm_086 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_086 rr:objectMap :om_086.
-:om_086 a rr:ObjectMap;
-    rml:reference "accessrestrict/accessrestrict[@localtype='noteCondizioniAccesso']/p";
-    rr:termType rr:Literal.
-:pom_087 a rr:PredicateObjectMap.
-:map_ConditionOfAccess_000 rr:predicateObjectMap :pom_087.
-:pm_087 a rr:PredicateMap.
-:pom_087 rr:predicateMap :pm_087.
-:pm_087 rr:constant rdf:type.
-:pom_087 rr:objectMap :om_087.
-:om_087 a rr:ObjectMap;
-    rr:constant Arco4Archive:ConditionOfAccess;
-    rr:termType rr:IRI.
-:pom_088 a rr:PredicateObjectMap.
-:map_ConditionOfAccess_000 rr:predicateObjectMap :pom_088.
-:pm_088 a rr:PredicateMap.
-:pom_088 rr:predicateMap :pm_088.
-:pm_088 rr:constant core:note.
-:pom_088 rr:objectMap :om_088.
+:fn_034 rr:predicateObjectMap :pom_089.
+:pom_089 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_089.
+:pm_089 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_089 rr:objectMap :om_088.
 :om_088 a rr:ObjectMap;
-    rml:reference "accessrestrict/accessrestrict[@localtype='noteCondizioniAccesso']/p";
+    rml:reference "accessrestrict/p";
     rr:termType rr:Literal.
-:pom_089 a rr:PredicateObjectMap.
-:map_ConditionOfAccess_000 rr:predicateObjectMap :pom_089.
-:pm_089 a rr:PredicateMap.
-:pom_089 rr:predicateMap :pm_089.
-:pm_089 rr:constant core:hasType.
-:pom_089 rr:objectMap :om_089.
-:om_089 a fnml:FunctionTermMap;
+:rules_000 void:exampleResource :map_ConditionOfUse_000.
+:map_ConditionOfUse_000 rml:logicalSource :source_000;
+    a rr:TriplesMap;
+    rdfs:label "ConditionOfUse".
+:s_004 a rr:SubjectMap.
+:map_ConditionOfUse_000 rr:subjectMap :s_004.
+:s_004 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_035.
 :fn_035 rml:logicalSource :source_000;
@@ -1116,41 +1139,59 @@
     rr:predicateMap :pm_090.
 :pm_090 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_090 rr:objectMap :om_090.
-:om_090 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/type-of-access/";
+:pom_090 rr:objectMap :om_089.
+:om_089 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/condition-of-use/";
     rr:termType rr:Literal.
 :fn_035 rr:predicateObjectMap :pom_091.
 :pom_091 a rr:PredicateObjectMap;
     rr:predicateMap :pm_091.
 :pm_091 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_091 rr:objectMap :om_091.
-:om_091 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_091 rr:objectMap :om_090.
+:om_090 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_036.
 :fn_036 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_036.
 :pomexec_036 rr:predicateMap :pmexec_036.
 :pmexec_036 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_036 rr:objectMap :omexec_036.
-:omexec_036 rr:constant "https://w3id.org/imec/idlab/function#slugify";
+:omexec_036 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
     rr:termType rr:IRI.
 :fn_036 rr:predicateObjectMap :pom_092.
 :pom_092 a rr:PredicateObjectMap;
     rr:predicateMap :pm_092.
 :pm_092 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_092 rr:objectMap :om_092.
-:om_092 a rr:ObjectMap;
-    rml:reference "accessrestrict/p";
+    rr:constant grel:valueParameter.
+:pom_092 rr:objectMap :om_091.
+:om_091 a rr:ObjectMap;
+    rml:reference "userrestrict/userrestrict[@localtype='noteCondizioniUtilizzo']/p";
     rr:termType rr:Literal.
-:rules_000 void:exampleResource :map_ConditionOfUse_000.
-:map_ConditionOfUse_000 rml:logicalSource :source_000;
-    a rr:TriplesMap;
-    rdfs:label "ConditionOfUse".
-:s_002 a rr:SubjectMap.
-:map_ConditionOfUse_000 rr:subjectMap :s_002.
-:s_002 a fnml:FunctionTermMap;
+:pom_093 a rr:PredicateObjectMap.
+:map_ConditionOfUse_000 rr:predicateObjectMap :pom_093.
+:pm_093 a rr:PredicateMap.
+:pom_093 rr:predicateMap :pm_093.
+:pm_093 rr:constant rdf:type.
+:pom_093 rr:objectMap :om_092.
+:om_092 a rr:ObjectMap;
+    rr:constant Arco4Archive:ConditionOfUse;
+    rr:termType rr:IRI.
+:pom_094 a rr:PredicateObjectMap.
+:map_ConditionOfUse_000 rr:predicateObjectMap :pom_094.
+:pm_094 a rr:PredicateMap.
+:pom_094 rr:predicateMap :pm_094.
+:pm_094 rr:constant core:note.
+:pom_094 rr:objectMap :om_093.
+:om_093 a rr:ObjectMap;
+    rml:reference "userrestrict/userrestrict[@localtype='noteCondizioniUtilizzo']/p";
+    rr:termType rr:Literal.
+:pom_095 a rr:PredicateObjectMap.
+:map_ConditionOfUse_000 rr:predicateObjectMap :pom_095.
+:pm_095 a rr:PredicateMap.
+:pom_095 rr:predicateMap :pm_095.
+:pm_095 rr:constant core:hasType.
+:pom_095 rr:objectMap :om_094.
+:om_094 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_037.
 :fn_037 rml:logicalSource :source_000;
@@ -1160,64 +1201,46 @@
 :pomexec_037 rr:objectMap :omexec_037.
 :omexec_037 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_037 rr:predicateObjectMap :pom_093.
-:pom_093 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_093.
-:pm_093 a rr:PredicateMap;
+:fn_037 rr:predicateObjectMap :pom_096.
+:pom_096 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_096.
+:pm_096 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_093 rr:objectMap :om_093.
-:om_093 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/condition-of-use/";
+:pom_096 rr:objectMap :om_095.
+:om_095 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/type-of-use/";
     rr:termType rr:Literal.
-:fn_037 rr:predicateObjectMap :pom_094.
-:pom_094 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_094.
-:pm_094 a rr:PredicateMap;
+:fn_037 rr:predicateObjectMap :pom_097.
+:pom_097 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_097.
+:pm_097 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_094 rr:objectMap :om_094.
-:om_094 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_097 rr:objectMap :om_096.
+:om_096 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_038.
 :fn_038 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_038.
 :pomexec_038 rr:predicateMap :pmexec_038.
 :pmexec_038 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_038 rr:objectMap :omexec_038.
-:omexec_038 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
+:omexec_038 rr:constant "https://w3id.org/imec/idlab/function#slugify";
     rr:termType rr:IRI.
-:fn_038 rr:predicateObjectMap :pom_095.
-:pom_095 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_095.
-:pm_095 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_095 rr:objectMap :om_095.
-:om_095 a rr:ObjectMap;
-    rml:reference "userrestrict/userrestrict[@localtype='noteCondizioniUtilizzo']/p";
-    rr:termType rr:Literal.
-:pom_096 a rr:PredicateObjectMap.
-:map_ConditionOfUse_000 rr:predicateObjectMap :pom_096.
-:pm_096 a rr:PredicateMap.
-:pom_096 rr:predicateMap :pm_096.
-:pm_096 rr:constant rdf:type.
-:pom_096 rr:objectMap :om_096.
-:om_096 a rr:ObjectMap;
-    rr:constant Arco4Archive:ConditionOfUse;
-    rr:termType rr:IRI.
-:pom_097 a rr:PredicateObjectMap.
-:map_ConditionOfUse_000 rr:predicateObjectMap :pom_097.
-:pm_097 a rr:PredicateMap.
-:pom_097 rr:predicateMap :pm_097.
-:pm_097 rr:constant core:note.
-:pom_097 rr:objectMap :om_097.
+:fn_038 rr:predicateObjectMap :pom_098.
+:pom_098 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_098.
+:pm_098 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_098 rr:objectMap :om_097.
 :om_097 a rr:ObjectMap;
-    rml:reference "userrestrict/userrestrict[@localtype='noteCondizioniUtilizzo']/p";
+    rml:reference "userrestrict/p";
     rr:termType rr:Literal.
-:pom_098 a rr:PredicateObjectMap.
-:map_ConditionOfUse_000 rr:predicateObjectMap :pom_098.
-:pm_098 a rr:PredicateMap.
-:pom_098 rr:predicateMap :pm_098.
-:pm_098 rr:constant core:hasType.
-:pom_098 rr:objectMap :om_098.
-:om_098 a fnml:FunctionTermMap;
+:rules_000 void:exampleResource :map_DesignationInTime_000.
+:map_DesignationInTime_000 rml:logicalSource :source_000;
+    a rr:TriplesMap;
+    rdfs:label "DesignationInTime".
+:s_005 a rr:SubjectMap.
+:map_DesignationInTime_000 rr:subjectMap :s_005.
+:s_005 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_039.
 :fn_039 rml:logicalSource :source_000;
@@ -1232,17 +1255,17 @@
     rr:predicateMap :pm_099.
 :pm_099 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_099 rr:objectMap :om_099.
-:om_099 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/type-of-use/";
+:pom_099 rr:objectMap :om_098.
+:om_098 a rr:ObjectMap;
+    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/alternative-designation/{did/unitid[1]}-";
     rr:termType rr:Literal.
 :fn_039 rr:predicateObjectMap :pom_100.
 :pom_100 a rr:PredicateObjectMap;
     rr:predicateMap :pm_100.
 :pm_100 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_100 rr:objectMap :om_100.
-:om_100 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_100 rr:objectMap :om_099.
+:om_099 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_040.
 :fn_040 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_040.
@@ -1256,17 +1279,26 @@
     rr:predicateMap :pm_101.
 :pm_101 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_101 rr:objectMap :om_101.
-:om_101 a rr:ObjectMap;
-    rml:reference "userrestrict/p";
+:pom_101 rr:objectMap :om_100.
+:om_100 a rr:ObjectMap;
+    rml:reference "did/unittitle[@label='altraDenominazione']";
     rr:termType rr:Literal.
-:rules_000 void:exampleResource :map_DesignationInTime_000.
-:map_DesignationInTime_000 rml:logicalSource :source_000;
-    a rr:TriplesMap;
-    rdfs:label "DesignationInTime".
-:s_003 a rr:SubjectMap.
-:map_DesignationInTime_000 rr:subjectMap :s_003.
-:s_003 a fnml:FunctionTermMap;
+:pom_102 a rr:PredicateObjectMap.
+:map_DesignationInTime_000 rr:predicateObjectMap :pom_102.
+:pm_102 a rr:PredicateMap.
+:pom_102 rr:predicateMap :pm_102.
+:pm_102 rr:constant rdf:type.
+:pom_102 rr:objectMap :om_101.
+:om_101 a rr:ObjectMap;
+    rr:constant a-cd:DesignationInTime;
+    rr:termType rr:IRI.
+:pom_103 a rr:PredicateObjectMap.
+:map_DesignationInTime_000 rr:predicateObjectMap :pom_103.
+:pm_103 a rr:PredicateMap.
+:pom_103 rr:predicateMap :pm_103.
+:pm_103 rr:constant ti:atTime.
+:pom_103 rr:objectMap :om_102.
+:om_102 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_041.
 :fn_041 rml:logicalSource :source_000;
@@ -1276,22 +1308,22 @@
 :pomexec_041 rr:objectMap :omexec_041.
 :omexec_041 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_041 rr:predicateObjectMap :pom_102.
-:pom_102 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_102.
-:pm_102 a rr:PredicateMap;
+:fn_041 rr:predicateObjectMap :pom_104.
+:pom_104 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_104.
+:pm_104 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_102 rr:objectMap :om_102.
-:om_102 a rr:ObjectMap;
-    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/alternative-designation/{did/unitid[1]}-";
+:pom_104 rr:objectMap :om_103.
+:om_103 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/time-interval/";
     rr:termType rr:Literal.
-:fn_041 rr:predicateObjectMap :pom_103.
-:pom_103 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_103.
-:pm_103 a rr:PredicateMap;
+:fn_041 rr:predicateObjectMap :pom_105.
+:pom_105 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_105.
+:pm_105 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_103 rr:objectMap :om_103.
-:om_103 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_105 rr:objectMap :om_104.
+:om_104 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_042.
 :fn_042 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_042.
@@ -1300,31 +1332,65 @@
 :pomexec_042 rr:objectMap :omexec_042.
 :omexec_042 rr:constant "https://w3id.org/imec/idlab/function#slugify";
     rr:termType rr:IRI.
-:fn_042 rr:predicateObjectMap :pom_104.
-:pom_104 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_104.
-:pm_104 a rr:PredicateMap;
+:fn_042 rr:predicateObjectMap :pom_106.
+:pom_106 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_106.
+:pm_106 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_104 rr:objectMap :om_104.
-:om_104 a rr:ObjectMap;
-    rml:reference "did/unittitle[@label='altraDenominazione']";
-    rr:termType rr:Literal.
-:pom_105 a rr:PredicateObjectMap.
-:map_DesignationInTime_000 rr:predicateObjectMap :pom_105.
-:pm_105 a rr:PredicateMap.
-:pom_105 rr:predicateMap :pm_105.
-:pm_105 rr:constant rdf:type.
-:pom_105 rr:objectMap :om_105.
+:pom_106 rr:objectMap :om_105.
 :om_105 a rr:ObjectMap;
-    rr:constant a-cd:DesignationInTime;
+    rml:reference "did/unittitle/date";
+    rr:termType rr:Literal.
+:rules_000 void:exampleResource :map_TimeInterval_000.
+:map_TimeInterval_000 rml:logicalSource :source_000;
+    a rr:TriplesMap;
+    rdfs:label "TimeInterval".
+:s_006 a rr:SubjectMap.
+:map_TimeInterval_000 rr:subjectMap :s_006.
+:s_006 rr:template "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/time-interval/{did/unitdatestructured/daterange/fromdate}-{did/unitdatestructured/daterange/todate}".
+:pom_107 a rr:PredicateObjectMap.
+:map_TimeInterval_000 rr:predicateObjectMap :pom_107.
+:pm_107 a rr:PredicateMap.
+:pom_107 rr:predicateMap :pm_107.
+:pm_107 rr:constant rdf:type.
+:pom_107 rr:objectMap :om_106.
+:om_106 a rr:ObjectMap;
+    rr:constant ti:TimeInterval;
     rr:termType rr:IRI.
-:pom_106 a rr:PredicateObjectMap.
-:map_DesignationInTime_000 rr:predicateObjectMap :pom_106.
-:pm_106 a rr:PredicateMap.
-:pom_106 rr:predicateMap :pm_106.
-:pm_106 rr:constant ti:atTime.
-:pom_106 rr:objectMap :om_106.
-:om_106 a fnml:FunctionTermMap;
+:pom_108 a rr:PredicateObjectMap.
+:map_TimeInterval_000 rr:predicateObjectMap :pom_108.
+:pm_108 a rr:PredicateMap.
+:pom_108 rr:predicateMap :pm_108.
+:pm_108 rr:constant ti:hasTimeInstantInside.
+:pom_108 rr:objectMap :om_107.
+:om_107 a rr:ObjectMap;
+    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/{did/unitdatestructured/daterange/fromdate}";
+    rr:termType rr:IRI.
+:pom_109 a rr:PredicateObjectMap.
+:map_TimeInterval_000 rr:predicateObjectMap :pom_109.
+:pm_109 a rr:PredicateMap.
+:pom_109 rr:predicateMap :pm_109.
+:pm_109 rr:constant ti:hasTimeInstantInside.
+:pom_109 rr:objectMap :om_108.
+:om_108 a rr:ObjectMap;
+    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/{did/unitdatestructured/daterange/todate}";
+    rr:termType rr:IRI.
+:pom_110 a rr:PredicateObjectMap.
+:map_TimeInterval_000 rr:predicateObjectMap :pom_110.
+:pm_110 a rr:PredicateMap.
+:pom_110 rr:predicateMap :pm_110.
+:pm_110 rr:constant ti:time.
+:pom_110 rr:objectMap :om_109.
+:om_109 a rr:ObjectMap;
+    rml:reference "did/unitdate[@label='dataTestuale']";
+    rr:termType rr:Literal.
+:rules_000 void:exampleResource :map_TimeIntervalDesignation_000.
+:map_TimeIntervalDesignation_000 rml:logicalSource :source_000;
+    a rr:TriplesMap;
+    rdfs:label "TimeIntervalDesignation".
+:s_007 a rr:SubjectMap.
+:map_TimeIntervalDesignation_000 rr:subjectMap :s_007.
+:s_007 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_043.
 :fn_043 rml:logicalSource :source_000;
@@ -1334,22 +1400,22 @@
 :pomexec_043 rr:objectMap :omexec_043.
 :omexec_043 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_043 rr:predicateObjectMap :pom_107.
-:pom_107 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_107.
-:pm_107 a rr:PredicateMap;
+:fn_043 rr:predicateObjectMap :pom_111.
+:pom_111 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_111.
+:pm_111 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_107 rr:objectMap :om_107.
-:om_107 a rr:ObjectMap;
+:pom_111 rr:objectMap :om_110.
+:om_110 a rr:ObjectMap;
     rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/time-interval/";
     rr:termType rr:Literal.
-:fn_043 rr:predicateObjectMap :pom_108.
-:pom_108 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_108.
-:pm_108 a rr:PredicateMap;
+:fn_043 rr:predicateObjectMap :pom_112.
+:pom_112 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_112.
+:pm_112 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_108 rr:objectMap :om_108.
-:om_108 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_112 rr:objectMap :om_111.
+:om_111 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_044.
 :fn_044 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_044.
@@ -1358,65 +1424,31 @@
 :pomexec_044 rr:objectMap :omexec_044.
 :omexec_044 rr:constant "https://w3id.org/imec/idlab/function#slugify";
     rr:termType rr:IRI.
-:fn_044 rr:predicateObjectMap :pom_109.
-:pom_109 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_109.
-:pm_109 a rr:PredicateMap;
+:fn_044 rr:predicateObjectMap :pom_113.
+:pom_113 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_113.
+:pm_113 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_109 rr:objectMap :om_109.
-:om_109 a rr:ObjectMap;
+:pom_113 rr:objectMap :om_112.
+:om_112 a rr:ObjectMap;
     rml:reference "did/unittitle/date";
     rr:termType rr:Literal.
-:rules_000 void:exampleResource :map_TimeInterval_000.
-:map_TimeInterval_000 rml:logicalSource :source_000;
-    a rr:TriplesMap;
-    rdfs:label "TimeInterval".
-:s_004 a rr:SubjectMap.
-:map_TimeInterval_000 rr:subjectMap :s_004.
-:s_004 rr:template "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/time-interval/{did/unitdatestructured/daterange/fromdate}-{did/unitdatestructured/daterange/todate}".
-:pom_110 a rr:PredicateObjectMap.
-:map_TimeInterval_000 rr:predicateObjectMap :pom_110.
-:pm_110 a rr:PredicateMap.
-:pom_110 rr:predicateMap :pm_110.
-:pm_110 rr:constant rdf:type.
-:pom_110 rr:objectMap :om_110.
-:om_110 a rr:ObjectMap;
+:pom_114 a rr:PredicateObjectMap.
+:map_TimeIntervalDesignation_000 rr:predicateObjectMap :pom_114.
+:pm_114 a rr:PredicateMap.
+:pom_114 rr:predicateMap :pm_114.
+:pm_114 rr:constant rdf:type.
+:pom_114 rr:objectMap :om_113.
+:om_113 a rr:ObjectMap;
     rr:constant ti:TimeInterval;
     rr:termType rr:IRI.
-:pom_111 a rr:PredicateObjectMap.
-:map_TimeInterval_000 rr:predicateObjectMap :pom_111.
-:pm_111 a rr:PredicateMap.
-:pom_111 rr:predicateMap :pm_111.
-:pm_111 rr:constant ti:hasTimeInstantInside.
-:pom_111 rr:objectMap :om_111.
-:om_111 a rr:ObjectMap;
-    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/{did/unitdatestructured/daterange/fromdate}";
-    rr:termType rr:IRI.
-:pom_112 a rr:PredicateObjectMap.
-:map_TimeInterval_000 rr:predicateObjectMap :pom_112.
-:pm_112 a rr:PredicateMap.
-:pom_112 rr:predicateMap :pm_112.
-:pm_112 rr:constant ti:hasTimeInstantInside.
-:pom_112 rr:objectMap :om_112.
-:om_112 a rr:ObjectMap;
-    rr:template "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/{did/unitdatestructured/daterange/todate}";
-    rr:termType rr:IRI.
-:pom_113 a rr:PredicateObjectMap.
-:map_TimeInterval_000 rr:predicateObjectMap :pom_113.
-:pm_113 a rr:PredicateMap.
-:pom_113 rr:predicateMap :pm_113.
-:pm_113 rr:constant ti:time.
-:pom_113 rr:objectMap :om_113.
-:om_113 a rr:ObjectMap;
-    rml:reference "did/unitdate[@label='dataTestuale']";
-    rr:termType rr:Literal.
-:rules_000 void:exampleResource :map_TimeIntervalDesignation_000.
-:map_TimeIntervalDesignation_000 rml:logicalSource :source_000;
-    a rr:TriplesMap;
-    rdfs:label "TimeIntervalDesignation".
-:s_005 a rr:SubjectMap.
-:map_TimeIntervalDesignation_000 rr:subjectMap :s_005.
-:s_005 a fnml:FunctionTermMap;
+:pom_115 a rr:PredicateObjectMap.
+:map_TimeIntervalDesignation_000 rr:predicateObjectMap :pom_115.
+:pm_115 a rr:PredicateMap.
+:pom_115 rr:predicateMap :pm_115.
+:pm_115 rr:constant ti:hasTimeInstantInside.
+:pom_115 rr:objectMap :om_114.
+:om_114 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_045.
 :fn_045 rml:logicalSource :source_000;
@@ -1426,182 +1458,163 @@
 :pomexec_045 rr:objectMap :omexec_045.
 :omexec_045 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_045 rr:predicateObjectMap :pom_114.
-:pom_114 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_114.
-:pm_114 a rr:PredicateMap;
+:fn_045 rr:predicateObjectMap :pom_116.
+:pom_116 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_116.
+:pm_116 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_114 rr:objectMap :om_114.
-:om_114 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/time-interval/";
+:pom_116 rr:objectMap :om_115.
+:om_115 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/";
     rr:termType rr:Literal.
-:fn_045 rr:predicateObjectMap :pom_115.
-:pom_115 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_115.
-:pm_115 a rr:PredicateMap;
+:fn_045 rr:predicateObjectMap :pom_117.
+:pom_117 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_117.
+:pm_117 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_115 rr:objectMap :om_115.
-:om_115 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_117 rr:objectMap :om_116.
+:om_116 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_046.
 :fn_046 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_046.
 :pomexec_046 rr:predicateMap :pmexec_046.
 :pmexec_046 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_046 rr:objectMap :omexec_046.
-:omexec_046 rr:constant "https://w3id.org/imec/idlab/function#slugify";
+:omexec_046 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_split";
     rr:termType rr:IRI.
-:fn_046 rr:predicateObjectMap :pom_116.
-:pom_116 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_116.
-:pm_116 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_116 rr:objectMap :om_116.
-:om_116 a rr:ObjectMap;
+:fn_046 rr:predicateObjectMap :pom_118.
+:pom_118 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_118.
+:pm_118 a rr:PredicateMap;
+    rr:constant grel:valueParameter.
+:pom_118 rr:objectMap :om_117.
+:om_117 a rr:ObjectMap;
     rml:reference "did/unittitle/date";
     rr:termType rr:Literal.
-:pom_117 a rr:PredicateObjectMap.
-:map_TimeIntervalDesignation_000 rr:predicateObjectMap :pom_117.
-:pm_117 a rr:PredicateMap.
-:pom_117 rr:predicateMap :pm_117.
-:pm_117 rr:constant rdf:type.
-:pom_117 rr:objectMap :om_117.
-:om_117 a rr:ObjectMap;
-    rr:constant ti:TimeInterval;
-    rr:termType rr:IRI.
-:pom_118 a rr:PredicateObjectMap.
-:map_TimeIntervalDesignation_000 rr:predicateObjectMap :pom_118.
-:pm_118 a rr:PredicateMap.
-:pom_118 rr:predicateMap :pm_118.
-:pm_118 rr:constant ti:hasTimeInstantInside.
-:pom_118 rr:objectMap :om_118.
-:om_118 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_047.
-:fn_047 rml:logicalSource :source_000;
-    rr:predicateObjectMap :pomexec_047.
-:pomexec_047 rr:predicateMap :pmexec_047.
-:pmexec_047 rr:constant <https://w3id.org/function/ontology#executes>.
-:pomexec_047 rr:objectMap :omexec_047.
-:omexec_047 rr:constant "https://w3id.org/imec/idlab/function#concat";
-    rr:termType rr:IRI.
-:fn_047 rr:predicateObjectMap :pom_119.
+:fn_046 rr:predicateObjectMap :pom_119.
 :pom_119 a rr:PredicateObjectMap;
     rr:predicateMap :pm_119.
 :pm_119 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_119 rr:objectMap :om_119.
-:om_119 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/";
-    rr:termType rr:Literal.
-:fn_047 rr:predicateObjectMap :pom_120.
-:pom_120 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_120.
-:pm_120 a rr:PredicateMap;
-    rr:constant idlab-fn:otherStr.
-:pom_120 rr:objectMap :om_120.
-:om_120 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_048.
-:fn_048 rml:logicalSource :source_000;
-    rr:predicateObjectMap :pomexec_048.
-:pomexec_048 rr:predicateMap :pmexec_048.
-:pmexec_048 rr:constant <https://w3id.org/function/ontology#executes>.
-:pomexec_048 rr:objectMap :omexec_048.
-:omexec_048 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_split";
-    rr:termType rr:IRI.
-:fn_048 rr:predicateObjectMap :pom_121.
-:pom_121 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_121.
-:pm_121 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_121 rr:objectMap :om_121.
-:om_121 a rr:ObjectMap;
-    rml:reference "did/unittitle/date";
-    rr:termType rr:Literal.
-:fn_048 rr:predicateObjectMap :pom_122.
-:pom_122 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_122.
-:pm_122 a rr:PredicateMap;
     rr:constant grel:p_string_sep.
-:pom_122 rr:objectMap :om_122.
-:om_122 a rr:ObjectMap;
+:pom_119 rr:objectMap :om_118.
+:om_118 a rr:ObjectMap;
     rr:constant "-";
     rr:termType rr:Literal.
 :rules_000 void:exampleResource :map_TimeInstantS_000.
 :map_TimeInstantS_000 rml:logicalSource :source_000;
     a rr:TriplesMap;
     rdfs:label "TimeInstantS".
-:s_006 a rr:SubjectMap.
-:map_TimeInstantS_000 rr:subjectMap :s_006.
-:s_006 rr:template "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/{did/unitdatestructured/daterange/fromdate}".
-:pom_123 a rr:PredicateObjectMap.
-:map_TimeInstantS_000 rr:predicateObjectMap :pom_123.
-:pm_123 a rr:PredicateMap.
-:pom_123 rr:predicateMap :pm_123.
-:pm_123 rr:constant rdf:type.
-:pom_123 rr:objectMap :om_123.
-:om_123 a rr:ObjectMap;
+:s_008 a rr:SubjectMap.
+:map_TimeInstantS_000 rr:subjectMap :s_008.
+:s_008 rr:template "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/{did/unitdatestructured/daterange/fromdate}".
+:pom_120 a rr:PredicateObjectMap.
+:map_TimeInstantS_000 rr:predicateObjectMap :pom_120.
+:pm_120 a rr:PredicateMap.
+:pom_120 rr:predicateMap :pm_120.
+:pm_120 rr:constant rdf:type.
+:pom_120 rr:objectMap :om_119.
+:om_119 a rr:ObjectMap;
     rr:constant ti:TimeInstant;
     rr:termType rr:IRI.
-:pom_124 a rr:PredicateObjectMap.
-:map_TimeInstantS_000 rr:predicateObjectMap :pom_124.
-:pm_124 a rr:PredicateMap.
-:pom_124 rr:predicateMap :pm_124.
-:pm_124 rr:constant core:note.
-:pom_124 rr:objectMap :om_124.
-:om_124 a rr:ObjectMap;
+:pom_121 a rr:PredicateObjectMap.
+:map_TimeInstantS_000 rr:predicateObjectMap :pom_121.
+:pm_121 a rr:PredicateMap.
+:pom_121 rr:predicateMap :pm_121.
+:pm_121 rr:constant core:note.
+:pom_121 rr:objectMap :om_120.
+:om_120 a rr:ObjectMap;
     rml:reference "did/didnote[@label='Note_a_Estremo_recente_Complesso']";
     rr:termType rr:Literal.
-:pom_125 a rr:PredicateObjectMap.
-:map_TimeInstantS_000 rr:predicateObjectMap :pom_125.
-:pm_125 a rr:PredicateMap.
-:pom_125 rr:predicateMap :pm_125.
-:pm_125 rr:constant Arco4Archive:inIntervalPosition.
-:pom_125 rr:objectMap :om_125.
-:om_125 a rr:ObjectMap;
+:pom_122 a rr:PredicateObjectMap.
+:map_TimeInstantS_000 rr:predicateObjectMap :pom_122.
+:pm_122 a rr:PredicateMap.
+:pom_122 rr:predicateMap :pm_122.
+:pm_122 rr:constant Arco4Archive:inIntervalPosition.
+:pom_122 rr:objectMap :om_121.
+:om_121 a rr:ObjectMap;
     rr:constant "start";
     rr:termType rr:Literal.
 :rules_000 void:exampleResource :map_TimeInstantE_000.
 :map_TimeInstantE_000 rml:logicalSource :source_000;
     a rr:TriplesMap;
     rdfs:label "TimeInstantE".
-:s_007 a rr:SubjectMap.
-:map_TimeInstantE_000 rr:subjectMap :s_007.
-:s_007 rr:template "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/{did/unitdatestructured/daterange/todate}".
-:pom_126 a rr:PredicateObjectMap.
-:map_TimeInstantE_000 rr:predicateObjectMap :pom_126.
-:pm_126 a rr:PredicateMap.
-:pom_126 rr:predicateMap :pm_126.
-:pm_126 rr:constant rdf:type.
-:pom_126 rr:objectMap :om_126.
-:om_126 a rr:ObjectMap;
+:s_009 a rr:SubjectMap.
+:map_TimeInstantE_000 rr:subjectMap :s_009.
+:s_009 rr:template "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/{did/unitdatestructured/daterange/todate}".
+:pom_123 a rr:PredicateObjectMap.
+:map_TimeInstantE_000 rr:predicateObjectMap :pom_123.
+:pm_123 a rr:PredicateMap.
+:pom_123 rr:predicateMap :pm_123.
+:pm_123 rr:constant rdf:type.
+:pom_123 rr:objectMap :om_122.
+:om_122 a rr:ObjectMap;
     rr:constant ti:TimeInstant;
     rr:termType rr:IRI.
-:pom_127 a rr:PredicateObjectMap.
-:map_TimeInstantE_000 rr:predicateObjectMap :pom_127.
-:pm_127 a rr:PredicateMap.
-:pom_127 rr:predicateMap :pm_127.
-:pm_127 rr:constant core:note.
-:pom_127 rr:objectMap :om_127.
-:om_127 a rr:ObjectMap;
+:pom_124 a rr:PredicateObjectMap.
+:map_TimeInstantE_000 rr:predicateObjectMap :pom_124.
+:pm_124 a rr:PredicateMap.
+:pom_124 rr:predicateMap :pm_124.
+:pm_124 rr:constant core:note.
+:pom_124 rr:objectMap :om_123.
+:om_123 a rr:ObjectMap;
     rml:reference "did/didnote[@label='Note_a_Estremo_remoto_Complesso']";
     rr:termType rr:Literal.
-:pom_128 a rr:PredicateObjectMap.
-:map_TimeInstantE_000 rr:predicateObjectMap :pom_128.
-:pm_128 a rr:PredicateMap.
-:pom_128 rr:predicateMap :pm_128.
-:pm_128 rr:constant Arco4Archive:inIntervalPosition.
-:pom_128 rr:objectMap :om_128.
-:om_128 a rr:ObjectMap;
+:pom_125 a rr:PredicateObjectMap.
+:map_TimeInstantE_000 rr:predicateObjectMap :pom_125.
+:pm_125 a rr:PredicateMap.
+:pom_125 rr:predicateMap :pm_125.
+:pm_125 rr:constant Arco4Archive:inIntervalPosition.
+:pom_125 rr:objectMap :om_124.
+:om_124 a rr:ObjectMap;
     rr:constant "end";
     rr:termType rr:Literal.
 :rules_000 void:exampleResource :map_Extent_000.
 :map_Extent_000 rml:logicalSource :source_001;
     a rr:TriplesMap;
     rdfs:label "Extent".
-:s_008 a rr:SubjectMap.
-:map_Extent_000 rr:subjectMap :s_008.
-:s_008 a fnml:FunctionTermMap;
+:s_010 a rr:SubjectMap.
+:map_Extent_000 rr:subjectMap :s_010.
+:s_010 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
+    fnml:functionValue :fn_047.
+:fn_047 rml:logicalSource :source_001;
+    rr:predicateObjectMap :pomexec_047.
+:pomexec_047 rr:predicateMap :pmexec_047.
+:pmexec_047 rr:constant <https://w3id.org/function/ontology#executes>.
+:pomexec_047 rr:objectMap :omexec_047.
+:omexec_047 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+    rr:termType rr:IRI.
+:fn_047 rr:predicateObjectMap :pom_126.
+:pom_126 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_126.
+:pm_126 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_126 rr:objectMap :om_125.
+:om_125 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/extent/";
+    rr:termType rr:Literal.
+:fn_047 rr:predicateObjectMap :pom_127.
+:pom_127 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_127.
+:pm_127 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_127 rr:objectMap :om_126.
+:om_126 a rr:ObjectMap, fnml:FunctionTermMap;
+    fnml:functionValue :fn_048.
+:fn_048 rml:logicalSource :source_001;
+    rr:predicateObjectMap :pomexec_048.
+:pomexec_048 rr:predicateMap :pmexec_048.
+:pmexec_048 rr:constant <https://w3id.org/function/ontology#executes>.
+:pomexec_048 rr:objectMap :omexec_048.
+:omexec_048 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
+    rr:termType rr:IRI.
+:fn_048 rr:predicateObjectMap :pom_128.
+:pom_128 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_128.
+:pm_128 a rr:PredicateMap;
+    rr:constant grel:valueParameter.
+:pom_128 rr:objectMap :om_127.
+:om_127 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_049.
 :fn_049 rml:logicalSource :source_001;
     rr:predicateObjectMap :pomexec_049.
@@ -1615,303 +1628,354 @@
     rr:predicateMap :pm_129.
 :pm_129 a rr:PredicateMap;
     rr:constant grel:p_array_a.
-:pom_129 rr:objectMap :om_129.
-:om_129 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/extent/";
+:pom_129 rr:objectMap :om_128.
+:om_128 a rr:ObjectMap;
+    rml:reference "unittype";
     rr:termType rr:Literal.
 :fn_049 rr:predicateObjectMap :pom_130.
 :pom_130 a rr:PredicateObjectMap;
     rr:predicateMap :pm_130.
 :pm_130 a rr:PredicateMap;
     rr:constant grel:p_array_a.
-:pom_130 rr:objectMap :om_130.
-:om_130 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_130 rr:objectMap :om_129.
+:om_129 a rr:ObjectMap;
+    rml:reference "quantity";
+    rr:termType rr:Literal.
+:pom_131 a rr:PredicateObjectMap.
+:map_Extent_000 rr:predicateObjectMap :pom_131.
+:pm_131 a rr:PredicateMap.
+:pom_131 rr:predicateMap :pm_131.
+:pm_131 rr:constant rdf:type.
+:pom_131 rr:objectMap :om_130.
+:om_130 a rr:ObjectMap;
+    rr:constant Arco4Archive:Extent;
+    rr:termType rr:IRI.
+:pom_132 a rr:PredicateObjectMap.
+:map_Extent_000 rr:predicateObjectMap :pom_132.
+:pm_132 a rr:PredicateMap.
+:pom_132 rr:predicateMap :pm_132.
+:pm_132 rr:constant Arco4Archive:quantity.
+:pom_132 rr:objectMap :om_131.
+:om_131 a rr:ObjectMap;
+    rml:reference "quantity";
+    rr:termType rr:Literal;
+    rr:datatype xsd:integer.
+:pom_133 a rr:PredicateObjectMap.
+:map_Extent_000 rr:predicateObjectMap :pom_133.
+:pm_133 a rr:PredicateMap.
+:pom_133 rr:predicateMap :pm_133.
+:pm_133 rr:constant core:note.
+:pom_133 rr:objectMap :om_132.
+:om_132 a rr:ObjectMap;
+    rml:reference "descriptivenote/p";
+    rr:termType rr:Literal;
+    rr:datatype xsd:string.
+:pom_134 a rr:PredicateObjectMap.
+:map_Extent_000 rr:predicateObjectMap :pom_134.
+:pm_134 a rr:PredicateMap.
+:pom_134 rr:predicateMap :pm_134.
+:pm_134 rr:constant core:specification.
+:pom_134 rr:objectMap :om_133.
+:om_133 a fnml:FunctionTermMap;
+    rr:termType rr:Literal;
     fnml:functionValue :fn_050.
 :fn_050 rml:logicalSource :source_001;
     rr:predicateObjectMap :pomexec_050.
 :pomexec_050 rr:predicateMap :pmexec_050.
 :pmexec_050 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_050 rr:objectMap :omexec_050.
-:omexec_050 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
+:omexec_050 rr:constant "https://w3id.org/imec/idlab/function#concat";
     rr:termType rr:IRI.
-:fn_050 rr:predicateObjectMap :pom_131.
-:pom_131 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_131.
-:pm_131 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_131 rr:objectMap :om_131.
-:om_131 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_051.
-:fn_051 rml:logicalSource :source_001;
-    rr:predicateObjectMap :pomexec_051.
-:pomexec_051 rr:predicateMap :pmexec_051.
-:pmexec_051 rr:constant <https://w3id.org/function/ontology#executes>.
-:pomexec_051 rr:objectMap :omexec_051.
-:omexec_051 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
-    rr:termType rr:IRI.
-:fn_051 rr:predicateObjectMap :pom_132.
-:pom_132 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_132.
-:pm_132 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_132 rr:objectMap :om_132.
-:om_132 a rr:ObjectMap;
-    rml:reference "unittype";
-    rr:termType rr:Literal.
-:fn_051 rr:predicateObjectMap :pom_133.
-:pom_133 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_133.
-:pm_133 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_133 rr:objectMap :om_133.
-:om_133 a rr:ObjectMap;
-    rml:reference "quantity";
-    rr:termType rr:Literal.
-:pom_134 a rr:PredicateObjectMap.
-:map_Extent_000 rr:predicateObjectMap :pom_134.
-:pm_134 a rr:PredicateMap.
-:pom_134 rr:predicateMap :pm_134.
-:pm_134 rr:constant rdf:type.
-:pom_134 rr:objectMap :om_134.
-:om_134 a rr:ObjectMap;
-    rr:constant Arco4Archive:Extent;
-    rr:termType rr:IRI.
-:pom_135 a rr:PredicateObjectMap.
-:map_Extent_000 rr:predicateObjectMap :pom_135.
-:pm_135 a rr:PredicateMap.
-:pom_135 rr:predicateMap :pm_135.
-:pm_135 rr:constant Arco4Archive:quantity.
-:pom_135 rr:objectMap :om_135.
-:om_135 a rr:ObjectMap;
-    rml:reference "quantity";
-    rr:termType rr:Literal;
-    rr:datatype xsd:integer.
-:pom_136 a rr:PredicateObjectMap.
-:map_Extent_000 rr:predicateObjectMap :pom_136.
-:pm_136 a rr:PredicateMap.
-:pom_136 rr:predicateMap :pm_136.
-:pm_136 rr:constant core:note.
-:pom_136 rr:objectMap :om_136.
-:om_136 a rr:ObjectMap;
-    rml:reference "descriptivenote/p";
-    rr:termType rr:Literal;
-    rr:datatype xsd:string.
-:pom_137 a rr:PredicateObjectMap.
-:map_Extent_000 rr:predicateObjectMap :pom_137.
-:pm_137 a rr:PredicateMap.
-:pom_137 rr:predicateMap :pm_137.
-:pm_137 rr:constant core:specification.
-:pom_137 rr:objectMap :om_137.
-:om_137 a fnml:FunctionTermMap;
-    rr:termType rr:Literal;
-    fnml:functionValue :fn_052.
-:fn_052 rml:logicalSource :source_001;
-    rr:predicateObjectMap :pomexec_052.
-:pomexec_052 rr:predicateMap :pmexec_052.
-:pmexec_052 rr:constant <https://w3id.org/function/ontology#executes>.
-:pomexec_052 rr:objectMap :omexec_052.
-:omexec_052 rr:constant "https://w3id.org/imec/idlab/function#concat";
-    rr:termType rr:IRI.
-:fn_052 rr:predicateObjectMap :pom_138.
-:pom_138 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_138.
-:pm_138 a rr:PredicateMap;
+:fn_050 rr:predicateObjectMap :pom_135.
+:pom_135 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_135.
+:pm_135 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_138 rr:objectMap :om_138.
-:om_138 a rr:ObjectMap;
+:pom_135 rr:objectMap :om_134.
+:om_134 a rr:ObjectMap;
     rml:reference "dimensions/@unit";
     rr:termType rr:Literal.
-:fn_052 rr:predicateObjectMap :pom_139.
-:pom_139 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_139.
-:pm_139 a rr:PredicateMap;
+:fn_050 rr:predicateObjectMap :pom_136.
+:pom_136 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_136.
+:pm_136 a rr:PredicateMap;
     rr:constant idlab-fn:delimiter.
-:pom_139 rr:objectMap :om_139.
-:om_139 a rr:ObjectMap;
+:pom_136 rr:objectMap :om_135.
+:om_135 a rr:ObjectMap;
     rr:constant " ";
     rr:termType rr:Literal.
-:fn_052 rr:predicateObjectMap :pom_140.
-:pom_140 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_140.
-:pm_140 a rr:PredicateMap;
+:fn_050 rr:predicateObjectMap :pom_137.
+:pom_137 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_137.
+:pm_137 a rr:PredicateMap;
     rr:constant idlab-fn:otherStr.
-:pom_140 rr:objectMap :om_140.
-:om_140 a rr:ObjectMap;
+:pom_137 rr:objectMap :om_136.
+:om_136 a rr:ObjectMap;
     rml:reference "dimensions";
     rr:termType rr:Literal.
-:pom_141 a rr:PredicateObjectMap.
-:map_Extent_000 rr:predicateObjectMap :pom_141.
-:pm_141 a rr:PredicateMap.
-:pom_141 rr:predicateMap :pm_141.
-:pm_141 rr:constant core:hasType.
-:pom_141 rr:objectMap :om_141.
-:om_141 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_053.
-:fn_053 rml:logicalSource :source_001;
-    rr:predicateObjectMap :pomexec_053.
-:pomexec_053 rr:predicateMap :pmexec_053.
-:pmexec_053 rr:constant <https://w3id.org/function/ontology#executes>.
-:pomexec_053 rr:objectMap :omexec_053.
-:omexec_053 rr:constant "https://w3id.org/imec/idlab/function#concat";
-    rr:termType rr:IRI.
-:fn_053 rr:predicateObjectMap :pom_142.
-:pom_142 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_142.
-:pm_142 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_142 rr:objectMap :om_142.
-:om_142 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/extent/extent-type/";
-    rr:termType rr:Literal.
-:fn_053 rr:predicateObjectMap :pom_143.
-:pom_143 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_143.
-:pm_143 a rr:PredicateMap;
-    rr:constant idlab-fn:otherStr.
-:pom_143 rr:objectMap :om_143.
-:om_143 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_054.
-:fn_054 rml:logicalSource :source_001;
-    rr:predicateObjectMap :pomexec_054.
-:pomexec_054 rr:predicateMap :pmexec_054.
-:pmexec_054 rr:constant <https://w3id.org/function/ontology#executes>.
-:pomexec_054 rr:objectMap :omexec_054.
-:omexec_054 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#toLowerCase";
-    rr:termType rr:IRI.
-:fn_054 rr:predicateObjectMap :pom_144.
-:pom_144 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_144.
-:pm_144 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_144 rr:objectMap :om_144.
-:om_144 a rr:ObjectMap;
-    rml:reference "unittype";
-    rr:termType rr:Literal.
+:pom_138 a rr:PredicateObjectMap.
+:map_Extent_000 rr:predicateObjectMap :pom_138.
+:pm_138 a rr:PredicateMap.
+:pom_138 rr:predicateMap :pm_138.
+:pm_138 rr:constant core:hasType.
 :rules_000 void:exampleResource :map_ConservationStatus_000.
 :map_ConservationStatus_000 rml:logicalSource :source_000;
     a rr:TriplesMap;
     rdfs:label "ConservationStatus".
-:s_009 a rr:SubjectMap.
-:map_ConservationStatus_000 rr:subjectMap :s_009.
-:s_009 rr:template "https://w3id.org/arco/ontology/denotative-description/ConservationStatus/{did/unitid[1]}".
-:pom_145 a rr:PredicateObjectMap.
-:map_ConservationStatus_000 rr:predicateObjectMap :pom_145.
-:pm_145 a rr:PredicateMap.
-:pom_145 rr:predicateMap :pm_145.
-:pm_145 rr:constant rdf:type.
-:pom_145 rr:objectMap :om_145.
-:om_145 a rr:ObjectMap;
+:s_011 a rr:SubjectMap.
+:map_ConservationStatus_000 rr:subjectMap :s_011.
+:s_011 rr:template "https://w3id.org/arco/ontology/denotative-description/ConservationStatus/{did/unitid[1]}".
+:pom_139 a rr:PredicateObjectMap.
+:map_ConservationStatus_000 rr:predicateObjectMap :pom_139.
+:pm_139 a rr:PredicateMap.
+:pom_139 rr:predicateMap :pm_139.
+:pm_139 rr:constant rdf:type.
+:pom_139 rr:objectMap :om_137.
+:om_137 a rr:ObjectMap;
     rr:constant a-cd:ConservationStatus;
     rr:termType rr:IRI.
-:pom_146 a rr:PredicateObjectMap.
-:map_ConservationStatus_000 rr:predicateObjectMap :pom_146.
-:pm_146 a rr:PredicateMap.
-:pom_146 rr:predicateMap :pm_146.
-:pm_146 rr:constant core:specification.
-:pom_146 rr:objectMap :om_146.
-:om_146 a rr:ObjectMap;
+:pom_140 a rr:PredicateObjectMap.
+:map_ConservationStatus_000 rr:predicateObjectMap :pom_140.
+:pm_140 a rr:PredicateMap.
+:pom_140 rr:predicateMap :pm_140.
+:pm_140 rr:constant core:specification.
+:pom_140 rr:objectMap :om_138.
+:om_138 a rr:ObjectMap;
     rml:reference "did/didnote[@localtype='Restauro_o_Altri_interventi']/p";
     rr:termType rr:Literal.
-:pom_147 a rr:PredicateObjectMap.
-:map_ConservationStatus_000 rr:predicateObjectMap :pom_147.
-:pm_147 a rr:PredicateMap.
-:pom_147 rr:predicateMap :pm_147.
-:pm_147 rr:constant Arco4Archive:materialCondition.
-:pom_147 rr:objectMap :om_147.
-:om_147 a rr:ObjectMap;
+:pom_141 a rr:PredicateObjectMap.
+:map_ConservationStatus_000 rr:predicateObjectMap :pom_141.
+:pm_141 a rr:PredicateMap.
+:pom_141 rr:predicateMap :pm_141.
+:pm_141 rr:constant Arco4Archive:materialCondition.
+:pom_141 rr:objectMap :om_139.
+:om_139 a rr:ObjectMap;
     rml:reference "did/didnote[@localtype='Condizioni_del_materiale']/p";
     rr:termType rr:Literal.
-:pom_148 a rr:PredicateObjectMap.
-:map_ConservationStatus_000 rr:predicateObjectMap :pom_148.
-:pm_148 a rr:PredicateMap.
-:pom_148 rr:predicateMap :pm_148.
-:pm_148 rr:constant core:hasType.
-:pom_148 rr:objectMap :om_148.
-:om_148 a rr:ObjectMap;
+:pom_142 a rr:PredicateObjectMap.
+:map_ConservationStatus_000 rr:predicateObjectMap :pom_142.
+:pm_142 a rr:PredicateMap.
+:pom_142 rr:predicateMap :pm_142.
+:pm_142 rr:constant core:hasType.
+:pom_142 rr:objectMap :om_140.
+:om_140 a rr:ObjectMap;
     rr:template "https://dati.beniculturali.it/lodview-arco-onto/ontology/core/hasType/{did/didnote[@localtype='Stato_di_conservazione']/p}";
     rr:termType rr:IRI.
-:pom_149 a rr:PredicateObjectMap.
-:map_ConservationStatus_000 rr:predicateObjectMap :pom_149.
-:pm_149 a rr:PredicateMap.
-:pom_149 rr:predicateMap :pm_149.
-:pm_149 rr:constant rdfs:label.
-:pom_149 rr:objectMap :om_149.
-:om_149 a fnml:FunctionTermMap;
+:pom_143 a rr:PredicateObjectMap.
+:map_ConservationStatus_000 rr:predicateObjectMap :pom_143.
+:pm_143 a rr:PredicateMap.
+:pom_143 rr:predicateMap :pm_143.
+:pm_143 rr:constant rdfs:label.
+:pom_143 rr:objectMap :om_141.
+:om_141 a fnml:FunctionTermMap;
     rr:termType rr:Literal;
+    fnml:functionValue :fn_051.
+:fn_051 rml:logicalSource :source_000;
+    rr:predicateObjectMap :pomexec_051.
+:pomexec_051 rr:predicateMap :pmexec_051.
+:pmexec_051 rr:constant <https://w3id.org/function/ontology#executes>.
+:pomexec_051 rr:objectMap :omexec_051.
+:omexec_051 rr:constant "https://w3id.org/imec/idlab/function#concat";
+    rr:termType rr:IRI.
+:fn_051 rr:predicateObjectMap :pom_144.
+:pom_144 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_144.
+:pm_144 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_144 rr:objectMap :om_142.
+:om_142 a rr:ObjectMap;
+    rr:constant "Stato di conservazione 1 del bene: ";
+    rr:termType rr:Literal.
+:fn_051 rr:predicateObjectMap :pom_145.
+:pom_145 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_145.
+:pm_145 a rr:PredicateMap;
+    rr:constant idlab-fn:otherStr.
+:pom_145 rr:objectMap :om_143.
+:om_143 a rr:ObjectMap;
+    rml:reference "did/unitid[1]";
+    rr:termType rr:Literal.
+:rules_000 void:exampleResource :map_Arrangement_000.
+:map_Arrangement_000 rml:logicalSource :source_003;
+    a rr:TriplesMap;
+    rdfs:label "Arrangement".
+:s_012 a rr:SubjectMap.
+:map_Arrangement_000 rr:subjectMap :s_012.
+:s_012 a fnml:FunctionTermMap;
+    rr:termType rr:IRI;
+    fnml:functionValue :fn_052.
+:fn_052 rml:logicalSource :source_003;
+    rr:predicateObjectMap :pomexec_052.
+:pomexec_052 rr:predicateMap :pmexec_052.
+:pmexec_052 rr:constant <https://w3id.org/function/ontology#executes>.
+:pomexec_052 rr:objectMap :omexec_052.
+:omexec_052 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+    rr:termType rr:IRI.
+:fn_052 rr:predicateObjectMap :pom_146.
+:pom_146 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_146.
+:pm_146 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_146 rr:objectMap :om_144.
+:om_144 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/";
+    rr:termType rr:Literal.
+:fn_052 rr:predicateObjectMap :pom_147.
+:pom_147 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_147.
+:pm_147 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_147 rr:objectMap :om_145.
+:om_145 a rr:ObjectMap, fnml:FunctionTermMap;
+    fnml:functionValue :fn_053.
+:fn_053 rml:logicalSource :source_003;
+    rr:predicateObjectMap :pomexec_053.
+:pomexec_053 rr:predicateMap :pmexec_053.
+:pmexec_053 rr:constant <https://w3id.org/function/ontology#executes>.
+:pomexec_053 rr:objectMap :omexec_053.
+:omexec_053 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
+    rr:termType rr:IRI.
+:fn_053 rr:predicateObjectMap :pom_148.
+:pom_148 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_148.
+:pm_148 a rr:PredicateMap;
+    rr:constant grel:valueParameter.
+:pom_148 rr:objectMap :om_146.
+:om_146 a rr:ObjectMap, fnml:FunctionTermMap;
+    fnml:functionValue :fn_054.
+:fn_054 rml:logicalSource :source_003;
+    rr:predicateObjectMap :pomexec_054.
+:pomexec_054 rr:predicateMap :pmexec_054.
+:pmexec_054 rr:constant <https://w3id.org/function/ontology#executes>.
+:pomexec_054 rr:objectMap :omexec_054.
+:omexec_054 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+    rr:termType rr:IRI.
+:fn_054 rr:predicateObjectMap :pom_149.
+:pom_149 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_149.
+:pm_149 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_149 rr:objectMap :om_147.
+:om_147 a rr:ObjectMap;
+    rml:reference "../did/unitid[1]";
+    rr:termType rr:Literal.
+:fn_054 rr:predicateObjectMap :pom_150.
+:pom_150 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_150.
+:pm_150 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_150 rr:objectMap :om_148.
+:om_148 a rr:ObjectMap;
+    rml:reference "p/num";
+    rr:termType rr:Literal.
+:fn_054 rr:predicateObjectMap :pom_151.
+:pom_151 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_151.
+:pm_151 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_151 rr:objectMap :om_149.
+:om_149 a rr:ObjectMap;
+    rml:reference "list/item";
+    rr:termType rr:Literal.
+:pom_152 a rr:PredicateObjectMap.
+:map_Arrangement_000 rr:predicateObjectMap :pom_152.
+:pm_152 a rr:PredicateMap.
+:pom_152 rr:predicateMap :pm_152.
+:pm_152 rr:constant rdf:type.
+:pom_152 rr:objectMap :om_150.
+:om_150 a rr:ObjectMap;
+    rr:constant Arco4Archive:Arrangement;
+    rr:termType rr:IRI.
+:pom_153 a rr:PredicateObjectMap.
+:map_Arrangement_000 rr:predicateObjectMap :pom_153.
+:pm_153 a rr:PredicateMap.
+:pom_153 rr:predicateMap :pm_153.
+:pm_153 rr:constant core:description.
+:pom_153 rr:objectMap :om_151.
+:om_151 a rr:ObjectMap;
+    rml:reference "p";
+    rr:termType rr:Literal.
+:pom_154 a rr:PredicateObjectMap.
+:map_Arrangement_000 rr:predicateObjectMap :pom_154.
+:pm_154 a rr:PredicateMap.
+:pom_154 rr:predicateMap :pm_154.
+:pm_154 rr:constant Arco4Archive:hasNumbering.
+:pom_154 rr:objectMap :om_152.
+:om_152 a fnml:FunctionTermMap;
+    rr:termType rr:IRI;
     fnml:functionValue :fn_055.
-:fn_055 rml:logicalSource :source_000;
+:fn_055 rml:logicalSource :source_003;
     rr:predicateObjectMap :pomexec_055.
 :pomexec_055 rr:predicateMap :pmexec_055.
 :pmexec_055 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_055 rr:objectMap :omexec_055.
-:omexec_055 rr:constant "https://w3id.org/imec/idlab/function#concat";
+:omexec_055 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
     rr:termType rr:IRI.
-:fn_055 rr:predicateObjectMap :pom_150.
-:pom_150 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_150.
-:pm_150 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_150 rr:objectMap :om_150.
-:om_150 a rr:ObjectMap;
-    rr:constant "Stato di conservazione 1 del bene: ";
+:fn_055 rr:predicateObjectMap :pom_155.
+:pom_155 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_155.
+:pm_155 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_155 rr:objectMap :om_153.
+:om_153 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering/";
     rr:termType rr:Literal.
-:fn_055 rr:predicateObjectMap :pom_151.
-:pom_151 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_151.
-:pm_151 a rr:PredicateMap;
-    rr:constant idlab-fn:otherStr.
-:pom_151 rr:objectMap :om_151.
-:om_151 a rr:ObjectMap;
-    rml:reference "did/unitid[1]";
-    rr:termType rr:Literal.
-:rules_000 void:exampleResource :map_Arrangement_000.
-:map_Arrangement_000 rml:logicalSource :source_000;
-    a rr:TriplesMap;
-    rdfs:label "Arrangement".
-:s_010 a rr:SubjectMap.
-:map_Arrangement_000 rr:subjectMap :s_010.
-:s_010 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
+:fn_055 rr:predicateObjectMap :pom_156.
+:pom_156 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_156.
+:pm_156 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_156 rr:objectMap :om_154.
+:om_154 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_056.
-:fn_056 rml:logicalSource :source_000;
+:fn_056 rml:logicalSource :source_003;
     rr:predicateObjectMap :pomexec_056.
 :pomexec_056 rr:predicateMap :pmexec_056.
 :pmexec_056 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_056 rr:objectMap :omexec_056.
-:omexec_056 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+:omexec_056 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
     rr:termType rr:IRI.
-:fn_056 rr:predicateObjectMap :pom_152.
-:pom_152 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_152.
-:pm_152 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_152 rr:objectMap :om_152.
-:om_152 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/";
-    rr:termType rr:Literal.
-:fn_056 rr:predicateObjectMap :pom_153.
-:pom_153 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_153.
-:pm_153 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_153 rr:objectMap :om_153.
-:om_153 a rr:ObjectMap, fnml:FunctionTermMap;
+:fn_056 rr:predicateObjectMap :pom_157.
+:pom_157 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_157.
+:pm_157 a rr:PredicateMap;
+    rr:constant grel:valueParameter.
+:pom_157 rr:objectMap :om_155.
+:om_155 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_057.
-:fn_057 rml:logicalSource :source_000;
+:fn_057 rml:logicalSource :source_003;
     rr:predicateObjectMap :pomexec_057.
 :pomexec_057 rr:predicateMap :pmexec_057.
 :pmexec_057 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_057 rr:objectMap :omexec_057.
-:omexec_057 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
+:omexec_057 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
     rr:termType rr:IRI.
-:fn_057 rr:predicateObjectMap :pom_154.
-:pom_154 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_154.
-:pm_154 a rr:PredicateMap;
+:fn_057 rr:predicateObjectMap :pom_158.
+:pom_158 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_158.
+:pm_158 a rr:PredicateMap;
     rr:constant grel:valueParameter.
-:pom_154 rr:objectMap :om_154.
-:om_154 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_158 rr:objectMap :om_156.
+:om_156 a rr:ObjectMap;
+    rml:reference "../did/unitid[1]";
+    rr:termType rr:Literal.
+:fn_057 rr:predicateObjectMap :pom_159.
+:pom_159 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_159.
+:pm_159 a rr:PredicateMap;
+    rr:constant grel:valueParameter.
+:pom_159 rr:objectMap :om_157.
+:om_157 a rr:ObjectMap;
+    rml:reference "p/num";
+    rr:termType rr:Literal.
+:rules_000 void:exampleResource :map_Numbering_000.
+:map_Numbering_000 rml:logicalSource :source_000;
+    a rr:TriplesMap;
+    rdfs:label "Numbering".
+:s_013 a rr:SubjectMap.
+:map_Numbering_000 rr:subjectMap :s_013.
+:s_013 a fnml:FunctionTermMap;
+    rr:termType rr:IRI;
     fnml:functionValue :fn_058.
 :fn_058 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_058.
@@ -1920,222 +1984,204 @@
 :pomexec_058 rr:objectMap :omexec_058.
 :omexec_058 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
     rr:termType rr:IRI.
-:fn_058 rr:predicateObjectMap :pom_155.
-:pom_155 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_155.
-:pm_155 a rr:PredicateMap;
+:fn_058 rr:predicateObjectMap :pom_160.
+:pom_160 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_160.
+:pm_160 a rr:PredicateMap;
     rr:constant grel:p_array_a.
-:pom_155 rr:objectMap :om_155.
-:om_155 a rr:ObjectMap;
-    rml:reference "did/unitid[1]";
-    rr:termType rr:Literal.
-:fn_058 rr:predicateObjectMap :pom_156.
-:pom_156 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_156.
-:pm_156 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_156 rr:objectMap :om_156.
-:om_156 a rr:ObjectMap;
-    rml:reference "arrangement/p/num";
-    rr:termType rr:Literal.
-:fn_058 rr:predicateObjectMap :pom_157.
-:pom_157 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_157.
-:pm_157 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_157 rr:objectMap :om_157.
-:om_157 a rr:ObjectMap;
-    rml:reference "arrangement/list/item";
-    rr:termType rr:Literal.
-:pom_158 a rr:PredicateObjectMap.
-:map_Arrangement_000 rr:predicateObjectMap :pom_158.
-:pm_158 a rr:PredicateMap.
-:pom_158 rr:predicateMap :pm_158.
-:pm_158 rr:constant rdf:type.
-:pom_158 rr:objectMap :om_158.
+:pom_160 rr:objectMap :om_158.
 :om_158 a rr:ObjectMap;
-    rr:constant Arco4Archive:Arrangement;
-    rr:termType rr:IRI.
-:pom_159 a rr:PredicateObjectMap.
-:map_Arrangement_000 rr:predicateObjectMap :pom_159.
-:pm_159 a rr:PredicateMap.
-:pom_159 rr:predicateMap :pm_159.
-:pm_159 rr:constant core:description.
-:pom_159 rr:objectMap :om_159.
-:om_159 a rr:ObjectMap;
-    rml:reference "arrangement[1]/p";
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering/";
     rr:termType rr:Literal.
-:pom_160 a rr:PredicateObjectMap.
-:map_Arrangement_000 rr:predicateObjectMap :pom_160.
-:pm_160 a rr:PredicateMap.
-:pom_160 rr:predicateMap :pm_160.
-:pm_160 rr:constant Arco4Archive:hasNumbering.
-:pom_160 rr:objectMap :om_160.
-:om_160 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
+:fn_058 rr:predicateObjectMap :pom_161.
+:pom_161 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_161.
+:pm_161 a rr:PredicateMap;
+    rr:constant grel:p_array_a.
+:pom_161 rr:objectMap :om_159.
+:om_159 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_059.
 :fn_059 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_059.
 :pomexec_059 rr:predicateMap :pmexec_059.
 :pmexec_059 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_059 rr:objectMap :omexec_059.
-:omexec_059 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+:omexec_059 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
     rr:termType rr:IRI.
-:fn_059 rr:predicateObjectMap :pom_161.
-:pom_161 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_161.
-:pm_161 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_161 rr:objectMap :om_161.
-:om_161 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering/";
-    rr:termType rr:Literal.
 :fn_059 rr:predicateObjectMap :pom_162.
 :pom_162 a rr:PredicateObjectMap;
     rr:predicateMap :pm_162.
 :pm_162 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_162 rr:objectMap :om_162.
-:om_162 a rr:ObjectMap, fnml:FunctionTermMap;
+    rr:constant grel:valueParameter.
+:pom_162 rr:objectMap :om_160.
+:om_160 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_060.
 :fn_060 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_060.
 :pomexec_060 rr:predicateMap :pmexec_060.
 :pmexec_060 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_060 rr:objectMap :omexec_060.
-:omexec_060 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
+:omexec_060 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
     rr:termType rr:IRI.
 :fn_060 rr:predicateObjectMap :pom_163.
 :pom_163 a rr:PredicateObjectMap;
     rr:predicateMap :pm_163.
 :pm_163 a rr:PredicateMap;
     rr:constant grel:valueParameter.
-:pom_163 rr:objectMap :om_163.
-:om_163 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_163 rr:objectMap :om_161.
+:om_161 a rr:ObjectMap;
+    rml:reference "did/unitid[1]";
+    rr:termType rr:Literal.
+:fn_060 rr:predicateObjectMap :pom_164.
+:pom_164 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_164.
+:pm_164 a rr:PredicateMap;
+    rr:constant grel:valueParameter.
+:pom_164 rr:objectMap :om_162.
+:om_162 a rr:ObjectMap;
+    rml:reference "arrangement/p/num";
+    rr:termType rr:Literal.
+:pom_165 a rr:PredicateObjectMap.
+:map_Numbering_000 rr:predicateObjectMap :pom_165.
+:pm_165 a rr:PredicateMap.
+:pom_165 rr:predicateMap :pm_165.
+:pm_165 rr:constant rdf:type.
+:pom_165 rr:objectMap :om_163.
+:om_163 a rr:ObjectMap;
+    rr:constant Arco4Archive:Numbering;
+    rr:termType rr:IRI.
+:pom_166 a rr:PredicateObjectMap.
+:map_Numbering_000 rr:predicateObjectMap :pom_166.
+:pm_166 a rr:PredicateMap.
+:pom_166 rr:predicateMap :pm_166.
+:pm_166 rr:constant core:description.
+:pom_166 rr:objectMap :om_164.
+:om_164 a rr:ObjectMap;
+    rml:reference "arrangement/list/item";
+    rr:termType rr:Literal.
+:pom_167 a rr:PredicateObjectMap.
+:map_Numbering_000 rr:predicateObjectMap :pom_167.
+:pm_167 a rr:PredicateMap.
+:pom_167 rr:predicateMap :pm_167.
+:pm_167 rr:constant Arco4Archive:hasNumberingType.
+:pom_167 rr:objectMap :om_165.
+:om_165 a fnml:FunctionTermMap;
+    rr:termType rr:IRI;
     fnml:functionValue :fn_061.
 :fn_061 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_061.
 :pomexec_061 rr:predicateMap :pmexec_061.
 :pmexec_061 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_061 rr:objectMap :omexec_061.
-:omexec_061 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+:omexec_061 rr:constant "https://w3id.org/imec/idlab/function#trueCondition";
     rr:termType rr:IRI.
-:fn_061 rr:predicateObjectMap :pom_164.
-:pom_164 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_164.
-:pm_164 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_164 rr:objectMap :om_164.
-:om_164 a rr:ObjectMap;
-    rml:reference "did/unitid[1]";
-    rr:termType rr:Literal.
-:fn_061 rr:predicateObjectMap :pom_165.
-:pom_165 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_165.
-:pm_165 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_165 rr:objectMap :om_165.
-:om_165 a rr:ObjectMap;
-    rml:reference "arrangement/p/num";
-    rr:termType rr:Literal.
-:rules_000 void:exampleResource :map_Numbering_000.
-:map_Numbering_000 rml:logicalSource :source_000;
-    a rr:TriplesMap;
-    rdfs:label "Numbering".
-:s_011 a rr:SubjectMap.
-:map_Numbering_000 rr:subjectMap :s_011.
-:s_011 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
+:fn_061 rr:predicateObjectMap :pom_168.
+:pom_168 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_168.
+:pm_168 a rr:PredicateMap;
+    rr:constant idlab-fn:strBoolean.
+:pom_168 rr:objectMap :om_166.
+:om_166 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_062.
 :fn_062 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_062.
 :pomexec_062 rr:predicateMap :pmexec_062.
 :pmexec_062 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_062 rr:objectMap :omexec_062.
-:omexec_062 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+:omexec_062 rr:constant "https://w3id.org/imec/idlab/function#equal";
     rr:termType rr:IRI.
-:fn_062 rr:predicateObjectMap :pom_166.
-:pom_166 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_166.
-:pm_166 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_166 rr:objectMap :om_166.
-:om_166 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering/";
+:fn_062 rr:predicateObjectMap :pom_169.
+:pom_169 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_169.
+:pm_169 a rr:PredicateMap;
+    rr:constant grel:valueParameter.
+:pom_169 rr:objectMap :om_167.
+:om_167 a rr:ObjectMap;
+    rml:reference "arrangement/p/num";
     rr:termType rr:Literal.
-:fn_062 rr:predicateObjectMap :pom_167.
-:pom_167 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_167.
-:pm_167 a rr:PredicateMap;
-    rr:constant grel:p_array_a.
-:pom_167 rr:objectMap :om_167.
-:om_167 a rr:ObjectMap, fnml:FunctionTermMap;
+:fn_062 rr:predicateObjectMap :pom_170.
+:pom_170 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_170.
+:pm_170 a rr:PredicateMap;
+    rr:constant grel:valueParameter2.
+:pom_170 rr:objectMap :om_168.
+:om_168 a rr:ObjectMap;
+    rr:constant "numeri arabi";
+    rr:termType rr:Literal.
+:fn_061 rr:predicateObjectMap :pom_171.
+:pom_171 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_171.
+:pm_171 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_171 rr:objectMap :om_169.
+:om_169 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering-type/arabic-numeral";
+    rr:termType rr:IRI.
+:pom_172 a rr:PredicateObjectMap.
+:map_Numbering_000 rr:predicateObjectMap :pom_172.
+:pm_172 a rr:PredicateMap.
+:pom_172 rr:predicateMap :pm_172.
+:pm_172 rr:constant Arco4Archive:hasNumberingType.
+:pom_172 rr:objectMap :om_170.
+:om_170 a fnml:FunctionTermMap;
+    rr:termType rr:IRI;
     fnml:functionValue :fn_063.
 :fn_063 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_063.
 :pomexec_063 rr:predicateMap :pmexec_063.
 :pmexec_063 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_063 rr:objectMap :omexec_063.
-:omexec_063 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#string_md5";
+:omexec_063 rr:constant "https://w3id.org/imec/idlab/function#trueCondition";
     rr:termType rr:IRI.
-:fn_063 rr:predicateObjectMap :pom_168.
-:pom_168 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_168.
-:pm_168 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_168 rr:objectMap :om_168.
-:om_168 a rr:ObjectMap, fnml:FunctionTermMap;
+:fn_063 rr:predicateObjectMap :pom_173.
+:pom_173 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_173.
+:pm_173 a rr:PredicateMap;
+    rr:constant idlab-fn:strBoolean.
+:pom_173 rr:objectMap :om_171.
+:om_171 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_064.
 :fn_064 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_064.
 :pomexec_064 rr:predicateMap :pmexec_064.
 :pmexec_064 rr:constant <https://w3id.org/function/ontology#executes>.
 :pomexec_064 rr:objectMap :omexec_064.
-:omexec_064 rr:constant "http://users.ugent.be/~bjdmeest/function/grel.ttl#array_join";
+:omexec_064 rr:constant "https://w3id.org/imec/idlab/function#equal";
     rr:termType rr:IRI.
-:fn_064 rr:predicateObjectMap :pom_169.
-:pom_169 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_169.
-:pm_169 a rr:PredicateMap;
+:fn_064 rr:predicateObjectMap :pom_174.
+:pom_174 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_174.
+:pm_174 a rr:PredicateMap;
     rr:constant grel:valueParameter.
-:pom_169 rr:objectMap :om_169.
-:om_169 a rr:ObjectMap;
-    rml:reference "did/unitid[1]";
-    rr:termType rr:Literal.
-:fn_064 rr:predicateObjectMap :pom_170.
-:pom_170 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_170.
-:pm_170 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_170 rr:objectMap :om_170.
-:om_170 a rr:ObjectMap;
+:pom_174 rr:objectMap :om_172.
+:om_172 a rr:ObjectMap;
     rml:reference "arrangement/p/num";
     rr:termType rr:Literal.
-:pom_171 a rr:PredicateObjectMap.
-:map_Numbering_000 rr:predicateObjectMap :pom_171.
-:pm_171 a rr:PredicateMap.
-:pom_171 rr:predicateMap :pm_171.
-:pm_171 rr:constant rdf:type.
-:pom_171 rr:objectMap :om_171.
-:om_171 a rr:ObjectMap;
-    rr:constant Arco4Archive:Numbering;
-    rr:termType rr:IRI.
-:pom_172 a rr:PredicateObjectMap.
-:map_Numbering_000 rr:predicateObjectMap :pom_172.
-:pm_172 a rr:PredicateMap.
-:pom_172 rr:predicateMap :pm_172.
-:pm_172 rr:constant core:description.
-:pom_172 rr:objectMap :om_172.
-:om_172 a rr:ObjectMap;
-    rml:reference "arrangement/list/item";
+:fn_064 rr:predicateObjectMap :pom_175.
+:pom_175 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_175.
+:pm_175 a rr:PredicateMap;
+    rr:constant grel:valueParameter2.
+:pom_175 rr:objectMap :om_173.
+:om_173 a rr:ObjectMap;
+    rr:constant "numeri romani";
     rr:termType rr:Literal.
-:pom_173 a rr:PredicateObjectMap.
-:map_Numbering_000 rr:predicateObjectMap :pom_173.
-:pm_173 a rr:PredicateMap.
-:pom_173 rr:predicateMap :pm_173.
-:pm_173 rr:constant Arco4Archive:hasNumberingType.
-:pom_173 rr:objectMap :om_173.
-:om_173 a fnml:FunctionTermMap;
+:fn_063 rr:predicateObjectMap :pom_176.
+:pom_176 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_176.
+:pm_176 a rr:PredicateMap;
+    rr:constant idlab-fn:str.
+:pom_176 rr:objectMap :om_174.
+:om_174 a rr:ObjectMap;
+    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering-type/roman-numeral";
+    rr:termType rr:IRI.
+:pom_177 a rr:PredicateObjectMap.
+:map_Numbering_000 rr:predicateObjectMap :pom_177.
+:pm_177 a rr:PredicateMap.
+:pom_177 rr:predicateMap :pm_177.
+:pm_177 rr:constant Arco4Archive:hasNumberingType.
+:pom_177 rr:objectMap :om_175.
+:om_175 a fnml:FunctionTermMap;
     rr:termType rr:IRI;
     fnml:functionValue :fn_065.
 :fn_065 rml:logicalSource :source_000;
@@ -2145,13 +2191,13 @@
 :pomexec_065 rr:objectMap :omexec_065.
 :omexec_065 rr:constant "https://w3id.org/imec/idlab/function#trueCondition";
     rr:termType rr:IRI.
-:fn_065 rr:predicateObjectMap :pom_174.
-:pom_174 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_174.
-:pm_174 a rr:PredicateMap;
+:fn_065 rr:predicateObjectMap :pom_178.
+:pom_178 a rr:PredicateObjectMap;
+    rr:predicateMap :pm_178.
+:pm_178 a rr:PredicateMap;
     rr:constant idlab-fn:strBoolean.
-:pom_174 rr:objectMap :om_174.
-:om_174 a rr:ObjectMap, fnml:FunctionTermMap;
+:pom_178 rr:objectMap :om_176.
+:om_176 a rr:ObjectMap, fnml:FunctionTermMap;
     fnml:functionValue :fn_066.
 :fn_066 rml:logicalSource :source_000;
     rr:predicateObjectMap :pomexec_066.
@@ -2160,146 +2206,56 @@
 :pomexec_066 rr:objectMap :omexec_066.
 :omexec_066 rr:constant "https://w3id.org/imec/idlab/function#equal";
     rr:termType rr:IRI.
-:fn_066 rr:predicateObjectMap :pom_175.
-:pom_175 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_175.
-:pm_175 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_175 rr:objectMap :om_175.
-:om_175 a rr:ObjectMap;
-    rml:reference "arrangement/p/num";
-    rr:termType rr:Literal.
-:fn_066 rr:predicateObjectMap :pom_176.
-:pom_176 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_176.
-:pm_176 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_176 rr:objectMap :om_176.
-:om_176 a rr:ObjectMap;
-    rr:constant "numeri arabi";
-    rr:termType rr:Literal.
-:fn_065 rr:predicateObjectMap :pom_177.
-:pom_177 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_177.
-:pm_177 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_177 rr:objectMap :om_177.
-:om_177 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering-type/arabic-numeral";
-    rr:termType rr:IRI.
-:pom_178 a rr:PredicateObjectMap.
-:map_Numbering_000 rr:predicateObjectMap :pom_178.
-:pm_178 a rr:PredicateMap.
-:pom_178 rr:predicateMap :pm_178.
-:pm_178 rr:constant Arco4Archive:hasNumberingType.
-:pom_178 rr:objectMap :om_178.
-:om_178 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_067.
-:fn_067 rml:logicalSource :source_000;
-    rr:predicateObjectMap :pomexec_067.
-:pomexec_067 rr:predicateMap :pmexec_067.
-:pmexec_067 rr:constant <https://w3id.org/function/ontology#executes>.
-:pomexec_067 rr:objectMap :omexec_067.
-:omexec_067 rr:constant "https://w3id.org/imec/idlab/function#trueCondition";
-    rr:termType rr:IRI.
-:fn_067 rr:predicateObjectMap :pom_179.
+:fn_066 rr:predicateObjectMap :pom_179.
 :pom_179 a rr:PredicateObjectMap;
     rr:predicateMap :pm_179.
 :pm_179 a rr:PredicateMap;
-    rr:constant idlab-fn:strBoolean.
-:pom_179 rr:objectMap :om_179.
-:om_179 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_068.
-:fn_068 rml:logicalSource :source_000;
-    rr:predicateObjectMap :pomexec_068.
-:pomexec_068 rr:predicateMap :pmexec_068.
-:pmexec_068 rr:constant <https://w3id.org/function/ontology#executes>.
-:pomexec_068 rr:objectMap :omexec_068.
-:omexec_068 rr:constant "https://w3id.org/imec/idlab/function#equal";
-    rr:termType rr:IRI.
-:fn_068 rr:predicateObjectMap :pom_180.
+    rr:constant grel:valueParameter.
+:pom_179 rr:objectMap :om_177.
+:om_177 a rr:ObjectMap;
+    rml:reference "arrangement/p/num";
+    rr:termType rr:Literal.
+:fn_066 rr:predicateObjectMap :pom_180.
 :pom_180 a rr:PredicateObjectMap;
     rr:predicateMap :pm_180.
 :pm_180 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_180 rr:objectMap :om_180.
-:om_180 a rr:ObjectMap;
-    rml:reference "arrangement/p/num";
+    rr:constant grel:valueParameter2.
+:pom_180 rr:objectMap :om_178.
+:om_178 a rr:ObjectMap;
+    rr:constant "numeri alfanumerici";
     rr:termType rr:Literal.
-:fn_068 rr:predicateObjectMap :pom_181.
+:fn_065 rr:predicateObjectMap :pom_181.
 :pom_181 a rr:PredicateObjectMap;
     rr:predicateMap :pm_181.
 :pm_181 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_181 rr:objectMap :om_181.
-:om_181 a rr:ObjectMap;
-    rr:constant "numeri romani";
-    rr:termType rr:Literal.
-:fn_067 rr:predicateObjectMap :pom_182.
-:pom_182 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_182.
-:pm_182 a rr:PredicateMap;
     rr:constant idlab-fn:str.
-:pom_182 rr:objectMap :om_182.
-:om_182 a rr:ObjectMap;
-    rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering-type/roman-numeral";
-    rr:termType rr:IRI.
-:pom_183 a rr:PredicateObjectMap.
-:map_Numbering_000 rr:predicateObjectMap :pom_183.
-:pm_183 a rr:PredicateMap.
-:pom_183 rr:predicateMap :pm_183.
-:pm_183 rr:constant Arco4Archive:hasNumberingType.
-:pom_183 rr:objectMap :om_183.
-:om_183 a fnml:FunctionTermMap;
-    rr:termType rr:IRI;
-    fnml:functionValue :fn_069.
-:fn_069 rml:logicalSource :source_000;
-    rr:predicateObjectMap :pomexec_069.
-:pomexec_069 rr:predicateMap :pmexec_069.
-:pmexec_069 rr:constant <https://w3id.org/function/ontology#executes>.
-:pomexec_069 rr:objectMap :omexec_069.
-:omexec_069 rr:constant "https://w3id.org/imec/idlab/function#trueCondition";
-    rr:termType rr:IRI.
-:fn_069 rr:predicateObjectMap :pom_184.
-:pom_184 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_184.
-:pm_184 a rr:PredicateMap;
-    rr:constant idlab-fn:strBoolean.
-:pom_184 rr:objectMap :om_184.
-:om_184 a rr:ObjectMap, fnml:FunctionTermMap;
-    fnml:functionValue :fn_070.
-:fn_070 rml:logicalSource :source_000;
-    rr:predicateObjectMap :pomexec_070.
-:pomexec_070 rr:predicateMap :pmexec_070.
-:pmexec_070 rr:constant <https://w3id.org/function/ontology#executes>.
-:pomexec_070 rr:objectMap :omexec_070.
-:omexec_070 rr:constant "https://w3id.org/imec/idlab/function#equal";
-    rr:termType rr:IRI.
-:fn_070 rr:predicateObjectMap :pom_185.
-:pom_185 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_185.
-:pm_185 a rr:PredicateMap;
-    rr:constant grel:valueParameter.
-:pom_185 rr:objectMap :om_185.
-:om_185 a rr:ObjectMap;
-    rml:reference "arrangement/p/num";
-    rr:termType rr:Literal.
-:fn_070 rr:predicateObjectMap :pom_186.
-:pom_186 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_186.
-:pm_186 a rr:PredicateMap;
-    rr:constant grel:valueParameter2.
-:pom_186 rr:objectMap :om_186.
-:om_186 a rr:ObjectMap;
-    rr:constant "numeri alfanumerici";
-    rr:termType rr:Literal.
-:fn_069 rr:predicateObjectMap :pom_187.
-:pom_187 a rr:PredicateObjectMap;
-    rr:predicateMap :pm_187.
-:pm_187 a rr:PredicateMap;
-    rr:constant idlab-fn:str.
-:pom_187 rr:objectMap :om_187.
-:om_187 a rr:ObjectMap;
+:pom_181 rr:objectMap :om_179.
+:om_179 a rr:ObjectMap;
     rr:constant "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering-type/alphanumerical";
     rr:termType rr:IRI.
+:rules_000 void:exampleResource :map_LevelOfDescription_000.
+:map_LevelOfDescription_000 rml:logicalSource :source_004;
+    a rr:TriplesMap;
+    rdfs:label "LevelOfDescription".
+:s_014 a rr:SubjectMap.
+:map_LevelOfDescription_000 rr:subjectMap :s_014.
+:s_014 rml:reference "URI".
+:rules_000 void:exampleResource :map_ConsistencyType_000.
+:map_ConsistencyType_000 rml:logicalSource :source_005;
+    a rr:TriplesMap;
+    rdfs:label "ConsistencyType".
+:s_015 a rr:SubjectMap.
+:map_ConsistencyType_000 rr:subjectMap :s_015.
+:s_015 rr:template "http://example/archives-consistency-type/{notation}".
+:pom_002 rr:objectMap :om_180.
+:om_180 a rr:ObjectMap;
+    rr:parentTriplesMap :map_LevelOfDescription_000;
+    rr:joinCondition :jc_000.
+:jc_000 rr:child "@level";
+    rr:parent "Notation".
+:pom_138 rr:objectMap :om_181.
+:om_181 a rr:ObjectMap;
+    rr:parentTriplesMap :map_ConsistencyType_000;
+    rr:joinCondition :jc_001.
+:jc_001 rr:child "unittype";
+    rr:parent "notation".

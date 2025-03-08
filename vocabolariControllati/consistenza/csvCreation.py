@@ -83,9 +83,9 @@ data = {
         "A volume of blank pages, bound or loose leaf, used to collect photographs, documents, clippings, and the like."
     ],
     "notation": [
-        "envelope", "folio", "folder", "file", "dossier", "bundle", "leaf", "poster", 
-        "map", "set", "brochure", "archivesbox", "page", "container", "journal", "collector",
-        "register", "magazine", "roll", "casefile", "cardcatalog", "fieldbook", "ledger", "volume", "album"
+    "buste", "carte", "cartelle", "faldoni", "fascicoli", "filze", "fogli", "manifesti", 
+    "mappe", "mazzi", "opuscoli", "pacchi", "pagine", "plici", "quaderni", "raccoglitori", 
+    "registri", "riviste", "rotoli", "scatole", "schede", "taccuini", "vacchette", "volumi", "album"
     ],
     "note_EN": 
     [           "Definition in English coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html. Definition in Italian coming from Direzione Generale Archivi - http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario",

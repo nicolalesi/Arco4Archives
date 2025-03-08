@@ -1,0 +1,163 @@
+<?xml version="1.0" ?>
+<ArchivalResourceLevels>
+  <Level>
+    <URI>https://w3id.org/italia/republic-history/data/arc-resource-type/category</URI>
+    <Type>a-arc:ArchivalResourceLevel, skos:Concept</Type>
+    <Label_IT>Categoria</Label_IT>
+    <Label_EN>Class</Label_EN>
+    <PrefLabel_IT>Categoria</PrefLabel_IT>
+    <PrefLabel_EN>Class</PrefLabel_EN>
+    <Notation>category</Notation>
+    <Definition_IT>1. Un gruppo di cose che condividono caratteristiche comuni; membri di un insieme; 2. L'elemento più alto o radice di una gerarchia</Definition_IT>
+    <Definition_EN>1. A group of things sharing common characteristics; members of a set; 2. The highest or root element in a hierarchy</Definition_EN>
+    <Note_IT>Definizione proveniente da Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html</Note_IT>
+    <Note_EN>Definition coming from Dictionary of Archives Terminology (SAA) https://dictionary.archivists.org/index.html</Note_EN>
+    <SameAs>http://lod.xdams.org/reload/oad/levelOfDescription/class</SameAs>
+    <ExactMatch>http://lod.xdams.org/reload/oad/levelOfDescription/class</ExactMatch>
+    <CloseMatch>https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection</CloseMatch>
+  </Level>
+  <Level>
+    <URI>https://w3id.org/italia/republic-history/data/arc-resource-type/collection</URI>
+    <Type>a-arc:ArchivalResourceLevel, skos:Concept</Type>
+    <Label_IT>Generica collezione di elementi</Label_IT>
+    <Label_EN>General collection of elements</Label_EN>
+    <PrefLabel_IT>Collezione/Raccolta</PrefLabel_IT>
+    <PrefLabel_EN>Collection</PrefLabel_EN>
+    <Notation>collection</Notation>
+    <Definition_IT>Raccolta di documenti che, estrapolati dalle diverse serie di provenienza, sono stati riuniti per affinità di materia o in base a qualche altro elemento unificante.</Definition_IT>
+    <Definition_EN>1. a set of archival or (more commonly) manuscript materials; 2. materials assembled by a person, organization, or repository from a variety of sources</Definition_EN>
+    <Note_IT>Definizione in italiano derivante dalla Direzione Generale Archivi</Note_IT>
+    <Note_EN>Definition in Italian coming from Direzione Generale Archivi</Note_EN>
+    <SameAs>https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection</SameAs>
+    <ExactMatch>http://lod.xdams.org/reload/oad/levelOfDescription/collection</ExactMatch>
+    <CloseMatch>http://lod.xdams.org/reload/oad/levelOfDescription/otherLevel</CloseMatch>
+  </Level>
+  <Level>
+    <URI>https://w3id.org/italia/republic-history/data/arc-resource-type/fonds</URI>
+    <Type>a-arc:ArchivalResourceLevel, skos:Concept</Type>
+    <Label_IT>Fondo</Label_IT>
+    <Label_EN>Fonds</Label_EN>
+    <PrefLabel_IT>Fondo</PrefLabel_IT>
+    <PrefLabel_EN>Fonds</PrefLabel_EN>
+    <Notation>fonds</Notation>
+    <Definition_IT>L’insieme organico dei documenti archivistici, senza distinzione di tipologia o di supporto</Definition_IT>
+    <Definition_EN>The whole of the records, regardless of form or medium</Definition_EN>
+    <Note_IT>La definizione in italiano e in inglese è tratta da https://icar.cultura.gov.it</Note_IT>
+    <Note_EN>The definition in Italian and English is taken from https://icar.cultura.gov.it</Note_EN>
+    <SameAs>https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Fonds</SameAs>
+    <ExactMatch>http://lod.xdams.org/reload/oad/levelOfDescription/fonds</ExactMatch>
+    <CloseMatch>http://lod.xdams.org/reload/oad/levelOfDescription/fonds</CloseMatch>
+  </Level>
+  <Level>
+    <URI>https://w3id.org/italia/republic-history/data/arc-resource-type/subfonds</URI>
+    <Type>a-arc:ArchivalResourceLevel, skos:Concept</Type>
+    <Label_IT>Subfondo</Label_IT>
+    <Label_EN>Subfonds</Label_EN>
+    <PrefLabel_IT>Subfondo</PrefLabel_IT>
+    <PrefLabel_EN>Subfonds</PrefLabel_EN>
+    <Notation>subfonds</Notation>
+    <Definition_IT>La suddivisione di un fondo contenente un insieme di documentazione correlata</Definition_IT>
+    <Definition_EN>A subdivision of a fonds containing a body of related records</Definition_EN>
+    <Note_IT>Definizioni fornite da https://icar.cultura.gov.it</Note_IT>
+    <Note_EN>Definitions coming from https://icar.cultura.gov.it</Note_EN>
+    <SameAs>http://lod.xdams.org/reload/oad/levelOfDescription/subfonds</SameAs>
+    <ExactMatch>http://lod.xdams.org/reload/oad/levelOfDescription/subfonds</ExactMatch>
+    <CloseMatch>https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection</CloseMatch>
+  </Level>
+  <Level>
+    <URI>https://w3id.org/italia/republic-history/data/arc-resource-type/recordgrp</URI>
+    <Type>a-arc:ArchivalResourceLevel, skos:Concept</Type>
+    <Label_IT>Complesso archivistico</Label_IT>
+    <Label_EN>Record group</Label_EN>
+    <PrefLabel_IT>Complesso archivistico</PrefLabel_IT>
+    <PrefLabel_EN>Record group</PrefLabel_EN>
+    <Notation>recordgrp</Notation>
+    <Definition_IT>Espressione generica usata per indicare uno o più archivi di specifici soggetti produttori</Definition_IT>
+    <Definition_EN>A collection of records that share the same provenance or were created in the same administrative unit</Definition_EN>
+    <Note_IT>Definizione in italiano proveniente da Carucci, P. , Guercio, M., Manuale di archivistica</Note_IT>
+    <Note_EN>Italian definition coming from Carucci, P. , Guercio, M., Manuale di archivistica</Note_EN>
+    <SameAs>http://lod.xdams.org/reload/oad/levelOfDescription/recordgrp</SameAs>
+    <ExactMatch>http://lod.xdams.org/reload/oad/levelOfDescription/recordgrp</ExactMatch>
+    <CloseMatch>https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection</CloseMatch>
+  </Level>
+  <Level>
+    <URI>https://w3id.org/italia/republic-history/data/arc-resource-type/subgrp</URI>
+    <Type>a-arc:ArchivalResourceLevel, skos:Concept</Type>
+    <Label_IT>Sottogruppo</Label_IT>
+    <Label_EN>Subgroup</Label_EN>
+    <PrefLabel_IT>Sottogruppo</PrefLabel_IT>
+    <PrefLabel_EN>Subgroup</PrefLabel_EN>
+    <Notation>subgrp</Notation>
+    <Definition_IT>A body of related records within a record group or collection</Definition_IT>
+    <Definition_EN>A body of related records within a record group or collection</Definition_EN>
+    <Note_IT>Definizione in italiano derivante da Dictionary of Archives Terminology</Note_IT>
+    <Note_EN>English definition coming from Dictionary of Archives Terminology</Note_EN>
+    <SameAs>http://lod.xdams.org/reload/oad/levelOfDescription/subgrp</SameAs>
+    <ExactMatch>http://lod.xdams.org/reload/oad/levelOfDescription/subgrp</ExactMatch>
+    <CloseMatch>https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection</CloseMatch>
+  </Level>
+  <Level>
+    <URI>https://w3id.org/italia/republic-history/data/arc-resource-type/series</URI>
+    <Type>a-arc:ArchivalResourceLevel, skos:Concept</Type>
+    <Label_IT>Serie</Label_IT>
+    <Label_EN>Series</Label_EN>
+    <PrefLabel_IT>Serie</PrefLabel_IT>
+    <PrefLabel_EN>Series</PrefLabel_EN>
+    <Notation>series</Notation>
+    <Definition_IT>Documenti ordinati secondo un sistema di archiviazione o conservati insieme</Definition_IT>
+    <Definition_EN>Documents arranged in accordance with a filing system</Definition_EN>
+    <Note_IT>Definizioni in italiano e in inglese fornite da https://icar.cultura.gov.it</Note_IT>
+    <Note_EN>Definitions in Italian and English coming from https://icar.cultura.gov.it</Note_EN>
+    <SameAs>https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Series</SameAs>
+    <ExactMatch>http://lod.xdams.org/reload/oad/levelOfDescription/serie</ExactMatch>
+    <CloseMatch>http://lod.xdams.org/reload/oad/levelOfDescription/serie</CloseMatch>
+  </Level>
+  <Level>
+    <URI>https://w3id.org/italia/republic-history/data/arc-resource-type/subseries</URI>
+    <Type>a-arc:ArchivalResourceLevel, skos:Concept</Type>
+    <Label_IT>Sottoserie</Label_IT>
+    <Label_EN>Subseries</Label_EN>
+    <PrefLabel_IT>Sottoserie</PrefLabel_IT>
+    <PrefLabel_EN>Subseries</PrefLabel_EN>
+    <Notation>subseries</Notation>
+    <Definition_IT>Partizione interna alla serie</Definition_IT>
+    <Definition_EN>A body of documents within a series</Definition_EN>
+    <Note_IT>Definizione italiana tratta da Carucci, P. , Guercio, M.</Note_IT>
+    <Note_EN>The Italian definition comes from Carucci, P. , Guercio, M.</Note_EN>
+    <SameAs>http://lod.xdams.org/reload/oad/levelOfDescription/subseries</SameAs>
+    <ExactMatch>http://lod.xdams.org/reload/oad/levelOfDescription/subseries</ExactMatch>
+    <CloseMatch>https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection</CloseMatch>
+  </Level>
+  <Level>
+    <URI>https://w3id.org/italia/republic-history/data/arc-resource-type/archival-unit</URI>
+    <Type>a-arc:ArchivalResourceLevel, skos:Concept</Type>
+    <Label_IT>Unità archivistica</Label_IT>
+    <Label_EN>Archival Unit</Label_EN>
+    <PrefLabel_IT>Unità archivistica</PrefLabel_IT>
+    <PrefLabel_EN>Archival Unit</PrefLabel_EN>
+    <Notation>archivial-unit</Notation>
+    <Definition_IT>Un insieme organizzato di documenti raggruppati o dal soggetto produttore</Definition_IT>
+    <Definition_EN>An organized unit of documents grouped together</Definition_EN>
+    <Note_IT>Definizioni in italiano e in inglese fornite da https://icar.cultura.gov.it</Note_IT>
+    <Note_EN>Definitions in Italian and English are coming from https://icar.cultura.gov.it</Note_EN>
+    <SameAs>http://lod.xdams.org/reload/oad/levelOfDescription/file</SameAs>
+    <ExactMatch>https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#File</ExactMatch>
+    <CloseMatch>https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#File</CloseMatch>
+  </Level>
+  <Level>
+    <URI>https://w3id.org/italia/republic-history/data/arc-resource-type/subfile</URI>
+    <Type>a-arc:ArchivalResourceLevel, skos:Concept</Type>
+    <Label_IT>Sottofascicolo</Label_IT>
+    <Label_EN>Subfile</Label_EN>
+    <PrefLabel_IT>Sottofascicolo</PrefLabel_IT>
+    <PrefLabel_EN>Subfile</PrefLabel_EN>
+    <Notation>subfile</Notation>
+    <Definition_IT>Articolazione interna al fascicolo</Definition_IT>
+    <Definition_EN>Articulation within the file</Definition_EN>
+    <Note_IT>Definizione tratta da http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario</Note_IT>
+    <Note_EN>Definition taken from http://2.42.228.207/archivi/index.php/abc-degli-archivi/glossario</Note_EN>
+    <SameAs>http://lod.xdams.org/reload/oad/levelOfDescription/subfile</SameAs>
+    <ExactMatch>http://lod.xdams.org/reload/oad/levelOfDescription/subfile</ExactMatch>
+    <CloseMatch>https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Collection</CloseMatch>
+  </Level>
+</ArchivalResourceLevels>
