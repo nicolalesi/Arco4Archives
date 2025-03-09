@@ -364,6 +364,7 @@ mappings:
         - [ti:hasTimeInstantInside,"https://w3id.org/italia/cultural-heritage/archives/data/time-instant/$(did/unitdatestructured/daterange/todate)~iri"] 
         - [ti:time, "$(did/unitdate[@label='dataTestuale'])"]          #Mi sembrava più corretto qui invece che in DesignationInTime perché credo sia la nota riferita alla data relativa al complesso
 
+    
     TimeIntervalDesignation:
             sources:
             - data1
@@ -380,16 +381,38 @@ mappings:
             - [a, ti:TimeInterval]
             - p: ti:hasTimeInstantInside
               o: 
-                  function: fno:concat
-                  parameters:
-                  - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/"]        #problema, tira fuori soltanto l'estremo recente, provato con get_array e split length ma quelle due funzioni sembrano non funzionare
-                  - parameter: fno:otherStr
-                    value:
-                          function: grel:string_split
-                          parameters:
-                          - [grel:valueParameter,$(did/unittitle/date)]
-                          - [grel:p_string_sep,"-"]
-                  type: iri
+                function: fno:concat
+                parameters:
+                - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/"]
+                - parameter: fno:otherStr
+                  value:
+                    function: grel:array_get
+                    parameters:
+                    - parameter: grel:p_array_a
+                      value: 
+                                function: grel:string_split
+                                parameters:
+                                - [grel:valueParameter,$(did/unittitle/date)]
+                                - [grel:p_string_sep,"-"]
+                    - [grel:param_int_i_from,0]
+                type: iri
+            - p: ti:hasTimeInstantInside
+              o: 
+                function: fno:concat
+                parameters:
+                - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/time-instant/"]
+                - parameter: fno:otherStr
+                  value:
+                    function: grel:array_get
+                    parameters:
+                    - parameter: grel:p_array_a
+                      value: 
+                                function: grel:string_split
+                                parameters:
+                                - [grel:valueParameter,$(did/unittitle/date)]
+                                - [grel:p_string_sep,"-"]
+                    - [grel:param_int_i_from,1]
+                type: iri
           
     TimeInstantS:
         sources:
@@ -407,6 +430,50 @@ mappings:
         po:
         - [a, ti:TimeInstant]
         - [core:note,"$(did/didnote[@label='Note_a_Estremo_remoto_Complesso'])"] #immaginario
+        - [Arco4Archive:inIntervalPosition,"end"]
+
+    TimeInstantSDesignation:
+        sources:
+        - data1
+        s: 
+                function: fno:concat
+                parameters:
+                - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/designation-time-instant/"]
+                - parameter: fno:otherStr
+                  value:
+                    function: grel:array_get
+                    parameters:
+                    - parameter: grel:p_array_a
+                      value: 
+                                function: grel:string_split
+                                parameters:
+                                - [grel:valueParameter,$(did/unittitle/date)]                                        #risolto problema estrazione indici
+                                - [grel:p_string_sep,"-"]
+                    - [grel:param_int_i_from,0]
+        po:
+        - [a, ti:TimeInstant]
+        - [Arco4Archive:inIntervalPosition,"start"]
+
+    TimeInstantEDesignation:
+        sources:
+        - data1
+        s: 
+                function: fno:concat
+                parameters:
+                - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/designation-time-instant/"]      #ho disambiguato l'URI dall'altro timeinstant per non far confondere start e end
+                - parameter: fno:otherStr
+                  value:
+                    function: grel:array_get
+                    parameters:
+                    - parameter: grel:p_array_a
+                      value: 
+                                function: grel:string_split
+                                parameters:
+                                - [grel:valueParameter,$(did/unittitle/date)]
+                                - [grel:p_string_sep,"-"]
+                    - [grel:param_int_i_from,1]
+        po:
+        - [a, ti:TimeInstant]
         - [Arco4Archive:inIntervalPosition,"end"]
 
     Extent:

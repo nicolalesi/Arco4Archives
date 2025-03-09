@@ -101,6 +101,14 @@
   core:hasType <https://w3id.org/italia/cultural-heritage/archives/data/type-of-use/riproduzione-libera>;
   core:note "Non si sono restrizioni all'utilizzo dei documenti." .
 
+<https://w3id.org/italia/cultural-heritage/archives/data/designation-time-instant/1941>
+  a ti:TimeInstant;
+  Arco4Archive:inIntervalPosition "start" .
+
+<https://w3id.org/italia/cultural-heritage/archives/data/designation-time-instant/1950>
+  a ti:TimeInstant;
+  Arco4Archive:inIntervalPosition "end" .
+
 <https://w3id.org/italia/cultural-heritage/archives/data/extent/84e8eb01913893ddca6248fc6ae10e6e>
   a Arco4Archive:Extent;
   core:hasType <http://example/archives-consistency-type/buste>;
@@ -123,4 +131,5 @@
 
 <https://w3id.org/italia/cultural-heritage/archives/data/time-interval/1941-1950>
   a ti:TimeInterval;
-  ti:hasTimeInstantInside <https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1941> .
+  ti:hasTimeInstantInside <https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1941>,
+    <https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1950> .
