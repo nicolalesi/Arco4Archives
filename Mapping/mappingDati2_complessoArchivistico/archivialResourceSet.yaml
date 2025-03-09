@@ -34,6 +34,10 @@ sources:
     access: ComplArch.xml
     referenceFormulation: xpath
     iterator: "//arrangement"
+  data5:
+    access: ComplArch.xml
+    referenceFormulation: xpath
+    iterator: "//subject"
   archivalHierarchy:
     access: archival_resource_levels.csv
     referenceFormulation: csv
@@ -62,13 +66,13 @@ mappings:
         - [Arco4Archive:hasArchivialReferenceCode, "https://w3id.org/italia/cultural-heritage/archives/data/archivial-reference-code/$(did/unitid[1])~iri"]
         - p: core:hasType
           o: 
-          - mapping: LevelOfDescription
-            condition:                                 #capire come fare il matching vocabolario controllato
+          - mapping: LevelOfDescription                                                             #matching con vocabolario controllato
+            condition:                                 
               function: equal
               parameters:
                 - [str1, $(@level),s]
                 - [str2, $(Notation),o]
-        - [arco-lite:alternativeIdentifier, "$(did/unitid[@localType='altroId'])"]    #csv esterno string match valori colonna, se c'è un risultato prendo uri di rifetrimento
+        - [arco-lite:alternativeIdentifier, "$(did/unitid[@localType='altroId'])"]    
         - [arco-lite:alternativeIdentifier, "$(did/unitid[@localType='idPrecedente'])"] 
         - p: arco-lite:currentDesignation
           o:
@@ -136,7 +140,7 @@ mappings:
           o:
             function: fno:concat
             parameters:
-            - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(did/unitid[1])/original-location/"]     #Per coerenza rendo anche il subject dell'Archivial resource codice+title in md5, così questo attributo rimanda a ArchivialResource come da mappa, però non sono certa di come distinguere se è una copia o originale
+            - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(did/unitid[1])/original-location/"]    
             - parameter: fno:otherStr
               value:
                 function: grel:string_md5
@@ -147,7 +151,7 @@ mappings:
           o:
             function: fno:concat
             parameters:
-            - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(did/unitid[1])/copy-location/"]     #Per coerenza rendo anche il subject dell'Archivial resource codice+title in md5, così questo attributo rimanda a ArchivialResource come da mappa, però non sono certa di come distinguere se è una copia o originale
+            - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(did/unitid[1])/copy-location/"]     
             - parameter: fno:otherStr                                                                                           #da controllare non sonon certa che siano logicamente corrette
               value:                                                                                                            
                 function: grel:string_md5                                                                                       #momentaneamente ho aggiunto has-originalo has copy nell'URI, ma non mi piace particolarmente
@@ -210,17 +214,6 @@ mappings:
                 parameters:
                 - [fno:str, "$(relations/relation[@otherrelationtype='EventoCollegato']/relationentry)"]
             type: iri 
-        - p: l0:hasTopic
-          o:
-            function: grel:array_join
-            parameters:
-            - [grel:p_array_a,"https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/topic/"]      #problema sovrascrizione, c'è array join per questa ragione, come prova, trova il primo e si ferma
-            - parameter: grel:p_array_a
-              value:
-                function: fno:slugify
-                parameters:
-                - [fno:str, "$(controlaccess//subject/part)"]
-            type: iri 
 # ci sarebbe una relazione con strumenti di ricerca che non vedo nel grafo
 # ci sarebbe una relazione con bib che non vedo nel grafo
     ArchivialResourceSetExt:
@@ -244,6 +237,24 @@ mappings:
                         parameters: 
                         - [grel:p_array_a,"$(unittype)"] 
                         - [grel:p_array_a,"$(quantity)"] 
+                type: iri
+
+    ArchivialResourceSetTopic:
+      sources:
+      - data5
+      s: "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(preceding::did/unitid[1])/"
+      po:
+      - [a, Arco4Archive:ArchivialResourceSet]  
+      - p: l0:hasTopic
+        o:
+                function: grel:array_join
+                parameters:
+                - [grel:p_array_a,"https://w3id.org/italia/cultural-heritage/archives/data/extent/"]    #Risolto problema sovrascrizione
+                - parameter: grel:p_array_a
+                  value:
+                    function: fno:slugify
+                    parameters:
+                    - [fno:str,"$(part)"] 
                 type: iri
 
     ArchivialResourceSetArrang:

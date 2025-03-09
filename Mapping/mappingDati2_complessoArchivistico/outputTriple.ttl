@@ -63,7 +63,8 @@
   Arco4Archive:hasProject <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/project/sia-prg-a00011>;
   Arco4Archive:totalExtentInLinearMeters "300 m.l. (10 volumi e 400 buste)"^^xsd:string;
   ti:atTime <https://w3id.org/italia/cultural-heritage/archives/data/time-interval/1941-1984>;
-  l0:hasTopic <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/topic/storia-economica> .
+  l0:hasTopic <https://w3id.org/italia/cultural-heritage/archives/data/extent/guerra>,
+    <https://w3id.org/italia/cultural-heritage/archives/data/extent/storia-economica> .
 
 <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/time-interval/1941-1984>
   a ti:TimeInterval;
