@@ -200,13 +200,13 @@
             </relation>
         </relations>
         <otherfindaid> <!-- in SIA si crea un solo tipo di collegamento. perchè nel mapping c'è alternativa di usare bibref archref o p?-->
-            <bibref>Fonti per la storia dell'Alto Adige e del Sud Tirolo, Bolzano, 1998.</bibref>
+            <bibref>Fonti per la storia dell'Alto Adige e del Sud Tirolo, Bolzano, 1998.</bibref> <!--l0:name -->
             <otherfindaid localtype="qualificaCollegamento">
                 <p>Pp. 151-199.</p>
             </otherfindaid>
         </otherfindaid>
         <otherfindaid>
-            <archref>Intendenza di finanza di Bolzano</archref> <!-- è possibile anche usare p -->
+            <archref>Intendenza di finanza di Bolzano</archref> <!-- è possibile anche usare p, -->
             <otherfindaid localtype="qualificaCollegamento">
                 <p>http://www.asbolzano.beniculturali.it/MW/mediaArchive/Pdf/invent/asbz_intend_finanz.pdf</p> <!-- esempio preso da Import 1. In p si può inserire una URL? -->
             </otherfindaid>
