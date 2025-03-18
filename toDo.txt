@@ -93,3 +93,9 @@ Luoghi anche
 2 - Prendiamo dati XML guardiamo, 
 3 - Controllare mapping passato con grafico
 4 - Se vedo soggetti conservatori nel nuovo XML uso quelli come dati
+
+
+######################
+TODO - Guarda TimeInterval e TimeInstant di responsibility
+TODO - Aggiungi parte riguardante le reificazioni ipotizzate
+TODO - Controllare vecchio mapping

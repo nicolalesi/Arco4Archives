@@ -47,6 +47,10 @@ sources:
     access: ComplArch.xml
     referenceFormulation: xpath
     iterator: "//relations/relation"
+  data8:
+    access: ComplArch.xml
+    referenceFormulation: xpath
+    iterator: "//relatedmaterial/archref"   
   archivalHierarchy:
     access: archival_resource_levels.csv
     referenceFormulation: csv
@@ -170,12 +174,18 @@ mappings:
           o:
             function: fno:concat
             parameters:
-            - [fno:str, https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/external-related-doc/]
+            - [fno:str, https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation/]
             - parameter: fno:otherStr
               value:
                 function: grel:string_md5
                 parameters:
-                - [grel:valueParameter,$(relatedmaterial/archref/title)]                      #sia nel mapping che nei dati externalDoc avrebbe più dati da mappare, forse non era finita? --- hasExternalDocumentation, documentationRelation
+                - parameter: grel:valueParameter
+                  value:
+                    function: fno:concat
+                    parameters:
+                    - [fno:str,"$(did/unitid[1])"]
+                    - [fno:otherStr,$(relatedmaterial/archref/title)]
+                    - [fno:otherStr,"$(relatedmaterial/archref/ref/@href)"]      #Come negli altri casi, ora c'è solo una entry se ce ne fossero di più probabilmente bisognerebbe fare come hasExtent
             type: iri                                                                          #sm:url e aggiungiamo l'URL https://w3id.org/italia/onto/SM/   aggiungere anche qualifica del collegamento sm:URL xsd:anyURI
         - p: Arco4Archive:hasInternalDocumentation                          #prendi il codice identificativo per creare l'URI, solo il numero              
           o:
@@ -231,6 +241,48 @@ mappings:
                 - [fno:str, "$(relations/relation[@otherrelationtype='EventoCollegato']/relationentry)"]
             type: iri 
         - [sm:URL, "$(bibliography/p/ref/@href)~iri"]
+
+    DocumentationRelation:
+      sources:
+      - data8
+      s:    
+            function: grel:array_join
+            parameters:
+            - [grel:p_array_a, https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation/]
+            - parameter: grel:p_array_a
+              value:
+                function: grel:string_md5
+                parameters:
+                - parameter: grel:valueParameter
+                  value:
+                    function: grel:array_join
+                    parameters:
+                    - [grel:p_array_a,"$(../did/unitid[1])"]
+                    - [grel:p_array_a,$(title)]
+                    - [grel:p_array_a,"$(ref/@href)"]  #vediamo se possiamo disambiguare con il soggetto
+                    - [grel:p_array_a,"$(ref/@target)"]
+      po:
+      - [a, Arco4Archive:DocumentationRelation]
+      - [rdfs:label, "Relazione che specifica informazioni riguardanti la documentazione esterna $(title) della risorsa $(../did/unitid[1])"]
+      - [core:specification,"$(title)"]    #per ora con numerazione, ma non credo sarà corretto con più entry
+      - [xsd:anyURI, "$(ref/@href)~iri"]
+      - [core:description, "$(ref/@arcrole)"]
+      - p: Arco4Archive:hasResource
+        o:  
+            function: grel:array_join
+            parameters:
+            - [grel:p_array_a,"https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource/"]
+            - parameter: grel:p_array_a
+              value:
+                function: fno:slugify
+                parameters:
+                - [fno:str, "$(ref[@linktitle='relazioneConCA']/@target)"]  
+            type: iri 
+
+
+
+      
+
 
 # ci sarebbe una relazione con strumenti di ricerca che non vedo nel grafo        #FindingAid, è identificato dalla stringa md5 della  bibref, i tag non sono standard, notificare, facciamo oppure uri univoci con md5 anche dell'id, vedere come posso prendere sempre il primo figlio dell'xml
 # ci sarebbe una relazione con bib che non vedo nel grafo                         #publication, hasReference, URI namespace data /publication/identificativo con solo il numero
@@ -294,31 +346,32 @@ mappings:
                     - [fno:str,"$(part)"] 
                 type: iri
 
-    ArchivialResourceSetArrang:
+    ArchivialResourceSetArrang: #Per ora lascio diviso dal resto nel caso servisse la precedente mappatura (commentata), per ora abbiamo deciso di farle collidere perché il criterio di arrangement secondo sia è uno solo
       sources:
       - data4
       s: "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(preceding::did/unitid[1])/"
       po:
       - [a, Arco4Archive:ArchivialResourceSet]
-      - p: Arco4Archive:hasArrangement                        #risolto problema sovrascrizione      #Visto che l'arrangement è solo uno, colleghiamo tutto a lui
-        o: 
-              function: grel:array_join
-              parameters:
-              - [grel:p_array_a,"https://w3id.org/italia/cultural-heritage/archives/data/arrangement/"]
-              - parameter: grel:p_array_a
-                value:
-                  function: grel:string_md5
-                  parameters:
-                  - parameter: grel:valueParameter
-                    value:
-                      function: grel:array_join
-                      parameters: 
-                      - [grel:p_array_a, "$(../did/unitid[1])"]                          #provato ad usare ancestor anche qui, nei loro esempi funziona, a me no, nella source si
-                      - [grel:p_array_a,"$(p/num)"]                                     #ho provato ad aggiornare il parser, ma nulla, l'unica variabile di differenza forse è docker, proverò, intanto risolto con path
-                      - [grel:p_array_a,"$(list/item)"] 
-              type: iri
-    
-    ResponsibilityC:         #Fare meglio un agent ha una responsabilità nel tempo riferirsi solo a quell'attore
+      - [Arco4Archive:hasArrangement,"https://w3id.org/italia/cultural-heritage/archives/data/arrangement/$(preceding::did/unitid[1])"]
+      #- p: Arco4Archive:hasArrangement                        #risolto problema sovrascrizione      #Visto che l'arrangement è solo uno, colleghiamo tutto a lui
+      #  o: 
+      #        function: grel:array_join
+      #        parameters:
+      #        - [grel:p_array_a,"https://w3id.org/italia/cultural-heritage/archives/data/arrangement/"]
+      #        - parameter: grel:p_array_a
+      #          value:
+      #            function: grel:string_md5
+      #            parameters:
+      #            - parameter: grel:valueParameter
+      #              value:
+      #                function: grel:array_join
+      #                parameters: 
+      #                - [grel:p_array_a, "$(../did/unitid[1])"]                          #provato ad usare ancestor anche qui, nei loro esempi funziona, a me no, nella source si
+      #                - [grel:p_array_a,"$(p/num)"]                                     #ho provato ad aggiornare il parser, ma nulla, l'unica variabile di differenza forse è docker, proverò, intanto risolto con path
+      #                - [grel:p_array_a,"$(list/item)"] 
+      #        type: iri
+                             
+    ResponsibilityC:      #Responsabilità soggetto produttore             #Fare meglio un agent ha una responsabilità nel tempo riferirsi solo a quell'attore
       sources:
       - data7
       s: "https://w3id.org/italia/cultural-heritage/archives/data/archivial-responsibility/$(preceding::did/unitid[1])-$(relationentry/@id)"     #aggiungere al posto di archivial-holder id complesso archivistico e - id soggett conservatore 
@@ -338,10 +391,10 @@ mappings:
           function: fno:concat
           parameters:
           - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/$(daterange/fromdate)-"] #necessario controllo cpfrelation per sicurezza
-          - [fno:otherStr, $(daterange/todate)]
+          - [fno:otherStr, $(daterange/todate)]                                                                                       #miglioria, sarebbe meglio mettere anche il caso della data aperta su entrambi
           type: iri
 
-    ResponsibilityH:                                               
+    ResponsibilityH:             #Responsabilità del soggetto conservatore                                  
         sources:
         - data7
         s: 
@@ -484,6 +537,29 @@ mappings:
         - [ti:hasTimeInstantInside,"https://w3id.org/italia/cultural-heritage/archives/data/time-instant/$(did/unitdatestructured/daterange/fromdate)~iri"] 
         - [ti:hasTimeInstantInside,"https://w3id.org/italia/cultural-heritage/archives/data/time-instant/$(did/unitdatestructured/daterange/todate)~iri"] 
         - [ti:time, "$(did/unitdate[@label='dataTestuale'])"]          #Mi sembrava più corretto qui invece che in DesignationInTime perché credo sia la nota riferita alla data relativa al complesso
+
+    TimeIntervalC:  #Time interval del soggetto produttore
+      source:
+      - data7
+      s:
+        function: fno:concat
+        parameters:
+        - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/$(daterange/fromdate)-"] #necessario controllo cpfrelation per sicurezza
+        - [fno:otherStr, $(daterange/todate)] 
+      po:
+      - [a, ti:TimeInterval]
+      - [ti:hasTimeInstantInside,"https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/$(daterange/fromdate)~iri"]
+      - [ti:hasTimeInstantInside,"https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/$(daterange/todate)~iri"]
+    
+    TimeIntervalH:  #Time interval del soggetto conservatore
+      source:
+      - data7
+      s: "https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/$(datesingle[@localtype='data aperta'])9999"
+      po:
+      - [a, ti:TimeInterval]
+      - [ti:hasTimeInstantInside,"https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/$(datesingle[@localtype='data aperta'])~iri"]
+      - [ti:hasTimeInstantInside,"https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/'9999'~iri"]
+
 
     
     TimeIntervalDesignation:
@@ -648,7 +724,7 @@ mappings:
     Arrangement:
       sources:
       - data4
-      s: "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/$(preceding::did/unitid[1])/"     #Il codice del bene data/arrangement/codicebene
+      s: "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/$(preceding::did/unitid[1])"     #Il codice del bene data/arrangement/codicebene
       po: 
       - [a, Arco4Archive:Arrangement]
       - [rdfs:label,"Criterio di ordinamento $(../did/unitid[1])"]

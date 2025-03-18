@@ -23,6 +23,8 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2000/01/XMLSchema#> .
 
+<http://example.comnullnull> a ti:TimeInterval .
+
 <https://w3id.org/arco/ontology/denotative-description/ConservationStatus/IT-ASBZ-F230000094>
   a a-cd:ConservationStatus;
   rdfs:label "Stato di conservazione 1 del bene: IT-ASBZ-F230000094";
@@ -52,16 +54,14 @@
   core:specification "Fondo chiuso. Non sono previsti incrementi.", "Il fondo non é stato soggetto a procedure di scarto.";
   a-dd:hasConservationStatus <https://w3id.org/arco/ontology/denotative-description/ConservationStatus/IT-ASBZ-F230000094>;
   Arco4Archive:hasArchivialReferenceCode <https://w3id.org/italia/cultural-heritage/archives/data/archivial-reference-code/IT-ASBZ-F230000094>;
-  Arco4Archive:hasArrangement <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/17299a937437cf870dbf87e820b0e366>,
-    <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/497f8465fbf26c1fe80f0cbe7e29d588>,
-    <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/920bc325049771ec2cd50bd824056e27>;
+  Arco4Archive:hasArrangement "https://w3id.org/italia/cultural-heritage/archives/data/arrangement/IT-ASBZ-F230000094";
   Arco4Archive:hasConditionOfAccess <https://w3id.org/italia/cultural-heritage/archives/data/condition-of-access/2af1268832202bcc1b82df4748c02c7f>;
   Arco4Archive:hasConditionOfUse <https://w3id.org/italia/cultural-heritage/archives/data/condition-of-use/1af0d307d7ba65a59e0a25173fe29a79>;
   Arco4Archive:hasCopy <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/IT-ASBZ-F230000094/copy-location/410eef4b11037a608a1f02fcdefa7d15>;
   Arco4Archive:hasEvent <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/event/sia-evn-c00032>;
   Arco4Archive:hasExtent <https://w3id.org/italia/cultural-heritage/archives/data/extent/84e8eb01913893ddca6248fc6ae10e6e>,
     <https://w3id.org/italia/cultural-heritage/archives/data/extent/a4b0be5c87f6ff0647a1baec2b37e91f>;
-  Arco4Archive:hasExternalDocumentation <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/external-related-doc/4752de7364c82848022af18eed2b1282>;
+  Arco4Archive:hasExternalDocumentation <https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation/058c3b2c83b234ea0c1fdf4d2fd5e363>;
   Arco4Archive:hasInternalDocumentation <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/internal-related-doc/icar-bz-1500021>;
   Arco4Archive:hasOriginal <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/IT-ASBZ-F230000094/original-location/37649d6c613646279b8500cab35d25ed>;
   Arco4Archive:hasProject <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/project/sia-prg-a00011>;
@@ -91,7 +91,7 @@
   a-cd:hasInterventionRole <https://w3id.org/italia/cultural-heritage/archives/data/role/ArchivialCreator>;
   ti:atTime <https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/1941-1984> .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/arrangement/IT-ASBZ-F230000094/>
+<https://w3id.org/italia/cultural-heritage/archives/data/arrangement/IT-ASBZ-F230000094>
   a Arco4Archive:Arrangement;
   rdfs:label "Criterio di ordinamento IT-ASBZ-F230000094";
   core:description "Fondo organizzato in due serie.", "numeri arabi";
@@ -123,6 +123,19 @@
   a ti:TimeInstant;
   Arco4Archive:inIntervalPosition "end" .
 
+<https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation/79c710c596b959893504ce203963379b>
+  a Arco4Archive:DocumentationRelation;
+  core:description "xx qualifica della relazione xx";
+  core:specification "Agenzia delle entrate di Bolzano";
+  Arco4Archive:hasResource <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource/icar-bz-1500021> .
+
+<https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation/b7b478bafe981df6da0201550196ef16>
+  a Arco4Archive:DocumentationRelation;
+  xsd:anyURI <https://opencity.comune.bolzano.it/Argomenti/Istruzione-cultura-e-sport/Cultura/Archivio-Storico>;
+  core:description "xx qualifica del collegamento xx";
+  core:specification "Archivio storico della Città di Bolzano";
+  Arco4Archive:hasResource <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource/> .
+
 <https://w3id.org/italia/cultural-heritage/archives/data/extent/84e8eb01913893ddca6248fc6ae10e6e>
   a Arco4Archive:Extent;
   core:hasType <http://example/archives-consistency-type/buste>;
@@ -147,6 +160,16 @@
   rdfs:label "Strumento di ricerca della risorsa IT-ASBZ-F230000094";
   core:description "Qualifica del collegamento : http://www.asbolzano.beniculturali.it/MW/mediaArchive/Pdf/invent/asbz_intend_finanz.pdf";
   l0:name "Intendenza di finanza di Bolzano" .
+
+<https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/1941-1984>
+  a ti:TimeInterval;
+  ti:hasTimeInstantInside <https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/1941>,
+    <https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/1984> .
+
+<https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/1987-9999>
+  a ti:TimeInterval;
+  ti:hasTimeInstantInside <https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/'9999'>,
+    <https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/1987-> .
 
 <https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1941> a ti:TimeInstant;
   core:note "(con documentazione dal 1915)";
