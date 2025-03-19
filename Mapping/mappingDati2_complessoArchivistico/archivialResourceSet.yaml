@@ -51,6 +51,18 @@ sources:
     access: ComplArch.xml
     referenceFormulation: xpath
     iterator: "//relatedmaterial/archref"   
+  data9:
+    access: ComplArch.xml
+    referenceFormulation: xpath
+    iterator: "//bibliography/p"   
+  data10:
+    access: ComplArch.xml
+    referenceFormulation: xpath
+    iterator: "//bibliography/archref/genreform"    #Potrebbe essere meglio ciclare archref, ma non funzionava
+  data11:
+    access: ComplArch.xml
+    referenceFormulation: xpath
+    iterator: "//bibliography/bibref/title/part" 
   archivalHierarchy:
     access: archival_resource_levels.csv
     referenceFormulation: csv
@@ -148,46 +160,23 @@ mappings:
                 parameters:
                 - [grel:valueParameter:str, "$(userrestrict/userrestrict[@localtype='noteCondizioniUtilizzo']/p)"]      
             type: iri
-        - p: Arco4Archive:hasOriginal     
+        - p: Arco4Archive:hasDocumentationRelation                                                         #URI: ...data/documentation-relation/md5 id complesso + stringa del titolo della documentazione. arcole qualifica del collegamento che va in  documentationRelation, collegato con core:specification, ha rdfs:label= qualifica della relazione tra risorsa archivistica codice id risorse e della documentazione e titolo della doc
           o:
-            function: fno:concat
+            function: grel:array_join
             parameters:
-            - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(did/unitid[1])/original-location/"]    
-            - parameter: fno:otherStr
-              value:
-                function: grel:string_md5
-                parameters:
-                - [grel:valueParameter:str,$(originalsloc/p/title/part)]
-            type: iri
-        - p: Arco4Archive:hasCopy   #Anche qui è una triangolazione, ci sono degli attributi relativi alla relazione
-          o:
-            function: fno:concat
-            parameters:
-            - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(did/unitid[1])/copy-location/"]     
-            - parameter: fno:otherStr                                                                                           #da controllare non sonon certa che siano logicamente corrette
-              value:                                                                                                            
-                function: grel:string_md5                                                                                       #momentaneamente ho aggiunto has-originalo has copy nell'URI, ma non mi piace particolarmente
-                parameters:                                                                                                     # se id della risorsa archivistica è lo stesso non può avere più senso fare URI identico a quello dell'ArchivialResource dato che dovrebbe rimandare lì e poi un flag nei dati per dire che è una copia se ha un originale?
-                - [grel:valueParameter:str,$(altformavail/p/title/part)]                                                         #non capisco come uri composti diversamente possano ricondurre alla stessa entità
-            type: iri
-        - p: Arco4Archive:hasExternalDocumentation                                                            #URI: ...data/documentation-relation/md5 id complesso + stringa del titolo della documentazione. arcole qualifica del collegamento che va in  documentationRelation, collegato con core:specification, ha rdfs:label= qualifica della relazione tra risorsa archivistica codice id risorse e della documentazione e titolo della doc
-          o:
-            function: fno:concat
-            parameters:
-            - [fno:str, https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation/]
-            - parameter: fno:otherStr
+            - [grel:p_array_a, https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation/]
+            - parameter: grel:p_array_a
               value:
                 function: grel:string_md5
                 parameters:
                 - parameter: grel:valueParameter
                   value:
-                    function: fno:concat
+                    function: grel:array_join
                     parameters:
-                    - [fno:str,"$(did/unitid[1])"]
-                    - [fno:otherStr,$(relatedmaterial/archref/title)]
-                    - [fno:otherStr,"$(relatedmaterial/archref/ref/@href)"]      #Come negli altri casi, ora c'è solo una entry se ce ne fossero di più probabilmente bisognerebbe fare come hasExtent
+                    - [grel:p_array_a,"$(did/unitid[1])"]
+                    - [grel:p_array_a,"$(relatedmaterial/archref/ref/@href)"]      #Come negli altri casi, ora c'è solo una entry se ce ne fossero di più probabilmente bisognerebbe fare come hasExtent
             type: iri                                                                          #sm:url e aggiungiamo l'URL https://w3id.org/italia/onto/SM/   aggiungere anche qualifica del collegamento sm:URL xsd:anyURI
-        - p: Arco4Archive:hasInternalDocumentation                          #prendi il codice identificativo per creare l'URI, solo il numero              
+        - p: Arco4Archive:hasDocumentationRelation                            #prendi il codice identificativo per creare l'URI, solo il numero              
           o:
             function: fno:concat
             parameters:
@@ -240,34 +229,243 @@ mappings:
                 parameters:
                 - [fno:str, "$(relations/relation[@otherrelationtype='EventoCollegato']/relationentry)"]
             type: iri 
-        - [sm:URL, "$(bibliography/p/ref/@href)~iri"]
-
-    DocumentationRelation:
-      sources:
-      - data8
-      s:    
-            function: grel:array_join
+        - p: Arco4Archive:hasReference    #Anche qui, se fossero più di una bisognerebbe spostarlo fuori da ArchivialResourceSet con una source iterativa
+          o: 
+            function: fno:concat
             parameters:
-            - [grel:p_array_a, https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation/]
-            - parameter: grel:p_array_a
+            - [fno:str,"https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/web-reference/$(did/unitid[1])-"]  
+            - parameter: fno:otherStr
               value:
                 function: grel:string_md5
                 parameters:
-                - parameter: grel:valueParameter
-                  value:
-                    function: grel:array_join
-                    parameters:
-                    - [grel:p_array_a,"$(../did/unitid[1])"]
-                    - [grel:p_array_a,$(title)]
-                    - [grel:p_array_a,"$(ref/@href)"]  #vediamo se possiamo disambiguare con il soggetto
-                    - [grel:p_array_a,"$(ref/@target)"]
+                - [grel:valueParameter,"$(bibliography/p/ref[@linkrole='riferimentoWeb']/@href)"]
+            type: iri
+        - p: Arco4Archive:hasSource    #Anche qui, se fossero più di una bisognerebbe spostarlo fuori da ArchivialResourceSet con una source iterativa
+          o: 
+            function: fno:concat
+            parameters:
+            - [fno:str,"https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/legal-resource/$(did/unitid[1])-"]  
+            - parameter: fno:otherStr
+              value:
+                function: fno:slugify
+                parameters:
+                - [fno:str,"$(bibliography/archref/genreform/part[@localtype='fonteNormativa']/ref)"]
+            type: iri
+        - p: Arco4Archive:hasReference
+          o:
+            function: fno:concat
+            parameters:
+            - [fno:str,"https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/legal-resource/$(did/unitid[1])-"]  
+            - parameter: fno:otherStr
+              value:
+                function: fno:slugify
+                parameters:
+                - [fno:str,"$(bibliography/bibref/title/part)"]  
+            type: iri
+        - p: Arco4Archive:hasOriginalRelation
+          o:
+            function: fno:concat
+            parameters:
+            - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/copy-or-original-relation/$(did/unitid[1])-"] #entrambi md5?
+            - parameter: fno:otherStr
+              value:
+                function: grel:string_md5
+                parameters:
+                - [grel:valueParameter, $(originalsloc/p/title/part)]
+            type: iri
+        - p: Arco4Archive:hasCopyRelation   
+          o:
+            function: fno:concat
+            parameters:
+            - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/copy-or-original-relation/$(did/unitid[1])-"]     
+            - parameter: fno:otherStr                                                                                           #da controllare non sonon certa che siano logicamente corrette
+              value:                                                                                                            
+                function: grel:string_md5                                                                                       #momentaneamente ho aggiunto has-originalo has copy nell'URI, ma non mi piace particolarmente
+                parameters:                                                                                                     # se id della risorsa archivistica è lo stesso non può avere più senso fare URI identico a quello dell'ArchivialResource dato che dovrebbe rimandare lì e poi un flag nei dati per dire che è una copia se ha un originale?
+                - [grel:valueParameter:str,$(altformavail/p/title/part)]                                                         #non capisco come uri composti diversamente possano ricondurre alla stessa entità
+            type: iri
+
+    CopyOrOriginalRelationOriginal:
+      sources:
+      - data1
+      s:
+            function: fno:concat
+            parameters:
+            - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/copy-or-original-relation/$(did/unitid[1])-"]
+            - parameter: fno:otherStr
+              value:
+                function: grel:string_md5
+                parameters:
+                - [grel:valueParameter, $(originalsloc/p/title/part)]
+      po:
+      - [a, Arco4Archive:CopyOrOriginalRelation]
+      - [rdfs:label, "Locazione degli originali dell'archivio $(did/unitid[1])"]
+      - [l0:name,$(originalsloc/p/title/part)]
+      #- [core:specification,$(originalsloc/p)]  #Provo ad aggirarlo, ma di base non mi sembrano dei tag correttamente innestati
+      - p: core:specification
+        o:
+          function: grel:string_replaceChars
+          parameters:
+          - parameter: grel:valueParameter
+            value:
+                            function: fno:slugify
+                            parameters:
+                            - [fno:str,"$(originalsloc/p)"] 
+          - [grel:p_string_find,"-"]
+          - [grel:p_string_replace, " "]
+      - [core:hasType, "https://w3id.org/italia/cultural-heritage/archives/data/copy-or-original-relation/original~iri"] #ipotesi
+      - p: core:hasOriginalResource
+        o:
+          function: fno:concat
+          parameters:
+          - [fno:str,"https://w3id.org/italia/cultural-heritage/archives/data/archival-resource/"]
+          - parameter: fno:otherStr
+            value:
+              function: grel:string_md5
+              parameters:
+              - [grel:valueParameter,$(originalsloc/p/title/part)]
+          type: iri
+
+    CopyOrOriginalRelationCopy:
+      sources:
+      - data1
+      s:
+            function: fno:concat
+            parameters:
+            - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/copy-or-original-relation/$(did/unitid[1])-"]
+            - parameter: fno:otherStr
+              value:
+                function: grel:string_md5
+                parameters:
+                - [grel:valueParameter, $(altformavail/p/title/part)]
+      po:
+      - [a, Arco4Archive:CopyOrOriginalRelation]
+      - [rdfs:label, "Locazione delle copie dei documenti dell'archivio $(did/unitid[1])"]
+      - [l0:name,$(altformavail/p/title/part)]
+      #- [core:specification,$(altformavail/p)]  #Provo ad aggirarlo, ma di base non mi sembrano dei tag correttamente innestati
+      - p: core:specification
+        o:
+          function: grel:string_replaceChars
+          parameters:
+          - parameter: grel:valueParameter
+            value:
+                            function: fno:slugify
+                            parameters:
+                            - [fno:str,"$(altformavail/p)"] 
+          - [grel:p_string_find,"-"]
+          - [grel:p_string_replace, " "]
+      - [core:hasType, "https://w3id.org/italia/cultural-heritage/archives/data/copy-or-original-relation/copy~iri"] 
+      - p: core:hasCopyResource
+        o:
+          function: fno:concat
+          parameters:
+          - [fno:str,"https://w3id.org/italia/cultural-heritage/archives/data/archival-resource/"]
+          - parameter: fno:otherStr
+            value:
+              function: grel:string_md5
+              parameters:
+              - [grel:valueParameter,$(altformavail/p/title/part)]
+          type: iri
+
+    LegalResource:
+      sources:
+      - data10
+      s:
+            function: fno:concat
+            parameters:
+            - [fno:str,"https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/legal-resource/$(preceding::did/unitid[1])-"]  
+            - parameter: fno:otherStr
+              value:
+                function: fno:slugify
+                parameters:
+                - [fno:str,"$(part[@localtype='fonteNormativa']/ref)"]
+      po:
+      - [a, Arco4Archive:LegalResource]
+      - [rdfs:label, "Fonte normativa $(part/ref) della risorsa $(../../../did/unitid[1])"]
+
+
+
+    WebReference:
+      sources:
+      - data9
+      s:
+            function: fno:concat
+            parameters:
+            - [fno:str,"https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/web-reference/$(preceding::did/unitid[1])-"]
+            - parameter: fno:otherStr
+              value:
+                function: grel:string_md5
+                parameters:
+                - [grel:valueParameter,"$(ref[@linkrole='riferimentoWeb']/@href)"]
+      po:
+      - [a, Arco4Archive:WebReference]
+      - [rdfs:label, "Riferimento web $(../ref[@linkrole='riferimentoWeb']/@href) della risorsa $(../../did/unitid[1])"]
+      - [l0:name, "$(ref/@linkrole)"]
+      - [sm:URL, "$(ref[@linkrole='riferimentoWeb']/@href)~iri"]
+
+    DocumentationRelationExt:
+      sources:
+      - data8
+      s:  
+          function: grel:controls_if
+          parameters:
+          - parameter: grel:bool_b
+            value: 
+              function: fno:isNull
+              parameters:
+              - [fno:str, "$(ref/@linktitle)"] 
+          - parameter: grel:any_false
+            value:
+              function: grel:array_join
+              parameters:
+              - [grel:p_array_a, https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation/]
+              - parameter: grel:p_array_a
+                value:
+                  function: grel:string_md5
+                  parameters:
+                  - parameter: grel:valueParameter
+                    value:
+                      function: grel:array_join
+                      parameters:
+                      - [grel:p_array_a,"$(../../did/unitid[1])"]
+                      - [grel:p_array_a,"$(ref/@href)"]       #Poi ci sarà da aggiungere condition se c'è href usiamo quello altrimenti denominazione
       po:
       - [a, Arco4Archive:DocumentationRelation]
       - [rdfs:label, "Relazione che specifica informazioni riguardanti la documentazione esterna $(title) della risorsa $(../did/unitid[1])"]
       - [core:specification,"$(title)"]    #per ora con numerazione, ma non credo sarà corretto con più entry
-      - [xsd:anyURI, "$(ref/@href)~iri"]
-      - [core:description, "$(ref/@arcrole)"]
-      - p: Arco4Archive:hasResource
+      - [xsd:anyURI, "$(ref/@href)~iri"]  #CORREGGERE DEVE PASSARE PER WEBREFERENCE
+      - [core:specification, "$(ref/@arcrole)"]
+      - [core:hasType, "https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation-type/external~iri"]
+
+    DocumentationRelationInt:
+      sources:
+      - data8
+      s:    
+          function: grel:controls_if
+          parameters:
+          - parameter: grel:bool_b
+            value: 
+              function: fno:isNull
+              parameters:
+              - [fno:str, "$(ref/@target)"] 
+          - parameter: grel:any_false
+            value:
+              function: grel:array_join
+              parameters:
+              - [grel:p_array_a,"https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/internal-related-doc/"]
+              - [grel:p_array_a,"$(../../did/unitid[1])-"]
+              - parameter: grel:p_array_a
+                value:
+                  function: fno:slugify
+                  parameters:
+                  - [fno:str, "$(ref/@target)"]   
+      po:
+      - [a, Arco4Archive:DocumentationRelation]
+      - [rdfs:label, "Relazione che specifica informazioni riguardanti la documentazione esterna $(title) della risorsa $(../did/unitid[1])"]
+      - [core:specification,"$(title)"]    #per ora con numerazione, ma non credo sarà corretto con più entry
+      - [xsd:anyURI, "$(ref/@href)~iri"]  #CORREGGERE DEVE PASSARE PER WEBREFERENCE
+      - [core:specification, "$(ref/@arcrole)"]                     #Le concateno?
+      - p: Arco4Archive:hasArchivialResource
         o:  
             function: grel:array_join
             parameters:
@@ -278,6 +476,7 @@ mappings:
                 parameters:
                 - [fno:str, "$(ref[@linktitle='relazioneConCA']/@target)"]  
             type: iri 
+      - [core:hasType, "https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation-type/internal~iri"]
 
 
 
@@ -352,7 +551,7 @@ mappings:
       s: "https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/$(preceding::did/unitid[1])/"
       po:
       - [a, Arco4Archive:ArchivialResourceSet]
-      - [Arco4Archive:hasArrangement,"https://w3id.org/italia/cultural-heritage/archives/data/arrangement/$(preceding::did/unitid[1])"]
+      - [Arco4Archive:hasArrangement,"https://w3id.org/italia/cultural-heritage/archives/data/arrangement/$(preceding::did/unitid[1])~iri"]
       #- p: Arco4Archive:hasArrangement                        #risolto problema sovrascrizione      #Visto che l'arrangement è solo uno, colleghiamo tutto a lui
       #  o: 
       #        function: grel:array_join
@@ -541,11 +740,7 @@ mappings:
     TimeIntervalC:  #Time interval del soggetto produttore
       source:
       - data7
-      s:
-        function: fno:concat
-        parameters:
-        - [fno:str, "https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/$(daterange/fromdate)-"] #necessario controllo cpfrelation per sicurezza
-        - [fno:otherStr, $(daterange/todate)] 
+      s: "https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/$(daterange/fromdate)-$(daterange/todate)" #necessario controllo cpfrelation per sicurezza
       po:
       - [a, ti:TimeInterval]
       - [ti:hasTimeInstantInside,"https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/$(daterange/fromdate)~iri"]
@@ -557,8 +752,8 @@ mappings:
       s: "https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/$(datesingle[@localtype='data aperta'])9999"
       po:
       - [a, ti:TimeInterval]
-      - [ti:hasTimeInstantInside,"https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/$(datesingle[@localtype='data aperta'])~iri"]
-      - [ti:hasTimeInstantInside,"https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/'9999'~iri"]
+      - [ti:hasTimeInstantInside,"https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/$(datesingle[@localtype='data aperta'])~iri"] #Rimuovere il -
+      - [ti:hasTimeInstantInside,"https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/9999~iri"]
 
 
     
