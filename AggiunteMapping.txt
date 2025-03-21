@@ -1,0 +1,20 @@
+  
+Istanziare archivial resource
+indice ref e poi tipo di classe che è archivial resource
+l0:name, label, core:localIdentifier può ssere il codice, solo stringa non uri, 
+
+URI+ REIFICAZIONE DEL TEMPO CONTROLLARE.
+COTROLLARE URI DESIGNATION
+
+Rimuovi trattino dal time instant
+
+Agent per ora non facciamo
+a-lite:nationalIdentifier
+
+fai hasIdentifier anche per gli altri, quello alternativa, ma invece di mettere 
+core:current mettiamo core:alternative
+Uno national con current true e uno local con current false
+
+-Mettere a posto mapping
+- Vocabolario consistenza 
+

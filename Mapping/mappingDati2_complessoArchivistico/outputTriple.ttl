@@ -1,5 +1,5 @@
 @prefix : <http://mapping.example.com/> .
-@prefix Arco4Archive: <https://w3id.org/italia/cultural-heritage/archives/onto/> .
+@prefix Arco4Archive: <https://w3id.org/arco/archives/ontology/archival-resource/> .
 @prefix a-cd: <https://w3id.org/arco/ontology/context-description/> .
 @prefix a-dd: <https://w3id.org/arco/ontology/denotative-description/> .
 @prefix arco-lite: <https://w3id.org/arco/ontology/arco-lite/> .
@@ -7,7 +7,7 @@
 @prefix core: <https://w3id.org/arco/ontology/core/> .
 @prefix cov: <https://w3id.org/italia/onto/COV/> .
 @prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
-@prefix data: <https://w3id.org/italia/cultural-heritage/archives/data/> .
+@prefix data: <https://w3id.org/arco/archives/resource/> .
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
 @prefix fno: <https://w3id.org/imec/idlab/function#> .
@@ -23,196 +23,228 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2000/01/XMLSchema#> .
 
-<https://w3id.org/arco/ontology/denotative-description/conservation-status/IT-ASBZ-F230000094>
-  a a-cd:ConservationStatus;
-  rdfs:label "Stato di conservazione del bene: IT-ASBZ-F230000094";
-  core:hasType <https://w3id.org/arco/ontology/denotative-description/ConservationStatusType/Discreto>;
-  core:specification "Parte del fondo é stato soggetto a interventi di restauro.";
-  Arco4Archive:materialCondition "Le condizioni del materiale sono stabili e non presenta particolari problemi di conservazione." .
-
-<https://w3id.org/italia/cultural-heritage/archives/data/alternative-designation/IT-ASBZ-F230000094-delegazione-di-finanza-di-bolzano>
+<https://w3id.org/arco/archives/resource/alternative-designation/IT-ASBZ-F230000094-delegazione-di-finanza-di-bolzano>
   a a-cd:DesignationInTime;
   rdfs:label "Denominazione nel tempo 'Delegazione di finanza di Bolzano ' della risorsa IT-ASBZ-F230000094"^^xsd:string;
-  ti:atTime <https://w3id.org/italia/cultural-heritage/archives/data/time-interval/1941-1950>;
+  core:hasType a-cd:AlternativeDesignation;
+  ti:atTime <https://w3id.org/arco/archives/resource/time-interval/1941-1950>;
   l0:name "Delegazione di finanza di Bolzano " .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/IT-ASBZ-F230000094/>
+<https://w3id.org/arco/archives/resource/archival-resource/IT-ASBZ-F230000094-icar-bz-1500021>
+  a Arco4Archive:archivalResource;
+  rdfs:label "Risorsa archivistica ICAR BZ 1500021";
+  core:localIdentifier "ICAR BZ 1500021" .
+
+<https://w3id.org/arco/archives/resource/archivial-resource-set/IT-ASBZ-F230000094/>
   a Arco4Archive:ArchivialResourceSet;
-  rdfs:label "Complesso archivistico IT-ASBZ-F230000094";
+  rdfs:label "Complesso archivistico: Intendenza di finanza di Bolzano - IT-ASBZ-F230000094";
+  Arco4Archive:hasArrangement <https://w3id.org/arco/archives/resource/arrangement/IT-ASBZ-F230000094>;
+  Arco4Archive:hasConditionOfAccess <https://w3id.org/arco/archives/resource/condition-of-access/2af1268832202bcc1b82df4748c02c7f>;
+  Arco4Archive:hasConditionOfUse <https://w3id.org/arco/archives/resource/condition-of-use/1af0d307d7ba65a59e0a25173fe29a79>;
+  Arco4Archive:hasCopyRelation <https://w3id.org/arco/archives/resource/copy-or-original-relation/IT-ASBZ-F230000094-410eef4b11037a608a1f02fcdefa7d15>;
+  Arco4Archive:hasDocumentationRelation <https://w3id.org/arco/archives/resource/archivial-resource-set/internal-related-doc/IT-ASBZ-F230000094-icar-bz-1500021>,
+    <https://w3id.org/arco/archives/resource/documentation-relation/8015f13f6eb8feb36056006851a1cb62>;
+  Arco4Archive:hasEvent <https://w3id.org/arco/archives/resource/archivial-resource-set/event/sia-evn-c00032>;
+  Arco4Archive:hasExtent <https://w3id.org/arco/archives/resource/extent/84e8eb01913893ddca6248fc6ae10e6e>,
+    <https://w3id.org/arco/archives/resource/extent/a4b0be5c87f6ff0647a1baec2b37e91f>;
+  Arco4Archive:hasOriginalRelation <https://w3id.org/arco/archives/resource/copy-or-original-relation/IT-ASBZ-F230000094-37649d6c613646279b8500cab35d25ed>;
+  Arco4Archive:hasProject <https://w3id.org/arco/archives/resource/archivial-resource-set/project/sia-prg-a00011>;
+  Arco4Archive:hasReference <https://w3id.org/arco/archives/resource/publication/icar-rb-1992347>,
+    <https://w3id.org/arco/archives/resource/web-reference/e6d83d83226cadf43498c56e6eb08298>;
+  Arco4Archive:hasSource <https://w3id.org/arco/archives/resource/legal-resource/icar-fn-2109923>;
+  Arco4Archive:isDescribedBy <https://w3id.org/arco/archives/resource/finding-aid/6782bbfdf5e31a163b568b3ed4cff81e>,
+    <https://w3id.org/arco/archives/resource/finding-aid/6f7a390bbeb03f60f08a4d3b075344a0>;
+  Arco4Archive:totalExtentInLinearMeters "300 m.l. (10 volumi e 400 buste)"^^xsd:string;
   arco-lite:alternativeDesignation "Delegazione di finanza di Bolzano "^^xsd:string;
-  arco-lite:alternativeIdentifier "SIcod001"^^xsd:string, "cod0010000283"^^xsd:string;
-  arco-lite:currentDesignation <https://w3id.org/italia/cultural-heritage/archives/data/current-designation/intendenza-di-finanza-di-bolzano>;
-  arco-lite:hasArchivialCreator <https://w3id.org/italia/cultural-heritage/archives/data/agent/IT-ASBZ-CC236400094>;
-  a-cd:hasDesignationInTime <https://w3id.org/italia/cultural-heritage/archives/data/alternative-designation/IT-ASBZ-F230000094-delegazione-di-finanza-di-bolzano>;
-  a-cd:hasResponsibility <https://w3id.org/italia/cultural-heritage/archives/data/archivial-responsibility/IT-ASBZ-F230000094-4939>,
-    <https://w3id.org/italia/cultural-heritage/archives/data/archivial-responsibility/IT-ASBZ-F230000094-IT-ASBZ-CC236400094>;
+  arco-lite:currentDesignation "Intendenza di finanza di Bolzano"^^xsd:string;
+  arco-lite:hasArchivialCreator <https://w3id.org/arco/archives/resource/agent/IT-ASBZ-CC236400094>;
+  arco-lite:localIdentifier "SIcod001"^^xsd:string, "cod0010000283"^^xsd:string;
+  arco-lite:nationalIdentifier "IT-ASBZ-F230000094"^^xsd:string;
+  a-cd:hasDesignationInTime <https://w3id.org/arco/archives/resource/alternative-designation/IT-ASBZ-F230000094-delegazione-di-finanza-di-bolzano>,
+    <https://w3id.org/arco/archives/resource/current-designation/IT-ASBZ-F230000094-intendenza-di-finanza-di-bolzano>;
+  a-cd:hasResponsibility <https://w3id.org/arco/archives/resource/archivial-responsibility/IT-ASBZ-F230000094-4939>,
+    <https://w3id.org/arco/archives/resource/archivial-responsibility/IT-ASBZ-F230000094-IT-ASBZ-CC236400094>;
+  a-cd:hasSubject <https://w3id.org/arco/archives/resource/subject/guerra>, <https://w3id.org/arco/archives/resource/subject/storia-economica>;
   a-cd:historicalInformation "La serie archivistica denominata \"Danni di Guerra\", corredata da schedario coevo, fu versata dall'Intendenza di Finanza di Bolzano all'Archivio di Stato mediante vari versamenti tra il 30 giugno 1987 e l'8 marzo 1988; una seconda serie costituita da una campionatura venne versata il 15 marzo 2002 dall'Agenzia delle entrate di Bolzano, cui era confluito l'archivio dell'Intendenza di Finanza, a seguito dell'assimilazione delle funzioni da parte della Direzione generale delle entrate di Bolzano nel 1991."^^xsd:string;
   core:description "Il fondo è costituito dalle due serie Danni di guerra, corredata da uno schedario alfabetico coevo organizzato per richiedente, e Campionatura, contenente le carte dell'Intendenza di finanza versate dall'Agenzia delle entrate di Bolzano."^^xsd:string;
+  core:hasIdentifier <https://w3id.org/arco/archives/resource/identifier/IT-ASBZ-F230000094>,
+    <https://w3id.org/arco/archives/resource/identifier/SIcod001>, <https://w3id.org/arco/archives/resource/identifier/cod0010000283>;
   core:hasType <https://w3id.org/italia/republic-history/data/arc-resource-type/fonds>;
   core:note "Fondo versato in parte dall'Intendenza di Finanza di Bolzano e in parte dall'Agenzia delle entrate di Bolzano."^^xsd:string;
   core:specification "Fondo chiuso. Non sono previsti incrementi."^^xsd:string, "Il fondo non é stato soggetto a procedure di scarto."^^xsd:string;
-  a-dd:hasConservationStatus <https://w3id.org/arco/ontology/denotative-description/ConservationStatus/IT-ASBZ-F230000094>;
-  Arco4Archive:hasArchivialReferenceCode <https://w3id.org/italia/cultural-heritage/archives/data/archivial-reference-code/IT-ASBZ-F230000094>;
-  Arco4Archive:hasArrangement <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/IT-ASBZ-F230000094>;
-  Arco4Archive:hasConditionOfAccess <https://w3id.org/italia/cultural-heritage/archives/data/condition-of-access/2af1268832202bcc1b82df4748c02c7f>;
-  Arco4Archive:hasConditionOfUse <https://w3id.org/italia/cultural-heritage/archives/data/condition-of-use/1af0d307d7ba65a59e0a25173fe29a79>;
-  Arco4Archive:hasCopyRelation <https://w3id.org/italia/cultural-heritage/archives/data/copy-or-original-relation/IT-ASBZ-F230000094-410eef4b11037a608a1f02fcdefa7d15>;
-  Arco4Archive:hasDocumentationRelation <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/internal-related-doc/IT-ASBZ-F230000094-icar-bz-1500021>,
-    <https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation/8015f13f6eb8feb36056006851a1cb62>;
-  Arco4Archive:hasEvent <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/event/sia-evn-c00032>;
-  Arco4Archive:hasExtent <https://w3id.org/italia/cultural-heritage/archives/data/extent/84e8eb01913893ddca6248fc6ae10e6e>,
-    <https://w3id.org/italia/cultural-heritage/archives/data/extent/a4b0be5c87f6ff0647a1baec2b37e91f>;
-  Arco4Archive:hasOriginalRelation <https://w3id.org/italia/cultural-heritage/archives/data/copy-or-original-relation/IT-ASBZ-F230000094-37649d6c613646279b8500cab35d25ed>;
-  Arco4Archive:hasProject <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/project/sia-prg-a00011>;
-  Arco4Archive:hasReference <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/legal-resource/IT-ASBZ-F230000094-icar-rb-1992347>,
-    <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/web-reference/IT-ASBZ-F230000094-e6d83d83226cadf43498c56e6eb08298>;
-  Arco4Archive:hasSource <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/legal-resource/IT-ASBZ-F230000094-icar-fn-2109923>;
-  Arco4Archive:isDescribedBy <https://w3id.org/italia/cultural-heritage/archives/data/finding-aid/6782bbfdf5e31a163b568b3ed4cff81e>,
-    <https://w3id.org/italia/cultural-heritage/archives/data/finding-aid/6f7a390bbeb03f60f08a4d3b075344a0>;
-  Arco4Archive:totalExtentInLinearMeters "300 m.l. (10 volumi e 400 buste)"^^xsd:string;
-  ti:atTime <https://w3id.org/italia/cultural-heritage/archives/data/time-interval/1941-1984>;
-  l0:hasTopic <https://w3id.org/italia/cultural-heritage/archives/data/extent/guerra>,
-    <https://w3id.org/italia/cultural-heritage/archives/data/extent/storia-economica> .
+  a-dd:hasConservationStatus <https://w3id.org/arco/ontology/denotative-description/conservation-status/IT-ASBZ-F230000094>;
+  ti:atTime <https://w3id.org/arco/archives/resource/time-interval/1941-1984> .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/internal-related-doc/IT-ASBZ-F230000094-icar-bz-1500021>
+<https://w3id.org/arco/archives/resource/archivial-resource-set/internal-related-doc/IT-ASBZ-F230000094-icar-bz-1500021>
   a Arco4Archive:DocumentationRelation;
-  core:hasType <https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation-type/internal>;
-  core:specification "Agenzia delle entrate di Bolzano", "xx qualifica della relazione xx";
-  Arco4Archive:hasArchivialResource <https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource/icar-bz-1500021> .
+  Arco4Archive:hasArchivalResource <https://w3id.org/arco/archives/resource/archivial-resource/icar-bz-1500021>;
+  core:hasType <https://w3id.org/arco/archives/ontology/archival-resource/DocumentationRelationType/Internal>;
+  core:specification "Agenzia delle entrate di Bolzano", "xx qualifica della relazione xx" .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/legal-resource/IT-ASBZ-F230000094-icar-fn-2109923>
-  a Arco4Archive:LegalResource;
-  rdfs:label "Fonte normativa ICAR FN 2109923 della risorsa IT-ASBZ-F230000094" .
-
-<https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/time-interval/1941-1984>
+<https://w3id.org/arco/archives/resource/archivial-resource-set/time-interval/1941-1984>
   a ti:TimeInterval;
   rdfs:label "Intervallo di tempo 1941-1984,della risorsa IT-ASBZ-F230000094"^^xsd:string;
-  ti:hasTimeInstantInside <https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1941>,
-    <https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1984>;
+  ti:hasTimeInstantInside <https://w3id.org/arco/archives/resource/time-instant/1941>,
+    <https://w3id.org/arco/archives/resource/time-instant/1984>;
   ti:time "1941-1984 (con documentazione dal 1915)" .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/archivial-resource-set/web-reference/IT-ASBZ-F230000094-e6d83d83226cadf43498c56e6eb08298>
+<https://w3id.org/arco/archives/resource/archivial-resource-set/web-reference/e6d83d83226cadf43498c56e6eb08298>
   a Arco4Archive:WebReference;
+  rdfs:label "Riferimento web della risorsa IT-ASBZ-F230000094";
   sm:URL <https://it.wikipedia.org/wiki/Intendenza_di_finanza>;
-  l0:name "riferimentoWeb" .
+  l0:name "Riferimento web della risorsa IT-ASBZ-F230000094" .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/archivial-responsibility/IT-ASBZ-F230000094-4939>
+<https://w3id.org/arco/archives/resource/archivial-responsibility/IT-ASBZ-F230000094-4939>
   a a-cd:Responsibility;
-  a-cd:hasAgentWithResponsibility <https://w3id.org/italia/cultural-heritage/archives/data/agent/san.cat.sogC.4939>;
-  a-cd:hasInterventionRole <https://w3id.org/italia/cultural-heritage/archives/data/role/ArchivialHolder>;
-  ti:atTime <https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/1987-9999> .
+  a-cd:hasAgentWithResponsibility <https://w3id.org/arco/archives/resource/agent/san.cat.sogC.4939>;
+  a-cd:hasInterventionRole Arco4Archive:ArchivialHolder;
+  ti:atTime <https://w3id.org/arco/archives/resource/responsibility-time-interval/1987-9999> .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/archivial-responsibility/IT-ASBZ-F230000094-IT-ASBZ-CC236400094>
+<https://w3id.org/arco/archives/resource/archivial-responsibility/IT-ASBZ-F230000094-IT-ASBZ-CC236400094>
   a a-cd:Responsibility;
-  a-cd:hasAgentWithResponsibility <https://w3id.org/italia/cultural-heritage/archives/data/agent/IT-ASBZ-CC236400094>;
-  a-cd:hasInterventionRole <https://w3id.org/italia/cultural-heritage/archives/data/role/ArchivialCreator>;
-  ti:atTime <https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/1941-1984> .
+  a-cd:hasAgentWithResponsibility <https://w3id.org/arco/archives/resource/agent/IT-ASBZ-CC236400094>;
+  a-cd:hasInterventionRole Arco4Archive:ArchivialCreator;
+  ti:atTime <https://w3id.org/arco/archives/resource/responsibility-time-interval/1941-1984> .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/arrangement/IT-ASBZ-F230000094>
-  a Arco4Archive:Arrangement;
+<https://w3id.org/arco/archives/resource/arrangement/IT-ASBZ-F230000094> a Arco4Archive:Arrangement;
   rdfs:label "Criterio di ordinamento IT-ASBZ-F230000094";
-  core:description "Fondo organizzato in due serie.", "numeri arabi";
-  Arco4Archive:hasNumbering <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering/d41d8cd98f00b204e9800998ecf8427e> .
+  Arco4Archive:hasNumbering <https://w3id.org/arco/archives/resource/arrangement/numbering/d41d8cd98f00b204e9800998ecf8427e>;
+  core:description "Fondo organizzato in due serie.", "numeri arabi" .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering/d41d8cd98f00b204e9800998ecf8427e>
+<https://w3id.org/arco/archives/resource/arrangement/numbering/d41d8cd98f00b204e9800998ecf8427e>
   a Arco4Archive:Numbering;
   rdfs:label "Numerazione in numeri arabi della risorsa IT-ASBZ-F230000094";
-  core:description "1-400 (numerazione delle buste)", "401-410 (numerazione dei volumi)";
-  Arco4Archive:hasNumberingType <https://w3id.org/italia/cultural-heritage/archives/data/arrangement/numbering-type/arabic-numeral> .
+  Arco4Archive:hasNumberingType Arco4Archive:ArabicNumeral;
+  core:description "1-400 (numerazione delle buste)", "401-410 (numerazione dei volumi)" .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/condition-of-access/2af1268832202bcc1b82df4748c02c7f>
+<https://w3id.org/arco/archives/resource/condition-of-access/2af1268832202bcc1b82df4748c02c7f>
   a Arco4Archive:ConditionOfAccess;
   rdfs:label "Condizioni di accesso della risorsa IT-ASBZ-F230000094"^^xsd:string;
-  core:hasType <https://w3id.org/italia/cultural-heritage/archives/data/type-of-access/liberamente-accessibile>;
+  core:hasType <https://w3id.org/arco/archives/resource/type-of-access/liberamente-accessibile>;
   core:note "Non ci sono restrizioni all'accesso." .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/condition-of-use/1af0d307d7ba65a59e0a25173fe29a79>
+<https://w3id.org/arco/archives/resource/condition-of-use/1af0d307d7ba65a59e0a25173fe29a79>
   a Arco4Archive:ConditionOfUse;
   rdfs:label "Condizioni di utilizzo della risorsa IT-ASBZ-F230000094"^^xsd:string;
-  core:hasType <https://w3id.org/italia/cultural-heritage/archives/data/type-of-use/riproduzione-libera>;
+  core:hasType <https://w3id.org/arco/archives/resource/type-of-use/riproduzione-libera>;
   core:note "Non si sono restrizioni all'utilizzo dei documenti." .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/copy-or-original-relation/IT-ASBZ-F230000094-37649d6c613646279b8500cab35d25ed>
+<https://w3id.org/arco/archives/resource/copy-or-original-relation/IT-ASBZ-F230000094-37649d6c613646279b8500cab35d25ed>
   a Arco4Archive:CopyOrOriginalRelation;
   rdfs:label "Locazione degli originali dell'archivio IT-ASBZ-F230000094";
-  core:hasOriginalResource <https://w3id.org/italia/cultural-heritage/archives/data/archival-resource/37649d6c613646279b8500cab35d25ed>;
-  core:hasType <https://w3id.org/italia/cultural-heritage/archives/data/copy-or-original-relation/original>;
-  core:specification "agenzia delle entrate di bolzano sono presenti alcuni fascicoli in copia gli originali sono conservati nel fondo dell agenzia delle entrate di bolzano";
+  core:hasOriginalResource <https://w3id.org/arco/archives/resource/archival-resource/37649d6c613646279b8500cab35d25ed>;
+  core:hasType <https://w3id.org/arco/archives/ontology/archival-resource/CopyOrOriginalRelationType/Original>;
+  core:specification """
+                Agenzia delle entrate di Bolzano
+                Sono presenti alcuni fascicoli in copia. Gli originali sono conservati nel fondo dell'Agenzia delle entrate di Bolzano.
+            
+            """;
   l0:name "Agenzia delle entrate di Bolzano" .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/copy-or-original-relation/IT-ASBZ-F230000094-410eef4b11037a608a1f02fcdefa7d15>
+<https://w3id.org/arco/archives/resource/copy-or-original-relation/IT-ASBZ-F230000094-410eef4b11037a608a1f02fcdefa7d15>
   a Arco4Archive:CopyOrOriginalRelation;
   rdfs:label "Locazione delle copie dei documenti dell'archivio IT-ASBZ-F230000094";
-  core:hasCopyResource <https://w3id.org/italia/cultural-heritage/archives/data/archival-resource/410eef4b11037a608a1f02fcdefa7d15>;
-  core:hasType <https://w3id.org/italia/cultural-heritage/archives/data/copy-or-original-relation/copy>;
-  core:specification "free university of bozen bolzano una parte della serie danni di guerra e disponibile in copia nella biblioteca della free university of bozen bolzano";
+  core:hasCopyResource <https://w3id.org/arco/archives/resource/archival-resource/410eef4b11037a608a1f02fcdefa7d15>;
+  core:hasType <https://w3id.org/arco/archives/ontology/archival-resource/CopyOrOriginalRelationType/Copy>;
+  core:specification """
+                Free University of Bozen-Bolzano
+                Una parte della serie Danni di guerra è disponibile in copia nella biblioteca della Free University of Bozen-Bolzano.
+            
+            """;
   l0:name "Free University of Bozen-Bolzano" .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/designation-time-instant/1941>
-  a ti:TimeInstant;
+<https://w3id.org/arco/archives/resource/current-designation/IT-ASBZ-F230000094-intendenza-di-finanza-di-bolzano>
+  a a-cd:DesignationInTime;
+  rdfs:label "Denominazione corrente 'Intendenza di finanza di Bolzano' della risorsa IT-ASBZ-F230000094"^^xsd:string;
+  core:current "true"^^xsd:boolean;
+  l0:name "Intendenza di finanza di Bolzano" .
+
+<https://w3id.org/arco/archives/resource/designation-time-instant/1941> a ti:TimeInstant;
   rdfs:label "Istante di tempo iniziale 1941 dell'intervallo 1941-1950 relativo al nominativo 'Delegazione di finanza di Bolzano ' ";
   Arco4Archive:inIntervalPosition "start" .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/designation-time-instant/1950>
-  a ti:TimeInstant;
+<https://w3id.org/arco/archives/resource/designation-time-instant/1950> a ti:TimeInstant;
   rdfs:label "Istante di tempo finale 1950 dell'intervallo 1941-1950 relativo al nominativo 'Delegazione di finanza di Bolzano ' ";
   Arco4Archive:inIntervalPosition "end" .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation/8015f13f6eb8feb36056006851a1cb62>
+<https://w3id.org/arco/archives/resource/documentation-relation/0a0ad7413772bb5f4c75bfce7243cd77>
   a Arco4Archive:DocumentationRelation;
-  core:hasType <https://w3id.org/italia/cultural-heritage/archives/data/documentation-relation-type/external>;
-  core:specification "Agenzia delle entrate di Bolzano", "xx qualifica della relazione xx" .
+  Arco4Archive:hasArchivalResource <https://w3id.org/arco/archives/resource/archivial-resource/0a0ad7413772bb5f4c75bfce7243cd77>;
+  core:hasType <https://w3id.org/arco/archives/ontology/archival-resource/DocumentationRelationType/External>;
+  core:specification "Archivio storico della Città di Bolzano", "xx qualifica del collegamento xx";
+  sm:URL <https://opencity.comune.bolzano.it/Argomenti/Istruzione-cultura-e-sport/Cultura/Archivio-Storico> .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/extent/84e8eb01913893ddca6248fc6ae10e6e>
+<https://w3id.org/arco/archives/resource/extent/84e8eb01913893ddca6248fc6ae10e6e>
   a Arco4Archive:Extent;
-  rdfs:label "Extent della risorsa archivistica IT-ASBZ-F230000094";
-  core:hasType <http://example/archives-consistency-type/buste>;
+  rdfs:label "Consistenza della risorsa archivistica IT-ASBZ-F230000094";
   Arco4Archive:extentInLinearMeters "297";
-  Arco4Archive:quantity "400"^^xsd:integer .
+  Arco4Archive:quantity "400"^^xsd:integer;
+  core:hasType <https://w3id.org/arco/archives/vocabulary/archival-consistency-type/Envelope> .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/extent/a4b0be5c87f6ff0647a1baec2b37e91f>
+<https://w3id.org/arco/archives/resource/extent/a4b0be5c87f6ff0647a1baec2b37e91f>
   a Arco4Archive:Extent;
-  rdfs:label "Extent della risorsa archivistica IT-ASBZ-F230000094";
-  core:hasType <http://example/archives-consistency-type/volumi>;
-  core:note "Volumi rilegati con posteriorità."^^xsd:string;
+  rdfs:label "Consistenza della risorsa archivistica IT-ASBZ-F230000094";
   Arco4Archive:extentInLinearMeters "3";
-  Arco4Archive:quantity "10"^^xsd:integer .
+  Arco4Archive:quantity "10"^^xsd:integer;
+  core:hasType <https://w3id.org/arco/archives/vocabulary/archival-consistency-type/Volume>;
+  core:note "Volumi rilegati con posteriorità."^^xsd:string .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/finding-aid/6782bbfdf5e31a163b568b3ed4cff81e>
+<https://w3id.org/arco/archives/resource/finding-aid/6782bbfdf5e31a163b568b3ed4cff81e>
   a Arco4Archive:FindingAid;
-  rdfs:label "Strumento di ricerca della risorsa IT-ASBZ-F230000094"^^xsd:string;
-  core:description "Qualifica del collegamento : Pp. 151-199."^^xsd:string;
+  rdfs:label "Strumento di ricerca Fonti per la storia dell'Alto Adige e del Sud Tirolo, Bolzano, 1998."^^xsd:string;
+  core:note "Qualifica del collegamento : Pp. 151-199."^^xsd:string;
   l0:name "Fonti per la storia dell'Alto Adige e del Sud Tirolo, Bolzano, 1998."^^xsd:string .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/finding-aid/6f7a390bbeb03f60f08a4d3b075344a0>
+<https://w3id.org/arco/archives/resource/finding-aid/6f7a390bbeb03f60f08a4d3b075344a0>
   a Arco4Archive:FindingAid;
-  rdfs:label "Strumento di ricerca della risorsa IT-ASBZ-F230000094"^^xsd:string;
-  core:description "Qualifica del collegamento : http://www.asbolzano.beniculturali.it/MW/mediaArchive/Pdf/invent/asbz_intend_finanz.pdf"^^xsd:string;
+  rdfs:label "Strumento di ricerca Intendenza di finanza di Bolzano"^^xsd:string;
+  core:note "Qualifica del collegamento : http://www.asbolzano.beniculturali.it/MW/mediaArchive/Pdf/invent/asbz_intend_finanz.pdf"^^xsd:string;
   l0:name "Intendenza di finanza di Bolzano"^^xsd:string .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/1941-1984>
-  a ti:TimeInterval;
+<https://w3id.org/arco/archives/resource/identifier/IT-ASBZ-F230000094> a core:Identifier;
+  core:current "true"^^xsd:boolean;
+  core:hasType core:NationalIdentifier;
+  l0:identifier "IT-ASBZ-F230000094" .
+
+<https://w3id.org/arco/archives/resource/identifier/SIcod001> a core:Identifier;
+  core:current "false"^^xsd:boolean;
+  core:hasType core:AlternativeIdentifier;
+  l0:identifier "SIcod001" .
+
+<https://w3id.org/arco/archives/resource/identifier/cod0010000283> a core:Identifier;
+  core:current "false"^^xsd:boolean;
+  core:hasType core:AlternativeIdentifier;
+  l0:identifier "cod0010000283" .
+
+<https://w3id.org/arco/archives/resource/responsibility-time-interval/1941-1984> a
+    ti:TimeInterval;
   rdfs:label "Intervallo di tempo 1941-1984,del soggetto produttore IT-ASBZ-CC236400094"^^xsd:string;
-  ti:hasTimeInstantInside <https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/1941>,
-    <https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/1984> .
+  ti:hasTimeInstantInside <https://w3id.org/arco/archives/resource/responsibility/time-instant/1941>,
+    <https://w3id.org/arco/archives/resource/responsibility/time-instant/1984> .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/responsibility-time-interval/1987-9999>
-  a ti:TimeInterval;
+<https://w3id.org/arco/archives/resource/responsibility-time-interval/1987-9999> a
+    ti:TimeInterval;
   rdfs:label "Intervallo di tempo 1987-9999,del soggetto conservatore san.cat.sogC.4939"^^xsd:string;
-  ti:hasTimeInstantInside <https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/1987->,
-    <https://w3id.org/italia/cultural-heritage/archives/data/responsibility/time-instant/9999> .
+  ti:hasTimeInstantInside <https://w3id.org/arco/archives/resource/responsibility/time-instant/1987->,
+    <https://w3id.org/arco/archives/resource/responsibility/time-instant/9999> .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1941> a ti:TimeInstant;
+<https://w3id.org/arco/archives/resource/time-instant/1941> a ti:TimeInstant;
   rdfs:label "Istante di tempo iniziale 1941 dell'intervallo 1941-1984 relativo alla risorsa IT-ASBZ-F230000094"^^xsd:string;
-  core:note "(con documentazione dal 1915)";
-  Arco4Archive:inIntervalPosition "start" .
+  Arco4Archive:inIntervalPosition "start";
+  core:note "(con documentazione dal 1915)" .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1984> a ti:TimeInstant;
+<https://w3id.org/arco/archives/resource/time-instant/1984> a ti:TimeInstant;
   rdfs:label "Istante di tempo finale 1984 dell'intervallo 1941-1984 relativo alla risorsa IT-ASBZ-F230000094"^^xsd:string;
   Arco4Archive:inIntervalPosition "end" .
 
-<https://w3id.org/italia/cultural-heritage/archives/data/time-interval/1941-1950>
-  a ti:TimeInterval;
+<https://w3id.org/arco/archives/resource/time-interval/1941-1950> a ti:TimeInterval;
   rdfs:label "Intervallo di tempo 1941-1950 della denominazione 'Delegazione di finanza di Bolzano '";
-  ti:hasTimeInstantInside <https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1941>,
-    <https://w3id.org/italia/cultural-heritage/archives/data/time-instant/1950> .
+  ti:hasTimeInstantInside <https://w3id.org/arco/archives/resource/time-instant/1941>,
+    <https://w3id.org/arco/archives/resource/time-instant/1950> .
+
+<https://w3id.org/arco/ontology/denotative-description/conservation-status/IT-ASBZ-F230000094>
+  a a-dd:ConservationStatus;
+  rdfs:label "Stato di conservazione del bene: IT-ASBZ-F230000094";
+  Arco4Archive:materialCondition "Le condizioni del materiale sono stabili e non presenta particolari problemi di conservazione.";
+  core:hasType <https://w3id.org/arco/ontology/denotative-description/ConservationStatusType/Discreto>;
+  core:specification "Parte del fondo é stato soggetto a interventi di restauro." .
