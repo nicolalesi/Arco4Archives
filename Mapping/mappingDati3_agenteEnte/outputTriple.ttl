@@ -1,0 +1,34 @@
+@prefix : <http://mapping.example.com/> .
+@prefix Arco4Archive: <https://w3id.org/arco/archives/ontology/archival-resource/> .
+@prefix a-cd: <https://w3id.org/arco/ontology/context-description/> .
+@prefix a-dd: <https://w3id.org/arco/ontology/denotative-description/> .
+@prefix arco-lite: <https://w3id.org/arco/ontology/arco-lite/> .
+@prefix clv: <https://w3id.org/italia/onto/CLV/> .
+@prefix core: <https://w3id.org/arco/ontology/core/> .
+@prefix cov: <https://w3id.org/italia/onto/COV/> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix data: <https://w3id.org/arco/archives/resource/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/imec/idlab/function#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix l0: <https://w3id.org/italia/onto/l0/> .
+@prefix prj: <https://w3id.org/italia/onto/Project/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix sm: <https://w3id.org/italia/onto/SM/URL/> .
+@prefix ti: <https://w3id.org/italia/onto/TI/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2000/01/XMLSchema#> .
+
+<https://w3id.org/arco/archives/resource/archivial-resource-set/SIA%20AG%201021243>
+  a Arco4Archive:FormalOrganization;
+  rdfs:label "Organizzazione formale Intendenza di finanza di Bolzano, Bolzano (1927 - 1991) - SIA AG 1021243";
+  Arco4Archive:institutionalHistory "Le Intendenze di finanza sono organi locali dell’amministrazione finanziaria istituiti nel 1869 alle dipendenze del Ministero delle finanze, con il compito di vigilare sulle pubbliche entrate e provvedere alla riscossione di tributi o altri proventi, di amministrare i beni patrimoniali immobili dello Stato e tutelare i beni del demanio pubblico. A Bolzano venne istituita l'Intendenza di finanza nel 1927, in concomitanza con la nascita della Provincia, con competenza estesa a tutto il territorio di questa. Nel quadro del processo di ristrutturazione dell’amministrazione finanziaria iniziato con la l. 358/29 ottobre 1991, il 31 dicembre 1994 venne soppressa l'Intendenza di finanza di Bolzano e contestualemente, invariata la sede, venne istituita la Direzione provinciale di Bolzano del Ministero delle finanze, le cui competenze transitarono poi, dapprima nel Dipartimento delle entrate e, da ultimo, all'Agenzia delle entrate - Direzione provinciale di Bolzano.";
+  arco-lite:nationalIdentifier "sia-ag-1021243";
+  core:hasIdentifier <https://w3id.org/arco/archives/resource/identifier/sia-ag-1021243>;
+  cov:alternativeName "Finanzintendanz Bozen"^^xsd:string;
+  cov:legalName "Intendenza di finanza di Bolzano";
+  cov:organizationAcronym "IFBZ"^^xsd:string .

@@ -1,0 +1,59 @@
+prefixes:
+    l0: "https://w3id.org/italia/onto/l0/"
+    cov: "https://w3id.org/italia/onto/COV/"
+    clv: "https://w3id.org/italia/onto/CLV/"
+    prj: "https://w3id.org/italia/onto/Project/"
+    rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+    xsd: "http://www.w3.org/2000/01/XMLSchema#"
+    Arco4Archive: "https://w3id.org/arco/archives/ontology/archival-resource/"
+    data: "https://w3id.org/arco/archives/resource/"
+    ti: "https://w3id.org/italia/onto/TI/"
+    grel: "http://users.ugent.be/~bjdmeest/function/grel.ttl#"
+    arco-lite: "https://w3id.org/arco/ontology/arco-lite/"
+    fno: "https://w3id.org/imec/idlab/function#"
+    core: "https://w3id.org/arco/ontology/core/"
+    a-cd: "https://w3id.org/arco/ontology/context-description/"  
+    a-dd: "https://w3id.org/arco/ontology/denotative-description/"  
+    idlab-fn: "https://w3id.org/imec/idlab/function#"
+    sm: "https://w3id.org/italia/onto/SM/URL/"
+
+sources:
+  idIterator:
+    access: Agente_ente.xml
+    referenceFormulation: xpath
+    iterator: "/eac-cpf/cpfDescription"
+
+mappings:
+  FormalOrganization:
+    sources:
+    - idIterator
+    s: https://w3id.org/arco/archives/resource/archivial-resource-set/$(identity/identityId)
+    po:
+    - [a, Arco4Archive:FormalOrganization]
+    - [rdfs:label, "Organizzazione formale $(identity/nameEntry/part[@localType='intestazionePrincipaleEnte']) - $(identity/identityId)"]
+    - [cov:legalName, "$(identity/nameEntry/part[@localType='denominazionePrincipaleEnte'])"]
+    - [cov:alternativeName, "$(identity/nameEntry/part[@localType='denominazione'])",xsd:string]    #da controllare 
+    - [cov:organizationAcronym,"$(identity/nameEntry/part[@localType='acronimoEnte'])", xsd:string] #ci sono due acronimi ma leggendo su cov, al massimo può esserne messo 1
+    - [Arco4Archive:institutionalHistory, "$(biogHist/p)"]
+    - p: cov:hasLegalStatus
+      o:
+        function: fno:slugify
+        parameters:
+        - [fno:str, "$(description/legalStatus/term)"]
+    - p: arco-lite:nationalIdentifier
+      o:
+          function: fno:slugify
+          parameters:
+          - [fno:str, "$(identity/identityId)",xsd:string]
+    - p: core:hasIdentifier
+      o:
+            function: fno:concat
+            parameters:
+            - [fno:str,"https://w3id.org/arco/archives/resource/identifier/"]
+            - parameter: fno:otherStr
+              value:
+                function: fno:slugify
+                parameters:
+                - [fno:str, "$(identity/identityId)"]
+            type: iri 
+    
