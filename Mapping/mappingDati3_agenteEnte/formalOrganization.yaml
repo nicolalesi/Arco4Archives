@@ -18,7 +18,7 @@ prefixes:
     sm: "https://w3id.org/italia/onto/SM/URL/"
 
 sources:
-  idIterator:
+  baseIterator:
     access: Agente_ente.xml
     referenceFormulation: xpath
     iterator: "/eac-cpf/cpfDescription"
@@ -26,20 +26,99 @@ sources:
 mappings:
   FormalOrganization:
     sources:
-    - idIterator
+    - baseIterator
     s: https://w3id.org/arco/archives/resource/archivial-resource-set/$(identity/identityId)
     po:
     - [a, Arco4Archive:FormalOrganization]
     - [rdfs:label, "Organizzazione formale $(identity/nameEntry/part[@localType='intestazionePrincipaleEnte']) - $(identity/identityId)"]
     - [cov:legalName, "$(identity/nameEntry/part[@localType='denominazionePrincipaleEnte'])"]
     - [cov:alternativeName, "$(identity/nameEntry/part[@localType='denominazione'])",xsd:string]    #da controllare 
+
+    - [arco-lite:currentDesignation, "$(identity/nameEntry/part[@localType='denominazionePrincipaleEnte'])",xsd:string] 
+    - [arco-lite:alternativeDesignation, "$(identity/nameEntry/part[@localType='denominazione'])",xsd:string]
     - [cov:organizationAcronym,"$(identity/nameEntry/part[@localType='acronimoEnte'])", xsd:string] #ci sono due acronimi ma leggendo su cov, al massimo può esserne messo 1
     - [Arco4Archive:institutionalHistory, "$(biogHist/p)"]
+    - [Arco4Archive:institutionDateInString, $(existDates/dateRange/fromDate)]
+    - [Arco4Archive:closingDateInString, $(existDates/dateRange/toDate)]
+    - [ti:atTime,"https://w3id.org/arco/archives/resource/existance-time-interval/$(existDates/date)~iri"] 
+
+    - p: Arco4Archive:hasSite
+      o: 
+        type: iri
+        function: grel:array_join
+        parameters:
+        - [grel:p_array_a,"https://w3id.org/arco/archives/resource/feature/"]
+        - parameter: grel:p_array_a
+          value:
+            function: fno:slugify
+            parameters:
+            - [fno:str, $(places/place/placeName/@target)]
+    - p: a-cd:hasDesignationInTime
+      o:
+        type: iri
+        function: grel:array_join
+        parameters:
+        - [grel:p_array_a,"https://w3id.org/arco/archives/resource/current-designation/"]
+        - parameter: grel:p_array_a
+          value:
+            function: fno:slugify
+            parameters:
+            - parameter: fno:str
+              value:
+                function: fno:concat
+                parameters:
+                - [fno:str, "$(identity/identityId)-"]
+                - [fno:otherStr, "$(identity/nameEntry/part[@localType='denominazionePrincipaleEnte'])"]
+    - p: a-cd:hasDesignationInTime
+      o: 
+        type: iri
+        function: grel:array_join
+        parameters:
+        - [grel:p_array_a,"https://w3id.org/arco/archives/resource/alternative-designation/"]
+        - parameter: grel:p_array_a
+          value:
+            function: fno:slugify
+            parameters:
+            - parameter: fno:str
+              value:
+                function: fno:concat
+                parameters:
+                - [fno:str, "$(identity/identityId)-"]
+                - [fno:otherStr, "$(identity/nameEntry/part[@localType='denominazione'])"]
     - p: cov:hasLegalStatus
       o:
-        function: fno:slugify
+        type: iri
+        function: fno:concat
         parameters:
-        - [fno:str, "$(description/legalStatus/term)"]
+        - [fno:str, "https://w3id.org/arco/archives/resource/legalStatus/"]
+        - parameter: fno:otherStr
+          value:
+            function: fno:slugify
+            parameters:
+            - [fno:str, "$(description/legalStatuses/legalStatus/term)"]
+    - p: Arco4Archive:hasInstitutionalProfile
+      o:
+        type: iri
+        function: fno:concat
+        parameters:
+        - [fno:str, "https://w3id.org/arco/archives/resource/institutional-profile/"]
+        - parameter: fno:otherStr
+          value:
+            function: fno:slugify
+            parameters:
+            - [fno:str, "$(identity/otherEntityTypes/otherEntityType[@localType='ente'])"]
+    - p: Arco4Archive:hasInstitutionalProfileInTime
+      o:
+        type: iri
+        function: grel:array_join
+        parameters:
+        - [grel:p_array_a, "https://w3id.org/arco/archives/resource/institutional-profile-inTime/"]
+        - parameter: grel:p_array_a
+          value:
+            function: fno:slugify
+            parameters:
+            - [fno:str, "$(identity/otherEntityTypes/otherEntityType[@localType='ente'])"]
+        - [grel:p_array_a, "-$(identity/otherEntityTypes/otherEntityType/date)"]
     - p: arco-lite:nationalIdentifier
       o:
           function: fno:slugify
@@ -56,4 +135,126 @@ mappings:
                 parameters:
                 - [fno:str, "$(identity/identityId)"]
             type: iri 
+
+  Feature:      #potrebbe anche essere jurisdiction vediamo
+    sources:
+    - baseIterator
+    s:
+        function: grel:array_join
+        parameters:
+        - [grel:p_array_a,"https://w3id.org/arco/archives/resource/feature/"]
+        - parameter: grel:p_array_a
+          value:
+            function: fno:slugify
+            parameters:
+            - [fno:str, $(places/place/placeName/@target)]
+    po:
+    - [a, clv:Feature]
+    - [ti:atTime,"https://w3id.org/arco/archives/resource/feature-time-interval/$(places/place/date)~iri"]
+
+  InstitutionalProfileInTime:
+    sources:
+    - baseIterator
+    s: 
+        function: grel:array_join
+        parameters:
+        - [grel:p_array_a, "https://w3id.org/arco/archives/resource/institutional-profile-inTime/"]
+        - parameter: grel:p_array_a
+          value:
+            function: fno:slugify
+            parameters:
+            - [fno:str, "$(identity/otherEntityTypes/otherEntityType[@localType='ente'])"]
+        - [grel:p_array_a, "-$(identity/otherEntityTypes/otherEntityType/date)"]
+    po:
+    - [a, Arco4Archive:InstitutionalProfileInTime]
+    - [rdfs:label, "Profilo istituzionale $(identity/otherEntityTypes/otherEntityType[@localType='ente']), nel tempo $(identity/otherEntityTypes/otherEntityType/date)"]
+    - [ti:atTime,"https://w3id.org/arco/archives/resource/institutional-profile-time-interval/$(identity/otherEntityTypes/otherEntityType/date)~iri"]
+    - p : Arco4Archive:hasInstitutionalProfile
+      o :
+        type: iri
+        function: fno:concat
+        parameters:
+        - [fno:str, "https://w3id.org/arco/archives/resource/institutional-profile/"]
+        - parameter: fno:otherStr
+          value:
+            function: fno:slugify
+            parameters:
+            - [fno:str, "$(identity/otherEntityTypes/otherEntityType[@localType='ente'])"]
+
+  TimeIntervalInstitutionalProfile:
+    sources:
+    - baseIterator
+    s: https://w3id.org/arco/archives/resource/archivial-resource-set/$(identity/otherEntityTypes/otherEntityType/date)
+    po:
+    - [a, ti:TimeInterval]
+    - [rdfs:label, "Intervallo di tempo $(identity/otherEntityTypes/otherEntityType/date),della risorsa $(identity/otherEntityTypes/otherEntityType[@localType='ente'])",xsd:string]
+    - [ti:hasTimeInstantInside,"https://w3id.org/arco/archives/resource/time-instant/$(identity/otherEntityTypes/otherEntityType/dateRange/fromDate)~iri"] 
+    - [ti:hasTimeInstantInside,"https://w3id.org/arco/archives/resource/time-instant/$(identity/otherEntityTypes/otherEntityType/dateRange/toDate)~iri"] 
+    - [ti:time, "$(identity/otherEntityTypes/otherEntityType/dateRange/date)"]   
+
+
+  InstitutionalProfile:
+    sources:
+    - baseIterator
+    s: 
+        function: fno:concat
+        parameters:
+        - [fno:str, "https://w3id.org/arco/archives/resource/institutional-profile/"]
+        - parameter: fno:otherStr
+          value:
+            function: fno:slugify
+            parameters:
+            - [fno:str, "$(identity/otherEntityTypes/otherEntityType[@localType='ente'])"]
+    po:
+    - [a, Arco4Archive:InstitutionalProfile]
+    - [rdfs:label, "Profilo istituzionale $(identity/otherEntityTypes/otherEntityType[@localType='ente'])"]
+
+  AlternativeDesignationInTime:
+    sources:
+    - baseIterator
+    s: 
+        function: grel:array_join
+        parameters:
+        - [grel:p_array_a,"https://w3id.org/arco/archives/resource/alternative-designation/"]
+        - parameter: grel:p_array_a
+          value:
+            function: fno:slugify
+            parameters:
+            - parameter: fno:str
+              value:
+                function: fno:concat
+                parameters:
+                - [fno:str, "$(identity/identityId)-"]
+                - [fno:otherStr, "$(identity/nameEntry/part[@localType='denominazione'])"]
+    po:
+    - [a, a-cd:DesignationInTime]
+    - [rdfs:label, "Denominazione nel tempo '$(identity/nameEntry/part[@localType='denominazione'])' della risorsa $(identity/identityId)",xsd:string]
+    - [core:hasType, a-cd:AlternativeDesignation~iri]
+    - [ti:atTime, "https://w3id.org/arco/archives/resource/time-interval/$(identity/nameEntry/useDates/date)~iri"]
+    - [l0:name, "$(identity/nameEntry/part[@localType='denominazione'])"]
+
+  CurrentDesignationInTime:
+      sources:
+      - baseIterator
+      s: 
+        function: grel:array_join
+        parameters:
+        - [grel:p_array_a,"https://w3id.org/arco/archives/resource/current-designation/"]
+        - parameter: grel:p_array_a
+          value:
+            function: fno:slugify
+            parameters:
+            - parameter: fno:str
+              value:
+                function: fno:concat
+                parameters:
+                - [fno:str, "$(identity/identityId)-"]
+                - [fno:otherStr, "$(identity/nameEntry/part[@localType='denominazionePrincipaleEnte'])"]
+      po:
+      - [a, a-cd:DesignationInTime]
+      - [rdfs:label, "Denominazione corrente '$(identity/nameEntry/part[@localType='denominazionePrincipaleEnte'])' della risorsa $(identity/identityId)",xsd:string]
+      - [core:current, "true", xsd:boolean] #da capire perché forse l'ente non esiste più
+      - [l0:name, "$(identity/nameEntry/part[@localType='denominazionePrincipaleEnte'])"]
+      - [ti:atTime, "https://w3id.org/arco/archives/resource/time-interval/$(identity/nameEntry/useDates/date)~iri"]
+
     

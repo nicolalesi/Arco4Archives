@@ -15,6 +15,6 @@ fai hasIdentifier anche per gli altri, quello alternativa, ma invece di mettere
 core:current mettiamo core:alternative
 Uno national con current true e uno local con current false
 
--Mettere a posto mapping
+- Mettere a posto mapping
 - Vocabolario consistenza 
 

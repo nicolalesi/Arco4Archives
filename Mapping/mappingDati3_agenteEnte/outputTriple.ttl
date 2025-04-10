@@ -23,12 +23,55 @@
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2000/01/XMLSchema#> .
 
+<https://w3id.org/arco/archives/resource/alternative-designation/sia-ag-1021243-finanzintendanz-bozen>
+  a a-cd:DesignationInTime;
+  rdfs:label "Denominazione nel tempo 'Finanzintendanz Bozen' della risorsa SIA AG 1021243"^^xsd:string;
+  core:hasType a-cd:AlternativeDesignation;
+  ti:atTime <https://w3id.org/arco/archives/resource/time-interval/1927-1991>;
+  l0:name "Finanzintendanz Bozen" .
+
+<https://w3id.org/arco/archives/resource/archivial-resource-set/1927-1991> a ti:TimeInterval;
+  rdfs:label "Intervallo di tempo 1927-1991,della risorsa  .. ufficio periferico postunitario .. "^^xsd:string;
+  ti:hasTimeInstantInside <https://w3id.org/arco/archives/resource/time-instant/1927>,
+    <https://w3id.org/arco/archives/resource/time-instant/1991> .
+
 <https://w3id.org/arco/archives/resource/archivial-resource-set/SIA%20AG%201021243>
   a Arco4Archive:FormalOrganization;
   rdfs:label "Organizzazione formale Intendenza di finanza di Bolzano, Bolzano (1927 - 1991) - SIA AG 1021243";
+  Arco4Archive:closingDateInString "1991";
+  Arco4Archive:hasInstitutionalProfile <https://w3id.org/arco/archives/resource/institutional-profile/ufficio-periferico-postunitario>;
+  Arco4Archive:hasInstitutionalProfileInTime <https://w3id.org/arco/archives/resource/institutional-profile-inTime/ufficio-periferico-postunitario-1927-1991>;
+  Arco4Archive:hasSite <https://w3id.org/arco/archives/resource/feature/icar-top-2019011>;
+  Arco4Archive:institutionDateInString "1927";
   Arco4Archive:institutionalHistory "Le Intendenze di finanza sono organi locali dell’amministrazione finanziaria istituiti nel 1869 alle dipendenze del Ministero delle finanze, con il compito di vigilare sulle pubbliche entrate e provvedere alla riscossione di tributi o altri proventi, di amministrare i beni patrimoniali immobili dello Stato e tutelare i beni del demanio pubblico. A Bolzano venne istituita l'Intendenza di finanza nel 1927, in concomitanza con la nascita della Provincia, con competenza estesa a tutto il territorio di questa. Nel quadro del processo di ristrutturazione dell’amministrazione finanziaria iniziato con la l. 358/29 ottobre 1991, il 31 dicembre 1994 venne soppressa l'Intendenza di finanza di Bolzano e contestualemente, invariata la sede, venne istituita la Direzione provinciale di Bolzano del Ministero delle finanze, le cui competenze transitarono poi, dapprima nel Dipartimento delle entrate e, da ultimo, all'Agenzia delle entrate - Direzione provinciale di Bolzano.";
+  arco-lite:alternativeDesignation "Finanzintendanz Bozen"^^xsd:string;
+  arco-lite:currentDesignation "Intendenza di finanza di Bolzano"^^xsd:string;
   arco-lite:nationalIdentifier "sia-ag-1021243";
+  a-cd:hasDesignationInTime <https://w3id.org/arco/archives/resource/alternative-designation/sia-ag-1021243-finanzintendanz-bozen>,
+    <https://w3id.org/arco/archives/resource/current-designation/sia-ag-1021243-intendenza-di-finanza-di-bolzano>;
   core:hasIdentifier <https://w3id.org/arco/archives/resource/identifier/sia-ag-1021243>;
   cov:alternativeName "Finanzintendanz Bozen"^^xsd:string;
+  cov:hasLegalStatus <https://w3id.org/arco/archives/resource/legalStatus/ente-pubblico>;
   cov:legalName "Intendenza di finanza di Bolzano";
-  cov:organizationAcronym "IFBZ"^^xsd:string .
+  cov:organizationAcronym "IFBZ"^^xsd:string;
+  ti:atTime <https://w3id.org/arco/archives/resource/existance-time-interval/1927-1991> .
+
+<https://w3id.org/arco/archives/resource/current-designation/sia-ag-1021243-intendenza-di-finanza-di-bolzano>
+  a a-cd:DesignationInTime;
+  rdfs:label "Denominazione corrente 'Intendenza di finanza di Bolzano' della risorsa SIA AG 1021243"^^xsd:string;
+  core:current "true"^^xsd:boolean;
+  ti:atTime <https://w3id.org/arco/archives/resource/time-interval/1927-1991>;
+  l0:name "Intendenza di finanza di Bolzano" .
+
+<https://w3id.org/arco/archives/resource/feature/icar-top-2019011> a clv:Feature;
+  ti:atTime <https://w3id.org/arco/archives/resource/feature-time-interval/1927-1991> .
+
+<https://w3id.org/arco/archives/resource/institutional-profile-inTime/ufficio-periferico-postunitario-1927-1991>
+  a Arco4Archive:InstitutionalProfileInTime;
+  rdfs:label "Profilo istituzionale  .. ufficio periferico postunitario .. , nel tempo 1927-1991";
+  Arco4Archive:hasInstitutionalProfile <https://w3id.org/arco/archives/resource/institutional-profile/ufficio-periferico-postunitario>;
+  ti:atTime <https://w3id.org/arco/archives/resource/institutional-profile-time-interval/1927-1991> .
+
+<https://w3id.org/arco/archives/resource/institutional-profile/ufficio-periferico-postunitario>
+  a Arco4Archive:InstitutionalProfile;
+  rdfs:label "Profilo istituzionale  .. ufficio periferico postunitario .. " .
