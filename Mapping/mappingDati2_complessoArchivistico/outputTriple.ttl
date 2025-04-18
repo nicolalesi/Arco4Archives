@@ -115,7 +115,8 @@
   a Arco4Archive:Numbering;
   rdfs:label "Numerazione in numeri arabi della risorsa IT-ASBZ-F230000094";
   Arco4Archive:hasNumberingType Arco4Archive:ArabicNumeral;
-  core:description "1-400 (numerazione delle buste)", "401-410 (numerazione dei volumi)" .
+  core:description "1-400 (numerazione delle buste) - 401-410 (numerazione dei volumi)";
+  core:description "401-410 (numerazione dei volumi)" .
 
 <https://w3id.org/arco/archives/resource/condition-of-access/2af1268832202bcc1b82df4748c02c7f>
   a Arco4Archive:ConditionOfAccess;

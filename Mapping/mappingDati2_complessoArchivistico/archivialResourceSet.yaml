@@ -86,7 +86,7 @@ mappings:
               parameters:
                 - [str1, $(@level),s]
                 - [str2, $(Notation),o]
-        - [rdfs:label, "Complesso archivistico: $(did/unittitle[1]) - $(did/unitid[1])"]
+        - [rdfs:label, "Complesso archivistico: $(did/unittitle[1]) - $(did/unitid[1])",it~lang]
         - [arco-lite:localIdentifier, "$(did/unitid[@localType='altroId'])",xsd:string]    
         - [arco-lite:localIdentifier, "$(did/unitid[@localType='idPrecedente'])",xsd:string] 
         - [arco-lite:nationalIdentifier, "$(did/unitid[1])",xsd:string] 
@@ -101,8 +101,8 @@ mappings:
                     parameters:                                                                                                   
                     - [fno:str, "$(did/unittitle[1])"]
               type: iri
-        - [arco-lite:currentDesignation, "$(did/unittitle[1])",xsd:string] 
-        - [arco-lite:alternativeDesignation, "$(did/unittitle[@label='altraDenominazione'])",xsd:string]
+        - [arco-lite:currentDesignation, "$(did/unittitle[1])",xsd:string,it~lang] 
+        - [arco-lite:alternativeDesignation, "$(did/unittitle[@label='altraDenominazione'])",xsd:string,it~lang]
         - p: a-cd:hasDesignationInTime
           o:
             function: fno:concat
@@ -115,7 +115,7 @@ mappings:
                   - [fno:str, "$(did/unittitle[@label='altraDenominazione'])"]
             type: iri 
         - [Arco4Archive:totalExtentInLinearMeters, "$(did/physdesc)",xsd:string]
-        - [a-dd:hasConservationStatus, "https://w3id.org/arco/ontology/denotative-description/conservation-status/$(did/unitid[1])~iri"]
+        - [a-dd:hasConservationStatus, "https://w3id.org/arco/archives/resource/conservation-status/$(did/unitid[1])~iri"]
         - p: ti:atTime
           o:
                 function: fno:concat
@@ -124,11 +124,11 @@ mappings:
                 - [fno:delimiter, "-"]
                 - [fno:otherStr, $(did/unitdatestructured/daterange/todate)]
                 type: iri
-        - [core:description, "$(scopecontent/p)",xsd:string]
-        - [a-cd:historicalInformation, "$(custodhist/p)",xsd:string]
-        - [core:specification, $(appraisal/p),xsd:string]
-        - [core:specification, $(accruals/p),xsd:string]
-        - [core:note, $(acquinfo/p),xsd:string]
+        - [core:description, "$(scopecontent/p)",xsd:string,it~lang]
+        - [a-cd:historicalInformation, "$(custodhist/p)",xsd:string,it~lang]
+        - [core:specification, $(appraisal/p),xsd:string,it~lang]
+        - [core:specification, $(accruals/p),xsd:string,it~lang]
+        - [core:note, $(acquinfo/p),xsd:string,it~lang]
         - p: Arco4Archive:hasConditionOfAccess
           o:
             function: fno:concat
@@ -156,7 +156,7 @@ mappings:
           o:
             function: fno:concat
             parameters:
-            - [fno:str, "https://w3id.org/arco/archives/resource/archivial-responsibility/$(did/unitid[1])-" ]
+            - [fno:str, "https://w3id.org/arco/archives/resource/archival-responsibility/$(did/unitid[1])-" ]
             - parameter: fno:otherStr
               value:
                 function: grel:array_get
@@ -174,7 +174,7 @@ mappings:
           o:
             function: fno:concat
             parameters:
-            - [fno:str,"https://w3id.org/arco/archives/resource/archivial-resource-set/project/"]
+            - [fno:str,"https://w3id.org/arco/archives/resource/project/"]
             - parameter: fno:otherStr
               value:
                 function: fno:slugify
@@ -185,7 +185,7 @@ mappings:
           o:
             function: fno:concat
             parameters:
-            - [fno:str,"https://w3id.org/arco/archives/resource/archivial-resource-set/event/"]
+            - [fno:str,"https://w3id.org/arco/archives/resource/event/"]
             - parameter: fno:otherStr
               value:
                 function: fno:slugify
@@ -312,7 +312,7 @@ mappings:
                 value:
                   function: grel:array_join
                   parameters:
-                  - [grel:p_array_a,"https://w3id.org/arco/archives/resource/archivial-resource-set/internal-related-doc/"]
+                  - [grel:p_array_a,"https://w3id.org/arco/archives/resource/internal-related-doc/"]
                   - [grel:p_array_a,"$(../../did/unitid[1])-"]
                   - parameter: grel:p_array_a
                     value:
@@ -448,7 +448,7 @@ mappings:
                 - [grel:valueParameter, $(originalsloc/p/title/part)]
       po:
       - [a, Arco4Archive:CopyOrOriginalRelation]
-      - [rdfs:label, "Locazione degli originali dell'archivio $(did/unitid[1])"]
+      - [rdfs:label, "Locazione degli originali dell'archivio $(did/unitid[1])",it~lang]
       - [l0:name,$(originalsloc/p/title/part)]
       - p: core:specification                             #Penso che questi tag siano innestati male, in qualche modo li ho tirati fuori in un modo leggibile
         o: $(originalsloc/p)
@@ -461,7 +461,7 @@ mappings:
           #                  - [fno:str,"$(originalsloc/p)"] 
           #- [grel:p_string_find,"-"]
           #- [grel:p_string_replace, " "]
-      - [core:hasType, "https://w3id.org/arco/archives/ontology/archival-resource/CopyOrOriginalRelationType/Original~iri"] #ipotesi
+      - [core:hasType, "https://w3id.org/arco/archives/ontology/archival-resource/Original~iri"] #ipotesi
       - p: core:hasOriginalResource
         o:
           function: fno:concat
@@ -488,7 +488,7 @@ mappings:
                 - [grel:valueParameter, $(altformavail/p/title/part)]
       po:
       - [a, Arco4Archive:CopyOrOriginalRelation]
-      - [rdfs:label, "Locazione delle copie dei documenti dell'archivio $(did/unitid[1])"]
+      - [rdfs:label, "Locazione delle copie dei documenti dell'archivio $(did/unitid[1])",it~lang]
       - [l0:name,$(altformavail/p/title/part)]
       - p: core:specification                   #Penso che questi tag siano innestati male, in qualche modo li ho tirati fuori in un modo leggibile
         o: $(altformavail/p)
@@ -539,7 +539,7 @@ mappings:
       po:
       - [a, Arco4Archive:archivalResource]
       - [core:localIdentifier,$(ref/@target)]
-      - [rdfs:label, "Risorsa archivistica $(ref/@target)"]
+      - [rdfs:label, "Risorsa archivistica $(ref/@target)",it~lang]
     #Non ho istanziato quella esterna perché non abbiamo molte info
 
 
@@ -550,7 +550,7 @@ mappings:
       s:
             function: fno:concat
             parameters:
-            - [fno:str,"https://w3id.org/arco/archives/resource/archivial-resource-set/web-reference/"]
+            - [fno:str,"https://w3id.org/arco/archives/resource/web-reference/"]
             - parameter: fno:otherStr
               value:
                 function: grel:string_md5
@@ -558,8 +558,8 @@ mappings:
                 - [grel:valueParameter,"$(ref[@linkrole='riferimentoWeb']/@href)"]
       po:
       - [a, Arco4Archive:WebReference]
-      - [rdfs:label, "Riferimento web della risorsa $(../../did/unitid[1])"]
-      - [l0:name, "Riferimento web della risorsa $(../../did/unitid[1])"]
+      - [rdfs:label, "Riferimento web della risorsa $(../../did/unitid[1])",it~lang]
+      - [l0:name, "Riferimento web della risorsa $(../../did/unitid[1])",it~lang]
       - [sm:URL, "$(ref[@linkrole='riferimentoWeb']/@href)~iri"]
     #Reificazione della relazione tra Archivial Resource set e documentazione, mapping della documentazione esterna
     DocumentationRelationExt:
@@ -605,11 +605,11 @@ mappings:
                               - [grel:p_array_a,"$(title)"]
       po:
       - [a, Arco4Archive:DocumentationRelation]
-      - [rdfs:label, "Relazione che specifica informazioni riguardanti la documentazione esterna $(title) della risorsa $(../did/unitid[1])"]
-      - [core:specification,"$(title)"]    
+      - [rdfs:label, "Relazione che specifica informazioni riguardanti la documentazione esterna $(title) della risorsa $(../did/unitid[1])",it~lang]
+      - [core:specification,"$(title)",it~lang]    
       - [sm:URL, "$(ref/@href)~iri"]  
-      - [core:specification, "$(ref/@arcrole)"]
-      - [core:hasType, "https://w3id.org/arco/archives/ontology/archival-resource/DocumentationRelationType/External~iri"]
+      - [core:specification, "$(ref/@arcrole)",it~lang]
+      - [core:hasType, "https://w3id.org/arco/archives/ontology/archival-resource/External~iri"]
       - p: Arco4Archive:hasArchivalResource
         o:
                       type: iri
@@ -659,7 +659,7 @@ mappings:
             value:
               function: grel:array_join
               parameters:
-              - [grel:p_array_a,"https://w3id.org/arco/archives/resource/archivial-resource-set/internal-related-doc/"]
+              - [grel:p_array_a,"https://w3id.org/arco/archives/resource/internal-related-doc/"]
               - [grel:p_array_a,"$(../../did/unitid[1])-"]
               - parameter: grel:p_array_a
                 value:
@@ -668,10 +668,10 @@ mappings:
                   - [fno:str, "$(ref/@target)"]   
       po:
       - [a, Arco4Archive:DocumentationRelation]
-      - [rdfs:label, "Relazione che specifica informazioni riguardanti la documentazione esterna $(title) della risorsa $(../did/unitid[1])"]
-      - [core:specification,"$(title)"]    #per ora con numerazione, ma non credo sarà corretto con più entry
+      - [rdfs:label, "Relazione che specifica informazioni riguardanti la documentazione esterna $(title) della risorsa $(../did/unitid[1])",it~lang]
+      - [core:specification,"$(title)",it~lang]    #per ora con numerazione, ma non credo sarà corretto con più entry
       - [sm:URL, "$(ref/@href)~iri"]  #CORREGGERE DEVE PASSARE PER WEBREFERENCE
-      - [core:specification, "$(ref/@arcrole)"]                     #Le concateno?
+      - [core:specification, "$(ref/@arcrole)",it~lang]                     #Le concateno?
       - p: Arco4Archive:hasArchivalResource
         o:  
             function: grel:array_join
@@ -683,7 +683,7 @@ mappings:
                 parameters:
                 - [fno:str, "$(ref[@linktitle='relazioneConCA']/@target)"]  
             type: iri 
-      - [core:hasType, "https://w3id.org/arco/archives/ontology/archival-resource/DocumentationRelationType/Internal~iri"]
+      - [core:hasType, "https://w3id.org/arco/archives/ontology/archival-resource/Internal~iri"]
     #Responsabilità soggetto produttore 
     ResponsibilityC:                  
       sources:
@@ -691,7 +691,7 @@ mappings:
       s: "https://w3id.org/arco/archives/resource/archivial-responsibility/$(preceding::did/unitid[1])-$(relationentry/@id)"     #aggiungere al posto di archivial-holder id complesso archivistico e - id soggett conservatore 
       po:
       - [a, a-cd:Responsibility]
-      - [rdfs:label, "Responsabilità archivistica della risorsa $(../did/unitid[1])"]
+      - [rdfs:label, "Responsabilità archivistica della risorsa $(../did/unitid[1])",it~lang]
       - [a-cd:hasAgentWithResponsibility, "https://w3id.org/arco/archives/resource/agent/$(.[@relationtype='cpfrelation']/relationentry[@localtype='soggettoProduttore']/@id)~iri"]
       - p: a-cd:hasInterventionRole
         o:  "https://w3id.org/arco/archives/ontology/archival-resource/ArchivialCreator~iri"
@@ -704,7 +704,7 @@ mappings:
         o:
           function: fno:concat
           parameters:
-          - [fno:str, "https://w3id.org/arco/archives/resource/responsibility-time-interval/$(daterange/fromdate)-"] #necessario controllo cpfrelation per sicurezza
+          - [fno:str, "https://w3id.org/arco/archives/resource/time-interval/$(daterange/fromdate)-"] #necessario controllo cpfrelation per sicurezza
           - [fno:otherStr, $(daterange/todate)]                                                                                       #miglioria, sarebbe meglio mettere anche il caso della data aperta su entrambi
           type: iri
     #Responsabilità del soggetto conservatore
@@ -728,7 +728,7 @@ mappings:
                 - [grel:param_int_i_from,3]                  
         po:
         - [a, a-cd:Responsibility]
-        - [rdfs:label, "Responsabilità archivistica della risorsa $(../did/unitid[1])",xsd:string]
+        - [rdfs:label, "Responsabilità archivistica della risorsa $(../did/unitid[1])",xsd:string,it~lang]
         - [a-cd:hasAgentWithResponsibility, "https://w3id.org/arco/archives/resource/agent/$(.[@relationtype='cpfrelation']/relationentry[@localtype='Soggetto conservatore'])~iri"] #si potrebbe splittare anche qui come nel soggeto
         - p: a-cd:hasInterventionRole
           o:  "https://w3id.org/arco/archives/ontology/archival-resource/ArchivialHolder~iri"
@@ -737,7 +737,7 @@ mappings:
             parameters:
             - [str1, "$(.[@relationtype='cpfrelation']/relationentry[@localtype='Soggetto conservatore']/@localtype)",s]      #non è necessario perché sono divise ma è un double check
             - [str2, "Soggetto conservatore",o]
-        - [ti:atTime,"https://w3id.org/arco/archives/resource/responsibility-time-interval/$(datesingle[@localtype='data aperta'])9999~iri"]  #caso data aperta
+        - [ti:atTime,"https://w3id.org/arco/archives/resource/time-interval/$(datesingle[@localtype='data aperta'])9999~iri"]  #caso data aperta
     #Strumento di ricerca
     FindingAid:
       sources:
@@ -753,9 +753,9 @@ mappings:
                   - [grel:valueParameter, "$(./*[1])"]
       po:
       - [a, Arco4Archive:FindingAid] 
-      - [rdfs:label, "Strumento di ricerca $(./*[1])",xsd:string]   
+      - [rdfs:label, "Strumento di ricerca $(./*[1])",xsd:string,it~lang]   
       - [l0:name,"$(./*[1])",xsd:string]
-      - [core:note, "Qualifica del collegamento : $(./*[2]/p)",xsd:string]    
+      - [core:note, "Qualifica del collegamento : $(./*[2]/p)",xsd:string,it~lang]    
     #Condizioni di accesso
     ConditionOfAccess: 
       sources:
@@ -771,8 +771,8 @@ mappings:
                 - [grel:valueParameter:str, "$(accessrestrict/accessrestrict[@localtype='noteCondizioniAccesso']/p)"]    
       po:
       - [a, Arco4Archive:ConditionOfAccess] 
-      - [rdfs:label, "Condizioni di accesso della risorsa $(did/unitid[1])",xsd:string]
-      - [core:note,"$(accessrestrict/accessrestrict[@localtype='noteCondizioniAccesso']/p)" ] 
+      - [rdfs:label, "Condizioni di accesso della risorsa $(did/unitid[1])",xsd:string,it~lang]
+      - [core:note,"$(accessrestrict/accessrestrict[@localtype='noteCondizioniAccesso']/p)",it~lang] 
       - p: core:hasType
         o:
             function: fno:concat
@@ -799,8 +799,8 @@ mappings:
                 - [grel:valueParameter:str, "$(userrestrict/userrestrict[@localtype='noteCondizioniUtilizzo']/p)"] 
       po:
       - [a, Arco4Archive:ConditionOfUse]
-      - [rdfs:label,"Condizioni di utilizzo della risorsa $(did/unitid[1])",xsd:string]
-      - [core:note,"$(userrestrict/userrestrict[@localtype='noteCondizioniUtilizzo']/p)" ] 
+      - [rdfs:label,"Condizioni di utilizzo della risorsa $(did/unitid[1])",xsd:string,it~lang]
+      - [core:note,"$(userrestrict/userrestrict[@localtype='noteCondizioniUtilizzo']/p)",it~lang] 
       - p: core:hasType
         o:
             function: fno:concat
@@ -827,7 +827,7 @@ mappings:
                   - [fno:str, "$(did/unittitle[@label='altraDenominazione'])"]
       po:
       - [a, a-cd:DesignationInTime]
-      - [rdfs:label, "Denominazione nel tempo '$(did/unittitle[@label='altraDenominazione'])' della risorsa $(did/unitid[1])",xsd:string]
+      - [rdfs:label, "Denominazione nel tempo '$(did/unittitle[@label='altraDenominazione'])' della risorsa $(did/unitid[1])",xsd:string,it~lang]
       - [core:hasType, a-cd:AlternativeDesignation~iri]
       - p: ti:atTime
         o:
@@ -856,15 +856,15 @@ mappings:
                 - [fno:str, "$(did/unittitle[1])"]
       po:
       - [a, a-cd:DesignationInTime]
-      - [rdfs:label, "Denominazione corrente '$(did/unittitle[1])' della risorsa $(did/unitid[1])",xsd:string]
+      - [rdfs:label, "Denominazione corrente '$(did/unittitle[1])' della risorsa $(did/unitid[1])",xsd:string,it~lang]
       - [core:current, "true", xsd:boolean]
-      - [l0:name, "$(did/unittitle[1])"]
+      - [l0:name, "$(did/unittitle[1])",it~lang]
 
     #intervallo di tempo base, archivial resource set
     TimeInterval:
         sources:
         - archdescIterator
-        s: https://w3id.org/arco/archives/resource/archivial-resource-set/time-interval/$(did/unitdatestructured/daterange/fromdate)-$(did/unitdatestructured/daterange/todate)
+        s: https://w3id.org/arco/archives/resource/time-interval/$(did/unitdatestructured/daterange/fromdate)-$(did/unitdatestructured/daterange/todate)
         po:
         - [a, ti:TimeInterval]
         - [rdfs:label, "Intervallo di tempo $(did/unitdatestructured/daterange/fromdate)-$(did/unitdatestructured/daterange/todate),della risorsa $(did/unitid[1])",xsd:string]
@@ -875,7 +875,7 @@ mappings:
     TimeIntervalC:  
       source:
       - relationsIterator
-      s: "https://w3id.org/arco/archives/resource/responsibility-time-interval/$(daterange/fromdate)-$(daterange/todate)" #necessario controllo cpfrelation per sicurezza
+      s: "https://w3id.org/arco/archives/resource/time-interval/$(daterange/fromdate)-$(daterange/todate)" #necessario controllo cpfrelation per sicurezza
       po:
       - [a, ti:TimeInterval]
       - [rdfs:label, "Intervallo di tempo $(daterange/fromdate)-$(daterange/todate),del soggetto produttore $(relationentry/@id)",xsd:string]
@@ -885,7 +885,7 @@ mappings:
     TimeIntervalH:  
       source:
       - relationsIterator
-      s: "https://w3id.org/arco/archives/resource/responsibility-time-interval/$(datesingle[@localtype='data aperta'])9999"
+      s: "https://w3id.org/arco/archives/resource/time-interval/$(datesingle[@localtype='data aperta'])9999"
       po:
       - [a, ti:TimeInterval]
       - [rdfs:label, "Intervallo di tempo $(datesingle[@localtype='data aperta'])9999,del soggetto conservatore $(relationentry)",xsd:string]
@@ -949,7 +949,7 @@ mappings:
         po:
         - [a, ti:TimeInstant]
         - [rdfs:label, "Istante di tempo iniziale $(did/unitdatestructured/daterange/fromdate) dell'intervallo $(did/unitdatestructured/daterange/fromdate)-$(did/unitdatestructured/daterange/todate) relativo alla risorsa $(did/unitid[1])",xsd:string]
-        - [core:note,"$(did/didnote[@label='Note_a_Estremo_recente_Complesso'])"]
+        - [core:note,"$(did/didnote[@label='Note_a_Estremo_recente_Complesso'])",it~lang]
         - [Arco4Archive:inIntervalPosition,"start"]
     #Istante di tempo base- archivial resource set, end (finale)
     TimeInstantE:
@@ -959,7 +959,7 @@ mappings:
         po:
         - [a, ti:TimeInstant]
         - [rdfs:label, "Istante di tempo finale $(did/unitdatestructured/daterange/todate) dell'intervallo $(did/unitdatestructured/daterange/fromdate)-$(did/unitdatestructured/daterange/todate) relativo alla risorsa $(did/unitid[1])",xsd:string]
-        - [core:note,"$(did/didnote[@label='Note_a_Estremo_remoto_Complesso'])"] #immaginario
+        - [core:note,"$(did/didnote[@label='Note_a_Estremo_remoto_Complesso'])",it~lang] #immaginario
         - [Arco4Archive:inIntervalPosition,"end"]
     #Istante di tempo designation in time, start (iniziale)
     TimeInstantSDesignation:
@@ -968,7 +968,7 @@ mappings:
         s: 
                 function: fno:concat
                 parameters:
-                - [fno:str, "https://w3id.org/arco/archives/resource/designation-time-instant/"]
+                - [fno:str, "https://w3id.org/arco/archives/resource/time-instant/"]
                 - parameter: fno:otherStr
                   value:
                     function: grel:array_get
@@ -1010,7 +1010,7 @@ mappings:
         s: 
                 function: fno:concat
                 parameters:
-                - [fno:str, "https://w3id.org/arco/archives/resource/designation-time-instant/"]      #ho disambiguato l'URI dall'altro timeinstant per non far confondere start e end
+                - [fno:str, "https://w3id.org/arco/archives/resource/time-instant/"]      #ho disambiguato l'URI dall'altro timeinstant per non far confondere start e end
                 - parameter: fno:otherStr
                   value:
                     function: grel:array_get
@@ -1062,9 +1062,9 @@ mappings:
                         - [grel:p_array_a,"$(quantity)"]     
         po: 
         - [a, Arco4Archive:Extent]
-        - [rdfs:label, "Consistenza della risorsa archivistica $(../../unitid[1])"]     #Aggiungere i tag di lingua
+        - [rdfs:label, "Consistenza della risorsa archivistica $(../../unitid[1])",it~lang]     #Aggiungere i tag di lingua
         - [Arco4Archive:quantity, $(quantity),xsd:integer]      #ci sarà da controllare se sono scritti correttamente
-        - [core:note, $(descriptivenote/p),xsd:string]
+        - [core:note, $(descriptivenote/p),xsd:string,it~lang]
         - p: Arco4Archive:extentInLinearMeters
           o: $(dimensions)
         - p: core:hasType
@@ -1079,12 +1079,12 @@ mappings:
     ConservationStatus:
       sources:
       - archdescIterator
-      s: "https://w3id.org/arco/ontology/denotative-description/conservation-status/$(did/unitid[1])"
+      s: "https://w3id.org/arco/archives/resource/conservation-status/$(did/unitid[1])"
       po:
       - [a, a-dd:ConservationStatus]
-      - [core:specification,"$(did/didnote[@localtype='Restauro_o_Altri_interventi']/p)"]       #potrebbe anche essere ConservationInterention?
-      - [Arco4Archive:materialCondition,"$(did/didnote[@localtype='Condizioni_del_materiale']/p)"]
-      - [core:hasType,"https://w3id.org/arco/ontology/denotative-description/ConservationStatusType/$(did/didnote[@localtype='Stato_di_conservazione']/p)~iri"] #dobbiamo istanziare anche ConservationStatusType?
+      - [core:specification,"$(did/didnote[@localtype='Restauro_o_Altri_interventi']/p)",it~lang]       #potrebbe anche essere ConservationInterention?
+      - [Arco4Archive:materialCondition,"$(did/didnote[@localtype='Condizioni_del_materiale']/p)",it~lang]
+      - [core:hasType,"https://w3id.org/arco/ontology/denotative-description/ConservationStatusType/$(did/didnote[@localtype='Stato_di_conservazione']/p)~iri"] #dobbiamo istanziare anche ConservationStatusType? --> no va bene solo l'URI
       - p: rdfs:label
         o:
           function: fno:concat
@@ -1098,7 +1098,7 @@ mappings:
       s: "https://w3id.org/arco/archives/resource/arrangement/$(preceding::did/unitid[1])"     #Il codice del bene data/arrangement/codicebene
       po: 
       - [a, Arco4Archive:Arrangement]
-      - [rdfs:label,"Criterio di ordinamento $(../did/unitid[1])"]
+      - [rdfs:label,"Criterio di ordinamento $(../did/unitid[1])",it~lang]
       - [core:description,"$(p)"]
       - p: Arco4Archive:hasNumbering    
         o: 
@@ -1136,8 +1136,8 @@ mappings:
                   - [grel:valueParameter,"$(arrangement/p/num)"]
       po: 
       - [a, Arco4Archive:Numbering]  
-      - [rdfs:label,"Numerazione in $(arrangement/p/num) della risorsa $(did/unitid[1])"]
-      - [core:description, $(arrangement/list/item)]      
+      - [rdfs:label,"Numerazione in $(arrangement/p/num) della risorsa $(did/unitid[1])",it~lang]
+      - [core:description, $(arrangement/list/item),it~lang]      
       - p: Arco4Archive:hasNumberingType
         o: "https://w3id.org/arco/archives/ontology/archival-resource/ArabicNumeral~iri"
         condition:
