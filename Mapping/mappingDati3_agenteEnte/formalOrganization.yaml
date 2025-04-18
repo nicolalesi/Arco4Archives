@@ -27,7 +27,7 @@ mappings:
   FormalOrganization:
     sources:
     - baseIterator
-    s: https://w3id.org/arco/archives/resource/archivial-resource-set/$(identity/identityId)
+    s: https://w3id.org/arco/archives/resource/formal-organization/$(identity/identityId)
     po:
     - [a, Arco4Archive:FormalOrganization]
     - [rdfs:label, "Organizzazione formale $(identity/nameEntry/part[@localType='intestazionePrincipaleEnte']) - $(identity/identityId)"]
