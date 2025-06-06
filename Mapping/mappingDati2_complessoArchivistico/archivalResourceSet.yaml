@@ -1069,7 +1069,7 @@ mappings:
           o: $(dimensions)
         - p: core:hasType
           o: 
-          - mapping: ConsistencyType                    # posso fare come sopra, ma nei dati è scritto al plurale :( per ora metterò la notation del vocabolario al plurale e in minuscolo
+          - mapping: ConsistencyType                    
             condition:                                  #matching vocabolario controllato delle consistenze
               function: equal
               parameters:
